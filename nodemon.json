@@ -1,0 +1,10 @@
+{
+  "ignore": [
+    "client/**",
+    "dist/**",
+    "modules/**",
+    "*.marko.js",
+    "*.pdf"
+  ],
+  "verbose": true
+}

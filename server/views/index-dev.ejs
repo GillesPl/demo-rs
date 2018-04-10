@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Trust1Connector">
+    <meta name="description" content="Read My Cards allows you to read your ID card, EMV bank card or Mobib smartcard
+using any reader. Trust1Connector is an alternative to FEDICT eID middleware.">
+    <meta name="keywords" content="gcl, trust1connector, t1c, smartcard, smartcards, smartcard reader, webapp,
+middleware and integration software, eid card reader installeren, middleware express, eid card reader belgium, carte d
+identité, fedict middleware alternative, ing card reader, belfius card reader, vasco card reader, smart card reader installeren, eid reader, sitecom card reader">
+    <meta name="google-site-verification" content="y5j6Dyj5z8eZfj0eB6sfagWID5fyTh8WQzZwlZ2rK2I" />
+    <title data-translate="META.TITLE"></title>
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="images/t1c.png" type="image/png" />
+    <!--build:css styles/font-awesome.min.css -->
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+    <!-- endbuild -->
+
+    <!-- Css/Less Stylesheets -->
+    <!--build:css styles/angular-material.min.css -->
+    <link rel="stylesheet" href="styles/vendors/angular-material.min.css">
+    <!-- endbuild -->
+    <!--build:css styles/bootstrap.min.css -->
+    <link rel="stylesheet" href="styles/vendors/bootstrap.min.css">
+    <!-- endbuild -->
+    <!--build:css styles/main.min.css -->
+    <link rel="stylesheet/less" href="styles/main.less">
+    <!-- endbuild -->
+
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
+
+</head>
+<body id="app" custom-page class="app">
+
+
+<!-- main-container -->
+
+
+<div id="content" class="content-container" ui-view></div>
+
+
+<!-- #end main-container -->
+
+
+<!-- build:remove -->
+<!-- Dev only -->
+<script src="scripts/dev/less.min.js"></script>
+<!-- endbuild -->
+
+<!--build:js scripts/libs.js -->
+<!-- libs -->
+<script src="../node_modules/angular/angular.js"></script>
+<script src="../node_modules/angular-animate/angular-animate.js"></script>
+<script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+<script src="../node_modules/angular-loading-bar/build/loading-bar.js"></script>
+<script src="../node_modules/angular-sanitize/angular-sanitize.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../node_modules/keycloak-js/dist/keycloak.js"></script>
+<script src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../node_modules/moment/moment.js"></script>
+<script src="../node_modules/@bower_components/ngKeypad/dist/ng-keypad.js"></script>
+<script src="../node_modules/angular-google-analytics/dist/angular-google-analytics.js"></script>
+<script src="../node_modules/angular-file-saver/dist/angular-file-saver.bundle.js"></script>
+<script src="../node_modules/clipboard/dist/clipboard.js"></script>
+<script src="../node_modules/ngclipboard/dist/ngclipboard.js"></script>
+<script src="../node_modules/base-64/base64.js"></script>
+<script src="../node_modules/utf8/utf8.js"></script>
+<script src="../node_modules/ng-fittext/dist/ng-FitText.min.js"></script>
+<script src="../node_modules/ngstorage/ngStorage.js"></script>
+<script src="../node_modules/random-js/lib/random.js"></script>
+<script src="../node_modules/lodash/lodash.js"></script>
+<script src="../node_modules/trust1connector/dist/GCLLib.js"></script>
+<script src="../node_modules/angular-translate/dist/angular-translate.js"></script>
+<script src="../node_modules/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="../node_modules/messageformat/messageformat.js"></script>
+<script src="../node_modules/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+<!-- endbuild -->
+
+
+
+<!--build:js scripts/app.js -->
+<!-- Libs that need to be run through babel -->
+<script src="../node_modules/@trust1team/t1t-lodash/lodash.module.js"></script>
+<script src="../node_modules/@trust1team/t1t-connector-angular/t1t-connector-angular.js"></script>
+
+<!-- Custom scripts -->
+<script src="scripts/app.js"></script>
+
+<script src="scripts/core/config.route.js"></script>
+<script src="scripts/core/config.service.js"></script>
+
+<script src="scripts/admin/admin.module.js"></script>
+<script src="scripts/admin/admin.component.js"></script>
+
+<script src="scripts/admin/connector/connector.component.js"></script>
+<script src="scripts/admin/plugin/plugin.component.js"></script>
+<script src="scripts/admin/reader/reader.component.js"></script>
+<script src="scripts/admin/device/device.component.js"></script>
+<script src="scripts/admin/dependencies/dependencies.component.js"></script>
+<script src="scripts/admin/logs/logs.component.js"></script>
+
+<script src="scripts/readmycards/readmycards.module.js"></script>
+<script src="scripts/readmycards/readmycards.component.js"></script>
+<script src="scripts/readmycards/readmycards.constants.js"></script>
+<script src="scripts/readmycards/readmycards.controller.js"></script>
+<script src="scripts/readmycards/readmycards.service.js"></script>
+
+<script src="scripts/cards/cards.module.js"></script>
+<script src="scripts/cards/cards.component.js"></script>
+<script src="scripts/cards/cards.service.js"></script>
+
+<script src="scripts/cards/beid/beid.module.js"></script>
+<script src="scripts/cards/beid/beid.component.js"></script>
+<script src="scripts/cards/beid/beid.controller.js"></script>
+<script src="scripts/cards/beid/beid.service.js"></script>
+
+<script src="scripts/cards/dnie/dnie.module.js"></script>
+<script src="scripts/cards/dnie/dnie.component.js"></script>
+<script src="scripts/cards/dnie/dnie.controller.js"></script>
+<script src="scripts/cards/dnie/dnie.service.js"></script>
+
+<script src="scripts/cards/emv/emv.module.js"></script>
+<script src="scripts/cards/emv/emv.component.js"></script>
+<script src="scripts/cards/emv/emv.service.js"></script>
+
+<script src="scripts/cards/lux/lux.module.js"></script>
+<script src="scripts/cards/lux/lux.component.js"></script>
+<script src="scripts/cards/lux/lux.service.js"></script>
+
+<script src="scripts/cards/mobib/mobib.module.js"></script>
+<script src="scripts/cards/mobib/mobib.component.js"></script>
+<script src="scripts/cards/mobib/mobib.service.js"></script>
+
+<script src="scripts/cards/oberthur/oberthur.module.js"></script>
+<script src="scripts/cards/oberthur/oberthur.component.js"></script>
+<script src="scripts/cards/oberthur/oberthur.service.js"></script>
+
+<script src="scripts/cards/piv/piv.module.js"></script>
+<script src="scripts/cards/piv/piv.component.js"></script>
+<script src="scripts/cards/piv/piv.controller.js"></script>
+<script src="scripts/cards/piv/piv.service.js"></script>
+
+<script src="scripts/cards/pteid/pteid.module.js"></script>
+<script src="scripts/cards/pteid/pteid.component.js"></script>
+<script src="scripts/cards/pteid/pteid.controller.js"></script>
+<script src="scripts/cards/pteid/pteid.service.js"></script>
+
+<script src="scripts/summary/summary.module.js"></script>
+<script src="scripts/summary/summary.controller.js"></script>
+<script src="scripts/summary/summary.service.js"></script>
+<!-- endbuild -->
+
+<script>
+    'use strict';
+
+    (function () {
+        "use strict";
+
+        angular.module('app.config', [])
+               .constant('CONFIG', {
+                   ALLOW_AUTOUPDATE: <%= config.connector.allow_autoupdate %>,
+                   APIKEY: '<%= config.connector.apikey %>',
+                   DS_URL: '<%= config.connector.ds_url %>',
+                   GCL_URL: '<%= config.connector.gcl_url %>',
+                   IMPLICIT_DOWNLOAD: <%= config.connector.implicit_download %>
+    });
+    })();
+</script>
+
+</body>
+</html>
