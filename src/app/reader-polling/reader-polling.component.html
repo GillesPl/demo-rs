@@ -1,0 +1,18 @@
+<div class="rmc-step">
+  <span class="rmc-title hit-the-floor" data-translate="USER_PROMPTS.CONNECT_READER.TITLE"></span>
+  <p class="rmc-promo-text text-ultralight" data-translate="USER_PROMPTS.CONNECT_READER.DESC"></p>
+  <div class="polling-block" ng-hide="$ctrl.error">
+    <div class="spinner-container">
+      <span class="spinner fa fa-spinner fa-pulse"></span>
+      <p class="spinner-text text-light" data-translate="USER_PROMPTS.CONNECT_READER.WAITING"></p>
+    </div>
+  </div>
+  <div class="timeout-block">
+
+  </div>
+  <div class="error-block" ng-show="$ctrl.error">
+    <span class="spinner fa fa-warning"></span>
+    <p class="error-text text-thin" data-translate="ERROR.COMMUNICATING_WITH_READER"></p>
+    <a id="try-again" class="clickable" ng-click="$ctrl.tryAgain()" data-translate="USER_PROMPTS.TRY_AGAIN"></a>
+  </div>
+</div>

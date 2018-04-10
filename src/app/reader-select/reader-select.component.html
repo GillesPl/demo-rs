@@ -1,0 +1,13 @@
+<div class="card-viz-container">
+  <div class="card-viz-title hit-the-floor" data-translate="USER_PROMPTS.CARD_CONTENTS.TITLE"></div>
+
+  <div class="card-list" ng-show="$ctrl.readers.length > 1">
+    <span class="reader-list-header"><span data-translate="USER_PROMPTS.CARD_CONTENTS.SELECT_CARD"></span>:</span>
+    <reader-icon ng-repeat="reader in $ctrl.readers" index="$index + 1"
+                 reader="reader"
+                 current-reader-id="$ctrl.currentReaderId">
+    </reader-icon>
+  </div>
+
+  <card-visualizer reader-id="$ctrl.currentReaderId"></card-visualizer>
+</div>

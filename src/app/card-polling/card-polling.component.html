@@ -1,0 +1,21 @@
+<div class="rmc-step">
+  <span class="rmc-title hit-the-floor" data-translate="USER_PROMPTS.INSERT_CARD.TITLE"></span>
+  <p class="rmc-promo-text text-ultralight" data-translate="USER_PROMPTS.INSERT_CARD.DESC"></p>
+  <div class="polling-block" data-ng-hide="$ctrl.error">
+    <div class="spinner-container">
+      <span class="spinner fa fa-spinner fa-pulse"></span>
+      <p class="spinner-text text-light" data-translate="USER_PROMPTS.INSERT_CARD.WAITING"></p>
+      <p class="not-recognized-text text-light"
+         data-ng-if="$ctrl.pollTimeout">
+        <span data-translate="USER_PROMPTS.INSERT_CARD.NOT_RECOGNIZED"></span>
+        <span data-translate="USER_PROMPTS.INSERT_CARD.CHECK_SUPPORTED"></span>
+        <a class="clickable" data-ng-click="$ctrl.openSidebar()" data-translate="COMMON.HERE"></a>.
+      </p>
+    </div>
+  </div>
+  <div class="error-block" data-ng-show="$ctrl.error">
+    <span class="spinner fa fa-warning"></span>
+    <p class="error-text text-thin" data-translate="ERROR.COMMUNICATING_WITH_READER"></p>
+    <a id="try-again" class="clickable" data-ng-click="$ctrl.tryAgain()" data-translate="USER_PROMPTS.TRY_AGAIN"></a>
+  </div>
+</div>

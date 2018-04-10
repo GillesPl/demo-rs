@@ -1,0 +1,59 @@
+<div class="rmc-step">
+  <div class="rmc-title-block">
+    <span class="rmc-title hit-the-floor" data-translate="DOWNLOAD.RMC"></span>
+    <div class="rmc-subtitle"><span class="rmc-subtitle-text" data-translate="DOWNLOAD.BY_T1C"></span>
+    </div>
+  </div>
+  <p class="rmc-promo-text text-ultralight" data-translate="DOWNLOAD.PROMO_TEXT"></p>
+  <div class="rmc-download-prompt" ng-if="!$ctrl.waitingForInstall">
+    <div class="prompt-title" data-translate="DOWNLOAD.TITLE"></div>
+    <div class="prompt-text text-ultralight" data-translate="DOWNLOAD.HELP_TEXT"></div>
+    <div class="block">
+      <span class="download-text" data-translate="DOWNLOAD.ENTER_MAIL"></span>
+      <div class="email-form text-center">
+        <form data-ng-submit="$ctrl.registerDownload(userMail)" name="emailForm" class="">
+          <input type="email"
+                 placeholder="{{ 'DOWNLOAD.MAIL_PLACEHOLDER' | translate }}"
+                 class="form-control"
+                 data-ng-model="userMail"
+                 required
+                 autofocus>
+          <span type="submit" id="submit"
+                ga-track-event="['button', 'click', 'Email Submit']"
+                class="btn btn-submit"
+                ng-disabled="emailForm.$invalid"
+                data-ng-click="$ctrl.registerDownload(userMail)"
+                data-translate="DOWNLOAD.REQUEST_LINK_BTN"></span>
+
+          <div class="update-toggle">
+            <div class="checkbox">
+              <input type="checkbox"
+                     value="None" id="checkbox" name="check" ng-model="$ctrl.sendUpdates.value" />
+              <label for="checkbox"></label>
+            </div>
+            <div class="checkbox-text">
+              <span class="text-ultralight" data-translate="DOWNLOAD.NEWS_CHECKBOX"></span>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class="footer-text">
+      <span data-translate="DOWNLOAD.MAIL_PRIVACY_NOTICE"></span>
+    </div>
+  </div>
+  <div class="rmc-download-prompt" ng-if="$ctrl.waitingForInstall">
+    <div class="prompt-title" data-translate="DOWNLOAD.WAITING_INSTALL"></div>
+    <div class="prompt-text text-center text-ultralight">
+      <div class="text-center waiting-spinner">
+        <span class="fa fa-spinner fa-pulse fa-4x"></span>
+      </div>
+      <p data-translate="DOWNLOAD.INSTRUCTIONS_ON_THE_WAY"></p>
+      <p ng-if="!$ctrl.isFirefox" data-translate="DOWNLOAD.AUTODETECT_AFTER_INSTALL"></p>
+      <p ng-if="$ctrl.isFirefox"><strong data-translate="DOWNLOAD.FIREFOX_RESTART_REQUIRED"></strong>
+        <a class="text-small text-bold clickable" ng-click="$ctrl.firefoxModal()" data-translate="COMMON.WHY"></a>
+      </p>
+    </div>
+  </div>
+</div>
