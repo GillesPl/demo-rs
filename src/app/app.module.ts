@@ -14,13 +14,15 @@ import { DownloadGclComponent } from './download-gcl/download-gcl.component';
 import { CardVisualizerComponent } from './card-visualizer/card-visualizer.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
+import {Connector} from './connector.service';
+import {EventService} from './event.service';
+import {T1cInfoComponent} from './t1c-info/t1c-info.component';
+import {DeviceInfoComponent} from './device-info/device-info.component';
+import {DependencyInfoComponent} from './dependency-info/dependency-info.component';
+import {CardReaderInfoComponent} from './card-reader-info/card-reader-info.component';
+import {PluginInfoComponent} from './plugin-info/plugin-info.component';
+import {LogInfoComponent} from './log-info/log-info.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     RmcFaqComponent,
     RmcFooterComponent,
     // RmcKeypadComponent,
-    // ReaderIconComponent,
+    ReaderIconComponent,
+    T1cInfoComponent,
+    CardReaderInfoComponent,
+    PluginInfoComponent,
+    DeviceInfoComponent,
+    DependencyInfoComponent,
+    LogInfoComponent,
     // ReaderSelectComponent,
     // CardPollingComponent,
     // ReaderPollingComponent,
@@ -41,15 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     HttpClientModule,
     TooltipModule.forRoot(),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
   ],
-  providers: [],
+  providers: [ Connector, EventService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

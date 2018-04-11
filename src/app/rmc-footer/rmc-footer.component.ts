@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import {EventService} from '../event.service';
 
 
 @Component({
@@ -10,14 +11,14 @@ import * as moment from 'moment';
 export class RmcFooterComponent implements OnInit {
   currentYear: string;
 
-  constructor() { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
     this.currentYear = moment().format('YYYY');
   }
 
   toggleFAQ() {
-    // TODO toggle FAQ open
+    this.eventService.openFaq();
   }
 
 }

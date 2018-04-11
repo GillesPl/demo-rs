@@ -1,4 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {EventService} from '../event.service';
 
 @Component({
   selector: 'app-rmc-header',
@@ -6,31 +7,44 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./rmc-header.component.less']
 })
 export class RmcHeaderComponent implements OnInit {
-  @Output()
-  startOver: EventEmitter<any> = new EventEmitter();
-  @Output()
-  openAdminPanel: EventEmitter<any> = new EventEmitter();
-  @Output()
-  openSidebar: EventEmitter<any> = new EventEmitter();
+  adminOpen = false;
+  menuOpen = false;
 
-  adminOpen: boolean;
-  menuOpen: boolean;
-
-  constructor() { }
+  constructor(private eventService: EventService) {
+    this.eventService.adminPanelClosed$.subscribe(() => this.onAdminPanelClose());
+    this.eventService.adminPanelOpened$.subscribe(() => this.onAdminPanelOpen());
+    this.eventService.sidebarClosed$.subscribe(() => this.onSidebarClose());
+    this.eventService.sidebarOpened$.subscribe(() => this.onSidebarOpen());
+  }
 
   ngOnInit() {}
 
   home() {
-    this.startOver.emit(null);
+    this.eventService.startOver();
   }
 
   toggleAdminPanel() {
-    this.openAdminPanel.emit(null);
-    this.adminOpen = !this.adminOpen;
+    this.eventService.openAdminPanel();
   }
 
   toggleCardTypes() {
-    this.openSidebar.emit(null);
+    this.eventService.openSidebar();
+  }
+
+  // Event handlers
+  onAdminPanelClose() {
+    this.adminOpen = false;
+  }
+
+  onAdminPanelOpen() {
+    this.adminOpen = !this.adminOpen;
+  }
+
+  onSidebarClose() {
+    this.menuOpen = false;
+  }
+
+  onSidebarOpen() {
     this.menuOpen = !this.menuOpen;
   }
 }
