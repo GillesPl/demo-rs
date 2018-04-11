@@ -26,6 +26,8 @@ import {ApiService} from './api.service';
 import {ContainerInfoComponent} from './container-info/container-info.component';
 import { LogViewerComponent } from './log-viewer/log-viewer.component';
 import {FormsModule} from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import {FormsModule} from '@angular/forms';
     DependencyInfoComponent,
     LogInfoComponent,
     LogViewerComponent,
+    DownloadGclComponent,
     // ReaderSelectComponent,
     // CardPollingComponent,
     // ReaderPollingComponent,
@@ -53,6 +56,7 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ModalModule.forRoot(),
     TooltipModule.forRoot(),
   ],
   providers: [ ApiService, Connector, EventService ],

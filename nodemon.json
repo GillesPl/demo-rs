@@ -1,6 +1,6 @@
 {
   "ignore": [
-    "client/**",
+    "src/**",
     "dist/**",
     "modules/**",
     "*.marko.js",
