@@ -16,4 +16,8 @@ export class RmcFooterComponent implements OnInit {
     this.currentYear = moment().format('YYYY');
   }
 
+  toggleFAQ() {
+    // TODO toggle FAQ open
+  }
+
 }

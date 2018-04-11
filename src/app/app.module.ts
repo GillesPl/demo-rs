@@ -14,7 +14,13 @@ import { DownloadGclComponent } from './download-gcl/download-gcl.component';
 import { CardVisualizerComponent } from './card-visualizer/card-visualizer.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -31,7 +37,17 @@ import {Angular2FontawesomeModule} from 'angular2-fontawesome';
     // CardVisualizerComponent
   ],
   imports: [
-    Angular2FontawesomeModule, BrowserModule, TooltipModule.forRoot()
+    Angular2FontawesomeModule,
+    BrowserModule,
+    HttpClientModule,
+    TooltipModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
