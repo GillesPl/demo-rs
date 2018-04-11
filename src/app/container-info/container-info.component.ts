@@ -3,12 +3,12 @@ import {Connector} from '../connector.service';
 import {EventService} from '../event.service';
 
 @Component({
-  selector: 'app-device-info',
-  templateUrl: './device-info.component.html',
-  styleUrls: ['./device-info.component.less']
+  selector: 'app-container-info',
+  templateUrl: './container-info.component.html',
+  styleUrls: ['./container-info.component.less']
 })
-export class DeviceInfoComponent implements OnInit {
-  info: { uid?: string, activated?: boolean } = {};
+export class ContainerInfoComponent implements OnInit {
+  containers;
 
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.adminPanelOpened$.subscribe(() => this.getData());
@@ -20,7 +20,7 @@ export class DeviceInfoComponent implements OnInit {
   getData() {
     this.Connector.getConnector().then(conn => {
       conn.core().info().then(res => {
-        this.info = res.data;
+        this.containers = res.data.containers;
       });
     });
   }

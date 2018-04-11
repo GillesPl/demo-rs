@@ -1,4 +1,68 @@
 <div>
   <h4>Dependency Info</h4>
-  <!--<t1c-dependency-info data="$ctrl.info"></t1c-dependency-info>-->
+
+  <table class="table table-striped t1c-info-table">
+    <thead>
+    <tr>
+      <th class="t1c-title">Dependency</th>
+      <th>Version</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="t1c-title">T1C-JS</td>
+      <td>{{info.js || 'N/A'}}</td>
+      <td>
+        <span class="fa fa-lg fa-thumbs-o-down text-danger" *ngIf="!info.js"></span>
+        <span class="fa fa-lg fa-thumbs-o-up text-success" *ngIf="info.js"></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="t1c-title">T1C-GCL</td>
+      <td>
+        <span *ngIf="info.gcl">{{info.gcl.version || 'N/A'}}</span>
+        <span [hidden]="info.gcl">N/A</span>
+      </td>
+      <td>
+        <span class="fa fa-lg fa-thumbs-o-down text-danger" *ngIf="!info.gcl"></span>
+        <span class="fa fa-lg fa-thumbs-o-up text-success" *ngIf="info.gcl"></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="t1c-title">Distribution Service</td>
+      <td>
+        <span *ngIf="info.ds">{{info.ds.version || 'N/A'}}</span>
+        <span [hidden]="info.ds">N/A</span>
+      </td>
+      <td>
+        <span class="fa fa-lg fa-thumbs-o-down text-danger" *ngIf="!info.ds"></span>
+        <span class="fa fa-lg fa-thumbs-o-up text-success" *ngIf="info.ds"></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="t1c-title">OCV Service</td>
+      <td>
+        <span *ngIf="info.ocv">{{info.ocv.version || 'N/A'}}</span>
+        <span [hidden]="info.ocv">N/A</span>
+      </td>
+      <td>
+        <span class="fa fa-lg fa-thumbs-o-down text-danger" *ngIf="!info.ocv"></span>
+        <span class="fa fa-lg fa-thumbs-o-up text-success" *ngIf="info.ocv"></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="t1c-title">Signbox Service</td>
+      <td>
+        <span *ngIf="info.signbox">{{info.signbox.version || 'N/A'}}</span>
+        <span [hidden]="info.signbox">N/A</span>
+      </td>
+      <td>
+        <span class="fa fa-lg fa-thumbs-o-down text-danger" *ngIf="!info.signbox"></span>
+        <span class="fa fa-lg fa-thumbs-o-up text-success" *ngIf="info.signbox"></span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
 </div>

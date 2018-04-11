@@ -21,8 +21,11 @@ import {T1cInfoComponent} from './t1c-info/t1c-info.component';
 import {DeviceInfoComponent} from './device-info/device-info.component';
 import {DependencyInfoComponent} from './dependency-info/dependency-info.component';
 import {CardReaderInfoComponent} from './card-reader-info/card-reader-info.component';
-import {PluginInfoComponent} from './plugin-info/plugin-info.component';
 import {LogInfoComponent} from './log-info/log-info.component';
+import {ApiService} from './api.service';
+import {ContainerInfoComponent} from './container-info/container-info.component';
+import { LogViewerComponent } from './log-viewer/log-viewer.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,10 +37,11 @@ import {LogInfoComponent} from './log-info/log-info.component';
     ReaderIconComponent,
     T1cInfoComponent,
     CardReaderInfoComponent,
-    PluginInfoComponent,
+    ContainerInfoComponent,
     DeviceInfoComponent,
     DependencyInfoComponent,
     LogInfoComponent,
+    LogViewerComponent,
     // ReaderSelectComponent,
     // CardPollingComponent,
     // ReaderPollingComponent,
@@ -47,10 +51,11 @@ import {LogInfoComponent} from './log-info/log-info.component';
   imports: [
     Angular2FontawesomeModule,
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     TooltipModule.forRoot(),
   ],
-  providers: [ Connector, EventService ],
+  providers: [ ApiService, Connector, EventService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Connector} from '../connector.service';
+import {EventService} from '../event.service';
 
 @Component({
   selector: 'app-card-reader-info',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-reader-info.component.less']
 })
 export class CardReaderInfoComponent implements OnInit {
+  readers;
 
-  constructor() { }
+  constructor(private Connector: Connector, private eventService: EventService) {
+    this.eventService.adminPanelOpened$.subscribe(() => this.getData());
+    this.eventService.refreshAdminData$.subscribe(() => this.getData());
+  }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  getData() {
+    this.Connector.getConnector().then(conn => {
+      conn.core().readers().then(res => {
+        this.readers = res.data;
+      });
+    });
   }
 
 }

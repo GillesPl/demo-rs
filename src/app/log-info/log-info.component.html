@@ -1,3 +1,22 @@
 <div>
   <!--<t1c-logs-info data="$ctrl.info"></t1c-logs-info>-->
+  <div class="fe-log-tabs">
+    <main>
+      <div *ngFor="let file of info; let i = index">
+        <input id="log-tab{{i + 1}}"
+               type="radio"
+               name="log-tabs"
+               [checked]="i === 0"
+               (click)="selectTab(i)">
+        <label for="log-tab{{i + 1}}">{{file}}</label>
+      </div>
+
+      <section id="log-content">
+        <app-log-viewer *ngFor="let file of info; let i = index"
+          [logfileName]="file"
+          [hidden]="selectedTab != i"></app-log-viewer>
+      </section>
+    </main>
+  </div>
+
 </div>

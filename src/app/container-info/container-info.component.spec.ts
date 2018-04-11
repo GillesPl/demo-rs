@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PluginInfoComponent } from './plugin-info.component';
+import { ContainerInfoComponent } from './container-info.component';
 
 describe('PluginInfoComponent', () => {
-  let component: PluginInfoComponent;
-  let fixture: ComponentFixture<PluginInfoComponent>;
+  let component: ContainerInfoComponent;
+  let fixture: ComponentFixture<ContainerInfoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PluginInfoComponent ]
+      declarations: [ ContainerInfoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PluginInfoComponent);
+    fixture = TestBed.createComponent(ContainerInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

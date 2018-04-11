@@ -1,0 +1,20 @@
+<div>
+  <h4>Available Containers</h4>
+  <table class="table table-striped t1c-plugin-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Version</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let container of containers">
+      <td>{{container.name}}</td>
+      <td>{{container.version}}</td>
+      <td>{{container.status}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
