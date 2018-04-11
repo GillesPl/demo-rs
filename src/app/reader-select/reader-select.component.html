@@ -1,9 +1,9 @@
 <div class="card-viz-container">
-  <div class="card-viz-title hit-the-floor" data-translate="USER_PROMPTS.CARD_CONTENTS.TITLE"></div>
+  <div class="card-viz-title hit-the-floor" i18n="@@cardContents">Card Contents</div>
 
-  <div class="card-list" ng-show="$ctrl.readers.length > 1">
-    <span class="reader-list-header"><span data-translate="USER_PROMPTS.CARD_CONTENTS.SELECT_CARD"></span>:</span>
-    <reader-icon ng-repeat="reader in $ctrl.readers" index="$index + 1"
+  <div class="card-list" [hidden]="readers.length <= 1">
+    <span class="reader-list-header"><span i18n="@@selectCard">Select Card</span>:</span>
+    <reader-icon *ngFor="let reader of readers" index="$index + 1"
                  reader="reader"
                  current-reader-id="$ctrl.currentReaderId">
     </reader-icon>

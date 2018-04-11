@@ -1,19 +1,29 @@
 <div class="rmc-step">
   <div class="rmc-title-block">
-    <span class="rmc-title hit-the-floor" data-translate="DOWNLOAD.RMC"></span>
-    <div class="rmc-subtitle"><span class="rmc-subtitle-text" data-translate="DOWNLOAD.BY_T1C"></span>
+    <span class="rmc-title hit-the-floor" i18n="@@readMyCards">ReadMyCards</span>
+    <div class="rmc-subtitle"><span class="rmc-subtitle-text" i18n="@@byTrust1Connector">by Trust1Connector</span>
     </div>
   </div>
-  <p class="rmc-promo-text text-ultralight" data-translate="DOWNLOAD.PROMO_TEXT"></p>
-  <div class="rmc-download-prompt" ng-if="!$ctrl.waitingForInstall">
-    <div class="prompt-title" data-translate="DOWNLOAD.TITLE"></div>
-    <div class="prompt-text text-ultralight" data-translate="DOWNLOAD.HELP_TEXT"></div>
+  <p class="rmc-promo-text text-ultralight" i18n="@@promoText">
+    Read the content of your smartcard, using any type of reader,
+    <strong>completely free</strong>.
+    <br>This service is available for personal use, and we
+    <strong>never</strong> save any data from your card.
+  </p>
+  <div class="rmc-download-prompt" *ngIf="!waitingForInstall">
+    <div class="prompt-title" i18n="@@downloadTitle">Download the Trust1Connector</div>
+    <div class="prompt-text text-ultralight" i18n="@@downloadHelpText">
+      To use this website, you need to install the Trust1Connector.
+      This is a small piece of software that enables the communication with your card reader,
+      no matter which browser or reader you use.
+    </div>
     <div class="block">
-      <span class="download-text" data-translate="DOWNLOAD.ENTER_MAIL"></span>
+      <span class="download-text" i18n="@@enterEmail">Enter your email address and we will send you a download link!</span>
       <div class="email-form text-center">
-        <form data-ng-submit="$ctrl.registerDownload(userMail)" name="emailForm" class="">
+        <form (submit)="registerDownload(userMail)" name="emailForm" class="">
           <input type="email"
-                 placeholder="{{ 'DOWNLOAD.MAIL_PLACEHOLDER' | translate }}"
+                 i18n-placeholder
+                 placeholder="Insert your email address"
                  class="form-control"
                  data-ng-model="userMail"
                  required
@@ -21,38 +31,49 @@
           <span type="submit" id="submit"
                 ga-track-event="['button', 'click', 'Email Submit']"
                 class="btn btn-submit"
-                ng-disabled="emailForm.$invalid"
-                data-ng-click="$ctrl.registerDownload(userMail)"
-                data-translate="DOWNLOAD.REQUEST_LINK_BTN"></span>
+                [disabled]="emailForm.$invalid"
+                (click)="registerDownload(userMail)"
+                i18n="@@requestLink">Request Link</span>
 
           <div class="update-toggle">
             <div class="checkbox">
               <input type="checkbox"
-                     value="None" id="checkbox" name="check" ng-model="$ctrl.sendUpdates.value" />
+                     value="None" id="checkbox" name="check" [(ngModel)]="sendUpdates.value" />
               <label for="checkbox"></label>
             </div>
             <div class="checkbox-text">
-              <span class="text-ultralight" data-translate="DOWNLOAD.NEWS_CHECKBOX"></span>
+              <span class="text-ultralight" i18n="@@newsCheckbox">
+                Click here if you want to receive news/updates on
+                the Trust1Connector or Trust1Team products and services.
+                You can unsubscribe at any time!
+              </span>
             </div>
           </div>
-
         </form>
       </div>
     </div>
     <div class="footer-text">
-      <span data-translate="DOWNLOAD.MAIL_PRIVACY_NOTICE"></span>
+      <span i18n="@@mailPrivacyNotice">
+        Your email address is required for validation purposes only and is not saved unless you give us express
+        permission by selecting the checkbox above. It will never be shared with any third parties.
+      </span>
     </div>
   </div>
-  <div class="rmc-download-prompt" ng-if="$ctrl.waitingForInstall">
-    <div class="prompt-title" data-translate="DOWNLOAD.WAITING_INSTALL"></div>
+  <div class="rmc-download-prompt" *ngIf="waitingForInstall">
+    <div class="prompt-title" i18n="@@waitingForInstall">Waiting for installation...</div>
     <div class="prompt-text text-center text-ultralight">
       <div class="text-center waiting-spinner">
         <span class="fa fa-spinner fa-pulse fa-4x"></span>
       </div>
-      <p data-translate="DOWNLOAD.INSTRUCTIONS_ON_THE_WAY"></p>
-      <p ng-if="!$ctrl.isFirefox" data-translate="DOWNLOAD.AUTODETECT_AFTER_INSTALL"></p>
-      <p ng-if="$ctrl.isFirefox"><strong data-translate="DOWNLOAD.FIREFOX_RESTART_REQUIRED"></strong>
-        <a class="text-small text-bold clickable" ng-click="$ctrl.firefoxModal()" data-translate="COMMON.WHY"></a>
+      <p i18n="@@instructionsSent">An email with download instructions is on its way to you.</p>
+      <p *ngIf="!isFirefox" i18n="@@autodetectAfterInstall">
+        Check your email and, once the installation is complete, the Trust1Connector will automatically be detected.
+      </p>
+      <p *ngIf="isFirefox">
+        <strong i18n="@@firefoxRestartRequired">
+          Because you are using Firefox, you will need to manually restart your browser after installation.
+        </strong>
+        <a class="text-small text-bold clickable" (click)="firefoxModal()" i18n="@@why">Why?</a>
       </p>
     </div>
   </div>

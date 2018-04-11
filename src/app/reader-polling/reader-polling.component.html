@@ -1,18 +1,22 @@
 <div class="rmc-step">
-  <span class="rmc-title hit-the-floor" data-translate="USER_PROMPTS.CONNECT_READER.TITLE"></span>
-  <p class="rmc-promo-text text-ultralight" data-translate="USER_PROMPTS.CONNECT_READER.DESC"></p>
-  <div class="polling-block" ng-hide="$ctrl.error">
+  <span class="rmc-title hit-the-floor" i18n="@@connectReader">Connect Reader</span>
+  <p class="rmc-promo-text text-ultralight" i18n="@@connectReaderDesc">
+    Please connect your <strong>smartcard reader</strong> to your computer.
+    <br>
+    Once it is connected, this page will automatically detect it.
+  </p>
+  <div class="polling-block" [hidden]="error">
     <div class="spinner-container">
       <span class="spinner fa fa-spinner fa-pulse"></span>
-      <p class="spinner-text text-light" data-translate="USER_PROMPTS.CONNECT_READER.WAITING"></p>
+      <p class="spinner-text text-light" i18n="@@lookingForReaders">Looking for readers...</p>
     </div>
   </div>
   <div class="timeout-block">
 
   </div>
-  <div class="error-block" ng-show="$ctrl.error">
+  <div class="error-block" [hidden]="!error">
     <span class="spinner fa fa-warning"></span>
-    <p class="error-text text-thin" data-translate="ERROR.COMMUNICATING_WITH_READER"></p>
-    <a id="try-again" class="clickable" ng-click="$ctrl.tryAgain()" data-translate="USER_PROMPTS.TRY_AGAIN"></a>
+    <p class="error-text text-thin" i18n="@@errorCommunicatingWithReader">Error communicating with reader</p>
+    <a id="try-again" class="clickable" (click)="tryAgain()" i18n="@@tryAgain">Try again?</a>
   </div>
 </div>

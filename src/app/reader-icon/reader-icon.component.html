@@ -1,6 +1,6 @@
 <div class="reader-icon clickable"
      [ngClass]="{ 'active': reader.id === currentReaderId }" (click)="selectReader()">
-  <div class="index" uib-tooltip="{{$ctrl.reader.cardType}} {{ 'COMMON.IN' | translate }} {{$ctrl.reader.name}}" tooltip-placement="bottom">
+  <div class="index" tooltip="{{reader.cardType}} in {{reader.name}}" tooltip-placement="bottom">
     <div class="card-bg">
       <fa ></fa>
       <span class="fa fa-credit-card"></span>

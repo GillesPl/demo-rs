@@ -1,83 +1,82 @@
 <div class="root-container st-container">
   <app-rmc-header id="rmc-header"></app-rmc-header>
 
-  <!--<nav class="st-menu sliding-list" ng-class="{ 'st-menu-open': root.cardTypesOpen }" id="menu-1">-->
-    <!--<h2><span data-translate="SUPPORTED_CARD_TYPES.TITLE"></span>:</h2>-->
-    <!--<ul>-->
-      <!--<li><a data-translate="SUPPORTED_CARD_TYPES.BE_EID"></a></li>-->
-      <!--<li><a data-translate="SUPPORTED_CARD_TYPES.EMV"></a></li>-->
-      <!--<li><a data-translate="SUPPORTED_CARD_TYPES.LUX_EID"></a></li>-->
-      <!--<li><a data-translate="SUPPORTED_CARD_TYPES.LUXTRUST"></a></li>-->
-      <!--<li><a data-translate="SUPPORTED_CARD_TYPES.MOBIB"></a></li>-->
-      <!--<li><a data-translate="SUPPORTED_CARD_TYPES.OBERTHUR"></a></li>-->
-      <!--<li><a data-translate="SUPPORTED_CARD_TYPES.OCRA_OTP"></a></li>-->
-      <!--<li><a data-translate="SUPPORTED_CARD_TYPES.PIV"></a></li>-->
-      <!--<li><a data-translate="SUPPORTED_CARD_TYPES.DNIE"></a></li>-->
-    <!--</ul>-->
-    <!--<div class="not-supported" data-translate="SUPPORTED_CARD_TYPES.NOT_SUPPORTED"></div>-->
-  <!--</nav>-->
+  <nav class="st-menu sliding-list" [ngClass]="{ 'st-menu-open': cardTypesOpen }" id="menu-1">
+    <h2><span i18n="@@supportedTypes">Supported Types</span>:</h2>
+    <ul>
+      <li><a i18n="@@belgianEid">Belgian eID</a></li>
+      <li><a i18n="@@emv">EMV (Credit/Debit Cards)</a></li>
+      <li><a i18n="@@luxEid">Luxembourgish eID</a></li>
+      <li><a i18n="@@luxtrustCards">LuxTrust Cards</a></li>
+      <li><a i18n="@@mobib">MoBIB</a></li>
+      <li><a i18n="@@oberthur">Oberthur</a></li>
+      <li><a i18n="@@ocraOtp">OCRA OTP Cards</a></li>
+      <li><a i18n="@@civPivCards">CIV/PIV Cards</a></li>
+      <li><a i18n="@@spanishDnie">Spanish DNIe</a></li>
+    </ul>
+    <div class="not-supported" i18n="@@cardNotSupported">
+      Don't find your card in the list?
+      <br>Send us an email with the card you want supported!
+    </div>
+  </nav>
 
 
-  <!--<nav class="st-admin-panel sliding-admin-panel" ng-class="{ 'st-admin-panel-open': root.adminPanelOpen }" id="menu-admin-panel">-->
-    <!--<div class="fe-buttons-wrapper">-->
-      <!--<fe-buttons></fe-buttons>-->
-    <!--</div>-->
+  <nav class="st-admin-panel sliding-admin-panel" [ngClass]="{ 'st-admin-panel-open': adminPanelOpen }" id="menu-admin-panel">
+    <div class="fe-tabs">
+      <div class="refresh-btn" i18n-tooltip tooltip="Refresh Data" placement="left">
+                <span class="clickable fa fa-refresh fa-lg text-primary"
+                      [ngClass]="{ 'fa-spin': hover }"
+                      (init)="hover = false"
+                      (mouseenter)="hover = true"
+                      (mouseleave)="hover = false" (click)="refreshAdminData()"></span>
+      </div>
 
-    <!--<div class="fe-tabs">-->
-      <!--<div class="refresh-btn" uib-tooltip="Refresh Data" tooltip-placement="left">-->
-                <!--<span class="clickable fa fa-refresh fa-lg text-primary"-->
-                      <!--data-ng-class="{ 'fa-spin': hover }"-->
-                      <!--data-ng-init="hover = false"-->
-                      <!--data-ng-mouseenter="hover = true"-->
-                      <!--data-ng-mouseleave="hover = false" data-ng-click="root.refreshAdminData()"></span>-->
-      <!--</div>-->
+      <main>
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1">Environment</label>
 
-      <!--<main>-->
-        <!--<input id="tab1" type="radio" name="tabs" checked>-->
-        <!--<label for="tab1">Environment</label>-->
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2">Card Readers</label>
 
-        <!--<input id="tab2" type="radio" name="tabs">-->
-        <!--<label for="tab2">Card Readers</label>-->
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3">Containers</label>
 
-        <!--<input id="tab3" type="radio" name="tabs">-->
-        <!--<label for="tab3">Containers</label>-->
+        <input id="tab4" type="radio" name="tabs">
+        <label for="tab4">Device</label>
 
-        <!--<input id="tab4" type="radio" name="tabs">-->
-        <!--<label for="tab4">Device</label>-->
+        <input id="tab5" type="radio" name="tabs">
+        <label for="tab5">Dependencies</label>
 
-        <!--<input id="tab5" type="radio" name="tabs">-->
-        <!--<label for="tab5">Dependencies</label>-->
+        <input id="tab6" type="radio" name="tabs">
+        <label for="tab6">Logs</label>
 
-        <!--<input id="tab6" type="radio" name="tabs">-->
-        <!--<label for="tab6">Logs</label>-->
+        <section id="content1">
+          <app-t1c-info></app-t1c-info>
+        </section>
 
-        <!--<section id="content1">-->
-          <!--<t1c-info></t1c-info>-->
-        <!--</section>-->
+        <section id="content2">
+          <app-card-reader-info></app-card-reader-info>
+        </section>
 
-        <!--<section id="content2">-->
-          <!--<card-reader-info></card-reader-info>-->
-        <!--</section>-->
+        <section id="content3">
+          <app-plugin-info></app-plugin-info>
+        </section>
 
-        <!--<section id="content3">-->
-          <!--<plugin-info></plugin-info>-->
-        <!--</section>-->
+        <section id="content4">
+          <app-device-info></app-device-info>
+        </section>
 
-        <!--<section id="content4">-->
-          <!--<device-info></device-info>-->
-        <!--</section>-->
+        <section id="content5">
+          <app-dependency-info></app-dependency-info>
+        </section>
 
-        <!--<section id="content5">-->
-          <!--<dependency-info></dependency-info>-->
-        <!--</section>-->
+        <section id="content6">
+          <app-log-info></app-log-info>
+        </section>
+      </main>
+    </div>
 
-        <!--<section id="content6">-->
-          <!--<log-info></log-info>-->
-        <!--</section>-->
-      <!--</main>-->
-    <!--</div>-->
-
-  <!--</nav>-->
+  </nav>
 
 
   <!--<div class="content-overlay" ng-show="root.cardTypesOpen || root.faqOpen" ng-class="{ 'visible': root.cardTypesOpen || root.faqOpen }" ng-click="root.dismissPanels()"></div>-->
@@ -92,7 +91,7 @@
 
     <!--<reader-select current-reader-id="root.readerWithCard.id" ng-if="root.readerWithCard"></reader-select>-->
   <!--</div>-->
-  <nav class="st-faq sliding-faq" ng-class="{ 'st-faq-open': root.faqOpen }" id="menu-2">
+  <nav class="st-faq sliding-faq" [ngClass]="{ 'st-faq-open': faqOpen }" id="menu-2">
     <app-rmc-faq></app-rmc-faq>
   </nav>
   <app-rmc-footer id="rmc-footer"></app-rmc-footer>
