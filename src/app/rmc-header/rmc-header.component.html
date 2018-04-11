@@ -1,5 +1,5 @@
 <div class="card-types-toggle clickable text-bold" [ngClass]="{ 'menu-open': menuOpen }" (click)="toggleCardTypes()">
-  <span [hidden]="menuOpen" data-translate="HEADER.CARD_SUPPORTED"></span>
+  <span [hidden]="menuOpen" [translate]="'HEADER.CARD_SUPPORTED'"></span>
   <span class="fa fa-times" [hidden]="!menuOpen"></span>
 </div>
 <div class="admin-panel-toggle clickable text-bold" (click)="toggleAdminPanel()">
