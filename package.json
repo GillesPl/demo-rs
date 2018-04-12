@@ -21,6 +21,7 @@
     "@angular/platform-browser": "4.4.6",
     "@angular/platform-browser-dynamic": "4.4.6",
     "@angular/router": "4.4.6",
+    "@ngx-translate/i18n-polyfill": "^0.1.2",
     "@trust1team/t1t-config": "^0.0.1",
     "@trust1team/t1t-log": "^0.0.1",
     "angular2-fontawesome": "^5.2.1",

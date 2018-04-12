@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {EventService} from '../event.service';
 
 @Component({
   selector: 'app-reader-icon',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reader-icon.component.less']
 })
 export class ReaderIconComponent implements OnInit {
+  @Input() currentReaderId;
+  @Input() index;
+  @Input() reader;
 
-  constructor() { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
   }
 
+  selectReader() {
+    this.eventService.selectReader(this.reader);
+  }
 }

@@ -43,36 +43,36 @@
     </div>
 
     <div class="viz-container">
-      <beid-visualizer rn-data="$ctrl.cardData.rn"
-                       address-data="$ctrl.cardData.address"
-                       pic-data="$ctrl.cardData.picture"
-                       cert-data="$ctrl.cardData"
-                       reader-id="$ctrl.readerId"
-                       *ngIf="cardType === 'beid'"></beid-visualizer>
+      <!--<beid-visualizer rn-data="$ctrl.cardData.rn"-->
+                       <!--address-data="$ctrl.cardData.address"-->
+                       <!--pic-data="$ctrl.cardData.picture"-->
+                       <!--cert-data="$ctrl.cardData"-->
+                       <!--reader-id="$ctrl.readerId"-->
+                       <!--*ngIf="cardType === 'beid'"></beid-visualizer>-->
 
-      <dnie-visualizer *ngIf="cardType === 'dnie'"
-                       reader-id="$ctrl.readerId"
-                       card-data="$ctrl.cardData"></dnie-visualizer>
+      <!--<dnie-visualizer *ngIf="cardType === 'dnie'"-->
+                       <!--reader-id="$ctrl.readerId"-->
+                       <!--card-data="$ctrl.cardData"></dnie-visualizer>-->
 
-      <emv-visualizer data="$ctrl.cardData" reader-id="$ctrl.readerId" *ngIf="cardType === 'emv'"></emv-visualizer>
+      <!--<emv-visualizer data="$ctrl.cardData" reader-id="$ctrl.readerId" *ngIf="cardType === 'emv'"></emv-visualizer>-->
 
-      <lux-visualizer reader-id="$ctrl.readerId" *ngIf="cardType === 'luxeid'"></lux-visualizer>
-      <lux-trust-visualizer card-data="$ctrl.cardData"
-                            reader-id="$ctrl.readerId"
-                            *ngIf="cardType === 'luxtrust'"></lux-trust-visualizer>
-      <lux-otp-visualizer card-data="$ctrl.cardData"
-                          reader-id="$ctrl.readerId"
-                          *ngIf="cardType === 'ocra'"></lux-otp-visualizer>
+      <!--<lux-visualizer reader-id="$ctrl.readerId" *ngIf="cardType === 'luxeid'"></lux-visualizer>-->
+      <!--<lux-trust-visualizer card-data="$ctrl.cardData"-->
+                            <!--reader-id="$ctrl.readerId"-->
+                            <!--*ngIf="cardType === 'luxtrust'"></lux-trust-visualizer>-->
+      <!--<lux-otp-visualizer card-data="$ctrl.cardData"-->
+                          <!--reader-id="$ctrl.readerId"-->
+                          <!--*ngIf="cardType === 'ocra'"></lux-otp-visualizer>-->
 
-      <mobib-viz card-data="$ctrl.cardData" reader-id="$ctrl.readerId" is-basic="$ctrl.cardTypePretty === 'MOBIB Basic'"
-                 *ngIf="cardType === 'mobib'"></mobib-viz>
+      <!--<mobib-viz card-data="$ctrl.cardData" reader-id="$ctrl.readerId" is-basic="$ctrl.cardTypePretty === 'MOBIB Basic'"-->
+                 <!--*ngIf="cardType === 'mobib'"></mobib-viz>-->
 
-      <oberthur-visualizer card-data="$ctrl.cardData"
-                           reader-id="$ctrl.readerId"
-                           *ngIf="cardType === 'oberthur'"></oberthur-visualizer>
+      <!--<oberthur-visualizer card-data="$ctrl.cardData"-->
+                           <!--reader-id="$ctrl.readerId"-->
+                           <!--*ngIf="cardType === 'oberthur'"></oberthur-visualizer>-->
 
-      <piv-visualizer *ngIf="cardType === 'piv'" reader-id="$ctrl.readerId" card-data="$ctrl.cardData"></piv-visualizer>
-      <pteid-visualizer *ngIf="cardType === 'pteid'" reader-id="$ctrl.readerId" card-data="$ctrl.cardData"></pteid-visualizer>
+      <!--<piv-visualizer *ngIf="cardType === 'piv'" reader-id="$ctrl.readerId" card-data="$ctrl.cardData"></piv-visualizer>-->
+      <!--<pteid-visualizer *ngIf="cardType === 'pteid'" reader-id="$ctrl.readerId" card-data="$ctrl.cardData"></pteid-visualizer>-->
     </div>
   </div>
 </div>

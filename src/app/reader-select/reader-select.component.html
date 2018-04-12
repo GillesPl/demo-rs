@@ -3,11 +3,12 @@
 
   <div class="card-list" [hidden]="readers.length <= 1">
     <span class="reader-list-header"><span i18n="@@selectCard">Select Card</span>:</span>
-    <reader-icon *ngFor="let reader of readers" index="$index + 1"
-                 reader="reader"
-                 current-reader-id="$ctrl.currentReaderId">
-    </reader-icon>
+    <app-reader-icon *ngFor="let reader of readers; let i = index"
+                     [index]="i + 1"
+                     [reader]="reader"
+                     [currentReaderId]="currentReaderId">
+    </app-reader-icon>
   </div>
 
-  <card-visualizer reader-id="$ctrl.currentReaderId"></card-visualizer>
+  <app-card-visualizer [readerId]="currentReaderId"></app-card-visualizer>
 </div>

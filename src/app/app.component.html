@@ -90,7 +90,7 @@
 
     <app-card-polling [error]="error" [pollTimeout]="pollTimeout" *ngIf="pollingCard"></app-card-polling>
 
-    <!--<reader-select current-reader-id="root.readerWithCard.id" ng-if="root.readerWithCard"></reader-select>-->
+    <app-reader-select [currentReaderId]="readerWithCard.id" *ngIf="readerWithCard"></app-reader-select>
   </div>
   <nav class="st-faq sliding-faq" [ngClass]="{ 'st-faq-open': faqOpen }" id="menu-2">
     <app-rmc-faq></app-rmc-faq>

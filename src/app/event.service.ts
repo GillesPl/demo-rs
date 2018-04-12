@@ -4,6 +4,9 @@ export class Event {
   constructor(public name: string) {}
 }
 
+export class ReaderIdEvent {
+  constructor(public id?: string) {}
+}
 export class ReaderEvent {
   constructor(public data: any) {}
 }
@@ -22,7 +25,7 @@ export class EventService {
   public faqOpened$: EventEmitter<Event>;
   public gclInstalled$: EventEmitter<Event>;
   public networkError$: EventEmitter<Event>;
-  public readerSelected$: EventEmitter<Event>;
+  public readerSelected$: EventEmitter<ReaderEvent>;
   public readersWithCards$: EventEmitter<ReaderEvent>;
   public refreshAdminData$: EventEmitter<Event>;
   public reinitialize$: EventEmitter<Event>;
@@ -30,7 +33,7 @@ export class EventService {
   public retryReader$: EventEmitter<Event>;
   public sidebarClosed$: EventEmitter<Event>;
   public sidebarOpened$: EventEmitter<Event>;
-  public startOver$: EventEmitter<Event>;
+  public startOver$: EventEmitter<ReaderIdEvent>;
 
   constructor() {
     this.adminPanelClosed$ = new EventEmitter();
@@ -108,12 +111,12 @@ export class EventService {
     this.retryReader$.emit(new Event('retry-reader'));
   }
 
-  public selectReader(item: Event): void {
-    this.readerSelected$.emit(item);
+  public selectReader(reader): void {
+    this.readerSelected$.emit(reader);
   }
 
-  public startOver(): void {
-    this.startOver$.emit(new Event('start-over'));
+  public startOver(id?): void {
+    this.startOver$.emit(new ReaderIdEvent(id));
   }
 
 }
