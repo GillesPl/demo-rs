@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {EventService} from '../event.service';
 
 @Component({
   selector: 'app-reader-polling',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reader-polling.component.less']
 })
 export class ReaderPollingComponent implements OnInit {
+  @Input() error: boolean;
 
-  constructor() { }
+  constructor(private eventService: EventService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  tryAgain() {
+    this.eventService.retryReader();
   }
 
 }

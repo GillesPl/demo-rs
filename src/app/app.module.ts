@@ -27,6 +27,7 @@ import {ContainerInfoComponent} from './container-info/container-info.component'
 import { LogViewerComponent } from './log-viewer/log-viewer.component';
 import {FormsModule} from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { RmcConsentComponent } from './rmc-consent/rmc-consent.component';
 
 
 @NgModule({
@@ -45,10 +46,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     LogInfoComponent,
     LogViewerComponent,
     DownloadGclComponent,
+    RmcConsentComponent,
     // ReaderSelectComponent,
     // CardPollingComponent,
-    // ReaderPollingComponent,
-    // DownloadGclComponent,
+    ReaderPollingComponent,
+    DownloadGclComponent,
     // CardVisualizerComponent
   ],
   imports: [

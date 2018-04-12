@@ -81,12 +81,12 @@
 
   <div class="content-overlay" [hidden]="!(cardTypesOpen || faqOpen)" [ngClass]="{ 'visible': cardTypesOpen || faqOpen }" (click)="dismissPanels()"></div>
   <div id="rmc-content">
-    <!--<rmc-consent ng-if="root.noConsent"></rmc-consent>-->
+    <!--<app-rmc-consent *ngIf="noConsent"></app-rmc-consent>-->
+    <!--<app-rmc-consent></app-rmc-consent>-->
 
-    <!--<download-gcl dl-url="root.dlLink" is-firefox="root.isFirefox" ng-if="!root.gclAvailable"></download-gcl>-->
-    <app-download-gcl [dlUrl]="dlLink" [isFirefox]="isFirefox"></app-download-gcl>
+    <app-download-gcl [dlUrl]="dlLink" [isFirefox]="isFirefox" *ngIf="gclChecked && !gclAvailable"></app-download-gcl>
 
-    <!--<reader-polling error="root.error" ng-if="root.pollingReaders"></reader-polling>-->
+    <app-reader-polling [error]="error" *ngIf="pollingReaders"></app-reader-polling>
 
     <!--<card-polling error="root.error" poll-timeout="root.pollTimeout" ng-if="root.pollingCard"></card-polling>-->
 

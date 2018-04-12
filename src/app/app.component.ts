@@ -11,6 +11,7 @@ import {EventService} from './event.service';
 export class AppComponent implements OnInit {
   title = 'app';
   gclAvailable: boolean;
+  gclChecked: boolean;
   readers: any;
   cardPresent: boolean;
   isFirefox: boolean;
@@ -41,6 +42,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.Connector.isGCLAvailable().then(available => {
+      this.gclChecked = true;
       this.gclAvailable = available;
       this.Connector.getConnector().then(client => {
         this.connector = client;
