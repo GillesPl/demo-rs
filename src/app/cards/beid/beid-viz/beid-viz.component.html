@@ -1,0 +1,183 @@
+<div id="beid-viz" class="clearfix top-info">
+
+  <!--<div class="status-wrapper">-->
+  <!--<certificate-status status="$ctrl.certStatus" (click)="trackCertificatesClick()"></certificate-status>-->
+  <!--<pin-check-status status="$ctrl.pinStatus" max-tries="3" ok-text="$ctrl.pinOk" pin-check-func="$ctrl.checkPin"></pin-check-status>-->
+  <!--</div>-->
+
+  <app-beid-card [rnData]="rnData" [picData]="picData"></app-beid-card>
+
+  <!--<div class="print-button">-->
+  <!--<print-summary print-function="$ctrl.downloadSummary"></print-summary>-->
+  <!--</div>-->
+
+  <div class="personal-info col-sm-12">
+    <span class="size-h3 text-primary" i18n="@@additionalInformation">Additional Information</span>
+
+
+    <div class="col-sm-12">
+      <div class="col-sm-4">
+        <div id="address" [hidden]="!addressData">
+          <h4 class="text-info text-light" i18n="@@address">Address</h4>
+
+          <p><strong><span i18n="@@street">Street</span>:&nbsp;</strong>{{addressData.street_and_number}}<br/>
+            <strong><span i18n="@@city">City</span>:&nbsp;</strong>{{addressData.zipcode}}
+            {{addressData.municipality}}</p>
+        </div>
+      </div>
+
+
+      <div class="col-sm-8">
+        <div [hidden]="!rnData">
+          <h4 class="text-info text-light" i18n="@@generalInformation">General Information</h4>
+          <strong><span i18n="@@chipNumber">Chip number</span>:&nbsp;</strong>{{rnData.chip_number}}<br/>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="certificates-toggle col-sm-12">
+    <span (click)="toggleCerts()" [hidden]="loadingCerts || !isCollapsed" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@showCert">Show extended info</span>
+    <span (click)="toggleCerts()" [hidden]="loadingCerts || isCollapsed" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@hideCert">Hide extended info</span>
+    <span [hidden]="!loadingCerts" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@loadingCerts">Loading...</span>
+  </div>
+  <div>
+    <div [collapse]="isCollapsed">
+      <div class="certificates col-sm-12">
+        <span class="size-h3 text-primary" i18n="@@certificates">Certificates</span>
+        <div class="col-sm-12" *ngIf="certData.root_certificate">
+          <h4 class="text-info text-light">Root</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control"
+                   value="{{ certData.root_certificate.base64 }}">
+            <span class="input-group-btn">
+                            <button class="btn btn-default fa fa-copy"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="certData.root_certificate.base64"></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="certData.citizen_certificate">
+          <h4 class="text-info text-light">Citizen</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control"
+                   value="{{ certData.citizen_certificate.base64 }}">
+            <span class="input-group-btn">
+                            <button class="btn btn-default fa fa-copy"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: citizen_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="certData.citizen_certificate.base64"></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="certData.authentication_certificate">
+          <h4 class="text-info text-light">Authentication</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control"
+                   value="{{ certData.authentication_certificate.base64 }}">
+            <span class="input-group-btn">
+                            <button class="btn btn-default fa fa-copy"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: authentication_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="certData.authentication_certificate.base64"></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="certData.non_repudiation_certificate">
+          <h4 class="text-info text-light">Non Repudiation</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control"
+                   value="{{ certData.non_repudiation_certificate.base64 }}">
+            <span class="input-group-btn">
+                            <button class="btn btn-default fa fa-copy"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: non_repudiation_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="certData.non_repudiation_certificate.base64"></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="certData.rrn_certificate">
+          <h4 class="text-info text-light">RRN</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control"
+                   value="{{ certData.rrn_certificate.base64 }}">
+            <span class="input-group-btn">
+                            <button class="btn btn-default fa fa-copy"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: rrn_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="certData.rrn_certificate.base64"></button>
+                        </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="certificates col-sm-12">
+        <span class="size-h3 text-primary" i18n="@@nationalRegister">National Register</span>
+        <div class="col-sm-12" *ngIf="rnData.raw_data">
+          <h4 class="text-info text-light">Raw Data</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" value="{{ rnData.raw_data }}">
+            <span class="input-group-btn">
+                            <button class="btn btn-default fa fa-copy"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: raw_data']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="rnData.raw_data"></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="rnData.signature">
+          <h4 class="text-info text-light">Signature</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" value="{{ rnData.signature }}">
+            <span class="input-group-btn">
+                            <button class="btn btn-default fa fa-copy"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: signature']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="rnData.signature"></button>
+                        </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

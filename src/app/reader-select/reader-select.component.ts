@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {EventService} from '../event.service';
 import * as _ from 'lodash';
-import {CardService} from '../card.service';
+import {CardService} from '../cards/card.service';
 
 @Component({
   selector: 'app-reader-select',

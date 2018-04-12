@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {EventService} from '../event.service';
 import {ApiService} from '../api.service';
 import {Connector} from '../connector.service';
-import {CardService} from '../card.service';
+import {CardService} from '../cards/card.service';
 import {RMC} from '../rmc.service';
 import * as _ from 'lodash';
 
