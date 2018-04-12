@@ -88,7 +88,7 @@
 
     <app-reader-polling [error]="error" *ngIf="pollingReaders"></app-reader-polling>
 
-    <!--<card-polling error="root.error" poll-timeout="root.pollTimeout" ng-if="root.pollingCard"></card-polling>-->
+    <app-card-polling [error]="error" [pollTimeout]="pollTimeout" *ngIf="pollingCard"></app-card-polling>
 
     <!--<reader-select current-reader-id="root.readerWithCard.id" ng-if="root.readerWithCard"></reader-select>-->
   </div>

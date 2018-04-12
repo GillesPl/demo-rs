@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Connector} from './connector.service';
 import * as _ from 'lodash';
 import {EventService} from './event.service';
+import {RMC} from './rmc.service';
 
 @Component({
   selector: 'app-root',
@@ -25,11 +26,9 @@ export class AppComponent implements OnInit {
   dlLink: string;
   readerWithCard: boolean;
 
-  connector;
-
   private pollIterations = 0;
 
-  constructor(private Connector: Connector, private eventService: EventService) {
+  constructor(private Connector: Connector, private eventService: EventService, private RMC: RMC) {
     this.eventService.adminPanelOpened$.subscribe(() => this.onAdminPanelOpened());
     this.eventService.faqOpened$.subscribe(() => this.onFaqOpened());
     this.eventService.gclInstalled$.subscribe(() => this.onGclInstalled());
@@ -44,41 +43,38 @@ export class AppComponent implements OnInit {
     this.Connector.isGCLAvailable().then(available => {
       this.gclChecked = true;
       this.gclAvailable = available;
-      this.Connector.getConnector().then(client => {
-        this.connector = client;
 
-        if (this.gclAvailable) {
-          this.connector.core().version().then(version => {
-            console.log('Using T1C-JS ' + version);
-          });
-          this.connector.core().info().then(info => {
-            console.log('GCL version installed: ' + info.data.version);
-          });
-        } else { console.log('No GCL installation found'); }
+      if (this.gclAvailable) {
+        this.Connector.core('version').then(version => {
+          console.log('Using T1C-JS ' + version);
+        });
+        this.Connector.core('info').then(info => {
+          console.log('GCL version installed: ' + info.data.version);
+        });
+      } else { console.log('No GCL installation found'); }
 
 
-        // Determine initial action we need to take
-        if (!this.cardPresent) {
-          // No card is present, check if we have readers
+      // Determine initial action we need to take
+      if (!this.cardPresent) {
+        // No card is present, check if we have readers
 
-          if (_.isEmpty(this.readers)) {
-            // No readers present, do we have GCL?
-            if (!this.gclAvailable) {
-              // No GCL is available, prompt user to download
-              this.promptDownload();
-            } else {
-              // GCL is present, poll for readers being connected
-              this.pollForReaders();
-            }
+        if (_.isEmpty(this.readers)) {
+          // No readers present, do we have GCL?
+          if (!this.gclAvailable) {
+            // No GCL is available, prompt user to download
+            this.promptDownload();
           } else {
-            // Reader(s) are present, poll for card
-            this.pollForCard();
+            // GCL is present, poll for readers being connected
+            this.pollForReaders();
           }
         } else {
-          // A card is present, determine type and read its data
-          this.readCard();
+          // Reader(s) are present, poll for card
+          this.pollForCard();
         }
-      });
+      } else {
+        // A card is present, determine type and read its data
+        this.readCard();
+      }
     });
 
     this.isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -103,8 +99,7 @@ export class AppComponent implements OnInit {
   onGclInstalled() {
     const controller = this;
     // Analytics.trackEvent('T1C', 'install', 'Trust1Connector installed');
-    this.Connector.initialize().then((client) => {
-      controller.connector = client;
+    this.Connector.init(this.Connector.generateConfig()).then(() => {
       controller.gclAvailable = true;
       this.pollForReaders();
     });
@@ -144,7 +139,7 @@ export class AppComponent implements OnInit {
 
   onStartOver() {
     const controller = this;
-    this.connector.core().readers().then(result => {
+    this.Connector.core('readers').then(result => {
       controller.readers = result.data;
       if (_.find(result.data, function (reader) {
         return _.has(reader, 'card');
@@ -186,7 +181,7 @@ export class AppComponent implements OnInit {
     const controller = this;
     if (!this.pollingReaders) { this.pollingReaders = true; }
     this.error = false;
-    this.connector.core().pollReaders(30, function (err, result) {
+    this.Connector.core('pollReaders', [30, function (err, result) {
       // Success callback
       // Found at least one reader, poll for cards
       if (err) {
@@ -202,14 +197,14 @@ export class AppComponent implements OnInit {
     }, function () {
       // timeout, poll again
       controller.pollForReaders();
-    });
+    }]);
   }
 
   pollForCard() {
     const controller = this;
     if (!controller.pollingCard) { controller.pollingCard = true; }
     controller.error = false;
-    this.connector.core().pollCardInserted(3, function (err, result) {
+    this.Connector.core('pollCardInserted', [3, function (err, result) {
       // Success callback
       // controller.readers = result.data;
       if (err) {
@@ -221,7 +216,7 @@ export class AppComponent implements OnInit {
         controller.pollIterations = 0;
         // Found a card, attempt to read it
         // Refresh reader list first
-        controller.connector.core().readers().then(readerResult => {
+        controller.Connector.core('readers').then(readerResult => {
           controller.readers = readerResult.data;
           controller.readCard();
         }, function () {
@@ -237,17 +232,20 @@ export class AppComponent implements OnInit {
       controller.pollIterations++;
       // if enough time has passed, show the card not recognized message
       if (controller.pollIterations >= 5) { controller.pollTimeout = true; }
-      // RMC.checkReaderRemoval().then(function (removed) {
-      //   if (removed) { controller.pollingCard = false; }
-      //   else { controller.pollForCard(); }
-      // });
-    });
+      controller.RMC.checkReaderRemoval().then(function (removed) {
+        if (removed) {
+          controller.pollingCard = false;
+        } else {
+          controller.pollForCard();
+        }
+      });
+    }]);
   }
 
   promptDownload() {
     // Prompt for dl
     const controller = this;
-    this.connector.download().then(res => {
+    this.Connector.generic('download').then(res => {
       controller.dlLink = res.url;
     });
   }

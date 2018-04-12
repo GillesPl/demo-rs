@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {EventService} from '../event.service';
 
 @Component({
   selector: 'app-card-polling',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-polling.component.less']
 })
 export class CardPollingComponent implements OnInit {
+  @Input() error: boolean;
+  @Input() pollTimeout: boolean;
 
-  constructor() { }
+  constructor(private eventService: EventService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  openSidebar() {
+    this.eventService.openSidebar();
+  }
+
+  tryAgain() {
+    this.eventService.retryCard();
   }
 
 }

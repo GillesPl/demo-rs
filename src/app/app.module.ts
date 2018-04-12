@@ -49,7 +49,7 @@ import {RMC} from './rmc.service';
     DownloadGclComponent,
     RmcConsentComponent,
     // ReaderSelectComponent,
-    // CardPollingComponent,
+    CardPollingComponent,
     ReaderPollingComponent,
     DownloadGclComponent,
     // CardVisualizerComponent
@@ -62,7 +62,7 @@ import {RMC} from './rmc.service';
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
   ],
-  providers: [ ApiService, Connector, EventService ],
+  providers: [ ApiService, Connector, EventService, RMC ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,16 +4,26 @@ export class Event {
   constructor(public name: string) {}
 }
 
+export class ReaderEvent {
+  constructor(public data: any) {}
+}
+
+export class ConsentEvent {
+  constructor(public data: boolean, public success: boolean) {}
+}
+
 @Injectable()
 export class EventService {
   public adminPanelClosed$: EventEmitter<Event>;
   public adminPanelOpened$: EventEmitter<Event>;
+  public consentRequired$: EventEmitter<Event>;
+  public consentResult$: EventEmitter<ConsentEvent>;
   public faqClosed$: EventEmitter<Event>;
   public faqOpened$: EventEmitter<Event>;
   public gclInstalled$: EventEmitter<Event>;
   public networkError$: EventEmitter<Event>;
   public readerSelected$: EventEmitter<Event>;
-  public readersWithCards$: EventEmitter<Event>;
+  public readersWithCards$: EventEmitter<ReaderEvent>;
   public refreshAdminData$: EventEmitter<Event>;
   public reinitialize$: EventEmitter<Event>;
   public retryCard$: EventEmitter<Event>;
@@ -25,6 +35,8 @@ export class EventService {
   constructor() {
     this.adminPanelClosed$ = new EventEmitter();
     this.adminPanelOpened$ = new EventEmitter();
+    this.consentRequired$ = new EventEmitter();
+    this.consentResult$ = new EventEmitter();
     this.faqClosed$ = new EventEmitter();
     this.faqOpened$ = new EventEmitter();
     this.gclInstalled$ = new EventEmitter();
@@ -52,6 +64,10 @@ export class EventService {
     this.sidebarClosed$.emit(new Event('sidebar-close'));
   }
 
+  public consentRequired(): void {
+    this.consentRequired$.emit(new Event('consent-required'));
+  }
+
   public gclInstalled(): void {
     this.gclInstalled$.emit(new Event('GclInstalled'));
   }
@@ -72,8 +88,8 @@ export class EventService {
     this.sidebarOpened$.emit(new Event('sidebar-open'));
   }
 
-  public readersWithCards(): void {
-    this.readersWithCards$.emit(new Event('readers-with-cards'));
+  public readersWithCards(readers): void {
+    this.readersWithCards$.emit(new ReaderEvent(readers.data));
   }
 
   public refreshAdminData(): void {
