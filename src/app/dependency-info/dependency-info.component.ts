@@ -19,22 +19,20 @@ export class DependencyInfoComponent implements OnInit {
   ngOnInit() {}
 
   getData() {
-    this.Connector.getConnector().then(conn => {
-      conn.core().version().then(res => {
+    this.Connector.core('version').then(res => {
         this.info.js = res;
-      });
+    });
 
-      conn.core().info().then(res => {
+    this.Connector.core('info').then(res => {
         this.info.gcl = res.data;
-      });
+    });
 
-      conn.ocv().getInfo().then(res => {
+    this.Connector.ocv('getInfo').then(res => {
         this.info.ocv = res;
-      });
+    });
 
-      conn.ds().getInfo().then(res => {
+    this.Connector.plugin('ds', 'getInfo').then(res => {
         this.info.ds = res;
-      });
     });
 
     this.API.signboxVersion().subscribe(res => {

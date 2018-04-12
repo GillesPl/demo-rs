@@ -18,10 +18,8 @@ export class DeviceInfoComponent implements OnInit {
   ngOnInit() {}
 
   getData() {
-    this.Connector.getConnector().then(conn => {
-      conn.core().info().then(res => {
-        this.info = res.data;
-      });
+    this.Connector.core('info').then(res => {
+      this.info = res.data;
     });
   }
 }

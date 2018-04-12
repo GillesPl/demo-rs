@@ -18,10 +18,8 @@ export class ContainerInfoComponent implements OnInit {
   ngOnInit() {}
 
   getData() {
-    this.Connector.getConnector().then(conn => {
-      conn.core().info().then(res => {
-        this.containers = res.data.containers;
-      });
+    this.Connector.core('info').then(res => {
+      this.containers = res.data.containers;
     });
   }
 }

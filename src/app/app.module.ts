@@ -28,6 +28,7 @@ import { LogViewerComponent } from './log-viewer/log-viewer.component';
 import {FormsModule} from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RmcConsentComponent } from './rmc-consent/rmc-consent.component';
+import {RMC} from './rmc.service';
 
 
 @NgModule({

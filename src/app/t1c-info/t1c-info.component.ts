@@ -19,10 +19,8 @@ export class T1cInfoComponent implements OnInit {
 
 
   getData() {
-    this.Connector.getConnector().then(conn => {
-      conn.core().info().then(res => {
-        this.info = res.data;
-      });
+    this.Connector.core('info').then(res => {
+      this.info = res.data;
     });
   }
 

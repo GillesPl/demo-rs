@@ -18,10 +18,8 @@ export class CardReaderInfoComponent implements OnInit {
   ngOnInit() {}
 
   getData() {
-    this.Connector.getConnector().then(conn => {
-      conn.core().readers().then(res => {
-        this.readers = res.data;
-      });
+    this.Connector.core('readers').then(res => {
+      this.readers = res.data;
     });
   }
 

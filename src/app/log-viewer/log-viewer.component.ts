@@ -44,20 +44,18 @@ export class LogViewerComponent implements OnInit {
 
   getData() {
     // Get logfile blob from connector
-    return this.Connector.getConnector().then(conn => {
-      conn.admin().getLogfile(this.logfileName).then(res => {
-        const blb = res.data;
-        const reader = new FileReader();
+    return this.Connector.plugin('admin', 'getLogfile', [], [this.logfileName]).then(res => {
+      const blb = res.data;
+      const reader = new FileReader();
 
-        // This fires after the blob has been read/loaded.
-        reader.addEventListener('loadend', (e) => {
-          const readResult: FileReader = e.srcElement as any;
-          this.logContents = readResult.result;
-        });
-
-        // Start reading the blob as text.
-        reader.readAsText(blb);
+      // This fires after the blob has been read/loaded.
+      reader.addEventListener('loadend', (e) => {
+        const readResult: FileReader = e.srcElement as any;
+        this.logContents = readResult.result;
       });
+
+      // Start reading the blob as text.
+      reader.readAsText(blb);
     });
   }
 }

@@ -44,12 +44,10 @@ export class ApiService {
       return data;
     }, function () {
       return {};
-    }), this.Connector.getConnector().then(conn => {
-      return conn.core().infoBrowser().then(function (data) {
-        return data;
-      }, function () {
-        return {};
-      });
+    }), this.Connector.core('infoBrowser').then(data => {
+      return data;
+    }, function () {
+      return {};
     })];
 
     Promise.all(promises).then(function (results) {

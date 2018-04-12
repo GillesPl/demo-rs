@@ -29,12 +29,10 @@ export class DownloadGclComponent implements OnInit {
 
   pollForGcl() {
     setTimeout(() => {
-      this.Connector.getConnector().then(conn => {
-        conn.core().info().then(() => {
-          this.eventService.gclInstalled();
-        }, () => {
-          this.pollForGcl();
-        });
+      this.Connector.core('info').then(() => {
+        this.eventService.gclInstalled();
+      }, () => {
+        this.pollForGcl();
       });
     }, 2500);
   }

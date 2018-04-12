@@ -19,10 +19,8 @@ export class LogInfoComponent implements OnInit {
   ngOnInit() {}
 
   getData() {
-    this.Connector.getConnector().then(conn => {
-      conn.admin().getLogfileList().then(res => {
+    this.Connector.plugin('admin', 'getLogfileList').then(res => {
         this.info = res.data;
-      });
     });
   }
 
