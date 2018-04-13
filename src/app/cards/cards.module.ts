@@ -13,6 +13,18 @@ import { PinCheckStatusComponent } from './pin-check-status/pin-check-status.com
 import { PrintSummaryComponent } from './print-summary/print-summary.component';
 import { FormsModule } from '@angular/forms';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { DnieVizComponent } from './dnie/dnie-viz/dnie-viz.component';
+import { DnieCardComponent } from './dnie/dnie-card/dnie-card.component';
+import { EmvVizComponent } from './emv/emv-viz/emv-viz.component';
+import { EmvCardComponent } from './emv/emv-card/emv-card.component';
+import { DnieService } from './dnie/dnie.service';
+import { EmvService } from './emv/emv.service';
+import { LuxService } from './lux/lux.service';
+import { LuxTrustService } from './lux/lux-trust.service';
+import { MobibService } from './mobib/mobib.service';
+import { OberthurService } from './oberthur/oberthur.service';
+import { PivService } from './piv/piv.service';
+import { PteidService } from './pteid/pteid.service';
 
 
 @NgModule({
@@ -30,9 +42,24 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     BeidVizComponent,
     CertificateStatusComponent,
     PinCheckStatusComponent,
-    PrintSummaryComponent
+    PrintSummaryComponent,
+    DnieVizComponent,
+    DnieCardComponent,
+    EmvVizComponent,
+    EmvCardComponent
   ],
-  providers: [ BeidService, CheckDigitService ],
+  providers: [
+    BeidService,
+    CheckDigitService,
+    DnieService,
+    EmvService,
+    LuxService,
+    LuxTrustService,
+    MobibService,
+    OberthurService,
+    PivService,
+    PteidService
+  ],
   exports: [ BeidVizComponent ]
 })
 export class CardsModule { }
