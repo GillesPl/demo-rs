@@ -39,6 +39,10 @@ import { OberthurVizComponent } from './oberthur/oberthur-viz/oberthur-viz.compo
 import { PivCardComponent } from './piv/piv-card/piv-card.component';
 import { PivVizComponent } from './piv/piv-viz/piv-viz.component';
 import { Ng2FittextModule } from 'ng2-fittext';
+import { PteidCardComponent } from './pteid/pteid-card/pteid-card.component';
+import { PteidVizComponent } from './pteid/pteid-viz/pteid-viz.component';
+import { PteidPinCheckStatusComponent } from './pteid/pteid-pin-check-status/pteid-pin-check-status.component';
+import { PteidAddressPinCheckStatusComponent } from './pteid/pteid-address-pin-check-status/pteid-address-pin-check-status.component';
 
 
 @NgModule({
@@ -74,7 +78,11 @@ import { Ng2FittextModule } from 'ng2-fittext';
     OberthurCardComponent,
     OberthurVizComponent,
     PivCardComponent,
-    PivVizComponent
+    PivVizComponent,
+    PteidCardComponent,
+    PteidVizComponent,
+    PteidPinCheckStatusComponent,
+    PteidAddressPinCheckStatusComponent
   ],
   providers: [
     BeidService,
@@ -96,7 +104,8 @@ import { Ng2FittextModule } from 'ng2-fittext';
     LuxTrustVizComponent,
     OberthurVizComponent,
     OcraVizComponent,
-    PivVizComponent
+    PivVizComponent,
+    PteidVizComponent
   ]
 })
 export class CardsModule { }

@@ -1,13 +1,12 @@
-import { Component, Input, OnChanges, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import * as _ from 'lodash';
 
 @Component({
-  selector: 'app-pin-check-status',
-  templateUrl: './pin-check-status.component.html',
-  styleUrls: ['./pin-check-status.component.less'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-pteid-pin-check-status',
+  templateUrl: './pteid-pin-check-status.component.html',
+  styleUrls: ['./pteid-pin-check-status.component.less']
 })
-export class PinCheckStatusComponent implements OnChanges {
+export class PteidPinCheckStatusComponent implements OnChanges {
   @Input() status;
   @Input() maxTries;
   @Input() pinCheckFunc;

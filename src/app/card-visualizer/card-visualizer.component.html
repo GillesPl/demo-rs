@@ -67,7 +67,7 @@
 
       <app-piv-viz *ngIf="cardType === 'piv'" [readerId]="readerId" [cardData]="cardData"></app-piv-viz>
 
-      <!--<pteid-visualizer *ngIf="cardType === 'pteid'" reader-id="$ctrl.readerId" card-data="$ctrl.cardData"></pteid-visualizer>-->
+      <app-pteid-viz *ngIf="cardType === 'pteid'" [readerId]="readerId" [cardData]="cardData"></app-pteid-viz>
     </div>
   </div>
 </div>

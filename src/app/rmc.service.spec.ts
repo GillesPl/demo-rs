@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { RmcService } from './rmc.service';
+import { RMC } from './rmc.service';
 
 describe('RmcService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [RmcService]
+      providers: [RMC]
     });
   });
 
-  it('should be created', inject([RmcService], (service: RmcService) => {
+  it('should be created', inject([RMC], (service: RMC) => {
     expect(service).toBeTruthy();
   }));
 });

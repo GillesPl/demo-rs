@@ -10,7 +10,7 @@ export class LuxPinCheckStatusComponent implements OnChanges {
   @Input() status;
   @Input() maxTries;
   @Input() pinCheckFunc;
-  remainingTries = 4;
+  remainingTries;
 
   constructor() { }
 

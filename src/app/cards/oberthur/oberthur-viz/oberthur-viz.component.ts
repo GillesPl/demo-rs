@@ -13,6 +13,7 @@ export class OberthurVizComponent implements OnInit {
   doCollapse;
   certStatus;
   pinStatus;
+  loadingCerts;
 
   constructor(private Connector: Connector) { }
 
