@@ -63,9 +63,7 @@
       <!--<mobib-viz card-data="$ctrl.cardData" reader-id="$ctrl.readerId" is-basic="$ctrl.cardTypePretty === 'MOBIB Basic'"-->
       <!--*ngIf="cardType === 'mobib'"></mobib-viz>-->
 
-      <!--<oberthur-visualizer card-data="$ctrl.cardData"-->
-      <!--reader-id="$ctrl.readerId"-->
-      <!--*ngIf="cardType === 'oberthur'"></oberthur-visualizer>-->
+      <app-oberthur-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'oberthur'"></app-oberthur-viz>
 
       <!--<piv-visualizer *ngIf="cardType === 'piv'" reader-id="$ctrl.readerId" card-data="$ctrl.cardData"></piv-visualizer>-->
 

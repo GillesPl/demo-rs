@@ -1,0 +1,116 @@
+<div id="oberthur-viz" class="clearfix top-info">
+
+  <div class="status-wrapper">
+    <app-certificate-status [status]="certStatus" (click)="trackCertificatesClick()"></app-certificate-status>
+    <app-pin-check-status [status]="pinStatus" [maxTries]="3" [pinCheckFunc]="checkPin"></app-pin-check-status>
+  </div>
+
+  <app-oberthur-card></app-oberthur-card>
+
+  <!--<div class="print-button">-->
+  <!--<print-summary print-function="$ctrl.downloadSummary"></print-summary>-->
+  <!--</div>-->
+
+  <div class="print-button">
+    <span class="btn btn-lg btn-primary btn-summary-download" (click)="sign()" i18n="@@signXml">Sign XML</span>
+  </div>
+
+  <div class="certificates-toggle col-sm-12">
+    <span (click)="toggleCerts()" [hidden]="loadingCerts || doCollapse" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@showCert">Show extended info</span>
+    <span (click)="toggleCerts()" [hidden]="loadingCerts || !doCollapse" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@hideCert">Hide extended info</span>
+    <span [hidden]="!loadingCerts" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@loadingCerts">Loading...</span>
+  </div>
+  <div>
+    <div [collapse]="doCollapse">
+      <div class="certificates col-sm-12">
+        <span class="size-h3 text-primary" i18n="@@certificates">Certificates</span>
+        <div class="col-sm-12" *ngIf="cardData.root_certificate">
+          <h4 class="text-info text-light">Root</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" [ngModel]="cardData.root_certificate.base64">
+            <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="cardData.root_certificate.base64"><fa [name]="'copy'"></fa></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="cardData.issuer_certificate">
+          <h4 class="text-info text-light">Issuer</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" [ngModel]="cardData.issuer_certificate.base64">
+            <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="cardData.issuer_certificate.base64"><fa [name]="'copy'"></fa></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="cardData.authentication_certificate">
+          <h4 class="text-info text-light">Authentication</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" [ngModel]="cardData.authentication_certificate.base64">
+            <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="cardData.authentication_certificate.base64"><fa [name]="'copy'"></fa></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="cardData.signing_certificate">
+          <h4 class="text-info text-light">Signing</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" [ngModel]="cardData.signing_certificate.base64">
+            <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="cardData.signing_certificate.base64"><fa [name]="'copy'"></fa></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="cardData.encryption_certificate">
+          <h4 class="text-info text-light">Encryption</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" [ngModel]="cardData.encryption_certificate.base64">
+            <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="cardData.encryption_certificate.base64"><fa [name]="'copy'"></fa></button>
+                        </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

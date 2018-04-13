@@ -27,6 +27,7 @@ export class LuxVizComponent implements OnInit {
   authCert;
   nonRepCert;
   rootCerts;
+  loadingCerts;
 
   constructor(private API: ApiService, private Connector: Connector) { }
 

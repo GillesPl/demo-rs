@@ -32,6 +32,10 @@ import { LuxTrustVizComponent } from './lux/lux-trust-viz/lux-trust-viz.componen
 import { OcraVizComponent } from './ocra/ocra-viz/ocra-viz.component';
 import { OcraCardComponent } from './ocra/ocra-card/ocra-card.component';
 import { LuxPinCheckStatusComponent } from './lux/lux-pin-check-status/lux-pin-check-status.component';
+import { MobibCardComponent } from './mobib/mobib-card/mobib-card.component';
+import { MobibVizComponent } from './mobib/mobib-viz/mobib-viz.component';
+import { OberthurCardComponent } from './oberthur/oberthur-card/oberthur-card.component';
+import { OberthurVizComponent } from './oberthur/oberthur-viz/oberthur-viz.component';
 
 
 @NgModule({
@@ -60,7 +64,11 @@ import { LuxPinCheckStatusComponent } from './lux/lux-pin-check-status/lux-pin-c
     LuxTrustVizComponent,
     OcraVizComponent,
     OcraCardComponent,
-    LuxPinCheckStatusComponent
+    LuxPinCheckStatusComponent,
+    MobibCardComponent,
+    MobibVizComponent,
+    OberthurCardComponent,
+    OberthurVizComponent
   ],
   providers: [
     BeidService,
@@ -74,6 +82,14 @@ import { LuxPinCheckStatusComponent } from './lux/lux-pin-check-status/lux-pin-c
     PivService,
     PteidService
   ],
-  exports: [ BeidVizComponent, DnieVizComponent, EmvVizComponent, LuxVizComponent, LuxTrustVizComponent, OcraVizComponent ]
+  exports: [
+    BeidVizComponent,
+    DnieVizComponent,
+    EmvVizComponent,
+    LuxVizComponent,
+    LuxTrustVizComponent,
+    OberthurVizComponent,
+    OcraVizComponent
+  ]
 })
 export class CardsModule { }
