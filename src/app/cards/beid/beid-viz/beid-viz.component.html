@@ -2,7 +2,7 @@
 
   <div class="status-wrapper">
     <app-certificate-status [status]="certStatus" (click)="trackCertificatesClick()"></app-certificate-status>
-    <!--<app-pin-check-status [status]="pinStatus" [maxTries]="3" [ok-text]="pinOk" [pinCheckFunc]="checkPin"></app-pin-check-status>-->
+    <app-pin-check-status [status]="pinStatus" [maxTries]="3" [okText]="pinOk" [pinCheckFunc]="checkPin"></app-pin-check-status>
   </div>
 
   <app-beid-card [rnData]="rnData" [picData]="picData"></app-beid-card>

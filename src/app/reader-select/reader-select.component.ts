@@ -22,7 +22,6 @@ export class ReaderSelectComponent implements OnInit {
 
 
   onReadersWithCards(readers) {
-    console.log(readers);
     if (readers.data.length !== this.readers.lenth) {
       this.readers = readers.data;
       _.forEach(this.readers, reader => {

@@ -55,6 +55,7 @@ export class BeidVizComponent implements OnInit {
   }
 
   checkPin() {
+    console.log('check pin called');
     const comp = this;
     // Analytics.trackEvent('button', 'click', 'PIN check clicked');
     // let modal = $uibModal.open({
