@@ -1,9 +1,9 @@
 <div id="beid-viz" class="clearfix top-info">
 
-  <!--<div class="status-wrapper">-->
-  <!--<certificate-status status="$ctrl.certStatus" (click)="trackCertificatesClick()"></certificate-status>-->
-  <!--<pin-check-status status="$ctrl.pinStatus" max-tries="3" ok-text="$ctrl.pinOk" pin-check-func="$ctrl.checkPin"></pin-check-status>-->
-  <!--</div>-->
+  <div class="status-wrapper">
+    <app-certificate-status [status]="certStatus" (click)="trackCertificatesClick()"></app-certificate-status>
+    <!--<app-pin-check-status [status]="pinStatus" [maxTries]="3" [ok-text]="pinOk" [pinCheckFunc]="checkPin"></app-pin-check-status>-->
+  </div>
 
   <app-beid-card [rnData]="rnData" [picData]="picData"></app-beid-card>
 
