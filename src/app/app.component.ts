@@ -51,29 +51,30 @@ export class AppComponent implements OnInit {
         this.Connector.core('info').then(info => {
           console.log('GCL version installed: ' + info.data.version);
         });
-      } else { console.log('No GCL installation found'); }
 
-
-      // Determine initial action we need to take
-      if (!this.cardPresent) {
-        // No card is present, check if we have readers
-
-        if (_.isEmpty(this.readers)) {
-          // No readers present, do we have GCL?
-          if (!this.gclAvailable) {
-            // No GCL is available, prompt user to download
-            this.promptDownload();
-          } else {
-            // GCL is present, poll for readers being connected
+        // Determine initial action we need to take
+        this.Connector.core('readers').then(readers => {
+          this.readers = readers.data;
+          if (_.isEmpty(readers)) {
+            // No readers present, poll for readers being connected
             this.pollForReaders();
+          } else {
+            // Is there a card in at least one reader?
+            this.cardPresent = !!_.find(readers.data, r => {
+              return _.has(r, 'card');
+            });
+            if (this.cardPresent) {
+              // A card is present, determine type and read its data
+              this.readCard();
+            } else {
+              // No card found, polling
+              this.pollForCard();
+            }
           }
-        } else {
-          // Reader(s) are present, poll for card
-          this.pollForCard();
-        }
+        });
       } else {
-        // A card is present, determine type and read its data
-        this.readCard();
+        console.log('No GCL installation found');
+        this.promptDownload();
       }
     });
 
