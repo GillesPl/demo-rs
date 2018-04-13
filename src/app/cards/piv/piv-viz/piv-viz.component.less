@@ -1,0 +1,40 @@
+@import "../../../../variables";
+
+#piv-viz {
+
+  .pin-required {
+    margin-top: 20px;
+
+    .info-text {
+      color: #666;
+      font-size: 1.4em;
+      font-weight: 300;
+    }
+
+    .pinpad {
+      display: flex;
+      justify-content: center;
+      background: #fff;
+
+      rmc-keypad {
+        max-width: 500px;
+      }
+    }
+  }
+
+  .status-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @media (max-width: 1206px) {
+      justify-content: center;
+    }
+
+    .pin-check-status {
+      margin-left: 0;
+    }
+  }
+
+}

@@ -36,6 +36,9 @@ import { MobibCardComponent } from './mobib/mobib-card/mobib-card.component';
 import { MobibVizComponent } from './mobib/mobib-viz/mobib-viz.component';
 import { OberthurCardComponent } from './oberthur/oberthur-card/oberthur-card.component';
 import { OberthurVizComponent } from './oberthur/oberthur-viz/oberthur-viz.component';
+import { PivCardComponent } from './piv/piv-card/piv-card.component';
+import { PivVizComponent } from './piv/piv-viz/piv-viz.component';
+import { Ng2FittextModule } from 'ng2-fittext';
 
 
 @NgModule({
@@ -46,6 +49,7 @@ import { OberthurVizComponent } from './oberthur/oberthur-viz/oberthur-viz.compo
     CollapseModule.forRoot(),
     ClipboardModule,
     FormsModule,
+    Ng2FittextModule,
     TooltipModule.forRoot(),
   ],
   declarations: [
@@ -68,7 +72,9 @@ import { OberthurVizComponent } from './oberthur/oberthur-viz/oberthur-viz.compo
     MobibCardComponent,
     MobibVizComponent,
     OberthurCardComponent,
-    OberthurVizComponent
+    OberthurVizComponent,
+    PivCardComponent,
+    PivVizComponent
   ],
   providers: [
     BeidService,
@@ -89,7 +95,8 @@ import { OberthurVizComponent } from './oberthur/oberthur-viz/oberthur-viz.compo
     LuxVizComponent,
     LuxTrustVizComponent,
     OberthurVizComponent,
-    OcraVizComponent
+    OcraVizComponent,
+    PivVizComponent
   ]
 })
 export class CardsModule { }

@@ -6075,6 +6075,10 @@ next-tick@1:
   version "1.0.0"
   resolved "https://repo.t1t.be/repository/npm-group/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
+ng2-fittext@^1.1.1:
+  version "1.1.1"
+  resolved "https://repo.t1t.be/repository/npm-group/ng2-fittext/-/ng2-fittext-1.1.1.tgz#d991685cf03c547becaaff4b415a15723fed9025"
+
 ngx-bootstrap@^2.0.3:
   version "2.0.3"
   resolved "https://repo.t1t.be/repository/npm-group/ngx-bootstrap/-/ngx-bootstrap-2.0.3.tgz#b8ca4be305be4e2e99f60d941cc8a3e906f198d7"
