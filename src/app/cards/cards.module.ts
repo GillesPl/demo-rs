@@ -60,6 +60,6 @@ import { PteidService } from './pteid/pteid.service';
     PivService,
     PteidService
   ],
-  exports: [ BeidVizComponent, DnieVizComponent ]
+  exports: [ BeidVizComponent, DnieVizComponent, EmvVizComponent ]
 })
 export class CardsModule { }

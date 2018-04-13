@@ -52,7 +52,7 @@
 
       <app-dnie-viz *ngIf="cardType === 'dnie'" [readerId]="readerId" [cardData]="cardData"></app-dnie-viz>
 
-      <!--<emv-visualizer data="$ctrl.cardData" reader-id="$ctrl.readerId" *ngIf="cardType === 'emv'"></emv-visualizer>-->
+      <app-emv-viz [data]="cardData" [readerId]="readerId" *ngIf="cardType === 'emv'"></app-emv-viz>
 
       <!--<lux-visualizer reader-id="$ctrl.readerId" *ngIf="cardType === 'luxeid'"></lux-visualizer>-->
       <!--<lux-trust-visualizer card-data="$ctrl.cardData"-->

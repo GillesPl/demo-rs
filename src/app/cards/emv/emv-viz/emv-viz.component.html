@@ -1,3 +1,8 @@
-<p>
-  emv-viz works!
-</p>
+<div id="emv-viz" class="clearfix top-info">
+  <div class="status-wrapper">
+    <app-pin-check-status [status]="pinStatus" [maxTries]="3" [pinCheckFunc]="checkPin"></app-pin-check-status>
+  </div>
+
+  <app-emv-card [cardData]="data"></app-emv-card>
+
+</div>
