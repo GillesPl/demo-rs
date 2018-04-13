@@ -50,9 +50,7 @@
                     [readerId]="readerId"
                     *ngIf="cardType === 'beid'"></app-beid-viz>
 
-      <!--<dnie-visualizer *ngIf="cardType === 'dnie'"-->
-      <!--reader-id="$ctrl.readerId"-->
-      <!--card-data="$ctrl.cardData"></dnie-visualizer>-->
+      <app-dnie-viz *ngIf="cardType === 'dnie'" [readerId]="readerId" [cardData]="cardData"></app-dnie-viz>
 
       <!--<emv-visualizer data="$ctrl.cardData" reader-id="$ctrl.readerId" *ngIf="cardType === 'emv'"></emv-visualizer>-->
 
