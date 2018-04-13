@@ -117,6 +117,7 @@ export class BeidVizComponent implements OnInit {
   }
 
   downloadSummary() {
+    console.log('print function called');
     const comp = this;
     // // Analytics.trackEvent('button', 'click', 'Print button clicked');
     // let modal = $uibModal.open({

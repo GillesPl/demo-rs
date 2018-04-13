@@ -7,9 +7,9 @@
 
   <app-beid-card [rnData]="rnData" [picData]="picData"></app-beid-card>
 
-  <!--<div class="print-button">-->
-  <!--<print-summary print-function="$ctrl.downloadSummary"></print-summary>-->
-  <!--</div>-->
+  <div class="print-button">
+    <app-print-summary [printFunction]="downloadSummary"></app-print-summary>
+  </div>
 
   <div class="personal-info col-sm-12">
     <span class="size-h3 text-primary" i18n="@@additionalInformation">Additional Information</span>

@@ -10,6 +10,7 @@ import { ClipboardModule } from 'ngx-clipboard/dist';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { CertificateStatusComponent } from './certificate-status/certificate-status.component';
 import { PinCheckStatusComponent } from './pin-check-status/pin-check-status.component';
+import { PrintSummaryComponent } from './print-summary/print-summary.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PinCheckStatusComponent } from './pin-check-status/pin-check-status.com
     BeidCardComponent,
     BeidVizComponent,
     CertificateStatusComponent,
-    PinCheckStatusComponent
+    PinCheckStatusComponent,
+    PrintSummaryComponent
   ],
   providers: [ BeidService, CheckDigitService ],
   exports: [ BeidVizComponent ]
