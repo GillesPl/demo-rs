@@ -11,6 +11,8 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { CertificateStatusComponent } from './certificate-status/certificate-status.component';
 import { PinCheckStatusComponent } from './pin-check-status/pin-check-status.component';
 import { PrintSummaryComponent } from './print-summary/print-summary.component';
+import { FormsModule } from '@angular/forms';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { PrintSummaryComponent } from './print-summary/print-summary.component';
     Angular2FontawesomeModule,
     CommonModule,
     CollapseModule.forRoot(),
-    ClipboardModule
+    ClipboardModule,
+    FormsModule,
+    TooltipModule.forRoot(),
   ],
   declarations: [
     BeidCardComponent,

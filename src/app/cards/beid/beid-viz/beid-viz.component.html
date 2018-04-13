@@ -52,16 +52,15 @@
           <h4 class="text-info text-light">Root</h4>
 
           <div class="input-group">
-            <input type="text" class="form-control"
-                   value="{{ certData.root_certificate.base64 }}">
+            <input type="text" class="form-control" [ngModel]="certData.root_certificate.base64">
             <span class="input-group-btn">
-                            <button class="btn btn-default fa fa-copy"
+                            <button class="btn btn-default"
                                     ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
                                     i18n-tooltip
                                     tooltip="Copy"
                                     type="button"
                                     ngxClipboard
-                                    [cbContent]="certData.root_certificate.base64"></button>
+                                    [cbContent]="certData.root_certificate.base64"><fa [name]="'copy'"></fa></button>
                         </span>
           </div>
         </div>
@@ -70,16 +69,15 @@
           <h4 class="text-info text-light">Citizen</h4>
 
           <div class="input-group">
-            <input type="text" class="form-control"
-                   value="{{ certData.citizen_certificate.base64 }}">
+            <input type="text" class="form-control" [ngModel]="certData.citizen_certificate.base64">
             <span class="input-group-btn">
-                            <button class="btn btn-default fa fa-copy"
+                            <button class="btn btn-default"
                                     ga-track-event="['button', 'click', 'Copy button clicked: citizen_certificate']"
                                     i18n-tooltip
                                     tooltip="Copy"
                                     type="button"
                                     ngxClipboard
-                                    [cbContent]="certData.citizen_certificate.base64"></button>
+                                    [cbContent]="certData.citizen_certificate.base64"><fa [name]="'copy'"></fa></button>
                         </span>
           </div>
         </div>
@@ -88,16 +86,15 @@
           <h4 class="text-info text-light">Authentication</h4>
 
           <div class="input-group">
-            <input type="text" class="form-control"
-                   value="{{ certData.authentication_certificate.base64 }}">
+            <input type="text" class="form-control" [ngModel]="certData.authentication_certificate.base64">
             <span class="input-group-btn">
-                            <button class="btn btn-default fa fa-copy"
+                            <button class="btn btn-default"
                                     ga-track-event="['button', 'click', 'Copy button clicked: authentication_certificate']"
                                     i18n-tooltip
                                     tooltip="Copy"
                                     type="button"
                                     ngxClipboard
-                                    [cbContent]="certData.authentication_certificate.base64"></button>
+                                    [cbContent]="certData.authentication_certificate.base64"><fa [name]="'copy'"></fa></button>
                         </span>
           </div>
         </div>
@@ -106,16 +103,15 @@
           <h4 class="text-info text-light">Non Repudiation</h4>
 
           <div class="input-group">
-            <input type="text" class="form-control"
-                   value="{{ certData.non_repudiation_certificate.base64 }}">
+            <input type="text" class="form-control" [ngModel]="certData.non_repudiation_certificate.base64">
             <span class="input-group-btn">
-                            <button class="btn btn-default fa fa-copy"
+                            <button class="btn btn-default"
                                     ga-track-event="['button', 'click', 'Copy button clicked: non_repudiation_certificate']"
                                     i18n-tooltip
                                     tooltip="Copy"
                                     type="button"
                                     ngxClipboard
-                                    [cbContent]="certData.non_repudiation_certificate.base64"></button>
+                                    [cbContent]="certData.non_repudiation_certificate.base64"><fa [name]="'copy'"></fa></button>
                         </span>
           </div>
         </div>
@@ -124,16 +120,15 @@
           <h4 class="text-info text-light">RRN</h4>
 
           <div class="input-group">
-            <input type="text" class="form-control"
-                   value="{{ certData.rrn_certificate.base64 }}">
+            <input type="text" class="form-control" [ngModel]="certData.rrn_certificate.base64">
             <span class="input-group-btn">
-                            <button class="btn btn-default fa fa-copy"
+                            <button class="btn btn-default"
                                     ga-track-event="['button', 'click', 'Copy button clicked: rrn_certificate']"
                                     i18n-tooltip
                                     tooltip="Copy"
                                     type="button"
                                     ngxClipboard
-                                    [cbContent]="certData.rrn_certificate.base64"></button>
+                                    [cbContent]="certData.rrn_certificate.base64"><fa [name]="'copy'"></fa></button>
                         </span>
           </div>
         </div>
@@ -145,15 +140,15 @@
           <h4 class="text-info text-light">Raw Data</h4>
 
           <div class="input-group">
-            <input type="text" class="form-control" value="{{ rnData.raw_data }}">
+            <input type="text" class="form-control" [ngModel]="rnData.raw_data">
             <span class="input-group-btn">
-                            <button class="btn btn-default fa fa-copy"
+                            <button class="btn btn-default"
                                     ga-track-event="['button', 'click', 'Copy button clicked: raw_data']"
                                     i18n-tooltip
                                     tooltip="Copy"
                                     type="button"
                                     ngxClipboard
-                                    [cbContent]="rnData.raw_data"></button>
+                                    [cbContent]="rnData.raw_data"><fa [name]="'copy'"></fa></button>
                         </span>
           </div>
         </div>
@@ -162,15 +157,15 @@
           <h4 class="text-info text-light">Signature</h4>
 
           <div class="input-group">
-            <input type="text" class="form-control" value="{{ rnData.signature }}">
+            <input type="text" class="form-control" [ngModel]="rnData.signature">
             <span class="input-group-btn">
-                            <button class="btn btn-default fa fa-copy"
+                            <button class="btn btn-default"
                                     ga-track-event="['button', 'click', 'Copy button clicked: signature']"
                                     i18n-tooltip
                                     tooltip="Copy"
                                     type="button"
                                     ngxClipboard
-                                    [cbContent]="rnData.signature"></button>
+                                    [cbContent]="rnData.signature"><fa [name]="'copy'"></fa></button>
                         </span>
           </div>
         </div>
