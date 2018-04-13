@@ -25,6 +25,13 @@ import { MobibService } from './mobib/mobib.service';
 import { OberthurService } from './oberthur/oberthur.service';
 import { PivService } from './piv/piv.service';
 import { PteidService } from './pteid/pteid.service';
+import { LuxCardComponent } from './lux/lux-card/lux-card.component';
+import { LuxVizComponent } from './lux/lux-viz/lux-viz.component';
+import { LuxTrustCardComponent } from './lux/lux-trust-card/lux-trust-card.component';
+import { LuxTrustVizComponent } from './lux/lux-trust-viz/lux-trust-viz.component';
+import { OcraVizComponent } from './ocra/ocra-viz/ocra-viz.component';
+import { OcraCardComponent } from './ocra/ocra-card/ocra-card.component';
+import { LuxPinCheckStatusComponent } from './lux/lux-pin-check-status/lux-pin-check-status.component';
 
 
 @NgModule({
@@ -46,7 +53,14 @@ import { PteidService } from './pteid/pteid.service';
     DnieVizComponent,
     DnieCardComponent,
     EmvVizComponent,
-    EmvCardComponent
+    EmvCardComponent,
+    LuxCardComponent,
+    LuxVizComponent,
+    LuxTrustCardComponent,
+    LuxTrustVizComponent,
+    OcraVizComponent,
+    OcraCardComponent,
+    LuxPinCheckStatusComponent
   ],
   providers: [
     BeidService,
@@ -60,6 +74,6 @@ import { PteidService } from './pteid/pteid.service';
     PivService,
     PteidService
   ],
-  exports: [ BeidVizComponent, DnieVizComponent, EmvVizComponent ]
+  exports: [ BeidVizComponent, DnieVizComponent, EmvVizComponent, LuxVizComponent, LuxTrustVizComponent, OcraVizComponent ]
 })
 export class CardsModule { }

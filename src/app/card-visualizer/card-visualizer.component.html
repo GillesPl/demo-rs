@@ -54,13 +54,11 @@
 
       <app-emv-viz [data]="cardData" [readerId]="readerId" *ngIf="cardType === 'emv'"></app-emv-viz>
 
-      <!--<lux-visualizer reader-id="$ctrl.readerId" *ngIf="cardType === 'luxeid'"></lux-visualizer>-->
-      <!--<lux-trust-visualizer card-data="$ctrl.cardData"-->
-      <!--reader-id="$ctrl.readerId"-->
-      <!--*ngIf="cardType === 'luxtrust'"></lux-trust-visualizer>-->
-      <!--<lux-otp-visualizer card-data="$ctrl.cardData"-->
-      <!--reader-id="$ctrl.readerId"-->
-      <!--*ngIf="cardType === 'ocra'"></lux-otp-visualizer>-->
+      <app-lux-viz [readerId]="readerId" *ngIf="cardType === 'luxeid'"></app-lux-viz>
+
+      <app-lux-trust-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'luxtrust'"></app-lux-trust-viz>
+
+      <app-ocra-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'ocra'"></app-ocra-viz>
 
       <!--<mobib-viz card-data="$ctrl.cardData" reader-id="$ctrl.readerId" is-basic="$ctrl.cardTypePretty === 'MOBIB Basic'"-->
       <!--*ngIf="cardType === 'mobib'"></mobib-viz>-->
@@ -70,6 +68,7 @@
       <!--*ngIf="cardType === 'oberthur'"></oberthur-visualizer>-->
 
       <!--<piv-visualizer *ngIf="cardType === 'piv'" reader-id="$ctrl.readerId" card-data="$ctrl.cardData"></piv-visualizer>-->
+
       <!--<pteid-visualizer *ngIf="cardType === 'pteid'" reader-id="$ctrl.readerId" card-data="$ctrl.cardData"></pteid-visualizer>-->
     </div>
   </div>

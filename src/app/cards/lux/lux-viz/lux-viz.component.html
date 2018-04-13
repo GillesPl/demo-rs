@@ -1,0 +1,136 @@
+<div id="lux-viz" class="clearfix top-info">
+
+  <div class="pin-required text-center" *ngIf="needPin">
+    <p class="info-text" i18n="@@accessToLuxRestricted">
+      Access to the Luxembourg eID card is secured with a PIN code.<br>Please provide your PIN to continue.
+    </p>
+
+    <div class="text-center waiting-for-pin" *ngIf="pinpad">
+      <p class="spinner"><i class="fa fa-4x fa-spinner fa-pulse"></i></p>
+      <p class="spinner-text text-thin" i18n="@@waitingForReaderResponse">Waiting for response from reader...</p>
+      <h3 class="text-primary text-thin" i18n="@@userReaderPinpad">Use your reader's pinpad to enter the PIN code.</h3>
+    </div>
+
+    <div class="pinpad" *ngIf="!pinpad">
+      <!-- TODO pinpad -->
+      <!--<rmc-keypad pincode="$ctrl.pincode" submit-func="$ctrl.submitPin"></rmc-keypad>-->
+    </div>
+  </div>
+
+  <div class="text-center waiting-for-pin" *ngIf="readingData">
+    <p class="spinner"><i class="fa fa-4x fa-spinner fa-pulse"></i></p>
+    <p class="spinner-text text-thin" data-translate="CARDS.COMMON.READING_DATA"></p>
+  </div>
+
+
+  <div *ngIf="!needPin && !readingData">
+    <div class="status-wrapper">
+      <app-certificate-status [status]="certStatus"></app-certificate-status>
+      <app-lux-pin-check-status [status]="pinStatus" [maxTries]="5" [pinCheckFunc]="checkPin"></app-lux-pin-check-status>
+    </div>
+
+    <app-lux-card [biometricData]="biometricData" [picData]="pic" [signatureData]="signature"></app-lux-card>
+
+    <div class="print-button">
+      <span class="btn btn-lg btn-primary btn-summary-download" (click)="downloadSummary()" i18n="@@printSummary">Print the content of my card</span>
+    </div>
+
+    <div class="certificates-toggle col-sm-12">
+      <span (click)="toggleCerts()" [hidden]="loadingCerts || !certData" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@showCert">Show extended info</span>
+      <span (click)="toggleCerts()" [hidden]="loadingCerts || certData" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@hideCert">Hide extended info</span>
+      <span [hidden]="!loadingCerts" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@loadingCerts">Loading...</span>
+    </div>
+    <div>
+      <div [collapse]="!certData">
+        <div class="certificates col-sm-12">
+          <span class="size-h3 text-primary" i18n="@@certificates">Certificates</span>
+          <div class="col-sm-12" *ngIf="rootCerts">
+            <h4 class="text-info text-light">Root</h4>
+
+            <div class="input-group" *ngFor="let cert of rootCerts">
+              <input type="text" class="form-control" [ngModel]="cert">
+              <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="cert"><fa [name]="'copy'"></fa></button>
+                        </span>
+            </div>
+          </div>
+
+          <div class="col-sm-12" *ngIf="authCert">
+            <h4 class="text-info text-light">Authentication</h4>
+
+            <div class="input-group">
+              <input type="text" class="form-control" [ngModel]="authCert">
+              <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="authCert"><fa [name]="'copy'"></fa></button>
+                        </span>
+            </div>
+          </div>
+
+          <div class="col-sm-12" *ngIf="nonRepCert">
+            <h4 class="text-info text-light">Non Repudiation</h4>
+
+            <div class="input-group">
+              <input type="text" class="form-control" [ngModel]="nonRepCert">
+              <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="nonRepCert"><fa [name]="'copy'"></fa></button>
+                        </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="certificates col-sm-12">
+          <span class="size-h3 text-primary" i18n="@@biometricData">Biometric Data</span>
+          <div class="col-sm-12" *ngIf="biometricData.raw_data">
+            <h4 class="text-info text-light">Raw Data</h4>
+
+            <div class="input-group">
+              <input type="text" class="form-control" [ngModel]="biometricData.raw_data">
+              <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="biometricData.raw_data"><fa [name]="'copy'"></fa></button>
+                        </span>
+            </div>
+          </div>
+
+          <div class="col-sm-12" *ngIf="signatureObject">
+            <h4 class="text-info text-light">Signature</h4>
+
+            <div class="input-group">
+              <input type="text" class="form-control" [ngModel]="signatureObject">
+              <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="signatureObject"><fa [name]="'copy'"></fa></button>
+                        </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
