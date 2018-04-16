@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { RmcHeaderComponent } from './rmc-header/rmc-header.component';
 import { RmcFaqComponent } from './rmc-faq/rmc-faq.component';
 import { RmcFooterComponent } from './rmc-footer/rmc-footer.component';
-import { RmcKeypadComponent } from './rmc-keypad/rmc-keypad.component';
 import { ReaderIconComponent } from './reader-icon/reader-icon.component';
 import { ReaderSelectComponent } from './reader-select/reader-select.component';
 import { CardPollingComponent } from './card-polling/card-polling.component';
@@ -33,6 +32,7 @@ import { CardService } from './cards/card.service';
 import { ClipboardModule } from 'ngx-clipboard/dist';
 import { CardsModule } from './cards/cards.module';
 import { CollapseModule } from 'ngx-bootstrap';
+import { KeypadModule } from './rmc-keypad/keypad.module';
 
 
 @NgModule({
@@ -41,7 +41,6 @@ import { CollapseModule } from 'ngx-bootstrap';
     RmcHeaderComponent,
     RmcFaqComponent,
     RmcFooterComponent,
-    // RmcKeypadComponent,
     ReaderIconComponent,
     T1cInfoComponent,
     CardReaderInfoComponent,
@@ -56,7 +55,7 @@ import { CollapseModule } from 'ngx-bootstrap';
     CardPollingComponent,
     ReaderPollingComponent,
     DownloadGclComponent,
-    CardVisualizerComponent
+    CardVisualizerComponent,
   ],
   imports: [
     Angular2FontawesomeModule,
@@ -66,6 +65,7 @@ import { CollapseModule } from 'ngx-bootstrap';
     CollapseModule.forRoot(),
     FormsModule,
     HttpClientModule,
+    KeypadModule,
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
   ],

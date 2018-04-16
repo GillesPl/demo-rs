@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Connector } from '../../../connector.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { PinCheckModalComponent } from '../../pin-check-modal/pin-check-modal.component';
+import { EventService } from '../../../event.service';
 
 @Component({
   selector: 'app-beid-viz',
@@ -18,7 +21,12 @@ export class BeidVizComponent implements OnInit {
   loadingCerts: boolean;
   isCollapsed = true;
 
-  constructor(private Connector: Connector) { }
+  pinModalRef: BsModalRef;
+
+  constructor(private Connector: Connector, private eventService: EventService, private modalService: BsModalService) {
+    this.eventService.pinCheckRequested$.subscribe(() => this.checkPin());
+    this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
+  }
 
   ngOnInit() {
     const comp = this;
@@ -49,53 +57,52 @@ export class BeidVizComponent implements OnInit {
         comp.certStatus = 'error';
       });
     });
-
-
-    // controller.pinOk = $filter('translate')('CARDS.BEID.PIN_OK');
   }
 
   checkPin() {
-    console.log('check pin called');
     const comp = this;
     // Analytics.trackEvent('button', 'click', 'PIN check clicked');
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/check-pin.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       return Connector.core('reader', [comp.readerId]).then(res => {
-    //         return res.data.pinpad;
-    //       });
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'ModalPinCheckCtrl'
-    // });
-    //
-    // modal.result.then(function () {
-    //   // Analytics.trackEvent('beid', 'pin-correct', 'Correct PIN entered');
-    //   comp.pinStatus = 'valid';
-    // }, function (err) {
-    //   // Analytics.trackEvent('beid', 'pin-incorrect', 'Incorrect PIN entered');
-    //   switch (err.code) {
-    //     case 103:
-    //       comp.pinStatus = '2remain';
-    //       break;
-    //     case 104:
-    //       comp.pinStatus = '1remain';
-    //       break;
-    //     case 105:
-    //       // Analytics.trackEvent('beid', 'pin-blocked', 'Card blocked; too many incorrect attempts');
-    //       comp.pinStatus = 'blocked';
-    //       break;
-    //     case 109:
-    //       // cancelled on reader
-    //       comp.pinStatus = 'cancelled';
-    //       break;
-    //   }
-    // });
+
+    this.Connector.core('reader', [comp.readerId]).then(res => {
+      const initialState = {
+        readerId: comp.readerId,
+        pinpad: res.data.pinpad
+      };
+      const config = {
+        backdrop: true,
+        ignoreBackdropClick: true,
+        initialState
+      };
+      comp.pinModalRef = comp.modalService.show(PinCheckModalComponent, config);
+    });
+  }
+
+  handlePinCheckResult(pinCheck) {
+    // check if the request was cancelled, if it was, we don't need to do anything
+    if (!pinCheck.cancelled) {
+      if (pinCheck.error) {
+        // Analytics.trackEvent('beid', 'pin-incorrect', 'Incorrect PIN entered');
+        switch (pinCheck.result.code) {
+          case 103:
+            this.pinStatus = '2remain';
+            break;
+          case 104:
+            this.pinStatus = '1remain';
+            break;
+          case 105:
+            // Analytics.trackEvent('beid', 'pin-blocked', 'Card blocked; too many incorrect attempts');
+            this.pinStatus = 'blocked';
+            break;
+          case 109:
+            // cancelled on reader
+            this.pinStatus = 'cancelled';
+            break;
+        }
+      } else {
+        // Analytics.trackEvent('beid', 'pin-correct', 'Correct PIN entered');
+        this.pinStatus = 'valid';
+      }
+    }
   }
 
   toggleCerts() {

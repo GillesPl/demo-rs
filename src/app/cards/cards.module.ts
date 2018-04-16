@@ -50,6 +50,8 @@ import { MobibMivbCardComponent } from './mobib/mobib-mivb-card/mobib-mivb-card.
 import { MobibDeLijnCardComponent } from './mobib/mobib-de-lijn-card/mobib-de-lijn-card.component';
 import { MobibTecCardComponent } from './mobib/mobib-tec-card/mobib-tec-card.component';
 import { MobibContractTableComponent } from './mobib/mobib-contract-table/mobib-contract-table.component';
+import { PinCheckModalComponent } from './pin-check-modal/pin-check-modal.component';
+import { KeypadModule } from '../rmc-keypad/keypad.module';
 
 
 @NgModule({
@@ -60,6 +62,7 @@ import { MobibContractTableComponent } from './mobib/mobib-contract-table/mobib-
     CollapseModule.forRoot(),
     ClipboardModule,
     FormsModule,
+    KeypadModule,
     Ng2FittextModule,
     TooltipModule.forRoot(),
   ],
@@ -96,7 +99,8 @@ import { MobibContractTableComponent } from './mobib/mobib-contract-table/mobib-
     MobibMivbCardComponent,
     MobibDeLijnCardComponent,
     MobibTecCardComponent,
-    MobibContractTableComponent
+    MobibContractTableComponent,
+    PinCheckModalComponent
   ],
   providers: [
     BeidService,
@@ -120,7 +124,8 @@ import { MobibContractTableComponent } from './mobib/mobib-contract-table/mobib-
     OberthurVizComponent,
     OcraVizComponent,
     PivVizComponent,
-    PteidVizComponent
-  ]
+    PteidVizComponent,
+  ],
+  entryComponents: [ PinCheckModalComponent ]
 })
 export class CardsModule { }

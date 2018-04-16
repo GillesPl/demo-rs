@@ -15,6 +15,10 @@ export class ConsentEvent {
   constructor(public data: boolean, public success: boolean) {}
 }
 
+export class PinCheckEvent {
+  constructor(public result: any, public error: boolean, public cancelled: boolean) {}
+}
+
 @Injectable()
 export class EventService {
   public adminPanelClosed$: EventEmitter<Event>;
@@ -25,6 +29,8 @@ export class EventService {
   public faqOpened$: EventEmitter<Event>;
   public gclInstalled$: EventEmitter<Event>;
   public networkError$: EventEmitter<Event>;
+  public pinCheckRequested$: EventEmitter<Event>;
+  public pinCheckHandled$: EventEmitter<PinCheckEvent>;
   public readerSelected$: EventEmitter<ReaderEvent>;
   public readersWithCards$: EventEmitter<ReaderEvent>;
   public refreshAdminData$: EventEmitter<Event>;
@@ -44,6 +50,8 @@ export class EventService {
     this.faqOpened$ = new EventEmitter();
     this.gclInstalled$ = new EventEmitter();
     this.networkError$ = new EventEmitter();
+    this.pinCheckRequested$ = new EventEmitter();
+    this.pinCheckHandled$ = new EventEmitter<PinCheckEvent>();
     this.readerSelected$ = new EventEmitter();
     this.readersWithCards$ = new EventEmitter();
     this.refreshAdminData$ = new EventEmitter();
@@ -91,6 +99,10 @@ export class EventService {
     this.sidebarOpened$.emit(new Event('sidebar-open'));
   }
 
+  public pinCheckHandled(result: any, error?: boolean, cancelled?: boolean) {
+    this.pinCheckHandled$.emit(new PinCheckEvent(result, error || false, cancelled || false));
+  }
+
   public readersWithCards(readers): void {
     this.readersWithCards$.emit(new ReaderEvent(readers.data));
   }
@@ -101,6 +113,10 @@ export class EventService {
 
   public reinitialize(): void {
     this.reinitialize$.emit(new Event('reinit'));
+  }
+
+  public requestPinCheck(): void {
+    this.pinCheckRequested$.emit(new Event('request-pin-check'));
   }
 
   public retryCard(): void {

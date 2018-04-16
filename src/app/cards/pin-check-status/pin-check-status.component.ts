@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, ViewEncapsulation } from '@angular/core';
 import * as _ from 'lodash';
+import { EventService } from '../../event.service';
 
 @Component({
   selector: 'app-pin-check-status',
@@ -13,7 +14,7 @@ export class PinCheckStatusComponent implements OnChanges {
   @Input() pinCheckFunc;
   remainingTries;
 
-  constructor() { }
+  constructor(private eventService: EventService) { }
 
   ngOnChanges() {
     // extract number of remaining tries;
@@ -23,7 +24,9 @@ export class PinCheckStatusComponent implements OnChanges {
   }
 
   checkPin() {
-    if (!_.includes(['valid', 'blocked'], this.status)) { this.pinCheckFunc(); }
+    if (!_.includes(['valid', 'blocked'], this.status)) {
+      this.eventService.requestPinCheck();
+    }
   }
 
 }
