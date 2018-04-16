@@ -2,7 +2,7 @@
 
   <div class="status-wrapper">
     <app-certificate-status [status]="certStatus"></app-certificate-status>
-    <app-pin-check-status [status]="pinStatus" [maxTries]="5" [pinCheckFunc]="checkPin"></app-pin-check-status>
+    <app-pin-check-status [status]="pinStatus" [maxTries]="5" (onPinCheck)="checkPin()"></app-pin-check-status>
   </div>
 
   <app-lux-trust-card></app-lux-trust-card>

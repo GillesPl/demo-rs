@@ -28,7 +28,7 @@
                  i18n-placeholder
                  placeholder="Please provide a short description of the card"
                  class="form-control"
-                 data-ng-model="cardDesc"
+                 [(ngModel)]="cardDesc"
                  autofocus>
           <span type="submit" id="submit" class="btn btn-default" (click)="registerUnknownType(cardDesc)" i18n="@@submitFeedback">Submit</span>
         </form>

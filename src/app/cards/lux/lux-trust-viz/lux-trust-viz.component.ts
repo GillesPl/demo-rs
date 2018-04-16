@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Connector } from '../../../connector.service';
 import * as _ from 'lodash';
+import { CardService } from '../../card.service';
+import { EventService } from '../../../event.service';
 
 @Component({
   selector: 'app-lux-trust-viz',
@@ -16,7 +18,9 @@ export class LuxTrustVizComponent implements OnInit {
   certStatus;
   loadingCerts;
 
-  constructor(private Connector: Connector) { }
+  constructor(private Connector: Connector, private cardService: CardService, private eventService: EventService) {
+    this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
+  }
 
   ngOnInit() {
     this.pinStatus = 'idle';
@@ -49,46 +53,11 @@ export class LuxTrustVizComponent implements OnInit {
   }
 
   checkPin() {
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/check-pin.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       return Connector.core('reader', [controller.readerId]).then(res => {
-    //         return res.data.pinpad;
-    //       });
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'ModalPinCheckCtrl'
-    // });
-    //
-    // modal.result.then(function () {
-    //   controller.pinStatus = 'valid';
-    // }, function (err) {
-    //   switch (err.code) {
-    //     case 111:
-    //       controller.pinStatus = '4remain';
-    //       break;
-    //     case 112:
-    //       controller.pinStatus = '3remain';
-    //       break;
-    //     case 103:
-    //       controller.pinStatus = '2remain';
-    //       break;
-    //     case 104:
-    //       controller.pinStatus = '1remain';
-    //       break;
-    //     case 105:
-    //       controller.pinStatus = 'blocked';
-    //       break;
-    //     case 109:
-    //       controller.pinStatus = 'cancelled';
-    //       break;
-    //   }
-    // });
+    this.cardService.openPinModalForReader(this.readerId);
+  }
+
+  handlePinCheckResult(pinCheck) {
+    this.pinStatus = CardService.determinePinModalResult(pinCheck, 'luxtrust');
   }
 
   downloadSummary() {

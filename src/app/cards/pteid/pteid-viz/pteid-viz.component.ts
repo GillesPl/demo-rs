@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Connector } from '../../../connector.service';
 import { ApiService } from '../../../api.service';
 import * as _ from 'lodash';
+import { CardService } from '../../card.service';
+import { EventService } from '../../../event.service';
+import { PteidService } from '../pteid.service';
 
 @Component({
   selector: 'app-pteid-viz',
@@ -21,7 +24,14 @@ export class PteidVizComponent implements OnInit {
   addressInfo;
   isCollapsed;
 
-  constructor(private API: ApiService, private Connector: Connector) { }
+  constructor(private API: ApiService,
+              private Connector: Connector,
+              private cardService: CardService,
+              private eventService: EventService,
+              private pteid: PteidService) {
+    this.eventService.addressPinCheckHandled$.subscribe((results) => this.handleAddressPinCheckResult(results));
+    this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
+  }
 
   ngOnInit() {
     const comp = this;
@@ -64,87 +74,20 @@ export class PteidVizComponent implements OnInit {
   }
 
   addressData() {
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/check-pin.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       return Connector.core('reader', [controller.readerId]).then(res => {
-    //         return res.data.pinpad;
-    //       })
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'ModalPtAddressPinCheckCtrl'
-    // });
-    //
-    // modal.result.then(function (addressResponse) {
-    //   // Analytics.trackEvent('beid', 'pin-correct', 'Correct PIN entered');
-    //   controller.addressPinStatus = 'valid';
-    //   controller.addressInfo = addressResponse.data;
-    // }, function (err) {
-    //   // Analytics.trackEvent('beid', 'pin-incorrect', 'Incorrect PIN entered');
-    //   switch (err.code) {
-    //     case 103:
-    //       controller.addressPinStatus = '2remain';
-    //       break;
-    //     case 104:
-    //       controller.addressPinStatus = '1remain';
-    //       break;
-    //     case 105:
-    //       // Analytics.trackEvent('beid', 'pin-blocked', 'Card blocked; too many incorrect attempts');
-    //       controller.addressPinStatus = 'blocked';
-    //       break;
-    //     case 109:
-    //       // cancelled on reader
-    //       controller.addressPinStatus = 'cancelled';
-    //       break;
-    //   }
-    // });
+    // check address pin
+    this.pteid.openAddressPinModalForReader(this.readerId);
+  }
+
+  handleAddressPinCheckResult(pinCheck) {
+    this.addressPinStatus = CardService.determinePinModalResult(pinCheck, 'pteid');
   }
 
   checkPin() {
-    // // Analytics.trackEvent('button', 'click', 'PIN check clicked');
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/check-pin.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       return Connector.core('reader', [controller.readerId]).then(res => {
-    //         return res.data.pinpad;
-    //       })
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'ModalPinCheckCtrl'
-    // });
-    //
-    // modal.result.then(function () {
-    //   // Analytics.trackEvent('beid', 'pin-correct', 'Correct PIN entered');
-    //   controller.signPinStatus = 'valid';
-    // }, function (err) {
-    //   // Analytics.trackEvent('beid', 'pin-incorrect', 'Incorrect PIN entered');
-    //   switch (err.code) {
-    //     case 103:
-    //       controller.signPinStatus = '2remain';
-    //       break;
-    //     case 104:
-    //       controller.signPinStatus = '1remain';
-    //       break;
-    //     case 105:
-    //       // Analytics.trackEvent('beid', 'pin-blocked', 'Card blocked; too many incorrect attempts');
-    //       controller.signPinStatus = 'blocked';
-    //       break;
-    //     case 109:
-    //       // cancelled on reader
-    //       controller.signPinStatus = 'cancelled';
-    //       break;
-    //   }
-    // });
+    this.cardService.openPinModalForReader(this.readerId);
+  }
+
+  handlePinCheckResult(pinCheck) {
+    this.signPinStatus = CardService.determinePinModalResult(pinCheck, 'pteid');
   }
 
   toggleCerts() {

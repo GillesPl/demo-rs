@@ -29,7 +29,7 @@ export class EventService {
   public faqOpened$: EventEmitter<Event>;
   public gclInstalled$: EventEmitter<Event>;
   public networkError$: EventEmitter<Event>;
-  public pinCheckRequested$: EventEmitter<Event>;
+  public addressPinCheckHandled$: EventEmitter<PinCheckEvent>;
   public pinCheckHandled$: EventEmitter<PinCheckEvent>;
   public readerSelected$: EventEmitter<ReaderEvent>;
   public readersWithCards$: EventEmitter<ReaderEvent>;
@@ -50,7 +50,7 @@ export class EventService {
     this.faqOpened$ = new EventEmitter();
     this.gclInstalled$ = new EventEmitter();
     this.networkError$ = new EventEmitter();
-    this.pinCheckRequested$ = new EventEmitter();
+    this.addressPinCheckHandled$ = new EventEmitter<PinCheckEvent>();
     this.pinCheckHandled$ = new EventEmitter<PinCheckEvent>();
     this.readerSelected$ = new EventEmitter();
     this.readersWithCards$ = new EventEmitter();
@@ -61,6 +61,10 @@ export class EventService {
     this.sidebarClosed$ = new EventEmitter();
     this.sidebarOpened$ = new EventEmitter();
     this.startOver$ = new EventEmitter();
+  }
+
+  public addressPinCheckHandled(result: any, error?: boolean, cancelled?: boolean) {
+    this.addressPinCheckHandled$.emit(new PinCheckEvent(result, error || false, cancelled || false));
   }
 
   public closeAdminPanel() {
@@ -113,10 +117,6 @@ export class EventService {
 
   public reinitialize(): void {
     this.reinitialize$.emit(new Event('reinit'));
-  }
-
-  public requestPinCheck(): void {
-    this.pinCheckRequested$.emit(new Event('request-pin-check'));
   }
 
   public retryCard(): void {

@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Connector } from '../../../connector.service';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { PinCheckModalComponent } from '../../pin-check-modal/pin-check-modal.component';
 import { EventService } from '../../../event.service';
+import { CardService } from '../../card.service';
 
 @Component({
   selector: 'app-beid-viz',
@@ -21,10 +20,7 @@ export class BeidVizComponent implements OnInit {
   loadingCerts: boolean;
   isCollapsed = true;
 
-  pinModalRef: BsModalRef;
-
-  constructor(private Connector: Connector, private eventService: EventService, private modalService: BsModalService) {
-    this.eventService.pinCheckRequested$.subscribe(() => this.checkPin());
+  constructor(private Connector: Connector, private eventService: EventService, private cardService: CardService) {
     this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
   }
 
@@ -60,49 +56,11 @@ export class BeidVizComponent implements OnInit {
   }
 
   checkPin() {
-    const comp = this;
-    // Analytics.trackEvent('button', 'click', 'PIN check clicked');
-
-    this.Connector.core('reader', [comp.readerId]).then(res => {
-      const initialState = {
-        readerId: comp.readerId,
-        pinpad: res.data.pinpad
-      };
-      const config = {
-        backdrop: true,
-        ignoreBackdropClick: true,
-        initialState
-      };
-      comp.pinModalRef = comp.modalService.show(PinCheckModalComponent, config);
-    });
+    this.cardService.openPinModalForReader(this.readerId);
   }
 
   handlePinCheckResult(pinCheck) {
-    // check if the request was cancelled, if it was, we don't need to do anything
-    if (!pinCheck.cancelled) {
-      if (pinCheck.error) {
-        // Analytics.trackEvent('beid', 'pin-incorrect', 'Incorrect PIN entered');
-        switch (pinCheck.result.code) {
-          case 103:
-            this.pinStatus = '2remain';
-            break;
-          case 104:
-            this.pinStatus = '1remain';
-            break;
-          case 105:
-            // Analytics.trackEvent('beid', 'pin-blocked', 'Card blocked; too many incorrect attempts');
-            this.pinStatus = 'blocked';
-            break;
-          case 109:
-            // cancelled on reader
-            this.pinStatus = 'cancelled';
-            break;
-        }
-      } else {
-        // Analytics.trackEvent('beid', 'pin-correct', 'Correct PIN entered');
-        this.pinStatus = 'valid';
-      }
-    }
+    this.pinStatus = CardService.determinePinModalResult(pinCheck, 'beid');
   }
 
   toggleCerts() {

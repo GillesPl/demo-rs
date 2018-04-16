@@ -22,6 +22,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   cardData;
   cardType: string;
   cardTypePretty: string;
+  cardDesc: string
 
 
   constructor(private API: ApiService, private cardService: CardService,

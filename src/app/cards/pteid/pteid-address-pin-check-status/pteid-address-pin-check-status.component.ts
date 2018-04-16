@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import * as _ from 'lodash';
 
 @Component({
@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 export class PteidAddressPinCheckStatusComponent implements OnChanges {
   @Input() status;
   @Input() maxTries;
-  @Input() pinCheckFunc;
+  @Output() onPinCheck = new EventEmitter();
   remainingTries;
 
   constructor() { }
@@ -22,7 +22,7 @@ export class PteidAddressPinCheckStatusComponent implements OnChanges {
   }
 
   checkPin() {
-    if (!_.includes(['valid', 'blocked'], this.status)) { this.pinCheckFunc(); }
+    if (!_.includes(['valid', 'blocked'], this.status)) { this.onPinCheck.emit(); }
   }
 
 }

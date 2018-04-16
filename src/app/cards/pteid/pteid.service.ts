@@ -4,11 +4,16 @@ import * as moment from 'moment';
 import { ApiService } from '../../api.service';
 import { Connector } from '../../connector.service';
 import { HttpClient } from '@angular/common/http';
+import { PteidAddressPinCheckStatusComponent } from './pteid-address-pin-check-status/pteid-address-pin-check-status.component';
+import { BsModalService } from 'ngx-bootstrap';
 
 @Injectable()
 export class PteidService {
 
-  constructor(private API: ApiService, private Connector: Connector, private http: HttpClient) { }
+  constructor(private API: ApiService,
+              private Connector: Connector,
+              private http: HttpClient,
+              private modalService: BsModalService) { }
 
   generateSummaryToSign(readerId) {
     const service = this;
@@ -64,6 +69,24 @@ export class PteidService {
     //     success: true
     // });
     return this.Connector.plugin('pteid', 'address', [readerId], [{ pin }]);
+  }
+
+  openAddressPinModalForReader(readerId) {
+    const svc = this;
+    // Analytics.trackEvent('button', 'click', 'PIN check clicked');
+
+    this.Connector.core('reader', [readerId]).then(res => {
+      const initialState = {
+        readerId,
+        pinpad: res.data.pinpad
+      };
+      const config = {
+        backdrop: true,
+        ignoreBackdropClick: true,
+        initialState
+      };
+      svc.modalService.show(PteidAddressPinCheckStatusComponent, config);
+    });
   }
 
 }

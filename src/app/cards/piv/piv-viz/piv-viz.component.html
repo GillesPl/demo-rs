@@ -26,7 +26,7 @@
   <div *ngIf="!needPin && !readingData">
     <div class="status-wrapper">
       <!--<certificate-status status="$ctrl.certStatus" ng-click="$ctrl.trackCertificatesClick()"></certificate-status>-->
-      <app-pin-check-status [status]="pinStatus" [maxTries]="5" [pinCheckFunc]="checkPin"></app-pin-check-status>
+      <app-pin-check-status [status]="pinStatus" [maxTries]="5" (onPinCheck)="checkPin()"></app-pin-check-status>
     </div>
 
     <app-piv-card [cardData]="cardData"></app-piv-card>

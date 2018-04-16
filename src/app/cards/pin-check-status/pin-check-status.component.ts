@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation } from '@angular/core';
 import * as _ from 'lodash';
 import { EventService } from '../../event.service';
 
@@ -11,7 +11,7 @@ import { EventService } from '../../event.service';
 export class PinCheckStatusComponent implements OnChanges {
   @Input() status;
   @Input() maxTries;
-  @Input() pinCheckFunc;
+  @Output() onPinCheck = new EventEmitter();
   remainingTries;
 
   constructor(private eventService: EventService) { }
@@ -25,7 +25,7 @@ export class PinCheckStatusComponent implements OnChanges {
 
   checkPin() {
     if (!_.includes(['valid', 'blocked'], this.status)) {
-      this.eventService.requestPinCheck();
+      this.onPinCheck.emit();
     }
   }
 

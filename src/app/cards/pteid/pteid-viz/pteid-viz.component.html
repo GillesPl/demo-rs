@@ -2,7 +2,7 @@
 
   <div class="status-wrapper">
     <app-certificate-status [status]="certStatus" (click)="trackCertificatesClick()"></app-certificate-status>
-    <!--<app-pteid-pin-check-status [status]="signPinStatus" [maxTries]="3" [pinCheckFunc]="checkPin"></app-pteid-pin-check-status>-->
+    <app-pteid-pin-check-status [status]="signPinStatus" [maxTries]="3" (onPinCheck)="checkPin()"></app-pteid-pin-check-status>
   </div>
 
   <app-pteid-card [idData]="cardData.id" [photo]="photo"></app-pteid-card>
@@ -14,7 +14,7 @@
   <div class="additional-info col-sm-12">
     <!--<span class="size-h3 text-primary">Additional Information</span>-->
     <div class="status-wrapper">
-      <!--<app-pteid-address-pin-check-status [status]="addressPinStatus" [maxTries]="3" [pinCheckFunc]="addressData"></app-pteid-address-pin-check-status>-->
+      <app-pteid-address-pin-check-status [status]="addressPinStatus" [maxTries]="3" (onPinCheck)="addressData()"></app-pteid-address-pin-check-status>
     </div>
     <div class="col-sm-12" [hidden]="!addressInfo">
       <h4 class="text-info text-light" i18n="@@ptAddressData">Address Data</h4>

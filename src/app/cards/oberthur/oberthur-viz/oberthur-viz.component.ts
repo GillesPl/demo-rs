@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Connector } from '../../../connector.service';
+import { CardService } from '../../card.service';
+import { EventService } from '../../../event.service';
 
 @Component({
   selector: 'app-oberthur-viz',
@@ -15,7 +17,9 @@ export class OberthurVizComponent implements OnInit {
   pinStatus;
   loadingCerts;
 
-  constructor(private Connector: Connector) { }
+  constructor(private Connector: Connector, private cardService: CardService, private eventService: EventService) {
+    this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
+  }
 
   ngOnInit() {
     const comp = this;
@@ -48,41 +52,12 @@ export class OberthurVizComponent implements OnInit {
 
   }
 
-
   checkPin() {
-    // Analytics.trackEvent('button', 'click', 'PIN check clicked');
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/check-pin.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       return false;
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'ModalPinCheckCtrl'
-    // });
-    //
-    // modal.result.then(function () {
-    //   Analytics.trackEvent('oberthur', 'pin-correct', 'Correct PIN entered');
-    //   controller.pinStatus = 'valid';
-    // }, function (err) {
-    //   Analytics.trackEvent('oberthur', 'pin-incorrect', 'Incorrect PIN entered');
-    //   switch (err.code) {
-    //     case 103:
-    //       controller.pinStatus = '2remain';
-    //       break;
-    //     case 104:
-    //       controller.pinStatus = '1remain';
-    //       break;
-    //     case 105:
-    //       Analytics.trackEvent('oberthur', 'pin-blocked', 'Card blocked; too many incorrect attempts');
-    //       controller.pinStatus = 'blocked';
-    //       break;
-    //   }
-    // });
+    this.cardService.openPinModalForReader(this.readerId);
+  }
+
+  handlePinCheckResult(pinCheck) {
+    this.pinStatus = CardService.determinePinModalResult(pinCheck, 'oberthur');
   }
 
   toggleCerts() {

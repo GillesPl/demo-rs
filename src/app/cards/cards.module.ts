@@ -52,6 +52,7 @@ import { MobibTecCardComponent } from './mobib/mobib-tec-card/mobib-tec-card.com
 import { MobibContractTableComponent } from './mobib/mobib-contract-table/mobib-contract-table.component';
 import { PinCheckModalComponent } from './pin-check-modal/pin-check-modal.component';
 import { KeypadModule } from '../rmc-keypad/keypad.module';
+import { PteidAddressPinModalComponent } from './pteid/pteid-address-pin-modal/pteid-address-pin-modal.component';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import { KeypadModule } from '../rmc-keypad/keypad.module';
     MobibDeLijnCardComponent,
     MobibTecCardComponent,
     MobibContractTableComponent,
-    PinCheckModalComponent
+    PinCheckModalComponent,
+    PteidAddressPinModalComponent
   ],
   providers: [
     BeidService,

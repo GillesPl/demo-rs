@@ -2,12 +2,41 @@ import { Injectable } from '@angular/core';
 import {Connector} from '../connector.service';
 import * as _ from 'lodash';
 import {HttpClient} from '@angular/common/http';
+import { PinCheckModalComponent } from './pin-check-modal/pin-check-modal.component';
+import { BsModalService } from 'ngx-bootstrap';
 
 @Injectable()
 export class CardService {
 
-  constructor(private Connector: Connector, private http: HttpClient) {}
+  constructor(private Connector: Connector, private http: HttpClient, private modalService: BsModalService) {}
 
+  static determinePinModalResult(pinCheck, cardType) {
+    // check if the request was cancelled, if it was, we don't need to do anything
+    if (!pinCheck.cancelled) {
+      if (pinCheck.error) {
+        // Analytics.trackEvent(cardType, 'pin-incorrect', 'Incorrect PIN entered');
+        switch (pinCheck.result.code) {
+          case 111:
+            return '4remain';
+          case 112:
+            return '3remain';
+          case 103:
+            return '2remain';
+          case 104:
+            return '1remain';
+          case 105:
+            // Analytics.trackEvent(cardType, 'pin-blocked', 'Card blocked; too many incorrect attempts');
+            return 'blocked';
+          case 109:
+            // cancelled on reader
+            return 'cancelled';
+        }
+      } else {
+        // Analytics.trackEvent(cardType, 'pin-correct', 'Correct PIN entered');
+        return 'valid';
+      }
+    }
+  }
 
   detectContainer(readerId) {
     return this.Connector.get().containerFor(readerId).then(res => {
@@ -321,6 +350,24 @@ export class CardService {
   // Needs proxy
   workflowSign(signData) {
     return this.http.post('api/cards/sign', signData).toPromise().then(function (res: any) { return res.data; });
+  }
+
+  openPinModalForReader(readerId) {
+    const svc = this;
+    // Analytics.trackEvent('button', 'click', 'PIN check clicked');
+
+    this.Connector.core('reader', [readerId]).then(res => {
+      const initialState = {
+        readerId,
+        pinpad: res.data.pinpad
+      };
+      const config = {
+        backdrop: true,
+        ignoreBackdropClick: true,
+        initialState
+      };
+      svc.modalService.show(PinCheckModalComponent, config);
+    });
   }
 }
 

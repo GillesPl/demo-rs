@@ -2,7 +2,7 @@
 
   <div class="status-wrapper">
     <app-certificate-status [status]="certStatus" (click)="trackCertificatesClick()"></app-certificate-status>
-    <app-pin-check-status [status]="pinStatus" [maxTries]="3" [pinCheckFunc]="checkPin"></app-pin-check-status>
+    <app-pin-check-status [status]="pinStatus" [maxTries]="3" (onPinCheck)="checkPin()"></app-pin-check-status>
   </div>
 
   <app-oberthur-card></app-oberthur-card>
