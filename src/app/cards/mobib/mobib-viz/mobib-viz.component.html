@@ -1,3 +1,28 @@
-<p>
-  mobib-viz works!
-</p>
+<div id="mobib-viz" class="clearfix top-info">
+
+
+  <div class="status-wrapper">
+    <app-mobib-active-status [status]="cardStatus"></app-mobib-active-status>
+    <app-mobib-validity-status [from]="mobibFrom" [to]="mobibTo"></app-mobib-validity-status>
+  </div>
+
+  <div *ngIf="isBasic">
+    <app-mobib-basic-card [cardData]="cardData"></app-mobib-basic-card>
+  </div>
+
+  <div *ngIf="!isBasic">
+    <app-mobib-nmbs-card *ngIf="cardData['card-issuing'].company_id === 1"
+                         [cardData]="cardData"
+                         [lang]="cardLang()"></app-mobib-nmbs-card>
+    <app-mobib-mivb-card *ngIf="cardData['card-issuing'].company_id === 2"
+                         [cardData]="cardData" ></app-mobib-mivb-card>
+    <app-mobib-de-lijn-card *ngIf="cardData['card-issuing'].company_id === 3"
+                            [cardData]="cardData" ></app-mobib-de-lijn-card>
+    <app-mobib-tec-card *ngIf="cardData['card-issuing'].company_id === 4"
+                        [cardData]="cardData" ></app-mobib-tec-card>
+  </div>
+
+
+  <app-mobib-contract-table [contracts]="cardData.contracts"></app-mobib-contract-table>
+
+</div>

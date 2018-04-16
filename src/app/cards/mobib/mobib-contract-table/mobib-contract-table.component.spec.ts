@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MobibCardComponent } from './mobib-card.component';
+import { MobibContractTableComponent } from './mobib-contract-table.component';
 
-describe('MobibCardComponent', () => {
-  let component: MobibCardComponent;
-  let fixture: ComponentFixture<MobibCardComponent>;
+describe('MobibContractTableComponent', () => {
+  let component: MobibContractTableComponent;
+  let fixture: ComponentFixture<MobibContractTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MobibCardComponent ]
+      declarations: [ MobibContractTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MobibCardComponent);
+    fixture = TestBed.createComponent(MobibContractTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -32,7 +32,6 @@ import { LuxTrustVizComponent } from './lux/lux-trust-viz/lux-trust-viz.componen
 import { OcraVizComponent } from './ocra/ocra-viz/ocra-viz.component';
 import { OcraCardComponent } from './ocra/ocra-card/ocra-card.component';
 import { LuxPinCheckStatusComponent } from './lux/lux-pin-check-status/lux-pin-check-status.component';
-import { MobibCardComponent } from './mobib/mobib-card/mobib-card.component';
 import { MobibVizComponent } from './mobib/mobib-viz/mobib-viz.component';
 import { OberthurCardComponent } from './oberthur/oberthur-card/oberthur-card.component';
 import { OberthurVizComponent } from './oberthur/oberthur-viz/oberthur-viz.component';
@@ -43,6 +42,14 @@ import { PteidCardComponent } from './pteid/pteid-card/pteid-card.component';
 import { PteidVizComponent } from './pteid/pteid-viz/pteid-viz.component';
 import { PteidPinCheckStatusComponent } from './pteid/pteid-pin-check-status/pteid-pin-check-status.component';
 import { PteidAddressPinCheckStatusComponent } from './pteid/pteid-address-pin-check-status/pteid-address-pin-check-status.component';
+import { MobibActiveStatusComponent } from './mobib/mobib-active-status/mobib-active-status.component';
+import { MobibValidityStatusComponent } from './mobib/mobib-validity-status/mobib-validity-status.component';
+import { MobibBasicCardComponent } from './mobib/mobib-basic-card/mobib-basic-card.component';
+import { MobibNmbsCardComponent } from './mobib/mobib-nmbs-card/mobib-nmbs-card.component';
+import { MobibMivbCardComponent } from './mobib/mobib-mivb-card/mobib-mivb-card.component';
+import { MobibDeLijnCardComponent } from './mobib/mobib-de-lijn-card/mobib-de-lijn-card.component';
+import { MobibTecCardComponent } from './mobib/mobib-tec-card/mobib-tec-card.component';
+import { MobibContractTableComponent } from './mobib/mobib-contract-table/mobib-contract-table.component';
 
 
 @NgModule({
@@ -73,7 +80,6 @@ import { PteidAddressPinCheckStatusComponent } from './pteid/pteid-address-pin-c
     OcraVizComponent,
     OcraCardComponent,
     LuxPinCheckStatusComponent,
-    MobibCardComponent,
     MobibVizComponent,
     OberthurCardComponent,
     OberthurVizComponent,
@@ -82,7 +88,15 @@ import { PteidAddressPinCheckStatusComponent } from './pteid/pteid-address-pin-c
     PteidCardComponent,
     PteidVizComponent,
     PteidPinCheckStatusComponent,
-    PteidAddressPinCheckStatusComponent
+    PteidAddressPinCheckStatusComponent,
+    MobibActiveStatusComponent,
+    MobibValidityStatusComponent,
+    MobibBasicCardComponent,
+    MobibNmbsCardComponent,
+    MobibMivbCardComponent,
+    MobibDeLijnCardComponent,
+    MobibTecCardComponent,
+    MobibContractTableComponent
   ],
   providers: [
     BeidService,
@@ -102,6 +116,7 @@ import { PteidAddressPinCheckStatusComponent } from './pteid/pteid-address-pin-c
     EmvVizComponent,
     LuxVizComponent,
     LuxTrustVizComponent,
+    MobibVizComponent,
     OberthurVizComponent,
     OcraVizComponent,
     PivVizComponent,

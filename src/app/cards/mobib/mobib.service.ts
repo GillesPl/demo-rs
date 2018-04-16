@@ -169,6 +169,14 @@ export class MobibService {
     '7': { fields: ['time', 'days']},
   };
 
+  static cardDateFormat() {
+    return 'YYYY-MM-DD';
+  }
+
+  static displayDateFormat() {
+    return 'DD/MM/YYYY';
+  }
+
   static formatBirthDate(dob) {
     // assume 1900
     let prefix = '19';

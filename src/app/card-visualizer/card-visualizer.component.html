@@ -60,8 +60,8 @@
 
       <app-ocra-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'ocra'"></app-ocra-viz>
 
-      <!--<mobib-viz card-data="$ctrl.cardData" reader-id="$ctrl.readerId" is-basic="$ctrl.cardTypePretty === 'MOBIB Basic'"-->
-      <!--*ngIf="cardType === 'mobib'"></mobib-viz>-->
+      <app-mobib-viz [cardData]="cardData" [readerId]="readerId" [isBasic]="cardTypePretty === 'MOBIB Basic'"
+      *ngIf="cardType === 'mobib'"></app-mobib-viz>
 
       <app-oberthur-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'oberthur'"></app-oberthur-viz>
 
