@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CardService } from '../../card.service';
 import { EventService } from '../../../event.service';
+import { ModalService } from '../../modal.service';
 
 @Component({
   selector: 'app-emv-viz',
@@ -13,7 +14,9 @@ export class EmvVizComponent implements OnInit {
 
   pinStatus;
 
-  constructor(private cardService: CardService, private eventService: EventService) {
+  constructor(private cardService: CardService,
+              private eventService: EventService,
+              private modalService: ModalService) {
     this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
   }
 
@@ -22,7 +25,7 @@ export class EmvVizComponent implements OnInit {
   }
 
   checkPin() {
-    this.cardService.openPinModalForReader(this.readerId);
+    this.modalService.openPinModalForReader(this.readerId);
   }
 
   handlePinCheckResult(pinCheck) {

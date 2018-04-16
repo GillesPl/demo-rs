@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {Connector} from '../connector.service';
 import * as _ from 'lodash';
 import {HttpClient} from '@angular/common/http';
-import { PinCheckModalComponent } from './pin-check-modal/pin-check-modal.component';
 import { BsModalService } from 'ngx-bootstrap';
 
 @Injectable()
@@ -102,129 +101,127 @@ export class CardService {
     // return object with certificate array and sign certificate
     switch (container) {
       case 'aventra':
-        return getAventraCertificates();
+        return service.getAventraCertificates(readerId);
       case 'beid':
-        return getBeIDCertificates();
+        return service.getBeIDCertificates(readerId);
       case 'dnie':
-        return getDNIeCertificates();
+        return service.getDNIeCertificates(readerId);
       case 'luxeid':
-        return getLuxIDCertificates();
+        return service.getLuxIDCertificates(readerId, pin);
       case 'luxtrust':
-        return getLuxTrustCertificates();
+        return service.getLuxTrustCertificates(readerId);
       case 'oberthur':
-        return getOberthurCertificates();
+        return service.getOberthurCertificates(readerId);
       case 'piv':
-        return getPIVCertificates();
+        return service.getPIVCertificates(readerId);
       case 'pteid':
-        return getPtEidCertificates();
+        return service.getPtEidCertificates(readerId);
       default:
         return Promise.reject('Cannot retrieve certificates');
     }
+  }
 
+  getAventraCertificates(readerId) {
+    return this.Connector.get().aventra(readerId)
+      .allCerts(['root-certificate', 'authentication-certificate', 'signing-certificate']).then(certs => {
+        return {
+          digestAlgoWrapper: 'SHA512',
+          certificates:    [ certs.data.signing_certificate.base64,
+            certs.data.authentication_certificate.base64,
+            certs.data.root_certificate.base64 ],
+          signCertificate: certs.data.signing_certificate.base64
+        };
+      });
+  }
 
-    function getAventraCertificates() {
-      return service.Connector.get().aventra(readerId)
-        .allCerts(['root-certificate', 'authentication-certificate', 'signing-certificate']).then(certs => {
-          return {
-            digestAlgoWrapper: 'SHA512',
-            certificates:    [ certs.data.signing_certificate.base64,
-              certs.data.authentication_certificate.base64,
-              certs.data.root_certificate.base64 ],
-            signCertificate: certs.data.signing_certificate.base64
-          };
-        });
-    }
+  getBeIDCertificates(readerId) {
+    return this.Connector.get().beid(readerId)
+      .allCerts(['root-certificate', 'citizen-certificate', 'non-repudiation-certificate']).then(certs => {
+        return {
+          digestAlgoWrapper: 'SHA512',
+          certificates:    [ certs.data.non_repudiation_certificate.base64,
+            certs.data.citizen_certificate.base64,
+            certs.data.root_certificate.base64 ],
+          signCertificate: certs.data.non_repudiation_certificate.base64
+        };
+      });
+  }
 
-    function getBeIDCertificates() {
-      return service.Connector.get().beid(readerId)
-        .allCerts(['root-certificate', 'citizen-certificate', 'non-repudiation-certificate']).then(certs => {
-          return {
-            digestAlgoWrapper: 'SHA512',
-            certificates:    [ certs.data.non_repudiation_certificate.base64,
-              certs.data.citizen_certificate.base64,
-              certs.data.root_certificate.base64 ],
-            signCertificate: certs.data.non_repudiation_certificate.base64
-          };
-        });
-    }
+  getDNIeCertificates(readerId) {
+    return this.Connector.get().dnie(readerId)
+      .allCerts(['intermediate-certificate', 'authentication-certificate', 'signing-certificate']).then(certs => {
+        return {
+          digestAlgoWrapper: 'SHA512',
+          certificates:    [ certs.data.signing_certificate.base64,
+            certs.data.authentication_certificate.base64,
+            certs.data.intermediate_certificate.base64 ],
+          signCertificate: certs.data.signing_certificate.base64
+        };
+      });
+  }
 
-    function getDNIeCertificates() {
-      return service.Connector.get().dnie(readerId)
-        .allCerts(['intermediate-certificate', 'authentication-certificate', 'signing-certificate']).then(certs => {
-          return {
-            digestAlgoWrapper: 'SHA512',
-            certificates:    [ certs.data.signing_certificate.base64,
-              certs.data.authentication_certificate.base64,
-              certs.data.intermediate_certificate.base64 ],
-            signCertificate: certs.data.signing_certificate.base64
-          };
-        });
-    }
+  getLuxIDCertificates(readerId, pin) {
+    return this.Connector.get().luxeid(readerId, pin)
+      .allCerts({ filter: ['root-certificates', 'non-repudiation-certificate'] }).then(certs => {
+        return {
+          digestAlgoWrapper: 'SHA256',
+          certificates:    [ certs.data.non_repudiation_certificate.base64,
+            certs.data.root_certificates[1].base64,
+            certs.data.root_certificates[0].base64 ],
+          signCertificate: certs.data.non_repudiation_certificate.base64
+        };
+      });
+  }
 
-    function getLuxIDCertificates() {
-      return service.Connector.get().luxeid(readerId, pin)
-        .allCerts({ filter: ['root-certificates', 'non-repudiation-certificate'] }).then(certs => {
-          return {
-            digestAlgoWrapper: 'SHA256',
-            certificates:    [ certs.data.non_repudiation_certificate.base64,
-              certs.data.root_certificates[1].base64,
-              certs.data.root_certificates[0].base64 ],
-            signCertificate: certs.data.non_repudiation_certificate.base64
-          };
-        });
-    }
+  getLuxTrustCertificates(readerId) {
+    return this.Connector.get().luxtrust(readerId)
+      .allCerts({ filter: ['root-certificates', 'signing-certificate'] }).then(certs => {
+        return {
+          digestAlgoWrapper: 'SHA256',
+          certificates:    [ certs.data.signing_certificate.base64,
+            certs.data.root_certificates[1].base64,
+            certs.data.root_certificates[0].base64 ],
+          signCertificate: certs.data.signing_certificate.base64
+        };
+      });
+  }
 
-    function getLuxTrustCertificates() {
-      return service.Connector.get().luxtrust(readerId)
-        .allCerts({ filter: ['root-certificates', 'signing-certificate'] }).then(certs => {
-          return {
-            digestAlgoWrapper: 'SHA256',
-            certificates:    [ certs.data.signing_certificate.base64,
-              certs.data.root_certificates[1].base64,
-              certs.data.root_certificates[0].base64 ],
-            signCertificate: certs.data.signing_certificate.base64
-          };
-        });
-    }
+  getOberthurCertificates(readerId) {
+    return this.Connector.get().oberthur(readerId)
+      .allCerts({ filter: ['root-certificate', 'authentication-certificate', 'signing-certificate'] }).then(certs => {
+        return {
+          digestAlgoWrapper: 'SHA512',
+          certificates:    [ certs.data.signing_certificate.base64,
+            certs.data.authentication_certificate.base64,
+            certs.data.root_certificate.base64 ],
+          signCertificate: certs.data.signing_certificate.base64
+        };
+      });
+  }
 
-    function getOberthurCertificates() {
-      return service.Connector.get().oberthur(readerId)
-        .allCerts({ filter: ['root-certificate', 'authentication-certificate', 'signing-certificate'] }).then(certs => {
-          return {
-            digestAlgoWrapper: 'SHA512',
-            certificates:    [ certs.data.signing_certificate.base64,
-              certs.data.authentication_certificate.base64,
-              certs.data.root_certificate.base64 ],
-            signCertificate: certs.data.signing_certificate.base64
-          };
-        });
-    }
+  getPIVCertificates(readerId) {
+    return this.Connector.get().piv(readerId)
+      .allCerts({ filter: ['authentication-certificate', 'signing-certificate'] }).then(certs => {
+        return {
+          digestAlgoWrapper: 'SHA512',
+          certificates:    [ certs.data.signing_certificate.base64,
+            certs.data.authentication_certificate.base64 ],
+          signCertificate: certs.data.signing_certificate.base64
+        };
+      });
+  }
 
-    function getPIVCertificates() {
-      return service.Connector.get().piv(readerId)
-        .allCerts({ filter: ['authentication-certificate', 'signing-certificate'] }).then(certs => {
-          return {
-            digestAlgoWrapper: 'SHA512',
-            certificates:    [ certs.data.signing_certificate.base64,
-              certs.data.authentication_certificate.base64 ],
-            signCertificate: certs.data.signing_certificate.base64
-          };
-        });
-    }
-
-    function getPtEidCertificates() {
-      return service.Connector.get().pteid(readerId)
-        .allCerts({ filter: ['root_certificate', 'root_non_repudiation_certificate', 'non_repudiation_certificate'] }).then(certs => {
-          return {
-            digestAlgoWrapper: 'SHA256',
-            certificates:    [ certs.data.non_repudiation_certificate.base64,
-              certs.data.root_non_repudiation_certificate.base64,
-              certs.data.root_certificate.base64 ],
-            signCertificate: certs.data.non_repudiation_certificate.base64
-          };
-        });
-    }
-
+  getPtEidCertificates(readerId) {
+    return this.Connector.get().pteid(readerId)
+      .allCerts({ filter: ['root_certificate', 'root_non_repudiation_certificate', 'non_repudiation_certificate'] }).then(certs => {
+        return {
+          digestAlgoWrapper: 'SHA256',
+          certificates:    [ certs.data.non_repudiation_certificate.base64,
+            certs.data.root_non_repudiation_certificate.base64,
+            certs.data.root_certificate.base64 ],
+          signCertificate: certs.data.non_repudiation_certificate.base64
+        };
+      });
   }
 
   getDataForType(args) {
@@ -242,94 +239,93 @@ export class CardService {
     // return object with certificate array and sign certificate
     switch (container) {
       case 'aventra':
-        return getAventraSigner();
+        return service.getAventraSigner();
       case 'beid':
-        return getBeIDSigner();
+        return service.getBeIDSigner(readerId);
       case 'dnie':
-        return getDNIeSigner();
+        return service.getDNIeSigner(readerId);
       case 'luxeid':
-        return getLuxIDSigner();
+        return service.getLuxIDSigner(readerId, pin);
       case 'luxtrust':
-        return getLuxTrustSigner();
+        return service.getLuxTrustSigner();
       case 'oberthur':
-        return getOberthurSigner();
+        return service.getOberthurSigner();
       case 'piv':
-        return getPIVSigner();
+        return service.getPIVSigner(readerId, pin);
       case 'pteid':
-        return getPtEidSigner();
+        return service.getPtEidSigner(readerId);
       default:
         return Promise.reject('Cannot retrieve certificates');
     }
+  }
 
-    function getAventraSigner() {
-      // TODO retrieve name from signing certificate?
-      return Promise.resolve('Signed with Aventra card');
-    }
+  getAventraSigner() {
+    // TODO retrieve name from signing certificate?
+    return Promise.resolve('Signed with Aventra card');
+  }
 
-    function getBeIDSigner() {
-      return service.Connector.get().beid(readerId).rnData().then(rnData => {
-        return rnData.data.first_names.split(' ', 1) + ' ' + rnData.data.name;
-      });
-    }
+  getBeIDSigner(readerId) {
+    return this.Connector.get().beid(readerId).rnData().then(rnData => {
+      return rnData.data.first_names.split(' ', 1) + ' ' + rnData.data.name;
+    });
+  }
 
-    function getDNIeSigner() {
-      return service.Connector.get().dnie(readerId).info().then(info => {
-        return info.data.firstName + ' ' + info.data.firstLastName;
-      });
-    }
+  getDNIeSigner(readerId) {
+    return this.Connector.get().dnie(readerId).info().then(info => {
+      return info.data.firstName + ' ' + info.data.firstLastName;
+    });
+  }
 
+  getLuxIDSigner(readerId, pin) {
+    return this.Connector.get().luxeid(readerId, pin).biometric().then(biometric => {
+      return biometric.data.firstName + ' ' + biometric.data.lastName;
+    });
+  }
 
-    function getLuxIDSigner() {
-      return service.Connector.get().luxeid(readerId, pin).biometric().then(biometric => {
-        return biometric.data.firstName + ' ' + biometric.data.lastName;
-      });
-    }
+  getLuxTrustSigner() {
+    // TODO retrieve name from signing certificate?
+    return Promise.resolve('Signed with LuxTrust card');
+  }
 
-    function getLuxTrustSigner() {
-      // TODO retrieve name from signing certificate?
-      return Promise.resolve('Signed with LuxTrust card');
-    }
+  getOberthurSigner() {
+    // TODO retrieve name from signing certificate?
+    return Promise.resolve('Signed with Oberthur card');
+  }
 
-    function getOberthurSigner() {
-      // TODO retrieve name from signing certificate?
-      return Promise.resolve('Signed with Oberthur card');
-    }
+  getPIVSigner(readerId, pin) {
+    return this.Connector.get().piv(readerId).printedInformation({ pin }).then(info => {
+      if (info.data && info.data.name && info.data.name.length) {
+        return info.data.name;
+      } else {
+        return Promise.resolve('Signed with PIV card');
+      }
+    });
+  }
 
-    function getPIVSigner() {
-      return service.Connector.get().piv(readerId).printedInformation({ pin }).then(info => {
-        if (info.data && info.data.name && info.data.name.length) {
-          return info.data.name;
-        } else {
-          return Promise.resolve('Signed with PIV card');
-        }
-      });
-    }
-
-    function getPtEidSigner() {
-      return service.Connector.get().pteid(readerId).idData().then(idData => {
-        return idData.data.name + ' ' + idData.data.surname;
-      });
-    }
+  getPtEidSigner(readerId) {
+    return this.Connector.get().pteid(readerId).idData().then(idData => {
+      return idData.data.name + ' ' + idData.data.surname;
+    });
   }
 
 
   signDocument(documentId, readerId, pin) {
     const service = this;
     return new Promise((resolve, reject) => {
-      service.determineType(readerId, pin).then(service.getDataForType).then(function(signData) {
+      service.determineType(readerId, pin).then((res) => service.getDataForType(res)).then((signData) => {
         signData.docId = documentId;
         return Promise.resolve(signData)
-          .then(service.dataToSign)
-          .then(function (dataToSign) {
-            return Promise.resolve({ readerId: readerId, pin: pin, dataToSign: dataToSign });
+          .then((res) => service.dataToSign(res))
+          .then( (dataToSign) => {
+            return Promise.resolve({ readerId: readerId, pin, dataToSign: dataToSign });
           })
-          .then(service.signWithConnector)
-          .then(function (signedData) {
+          .then((res) => service.signWithConnector(res))
+          .then((signedData) => {
             signData.signedData = signedData;
             return Promise.resolve(signData);
           })
-          .then(service.workflowSign)
-          .then(function () { resolve(); });
+          .then((res) => service.workflowSign(res))
+          .then(() => { resolve(); });
       }).catch(err => { reject(err); });
 
     });
@@ -337,7 +333,7 @@ export class CardService {
 
   // Needs proxy
   dataToSign(signData) {
-    return this.http.post('api/cards/datatosign', signData).toPromise().then(function (res: any) { return res.data; });
+    return this.http.post('api/cards/datatosign', signData).toPromise();
   }
 
   signWithConnector (inputObj) {
@@ -349,25 +345,15 @@ export class CardService {
 
   // Needs proxy
   workflowSign(signData) {
-    return this.http.post('api/cards/sign', signData).toPromise().then(function (res: any) { return res.data; });
+    return this.http.post('api/cards/sign', signData).toPromise();
   }
 
-  openPinModalForReader(readerId) {
-    const svc = this;
-    // Analytics.trackEvent('button', 'click', 'PIN check clicked');
+  downloadDocument(documentName) {
+    return this.http.post('api/cards/be/download', { documentName: documentName }, { responseType: 'blob' });
+  }
 
-    this.Connector.core('reader', [readerId]).then(res => {
-      const initialState = {
-        readerId,
-        pinpad: res.data.pinpad
-      };
-      const config = {
-        backdrop: true,
-        ignoreBackdropClick: true,
-        initialState
-      };
-      svc.modalService.show(PinCheckModalComponent, config);
-    });
+  downloadRaw(viewLink) {
+    return this.http.post('api/cards/lux/download', { url: viewLink });
   }
 }
 

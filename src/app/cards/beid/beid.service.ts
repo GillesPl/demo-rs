@@ -34,9 +34,7 @@ export class BeidService {
 
     return Promise.all(promises).then(function (results) {
       const data = service.prepareSummaryData(results[0].data, results[1].data, results[2].data);
-      return service.http.post('api/cards/be/summarytosign', data).toPromise().then(function (res: any) {
-        return res.data;
-      });
+      return service.http.post('api/cards/be/summarytosign', data).toPromise();
     });
   }
 

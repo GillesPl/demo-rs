@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Connector } from '../../../connector.service';
 import { CardService } from '../../card.service';
 import { EventService } from '../../../event.service';
+import { ModalService } from '../../modal.service';
 
 @Component({
   selector: 'app-oberthur-viz',
@@ -17,7 +18,10 @@ export class OberthurVizComponent implements OnInit {
   pinStatus;
   loadingCerts;
 
-  constructor(private Connector: Connector, private cardService: CardService, private eventService: EventService) {
+  constructor(private Connector: Connector,
+              private cardService: CardService,
+              private eventService: EventService,
+              private modalService: ModalService) {
     this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
   }
 
@@ -53,7 +57,7 @@ export class OberthurVizComponent implements OnInit {
   }
 
   checkPin() {
-    this.cardService.openPinModalForReader(this.readerId);
+    this.modalService.openPinModalForReader(this.readerId);
   }
 
   handlePinCheckResult(pinCheck) {

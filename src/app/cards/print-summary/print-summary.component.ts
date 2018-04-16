@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-print-summary',
@@ -6,8 +6,12 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./print-summary.component.less']
 })
 export class PrintSummaryComponent {
-  @Input() printFunction;
+  @Output() onPrint = new EventEmitter();
 
   constructor() { }
+
+  doPrint() {
+    this.onPrint.emit();
+  }
 
 }

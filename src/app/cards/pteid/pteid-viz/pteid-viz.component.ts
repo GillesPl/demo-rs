@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import { CardService } from '../../card.service';
 import { EventService } from '../../../event.service';
 import { PteidService } from '../pteid.service';
+import { ModalService } from '../../modal.service';
 
 @Component({
   selector: 'app-pteid-viz',
@@ -28,6 +29,7 @@ export class PteidVizComponent implements OnInit {
               private Connector: Connector,
               private cardService: CardService,
               private eventService: EventService,
+              private modalService: ModalService,
               private pteid: PteidService) {
     this.eventService.addressPinCheckHandled$.subscribe((results) => this.handleAddressPinCheckResult(results));
     this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
@@ -83,7 +85,7 @@ export class PteidVizComponent implements OnInit {
   }
 
   checkPin() {
-    this.cardService.openPinModalForReader(this.readerId);
+    this.modalService.openPinModalForReader(this.readerId);
   }
 
   handlePinCheckResult(pinCheck) {
@@ -109,35 +111,7 @@ export class PteidVizComponent implements OnInit {
   }
 
   downloadSummary() {
-    // Analytics.trackEvent('button', 'click', 'Print button clicked');
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/summary-download.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       return Connector.core('reader', [controller.readerId]).then(res => {
-    //         return res.data.pinpad;
-    //       })
-    //     },
-    //     needPinToGenerate: () => {
-    //       return false;
-    //     },
-    //     util: () => {
-    //       return PtUtils;
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'SummaryDownloadCtrl',
-    //   size: 'lg'
-    // });
-    //
-    // modal.result.then(function () {
-    //
-    // }, function (err) {
-    //
-    // });
+    this.modalService.openSummaryModalForReader(this.readerId, false, this.pteid);
   }
 
   trackCertificatesClick() {

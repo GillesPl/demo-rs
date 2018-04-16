@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Connector } from '../../../connector.service';
 import { ApiService } from '../../../api.service';
 import * as _ from 'lodash';
+import { LuxService } from '../lux.service';
+import { ModalService } from '../../modal.service';
 
 @Component({
   selector: 'app-lux-viz',
@@ -29,7 +31,8 @@ export class LuxVizComponent implements OnInit {
   rootCerts;
   loadingCerts;
 
-  constructor(private API: ApiService, private Connector: Connector) { }
+  constructor(private API: ApiService, private Connector: Connector,
+              private lux: LuxService, private modalService: ModalService) { }
 
   ngOnInit() {
     const comp = this;
@@ -48,38 +51,13 @@ export class LuxVizComponent implements OnInit {
   }
 
 
-  submitPin() {
+  submitPin(pincode) {
     this.needPin = false;
-    this.getAllData(this.pincode.value);
+    this.getAllData(pincode);
   }
 
   downloadSummary() {
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/summary-download.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       return controller.pinpad;
-    //     },
-    //     needPinToGenerate: () => {
-    //       return true;
-    //     },
-    //     util: () => {
-    //       return LuxUtils;
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'SummaryDownloadCtrl',
-    //   size: 'lg'
-    // });
-    //
-    // modal.result.then(function () {
-    //
-    // }, function (err) {
-    //
-    // });
+    this.modalService.openSummaryModalForReader(this.readerId, true, this.lux);
   }
 
   toggleCerts() {

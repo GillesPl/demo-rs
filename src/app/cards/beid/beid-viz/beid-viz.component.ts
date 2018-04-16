@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Connector } from '../../../connector.service';
 import { EventService } from '../../../event.service';
 import { CardService } from '../../card.service';
+import { BeidService } from '../beid.service';
+import { ModalService } from '../../modal.service';
 
 @Component({
   selector: 'app-beid-viz',
@@ -20,7 +22,9 @@ export class BeidVizComponent implements OnInit {
   loadingCerts: boolean;
   isCollapsed = true;
 
-  constructor(private Connector: Connector, private eventService: EventService, private cardService: CardService) {
+  constructor(private beid: BeidService, private Connector: Connector,
+              private eventService: EventService,
+              private cardService: CardService, private modalService: ModalService) {
     this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
   }
 
@@ -56,7 +60,7 @@ export class BeidVizComponent implements OnInit {
   }
 
   checkPin() {
-    this.cardService.openPinModalForReader(this.readerId);
+    this.modalService.openPinModalForReader(this.readerId);
   }
 
   handlePinCheckResult(pinCheck) {
@@ -82,37 +86,7 @@ export class BeidVizComponent implements OnInit {
   }
 
   downloadSummary() {
-    console.log('print function called');
-    const comp = this;
-    // // Analytics.trackEvent('button', 'click', 'Print button clicked');
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/summary-download.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       return Connector.core('reader', [comp.readerId]).then((res) => {
-    //         return res.data.pinpad;
-    //       });
-    //     },
-    //     needPinToGenerate: () => {
-    //       return false;
-    //     },
-    //     util: () => {
-    //       return BeUtils;
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'SummaryDownloadCtrl',
-    //   size: 'lg'
-    // });
-    //
-    // modal.result.then(function () {
-    //
-    // }, function (err) {
-    //
-    // });
+    this.modalService.openSummaryModalForReader(this.readerId, false, this.beid);
   }
 
   trackCertificatesClick() {

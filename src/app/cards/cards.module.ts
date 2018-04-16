@@ -53,6 +53,10 @@ import { MobibContractTableComponent } from './mobib/mobib-contract-table/mobib-
 import { PinCheckModalComponent } from './pin-check-modal/pin-check-modal.component';
 import { KeypadModule } from '../rmc-keypad/keypad.module';
 import { PteidAddressPinModalComponent } from './pteid/pteid-address-pin-modal/pteid-address-pin-modal.component';
+import { DownloadSummaryModalComponent } from './download-summary-modal/download-summary-modal.component';
+import { FileSaverModule } from 'ngx-filesaver';
+import { SummaryService } from './summary.service';
+import { ModalService } from './modal.service';
 
 
 @NgModule({
@@ -62,6 +66,7 @@ import { PteidAddressPinModalComponent } from './pteid/pteid-address-pin-modal/p
     CommonModule,
     CollapseModule.forRoot(),
     ClipboardModule,
+    FileSaverModule,
     FormsModule,
     KeypadModule,
     Ng2FittextModule,
@@ -102,7 +107,8 @@ import { PteidAddressPinModalComponent } from './pteid/pteid-address-pin-modal/p
     MobibTecCardComponent,
     MobibContractTableComponent,
     PinCheckModalComponent,
-    PteidAddressPinModalComponent
+    PteidAddressPinModalComponent,
+    DownloadSummaryModalComponent
   ],
   providers: [
     BeidService,
@@ -112,9 +118,10 @@ import { PteidAddressPinModalComponent } from './pteid/pteid-address-pin-modal/p
     LuxService,
     LuxTrustService,
     MobibService,
+    ModalService,
     OberthurService,
     PivService,
-    PteidService
+    PteidService,
   ],
   exports: [
     BeidVizComponent,
@@ -128,6 +135,6 @@ import { PteidAddressPinModalComponent } from './pteid/pteid-address-pin-modal/p
     PivVizComponent,
     PteidVizComponent,
   ],
-  entryComponents: [ PinCheckModalComponent ]
+  entryComponents: [ PinCheckModalComponent, DownloadSummaryModalComponent ]
 })
 export class CardsModule { }

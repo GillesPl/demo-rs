@@ -36,9 +36,9 @@ export class PivVizComponent implements OnInit {
   }
 
 
-  submitPin() {
+  submitPin(pincode) {
     this.needPin = false;
-    this.getAllData(this.pincode.value);
+    this.getAllData(pincode);
   }
 
   getAllData(pin) {

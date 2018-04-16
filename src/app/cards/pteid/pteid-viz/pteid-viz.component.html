@@ -8,7 +8,7 @@
   <app-pteid-card [idData]="cardData.id" [photo]="photo"></app-pteid-card>
 
   <div class="print-button">
-    <app-print-summary [printFunction]="downloadSummary"></app-print-summary>
+    <app-print-summary (onPrint)="downloadSummary()"></app-print-summary>
   </div>
 
   <div class="additional-info col-sm-12">

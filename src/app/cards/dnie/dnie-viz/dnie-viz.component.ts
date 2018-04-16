@@ -3,6 +3,8 @@ import { Connector } from '../../../connector.service';
 import { BsModalRef } from 'ngx-bootstrap';
 import { CardService } from '../../card.service';
 import { EventService } from '../../../event.service';
+import { ModalService } from '../../modal.service';
+import { DnieService } from '../dnie.service';
 
 @Component({
   selector: 'app-dnie-viz',
@@ -19,7 +21,11 @@ export class DnieVizComponent implements OnInit {
 
   loadingCerts;
 
-  constructor(private Connector: Connector, private cardService: CardService, private eventService: EventService) {
+  constructor(private Connector: Connector,
+              private cardService: CardService,
+              private dnie: DnieService,
+              private eventService: EventService,
+              private modalService: ModalService) {
     this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
   }
 
@@ -58,7 +64,7 @@ export class DnieVizComponent implements OnInit {
   }
 
   checkPin() {
-    this.cardService.openPinModalForReader(this.readerId);
+    this.modalService.openPinModalForReader(this.readerId);
   }
 
   handlePinCheckResult(pinCheck) {
@@ -72,28 +78,7 @@ export class DnieVizComponent implements OnInit {
 
   downloadSummary() {
     // Analytics.trackEvent('button', 'click', 'Print button clicked');
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/summary-download.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       return Connector.core('reader', [controller.readerId]).then(res => {
-    //         return res.data.pinpad;
-    //       })
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'BeIDSummaryDownloadCtrl',
-    //   size: 'lg'
-    // });
-    //
-    // modal.result.then(function () {
-    //
-    // }, function (err) {
-    //
-    // });
+    this.modalService.openSummaryModalForReader(this.readerId, false, this.dnie);
   }
 
   trackCertificatesClick() {
