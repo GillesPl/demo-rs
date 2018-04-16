@@ -3,6 +3,7 @@ import { Connector } from '../../../connector.service';
 import { CardService } from '../../card.service';
 import { EventService } from '../../../event.service';
 import { ModalService } from '../../modal.service';
+import { OberthurService } from '../oberthur.service';
 
 @Component({
   selector: 'app-oberthur-viz',
@@ -21,7 +22,8 @@ export class OberthurVizComponent implements OnInit {
   constructor(private Connector: Connector,
               private cardService: CardService,
               private eventService: EventService,
-              private modalService: ModalService) {
+              private modalService: ModalService,
+              private oberthur: OberthurService) {
     this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
   }
 
@@ -70,33 +72,7 @@ export class OberthurVizComponent implements OnInit {
   }
 
   sign() {
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/xml-download.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       // Oberthur cards can have very long pins, incompatible with pin card readers
-    //       return false;
-    //     },
-    //     needPinToGenerate: () => {
-    //       return false;
-    //     },
-    //     util: () => {
-    //       return OberthurUtils;
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'XMLDownloadCtrl',
-    //   size: 'lg'
-    // });
-    //
-    // modal.result.then(function () {
-    //
-    // }, function (err) {
-    //
-    // });
+    this.modalService.openXmlModalForReader(this.readerId, false, this.oberthur);
   }
 
   trackCertificatesClick() {

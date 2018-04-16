@@ -55,8 +55,9 @@ import { KeypadModule } from '../rmc-keypad/keypad.module';
 import { PteidAddressPinModalComponent } from './pteid/pteid-address-pin-modal/pteid-address-pin-modal.component';
 import { DownloadSummaryModalComponent } from './download-summary-modal/download-summary-modal.component';
 import { FileSaverModule } from 'ngx-filesaver';
-import { SummaryService } from './summary.service';
 import { ModalService } from './modal.service';
+import { DownloadXmlModalComponent } from './download-xml-modal/download-xml-modal.component';
+import { ChallengeModalComponent } from './ocra/challenge-modal/challenge-modal.component';
 
 
 @NgModule({
@@ -108,7 +109,9 @@ import { ModalService } from './modal.service';
     MobibContractTableComponent,
     PinCheckModalComponent,
     PteidAddressPinModalComponent,
-    DownloadSummaryModalComponent
+    DownloadSummaryModalComponent,
+    DownloadXmlModalComponent,
+    ChallengeModalComponent
   ],
   providers: [
     BeidService,
@@ -135,6 +138,7 @@ import { ModalService } from './modal.service';
     PivVizComponent,
     PteidVizComponent,
   ],
-  entryComponents: [ PinCheckModalComponent, DownloadSummaryModalComponent ]
+  entryComponents: [ ChallengeModalComponent, PinCheckModalComponent,
+    DownloadSummaryModalComponent, DownloadXmlModalComponent ]
 })
 export class CardsModule { }

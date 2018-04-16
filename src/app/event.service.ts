@@ -19,6 +19,10 @@ export class PinCheckEvent {
   constructor(public result: any, public error: boolean, public cancelled: boolean) {}
 }
 
+export class ChallengeEvent {
+  constructor(public result: any, public error: boolean, public cancelled: boolean) {}
+}
+
 @Injectable()
 export class EventService {
   public adminPanelClosed$: EventEmitter<Event>;
@@ -30,6 +34,7 @@ export class EventService {
   public gclInstalled$: EventEmitter<Event>;
   public networkError$: EventEmitter<Event>;
   public addressPinCheckHandled$: EventEmitter<PinCheckEvent>;
+  public challengeHandled$: EventEmitter<ChallengeEvent>;
   public pinCheckHandled$: EventEmitter<PinCheckEvent>;
   public readerSelected$: EventEmitter<ReaderEvent>;
   public readersWithCards$: EventEmitter<ReaderEvent>;
@@ -51,6 +56,7 @@ export class EventService {
     this.gclInstalled$ = new EventEmitter();
     this.networkError$ = new EventEmitter();
     this.addressPinCheckHandled$ = new EventEmitter<PinCheckEvent>();
+    this.challengeHandled$ = new EventEmitter<ChallengeEvent>();
     this.pinCheckHandled$ = new EventEmitter<PinCheckEvent>();
     this.readerSelected$ = new EventEmitter();
     this.readersWithCards$ = new EventEmitter();
@@ -65,6 +71,10 @@ export class EventService {
 
   public addressPinCheckHandled(result: any, error?: boolean, cancelled?: boolean) {
     this.addressPinCheckHandled$.emit(new PinCheckEvent(result, error || false, cancelled || false));
+  }
+
+  public challengeHandled(result, error?: boolean, cancelled?: boolean) {
+    this.challengeHandled$.emit(new ChallengeEvent(result, error || false, cancelled || false));
   }
 
   public closeAdminPanel() {

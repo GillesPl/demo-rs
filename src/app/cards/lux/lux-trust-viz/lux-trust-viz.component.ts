@@ -71,32 +71,7 @@ export class LuxTrustVizComponent implements OnInit {
   }
 
   sign() {
-    // let modal = $uibModal.open({
-    //   templateUrl: "views/readmycards/modals/xml-download.html",
-    //   resolve: {
-    //     readerId: () => {
-    //       return controller.readerId
-    //     },
-    //     pinpad: () => {
-    //       return controller.pinpad;
-    //     },
-    //     needPinToGenerate: () => {
-    //       return false;
-    //     },
-    //     util: () => {
-    //       return LuxTrustUtils;
-    //     }
-    //   },
-    //   backdrop: 'static',
-    //   controller: 'XMLDownloadCtrl',
-    //   size: 'lg'
-    // });
-    //
-    // modal.result.then(function () {
-    //
-    // }, function (err) {
-    //
-    // });
+    this.modalService.openXmlModalForReader(this.readerId, false, this.luxTrust);
   }
 
   toggleCerts() {

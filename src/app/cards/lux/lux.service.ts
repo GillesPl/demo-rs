@@ -60,9 +60,7 @@ export class LuxService {
 
 
   generateXMLToSign(readerId) {
-    return this.http.post('api/cards/lux/xmltosign', undefined).toPromise().then((res: any) => {
-      return res.data;
-    });
+    return this.http.post('api/cards/lux/xmltosign', undefined).toPromise();
   }
 
   generateSummaryToSign(readerId, pin) {
@@ -82,9 +80,7 @@ export class LuxService {
         } else {
           data = service.prepareSummaryData(results.data.biometric, converted[0].data.base64Pic, null);
         }
-        return service.http.post('api/cards/lux/summarytosign', data).toPromise().then((res: any) => {
-          return res.data;
-        });
+        return service.http.post('api/cards/lux/summarytosign', data).toPromise();
       }, error => {
         // TODO handle conversion failure
       });

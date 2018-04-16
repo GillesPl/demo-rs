@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Connector} from '../connector.service';
 import {EventService} from '../event.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-log-info',
@@ -20,7 +21,8 @@ export class LogInfoComponent implements OnInit {
 
   getData() {
     this.Connector.plugin('admin', 'getLogfileList').then(res => {
-        this.info = res.data;
+      console.log(res.data);
+      this.info = _.reverse(res.data);
     });
   }
 

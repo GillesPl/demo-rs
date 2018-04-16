@@ -8,9 +8,7 @@ export class OberthurService {
 
   generateXMLToSign() {
     // TODO update urls
-    return this.http.post('api/cards/lux/xmltosign', undefined).toPromise().then((res: any) => {
-      return res.data;
-    });
+    return this.http.post('api/cards/lux/xmltosign', undefined).toPromise();
   }
 
 }

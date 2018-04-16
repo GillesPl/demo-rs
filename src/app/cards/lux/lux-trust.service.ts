@@ -13,14 +13,10 @@ export class LuxTrustService {
       printedBy: '@@name v@@version'
     };
 
-    return this.http.post('api/cards/luxtrust/summarytosign', data).toPromise().then((res: any) => {
-      return res.data;
-    });
+    return this.http.post('api/cards/luxtrust/summarytosign', data).toPromise();
   }
 
   generateXMLToSign(readerId) {
-    return this.http.post('api/cards/lux/xmltosign', undefined).toPromise().then((res: any) => {
-      return res.data;
-    });
+    return this.http.post('api/cards/lux/xmltosign', undefined).toPromise();
   }
 }
