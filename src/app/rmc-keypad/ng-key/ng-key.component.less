@@ -1,0 +1,68 @@
+@import "../../../variables";
+
+.t1t-keypad-key {
+  font-size: 2em;
+  float: left;
+  text-align: center;
+  height: 63px;
+  width: 33.33333%;
+  background: white;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 5px 0;
+
+  &.keypad-cancel {
+    a {
+      color: white !important;
+      background: @brand-danger;
+      border: 1px solid darken(spin(@brand-danger, -10), 20%);
+
+      &:hover {
+        color: @brand-danger !important;
+        background: lighten(spin(@brand-danger, -10), 30%);
+        border: 1px solid @brand-danger;
+      }
+    }
+  }
+
+  &.keypad-ok {
+    a {
+      background: @brand-success;
+      color: white !important;
+      border: 1px solid darken(spin(@brand-success, -10), 20%);
+
+      &:hover {
+        color: @brand-success !important;
+        background: lighten(spin(@brand-success, -10), 30%);
+        border: 1px solid @brand-success;
+      }
+    }
+  }
+
+  a {
+    cursor: pointer;
+    display: block;
+    line-height: 60px;
+    font-family: 'Open Sans', sans-serif;
+    color: @brand-primary;
+    font-size: 1em;
+    -webkit-font-smoothing: antialiased;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 0 20px;
+    border-radius: 5px;
+    background: lighten(@brand-primary, 50%);
+    border: 1px solid @brand-primary;
+
+    &:hover {
+      color: @brand-primary;
+      background: lighten(spin(@brand-primary, -10), 30%);
+      border: 1px solid @brand-primary;
+    }
+  }
+}

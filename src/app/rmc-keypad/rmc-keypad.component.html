@@ -4,11 +4,11 @@
     <div class="form-group">
       <div class="col-sm-8 col-sm-offset-2">
         <input id="pinCode" name="pinCode" type="password" class="keypad-display" [(ngModel)]="pincode" autocomplete="off"/>
-        <app-ng-keypad>
-          <app-ng-key *ngFor="let key of keys" (keyPressed)="onKeyPressed($event)" [ngKeyData]="key">{{key}}</app-ng-key>
-          <app-ng-key class="keypad-cancel" (keyPressed)="onKeyPressed($event)" [ngKeyData]="'<'">C</app-ng-key>
-          <app-ng-key [ngKeyData]="'0'" (keyPressed)="onKeyPressed($event)">0</app-ng-key>
-          <app-ng-key class="keypad-ok" (keyPressed)="onKeyPressed($event)" [ngKeyData]="'>'">OK</app-ng-key>
+        <app-ng-keypad class="t1t-keypad">
+          <app-ng-key class="t1t-keypad-key" *ngFor="let key of keys" (keyPressed)="onKeyPressed($event)" [ngKeyData]="key">{{key}}</app-ng-key>
+          <app-ng-key class="t1t-keypad-key keypad-cancel" (keyPressed)="onKeyPressed($event)" [ngKeyData]="'<'">C</app-ng-key>
+          <app-ng-key class="t1t-keypad-key" [ngKeyData]="'0'" (keyPressed)="onKeyPressed($event)">0</app-ng-key>
+          <app-ng-key class="t1t-keypad-key keypad-ok" (keyPressed)="onKeyPressed($event)" [ngKeyData]="'>'">OK</app-ng-key>
         </app-ng-keypad>
       </div>
     </div>
