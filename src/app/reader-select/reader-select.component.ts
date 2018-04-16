@@ -22,7 +22,7 @@ export class ReaderSelectComponent implements OnInit {
 
 
   onReadersWithCards(readers) {
-    if (readers.data.length !== this.readers.lenth) {
+    if (readers.data.length !== this.readers.length) {
       this.readers = readers.data;
       _.forEach(this.readers, reader => {
         this.cardService.detectCardTypeName(reader.id, reader.card).then(name => {

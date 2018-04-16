@@ -34,7 +34,6 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('input changed');
     if (changes.readerId && changes.readerId.currentValue !== this.currentReaderId) {
       // store new ID for future checks
       this.currentReaderId = changes.readerId.currentValue;
