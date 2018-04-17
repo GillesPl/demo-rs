@@ -4,6 +4,7 @@ import { EventService } from '../../../event.service';
 import { CardService } from '../../card.service';
 import { BeidService } from '../beid.service';
 import { ModalService } from '../../modal.service';
+import { Angulartics2 } from 'angulartics2';
 
 @Component({
   selector: 'app-beid-viz',
@@ -22,9 +23,12 @@ export class BeidVizComponent implements OnInit {
   loadingCerts: boolean;
   isCollapsed = true;
 
-  constructor(private beid: BeidService, private Connector: Connector,
+  constructor(private angulartics2: Angulartics2,
+              private beid: BeidService,
+              private Connector: Connector,
               private eventService: EventService,
-              private cardService: CardService, private modalService: ModalService) {
+              private cardService: CardService,
+              private modalService: ModalService) {
     this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
   }
 
@@ -42,18 +46,30 @@ export class BeidVizComponent implements OnInit {
           { order: 2, certificate: res.data.root_certificate.base64 },
         ]
       };
-      // Analytics.trackEvent('beid', 'cert-check', 'Start certificate check');
+      comp.angulartics2.eventTrack.next({
+        action: 'cert-check',
+        properties: { category: 'beid', label: 'Start certificate check'}
+      });
       comp.Connector.ocv('validateCertificateChain', [validationReq]).then(validationRes => {
         if (validationRes.crlResponse && validationRes.crlResponse.status &&
           validationRes.ocspResponse && validationRes.ocspResponse.status) {
-          // Analytics.trackEvent('beid', 'cert-valid', 'Certificates are valid');
+          comp.angulartics2.eventTrack.next({
+            action: 'cert-valid',
+            properties: { category: 'beid', label: 'Certificates are valid'}
+          });
           comp.certStatus = 'valid';
         } else {
-          // Analytics.trackEvent('beid', 'cert-invalid', 'Certificates are not valid');
+          comp.angulartics2.eventTrack.next({
+            action: 'cert-invalid',
+            properties: { category: 'beid', label: 'Certificates are not valid'}
+          });
           comp.certStatus = 'invalid';
         }
       }, () => {
-        // Analytics.trackEvent('beid', 'cert-error', 'Error occurred while checking certificate validity');
+        comp.angulartics2.eventTrack.next({
+          action: 'cert-error',
+          properties: { category: 'beid', label: 'Error occured while checking certificate validity'}
+        });
         comp.certStatus = 'error';
       });
     });
@@ -64,12 +80,15 @@ export class BeidVizComponent implements OnInit {
   }
 
   handlePinCheckResult(pinCheck) {
-    this.pinStatus = CardService.determinePinModalResult(pinCheck, 'beid');
+    this.pinStatus = this.cardService.determinePinModalResult(pinCheck, 'beid');
   }
 
   toggleCerts() {
     const comp = this;
-    // Analytics.trackEvent('button', 'click', 'Extended info clicked');
+    comp.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'Extended info clicked'}
+    });
     if (!comp.isCollapsed) {
       // comp.certData = undefined;
       comp.isCollapsed = true;
@@ -90,7 +109,10 @@ export class BeidVizComponent implements OnInit {
   }
 
   trackCertificatesClick() {
-    // Analytics.trackEvent('button', 'click', 'Click on certificates feature');
+    this.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'Click on certificates feature'}
+    });
   }
 
 }

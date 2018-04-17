@@ -5,6 +5,7 @@ import { CardService } from '../../card.service';
 import { EventService } from '../../../event.service';
 import { ModalService } from '../../modal.service';
 import { DnieService } from '../dnie.service';
+import { Angulartics2 } from 'angulartics2';
 
 @Component({
   selector: 'app-dnie-viz',
@@ -21,7 +22,8 @@ export class DnieVizComponent implements OnInit {
 
   loadingCerts;
 
-  constructor(private Connector: Connector,
+  constructor(private angulartics2: Angulartics2,
+              private Connector: Connector,
               private cardService: CardService,
               private dnie: DnieService,
               private eventService: EventService,
@@ -47,17 +49,29 @@ export class DnieVizComponent implements OnInit {
           { 'order': 2, certificate: res.data.intermediate_certificate.base64 },
         ]
       };
-      // Analytics.trackEvent('dnie', 'cert-check', 'Start certificate check');
+      comp.angulartics2.eventTrack.next({
+        action: 'cert-check',
+        properties: { category: 'dnie', label: 'Start certificate check'}
+      });
       comp.Connector.ocv('validateCertificateChain', [validationReq]).then(valRes => {
         if (valRes.crlResponse && valRes.crlResponse.status && valRes.ocspResponse && res.ocspResponse.status) {
-          // Analytics.trackEvent('dnie', 'cert-valid', 'Certificates are valid');
+          comp.angulartics2.eventTrack.next({
+            action: 'cert-valid',
+            properties: { category: 'dnie', label: 'Certificates are valid'}
+          });
           comp.certStatus = 'valid';
         } else {
-          // Analytics.trackEvent('dnie', 'cert-invalid', 'Certificates are not valid');
+          comp.angulartics2.eventTrack.next({
+            action: 'cert-invalid',
+            properties: { category: 'dnie', label: 'Certificates are not valid'}
+          });
           comp.certStatus = 'invalid';
         }
       }, () => {
-        // Analytics.trackEvent('dnie', 'cert-error', 'Error occurred while checking certificate validity');
+        comp.angulartics2.eventTrack.next({
+          action: 'cert-error',
+          properties: { category: 'dnie', label: 'Error occurred while checking certificate validity'}
+        });
         comp.certStatus = 'error';
       });
     });
@@ -68,21 +82,30 @@ export class DnieVizComponent implements OnInit {
   }
 
   handlePinCheckResult(pinCheck) {
-    this.pinStatus = CardService.determinePinModalResult(pinCheck, 'dnie');
+    this.pinStatus = this.cardService.determinePinModalResult(pinCheck, 'dnie');
   }
 
   toggleCerts() {
-    // Analytics.trackEvent('button', 'click', 'Extended info clicked');
+    this.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'Extended info clicked'}
+    });
     this.isCollapsed = !this.isCollapsed;
   }
 
   downloadSummary() {
-    // Analytics.trackEvent('button', 'click', 'Print button clicked');
+    this.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'Print button clicked' }
+    });
     this.modalService.openSummaryModalForReader(this.readerId, false, this.dnie);
   }
 
   trackCertificatesClick() {
-    // Analytics.trackEvent('button', 'click', 'Click on certificates feature');
+    this.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'Click on certificates feature'}
+    });
   }
 
 }

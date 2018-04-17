@@ -3,17 +3,20 @@ import {Connector} from '../connector.service';
 import * as _ from 'lodash';
 import {HttpClient} from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap';
+import { Angulartics2 } from 'angulartics2';
 
 @Injectable()
 export class CardService {
 
-  constructor(private Connector: Connector, private http: HttpClient, private modalService: BsModalService) {}
+  constructor(private angulartics2: Angulartics2,
+              private Connector: Connector,
+              private http: HttpClient) {}
 
-  static determinePinModalResult(pinCheck, cardType) {
+  determinePinModalResult(pinCheck, cardType) {
     // check if the request was cancelled, if it was, we don't need to do anything
     if (!pinCheck.cancelled) {
       if (pinCheck.error) {
-        // Analytics.trackEvent(cardType, 'pin-incorrect', 'Incorrect PIN entered');
+        this.angulartics2.eventTrack.next({ action: 'pin-incorrect', properties: { category: cardType, label: 'Incorrect PIN entered'} });
         switch (pinCheck.result.code) {
           case 111:
             return '4remain';
@@ -24,14 +27,15 @@ export class CardService {
           case 104:
             return '1remain';
           case 105:
-            // Analytics.trackEvent(cardType, 'pin-blocked', 'Card blocked; too many incorrect attempts');
+            this.angulartics2.eventTrack.next({ action: 'pin-blocked',
+              properties: { category: cardType, label: 'Card blocked; too many incorrect attempts'} });
             return 'blocked';
           case 109:
             // cancelled on reader
             return 'cancelled';
         }
       } else {
-        // Analytics.trackEvent(cardType, 'pin-correct', 'Correct PIN entered');
+        this.angulartics2.eventTrack.next({ action: 'pin-correct', properties: { category: cardType, label: 'Correct PIN entered'} });
         return 'valid';
       }
     }

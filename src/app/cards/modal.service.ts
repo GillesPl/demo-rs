@@ -5,15 +5,19 @@ import { BsModalService } from 'ngx-bootstrap';
 import { Connector } from '../connector.service';
 import { DownloadXmlModalComponent } from './download-xml-modal/download-xml-modal.component';
 import { ChallengeModalComponent } from './ocra/challenge-modal/challenge-modal.component';
+import { Angulartics2 } from 'angulartics2';
 
 @Injectable()
 export class ModalService {
 
-  constructor(private Connector: Connector, private modalService: BsModalService) { }
+  constructor(private angulartics2: Angulartics2, private Connector: Connector, private modalService: BsModalService) { }
 
   openChallengeModalForReader(readerId) {
     const svc = this;
-    // Analytics.trackEvent('button', 'click', 'Challenge clicked');
+    svc.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'Challenge clicked'}
+    });
 
     this.Connector.core('reader', [readerId]).then(res => {
       const initialState = {
@@ -31,7 +35,10 @@ export class ModalService {
 
   openPinModalForReader(readerId) {
     const svc = this;
-    // Analytics.trackEvent('button', 'click', 'PIN check clicked');
+    svc.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'PIN check clicked'}
+    });
 
     this.Connector.core('reader', [readerId]).then(res => {
       const initialState = {

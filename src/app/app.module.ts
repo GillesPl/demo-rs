@@ -33,8 +33,17 @@ import { ClipboardModule } from 'ngx-clipboard/dist';
 import { CardsModule } from './cards/cards.module';
 import { CollapseModule } from 'ngx-bootstrap';
 import { KeypadModule } from './rmc-keypad/keypad.module';
+import { Angulartics2RouterlessModule } from 'angulartics2/routerlessmodule';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { Angulartics2Module } from 'angulartics2';
+import { RouterModule, Routes } from '@angular/router';
 
 const locale = localStorage.getItem('rmc-locale');
+
+// Use of router is required by Angulartics2
+const ROUTES: Routes = [
+  { path: '', component: AppComponent }
+];
 
 
 @NgModule({
@@ -60,6 +69,7 @@ const locale = localStorage.getItem('rmc-locale');
     CardVisualizerComponent,
   ],
   imports: [
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
     Angular2FontawesomeModule,
     BrowserModule,
     CardsModule,
@@ -69,7 +79,8 @@ const locale = localStorage.getItem('rmc-locale');
     HttpClientModule,
     KeypadModule,
     ModalModule.forRoot(),
-    TooltipModule.forRoot(),
+    RouterModule.forRoot(ROUTES),
+    TooltipModule.forRoot()
   ],
   providers: [
     { provide: LOCALE_ID, useValue: locale },

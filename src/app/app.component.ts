@@ -3,6 +3,8 @@ import {Connector} from './connector.service';
 import * as _ from 'lodash';
 import {EventService} from './event.service';
 import {RMC} from './rmc.service';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { Angulartics2 } from 'angulartics2';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +31,11 @@ export class AppComponent implements OnInit {
 
   private pollIterations = 0;
 
-  constructor(private Connector: Connector, private eventService: EventService, private RMC: RMC) {
+  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
+              private angulartics2: Angulartics2,
+              private Connector: Connector,
+              private eventService: EventService,
+              private RMC: RMC) {
     this.eventService.adminPanelOpened$.subscribe(() => this.onAdminPanelOpened());
     this.eventService.faqOpened$.subscribe(() => this.onFaqOpened());
     this.eventService.gclInstalled$.subscribe(() => this.onGclInstalled());
@@ -100,7 +106,10 @@ export class AppComponent implements OnInit {
 
   onGclInstalled() {
     const controller = this;
-    // Analytics.trackEvent('T1C', 'install', 'Trust1Connector installed');
+    this.angulartics2.eventTrack.next({
+      action: 'install',
+      properties: { category: 'T1C', label: 'Trust1Connector installed'}
+    });
     this.Connector.init(this.Connector.generateConfig()).then(() => {
       controller.gclAvailable = true;
       this.pollForReaders();
@@ -191,7 +200,10 @@ export class AppComponent implements OnInit {
       } else {
         controller.readers = result.data;
         controller.pollingReaders = false;
-        // Analytics.trackEvent('reader', 'connect', 'Reader connected: ' + _.join(_.map(controller.readers, 'name'), ','));
+        controller.angulartics2.eventTrack.next({
+          action: 'connect',
+          properties: { category: 'reader', label: 'Reader connected: ' + _.join(_.map(controller.readers, 'name'), ',')}
+        });
         controller.pollForCard();
       }
     }, function () {
@@ -214,7 +226,10 @@ export class AppComponent implements OnInit {
       } else {
         controller.pollingCard = false;
         controller.pollTimeout = false;
-        // Analytics.trackEvent('card', 'insert', 'Card inserted: ' + result.card.atr);
+        controller.angulartics2.eventTrack.next({
+          action: 'insert',
+          properties: { category: 'card', label: 'Card inserted: ' + result.card.atr }
+        });
         controller.pollIterations = 0;
         // Found a card, attempt to read it
         // Refresh reader list first

@@ -7,11 +7,13 @@ import { HttpClient } from '@angular/common/http';
 import { PteidAddressPinCheckStatusComponent } from './pteid-address-pin-check-status/pteid-address-pin-check-status.component';
 import { BsModalService } from 'ngx-bootstrap';
 import { environment } from '../../../environments/environment';
+import { Angulartics2 } from 'angulartics2';
 
 @Injectable()
 export class PteidService {
 
-  constructor(private API: ApiService,
+  constructor(private angulartics2: Angulartics2,
+              private API: ApiService,
               private Connector: Connector,
               private http: HttpClient,
               private modalService: BsModalService) { }
@@ -74,8 +76,10 @@ export class PteidService {
 
   openAddressPinModalForReader(readerId) {
     const svc = this;
-    // Analytics.trackEvent('button', 'click', 'PIN check clicked');
-
+    svc.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'PIN check clicked'}
+    });
     this.Connector.core('reader', [readerId]).then(res => {
       const initialState = {
         readerId,

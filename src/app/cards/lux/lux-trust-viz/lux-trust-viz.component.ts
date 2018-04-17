@@ -63,7 +63,7 @@ export class LuxTrustVizComponent implements OnInit {
   }
 
   handlePinCheckResult(pinCheck) {
-    this.pinStatus = CardService.determinePinModalResult(pinCheck, 'luxtrust');
+    this.pinStatus = this.cardService.determinePinModalResult(pinCheck, 'luxtrust');
   }
 
   downloadSummary() {

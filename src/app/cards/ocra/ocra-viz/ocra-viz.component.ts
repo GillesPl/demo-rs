@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalService } from '../../modal.service';
 import { EventService } from '../../../event.service';
 import * as _ from 'lodash';
+import { Angulartics2 } from 'angulartics2';
 
 @Component({
   selector: 'app-ocra-viz',
@@ -17,7 +18,9 @@ export class OcraVizComponent implements OnInit {
   formattedChallenge;
   otpResult: { challenge: string, counter: string };
 
-  constructor(private eventService: EventService, private modalService: ModalService) {
+  constructor(private angulartics2: Angulartics2,
+              private eventService: EventService,
+              private modalService: ModalService) {
     this.eventService.challengeHandled$.subscribe((results) => this.handleChallengeResult(results));
   }
 
@@ -33,7 +36,10 @@ export class OcraVizComponent implements OnInit {
     // check if the request was cancelled, if it was, we don't need to do anything
     if (!challengeCheck.cancelled) {
       if (challengeCheck.error) {
-        // Analytics.trackEvent(cardType, 'pin-incorrect', 'Incorrect PIN entered');
+        comp.angulartics2.eventTrack.next({
+          action: 'pin-incorrect',
+          properties: { category: 'ocra', label: 'Incorrect PIN entered'}
+        });
         switch (challengeCheck.result.code) {
           case 111:
             comp.pinStatus = '4remain';
@@ -48,7 +54,10 @@ export class OcraVizComponent implements OnInit {
             comp.pinStatus = '1remain';
             break;
           case 105:
-            // Analytics.trackEvent(cardType, 'pin-blocked', 'Card blocked; too many incorrect attempts');
+            comp.angulartics2.eventTrack.next({
+              action: 'pin-blocked',
+              properties: { category: 'ocra', label: 'Card blocked; too many incorrect attempts'}
+            });
             comp.pinStatus = 'blocked';
             break;
           case 109:
@@ -57,7 +66,10 @@ export class OcraVizComponent implements OnInit {
             break;
         }
       } else {
-        // Analytics.trackEvent(cardType, 'pin-correct', 'Correct PIN entered');
+        comp.angulartics2.eventTrack.next({
+          action: 'pin-correct',
+          properties: { category: 'ocra', label: 'Correct PIN entered'}
+        });
         comp.pinStatus = undefined;
         comp.otpResult = challengeCheck.result;
         const toString = _.padStart(challengeCheck.result.data.toString(), 8, '0');

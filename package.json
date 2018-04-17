@@ -25,6 +25,7 @@
     "@trust1team/t1t-config": "^0.0.1",
     "@trust1team/t1t-log": "^0.0.1",
     "angular2-fontawesome": "^5.2.1",
+    "angulartics2": "4.6.3",
     "blocked": "^1.2.1",
     "bootstrap": "3.3.7",
     "cloudconvert": "^1.1.2",

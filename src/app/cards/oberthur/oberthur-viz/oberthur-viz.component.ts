@@ -4,6 +4,7 @@ import { CardService } from '../../card.service';
 import { EventService } from '../../../event.service';
 import { ModalService } from '../../modal.service';
 import { OberthurService } from '../oberthur.service';
+import { Angulartics2 } from 'angulartics2';
 
 @Component({
   selector: 'app-oberthur-viz',
@@ -19,7 +20,8 @@ export class OberthurVizComponent implements OnInit {
   pinStatus;
   loadingCerts;
 
-  constructor(private Connector: Connector,
+  constructor(private angulartics2: Angulartics2,
+              private Connector: Connector,
               private cardService: CardService,
               private eventService: EventService,
               private modalService: ModalService,
@@ -41,18 +43,29 @@ export class OberthurVizComponent implements OnInit {
         { order: 2, certificate: comp.cardData.root_certificate.base64 }
       ]
     };
-    // Analytics.trackEvent('oberthur', 'cert-check', 'Start certificate check');
+    comp.angulartics2.eventTrack.next({
+      action: 'cert-check',
+      properties: { category: 'oberthur', label: 'Start certificate check'}
+    });
     this.Connector.ocv('validateCertificateChain', [validationReq]).then(res => {
       if (res.crlResponse && res.crlResponse.status && res.ocspResponse && res.ocspResponse.status) {
-        // Analytics.trackEvent('oberthur', 'cert-valid', 'Certificates are valid');
+        comp.angulartics2.eventTrack.next({
+          action: 'cert-valid',
+          properties: { category: 'oberthur', label: 'Certificates are valid'}
+        });
         comp.certStatus = 'valid';
-      }
-      else {
-        // Analytics.trackEvent('oberthur', 'cert-invalid', 'Certificates are not valid');
+      } else {
+        comp.angulartics2.eventTrack.next({
+          action: 'cert-invalid',
+          properties: { category: 'oberthur', label: 'Certificates are not valid'}
+        });
         comp.certStatus = 'invalid';
       }
     }, () => {
-      // Analytics.trackEvent('oberthur', 'cert-error', 'Error occurred while checking certificate validity');
+      comp.angulartics2.eventTrack.next({
+        action: 'cert-error',
+        properties: { category: 'oberthur', label: 'Error occurred while checking certificate validity'}
+      });
       comp.certStatus = 'error';
     });
 
@@ -63,10 +76,14 @@ export class OberthurVizComponent implements OnInit {
   }
 
   handlePinCheckResult(pinCheck) {
-    this.pinStatus = CardService.determinePinModalResult(pinCheck, 'oberthur');
+    this.pinStatus = this.cardService.determinePinModalResult(pinCheck, 'oberthur');
   }
 
   toggleCerts() {
+    this.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'Extended info clicked'}
+    });
     // Analytics.trackEvent('button', 'click', 'Extended info clicked');
     this.doCollapse = !this.doCollapse;
   }
@@ -76,6 +93,9 @@ export class OberthurVizComponent implements OnInit {
   }
 
   trackCertificatesClick() {
-    // Analytics.trackEvent('button', 'click', 'Click on certificates feature');
+    this.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'Click on certificates feature'}
+    });
   }
 }

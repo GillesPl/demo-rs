@@ -29,6 +29,6 @@ export class EmvVizComponent implements OnInit {
   }
 
   handlePinCheckResult(pinCheck) {
-    this.pinStatus = CardService.determinePinModalResult(pinCheck, 'emv');
+    this.pinStatus = this.cardService.determinePinModalResult(pinCheck, 'emv');
   }
 }

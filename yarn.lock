@@ -738,6 +738,12 @@ angular2-fontawesome@^5.2.1:
   version "5.2.1"
   resolved "https://repo.t1t.be/repository/npm-group/angular2-fontawesome/-/angular2-fontawesome-5.2.1.tgz#dcab656b7750b8d119ab2b3b6b4abda1a4ab4a84"
 
+angulartics2@4.6.3:
+  version "4.6.3"
+  resolved "https://repo.t1t.be/repository/npm-group/angulartics2/-/angulartics2-4.6.3.tgz#ec627ef69072cc2ddf5655ae943e96f7d0f8af41"
+  dependencies:
+    tslib "^1.7.1"
+
 ansi-escapes@^3.0.0:
   version "3.1.0"
   resolved "https://repo.t1t.be/repository/npm-group/ansi-escapes/-/ansi-escapes-3.1.0.tgz#f73207bb81207d75fd6c83f125af26eea378ca30"

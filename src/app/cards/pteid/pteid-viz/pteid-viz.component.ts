@@ -6,6 +6,7 @@ import { CardService } from '../../card.service';
 import { EventService } from '../../../event.service';
 import { PteidService } from '../pteid.service';
 import { ModalService } from '../../modal.service';
+import { Angulartics2 } from 'angulartics2';
 
 @Component({
   selector: 'app-pteid-viz',
@@ -25,7 +26,8 @@ export class PteidVizComponent implements OnInit {
   addressInfo;
   isCollapsed;
 
-  constructor(private API: ApiService,
+  constructor(private angulartics2: Angulartics2,
+              private API: ApiService,
               private Connector: Connector,
               private cardService: CardService,
               private eventService: EventService,
@@ -81,7 +83,7 @@ export class PteidVizComponent implements OnInit {
   }
 
   handleAddressPinCheckResult(pinCheck) {
-    this.addressPinStatus = CardService.determinePinModalResult(pinCheck, 'pteid');
+    this.addressPinStatus = this.cardService.determinePinModalResult(pinCheck, 'pteid');
   }
 
   checkPin() {
@@ -89,12 +91,15 @@ export class PteidVizComponent implements OnInit {
   }
 
   handlePinCheckResult(pinCheck) {
-    this.signPinStatus = CardService.determinePinModalResult(pinCheck, 'pteid');
+    this.signPinStatus = this.cardService.determinePinModalResult(pinCheck, 'pteid');
   }
 
   toggleCerts() {
     const comp = this;
-    // Analytics.trackEvent('button', 'click', 'Extended info clicked');
+    comp.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'Extended info clicked'}
+    });
     if (!comp.isCollapsed) {
       // comp.certData = undefined;
       comp.isCollapsed = true;
@@ -115,7 +120,10 @@ export class PteidVizComponent implements OnInit {
   }
 
   trackCertificatesClick() {
-    // Analytics.trackEvent('button', 'click', 'Click on certificates feature');
+    this.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'Click on certificates feature'}
+    });
   }
 
 }
