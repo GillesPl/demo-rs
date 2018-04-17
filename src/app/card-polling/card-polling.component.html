@@ -8,7 +8,7 @@
       <p class="not-recognized-text text-light"
          *ngIf="pollTimeout">
         <span i18n="@@cardNotRecognized">Card not recognized?</span>
-        <span i18n="@@checkCardSupported">Check if it is supported <a class="clickable" (click)="openSidebar()">here</a>.</span>
+        <span class="clickable" (click)="openSidebar()" i18n="@@checkCardSupported">Check if it is supported <a>here</a>.</span>
       </p>
     </div>
   </div>
