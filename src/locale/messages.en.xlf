@@ -4,6 +4,7 @@
     <body>
       <trans-unit id="supportedTypes" datatype="html">
         <source>Supported Types</source>
+        <target>Supported Types</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">5</context>
@@ -11,6 +12,7 @@
       </trans-unit>
       <trans-unit id="belgianEid" datatype="html">
         <source>Belgian eID</source>
+        <target>Belgian eID</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -18,6 +20,7 @@
       </trans-unit>
       <trans-unit id="emv" datatype="html">
         <source>EMV (Credit/Debit Cards)</source>
+        <target>EMV (Credit/Debit Cards)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">8</context>
@@ -25,6 +28,7 @@
       </trans-unit>
       <trans-unit id="luxEid" datatype="html">
         <source>Luxembourgish eID</source>
+        <target>Luxembourgish eID</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">9</context>
@@ -32,6 +36,7 @@
       </trans-unit>
       <trans-unit id="luxtrustCards" datatype="html">
         <source>LuxTrust Cards</source>
+        <target>LuxTrust Cards</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">10</context>
@@ -39,6 +44,7 @@
       </trans-unit>
       <trans-unit id="mobib" datatype="html">
         <source>MoBIB</source>
+        <target>MoBIB</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -46,6 +52,7 @@
       </trans-unit>
       <trans-unit id="oberthur" datatype="html">
         <source>Oberthur</source>
+        <target>Oberthur</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">12</context>
@@ -53,6 +60,7 @@
       </trans-unit>
       <trans-unit id="ocraOtp" datatype="html">
         <source>OCRA OTP Cards</source>
+        <target>OCRA OTP Cards</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -60,6 +68,7 @@
       </trans-unit>
       <trans-unit id="civPivCards" datatype="html">
         <source>CIV/PIV Cards</source>
+        <target>CIV/PIV Cards</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">14</context>
@@ -67,6 +76,7 @@
       </trans-unit>
       <trans-unit id="spanishDnie" datatype="html">
         <source>Spanish DNIe</source>
+        <target>Spanish DNIe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">15</context>
@@ -76,7 +86,10 @@
         <source>
       Don&apos;t find your card in the list?
       <x id="LINE_BREAK" ctype="lb"/>Send us an email with the card you want supported!
-    </source>
+    </source>        <target>
+      Don&apos;t find your card in the list?
+      <x id="LINE_BREAK" ctype="lb"/>Send us an email with the card you want supported!
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">17</context>
@@ -84,6 +97,7 @@
       </trans-unit>
       <trans-unit id="c32700dc008d1054d1e7db5ade4dd8a5916ec58d" datatype="html">
         <source>Refresh Data</source>
+        <target>Refresh Data</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">26</context>
@@ -91,6 +105,7 @@
       </trans-unit>
       <trans-unit id="supportedCards" datatype="html">
         <source>Is my card supported?</source>
+        <target>Is my card supported?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context>
           <context context-type="linenumber">2</context>
@@ -98,6 +113,7 @@
       </trans-unit>
       <trans-unit id="adminPanel" datatype="html">
         <source>Admin Panel</source>
+        <target>Admin Panel</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context>
           <context context-type="linenumber">6</context>
@@ -105,6 +121,7 @@
       </trans-unit>
       <trans-unit id="faqTitle" datatype="html">
         <source>FAQ</source>
+        <target>FAQ</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-faq/rmc-faq.component.ts</context>
           <context context-type="linenumber">1</context>
@@ -114,7 +131,10 @@
         <source>
       This service is provided free of charge, and is intended for private use only.
       No personal info is saved when using this service.
-    </source>
+    </source>        <target>
+      This service is provided free of charge, and is intended for private use only.
+      No personal info is saved when using this service.
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-footer/rmc-footer.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -122,6 +142,7 @@
       </trans-unit>
       <trans-unit id="allRightReserved" datatype="html">
         <source>All rights reserved.</source>
+        <target>All rights reserved.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-footer/rmc-footer.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -129,6 +150,7 @@
       </trans-unit>
       <trans-unit id="4b6dbf2d92858e82bcf6ae5dbc8dfb4b29d82ad0" datatype="html">
         <source>FAQ</source>
+        <target>FAQ</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-footer/rmc-footer.component.ts</context>
           <context context-type="linenumber">17</context>
@@ -136,6 +158,7 @@
       </trans-unit>
       <trans-unit id="cardContents" datatype="html">
         <source>Card Contents</source>
+        <target>Card Contents</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/reader-select/reader-select.component.ts</context>
           <context context-type="linenumber">2</context>
@@ -143,6 +166,7 @@
       </trans-unit>
       <trans-unit id="selectCard" datatype="html">
         <source>Select Card</source>
+        <target>Select Card</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/reader-select/reader-select.component.ts</context>
           <context context-type="linenumber">5</context>
@@ -150,6 +174,7 @@
       </trans-unit>
       <trans-unit id="insertCard" datatype="html">
         <source>Insert Card</source>
+        <target>Insert Card</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
           <context context-type="linenumber">2</context>
@@ -157,6 +182,7 @@
       </trans-unit>
       <trans-unit id="insertCardPrompt" datatype="html">
         <source>Insert the <x id="START_TAG_STRONG" ctype="x-strong"/>smartcard<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> you want to read into the smartcard reader.</source>
+        <target>Insert the <x id="START_TAG_STRONG" ctype="x-strong"/>smartcard<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> you want to read into the smartcard reader.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
           <context context-type="linenumber">3</context>
@@ -164,6 +190,7 @@
       </trans-unit>
       <trans-unit id="waitingForCard" datatype="html">
         <source>Waiting for smartcard...</source>
+        <target>Waiting for smartcard...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -171,6 +198,7 @@
       </trans-unit>
       <trans-unit id="cardNotRecognized" datatype="html">
         <source>Card not recognized?</source>
+        <target>Card not recognized?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
           <context context-type="linenumber">10</context>
@@ -178,6 +206,7 @@
       </trans-unit>
       <trans-unit id="checkCardSupported" datatype="html">
         <source>Check if it is supported <x id="START_LINK" ctype="x-a"/>here<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+        <target>Check if it is supported <x id="START_LINK" ctype="x-a"/>here<x id="CLOSE_LINK" ctype="x-a"/>.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -185,6 +214,7 @@
       </trans-unit>
       <trans-unit id="errorCommunicatingWithReader" datatype="html">
         <source>Error communicating with reader</source>
+        <target>Error communicating with reader</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
           <context context-type="linenumber">17</context>
@@ -196,6 +226,7 @@
       </trans-unit>
       <trans-unit id="tryAgain" datatype="html">
         <source>Try again?</source>
+        <target>Try again?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
           <context context-type="linenumber">18</context>
@@ -211,6 +242,7 @@
       </trans-unit>
       <trans-unit id="connectReader" datatype="html">
         <source>Connect Reader</source>
+        <target>Connect Reader</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/reader-polling/reader-polling.component.ts</context>
           <context context-type="linenumber">2</context>
@@ -221,7 +253,11 @@
     Please connect your <x id="START_TAG_STRONG" ctype="x-strong"/>smartcard reader<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> to your computer.
     <x id="LINE_BREAK" ctype="lb"/>
     Once it is connected, this page will automatically detect it.
-  </source>
+  </source>        <target>
+    Please connect your <x id="START_TAG_STRONG" ctype="x-strong"/>smartcard reader<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> to your computer.
+    <x id="LINE_BREAK" ctype="lb"/>
+    Once it is connected, this page will automatically detect it.
+  </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/reader-polling/reader-polling.component.ts</context>
           <context context-type="linenumber">3</context>
@@ -229,6 +265,7 @@
       </trans-unit>
       <trans-unit id="lookingForReaders" datatype="html">
         <source>Looking for readers...</source>
+        <target>Looking for readers...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/reader-polling/reader-polling.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -236,6 +273,7 @@
       </trans-unit>
       <trans-unit id="readMyCards" datatype="html">
         <source>ReadMyCards</source>
+        <target>ReadMyCards</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">3</context>
@@ -243,6 +281,7 @@
       </trans-unit>
       <trans-unit id="byTrust1Connector" datatype="html">
         <source>by Trust1Connector</source>
+        <target>by Trust1Connector</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -254,7 +293,12 @@
     <x id="START_TAG_STRONG" ctype="x-strong"/>completely free<x id="CLOSE_TAG_STRONG" ctype="x-strong"/>.
     <x id="LINE_BREAK" ctype="lb"/>This service is available for personal use, and we
     <x id="START_TAG_STRONG" ctype="x-strong"/>never<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> save any data from your card.
-  </source>
+  </source>        <target>
+    Read the content of your smartcard, using any type of reader,
+    <x id="START_TAG_STRONG" ctype="x-strong"/>completely free<x id="CLOSE_TAG_STRONG" ctype="x-strong"/>.
+    <x id="LINE_BREAK" ctype="lb"/>This service is available for personal use, and we
+    <x id="START_TAG_STRONG" ctype="x-strong"/>never<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> save any data from your card.
+  </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -262,6 +306,7 @@
       </trans-unit>
       <trans-unit id="downloadTitle" datatype="html">
         <source>Download the Trust1Connector</source>
+        <target>Download the Trust1Connector</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">14</context>
@@ -272,7 +317,11 @@
       To use this website, you need to install the Trust1Connector.
       This is a small piece of software that enables the communication with your card reader,
       no matter which browser or reader you use.
-    </source>
+    </source>        <target>
+      To use this website, you need to install the Trust1Connector.
+      This is a small piece of software that enables the communication with your card reader,
+      no matter which browser or reader you use.
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">15</context>
@@ -280,6 +329,7 @@
       </trans-unit>
       <trans-unit id="enterEmail" datatype="html">
         <source>Enter your email address and we will send you a download link!</source>
+        <target>Enter your email address and we will send you a download link!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">21</context>
@@ -287,6 +337,7 @@
       </trans-unit>
       <trans-unit id="90f6e682bb79007ce7def6fd68159afb3680b62d" datatype="html">
         <source>Insert your email address</source>
+        <target>Insert your email address</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">27</context>
@@ -294,6 +345,7 @@
       </trans-unit>
       <trans-unit id="requestLink" datatype="html">
         <source>Request Link</source>
+        <target>Request Link</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">38</context>
@@ -304,7 +356,11 @@
                 Click here if you want to receive news/updates on
                 the Trust1Connector or Trust1Team products and services.
                 You can unsubscribe at any time!
-              </source>
+              </source>        <target>
+                Click here if you want to receive news/updates on
+                the Trust1Connector or Trust1Team products and services.
+                You can unsubscribe at any time!
+              </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">47</context>
@@ -314,7 +370,10 @@
         <source>
         Your email address is required for validation purposes only and is not saved unless you give us express
         permission by selecting the checkbox above. It will never be shared with any third parties.
-      </source>
+      </source>        <target>
+        Your email address is required for validation purposes only and is not saved unless you give us express
+        permission by selecting the checkbox above. It will never be shared with any third parties.
+      </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">58</context>
@@ -322,6 +381,7 @@
       </trans-unit>
       <trans-unit id="waitingForInstall" datatype="html">
         <source>Waiting for installation...</source>
+        <target>Waiting for installation...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">65</context>
@@ -329,6 +389,7 @@
       </trans-unit>
       <trans-unit id="instructionsSent" datatype="html">
         <source>An email with download instructions is on its way to you.</source>
+        <target>An email with download instructions is on its way to you.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">70</context>
@@ -337,7 +398,9 @@
       <trans-unit id="autodetectAfterInstall" datatype="html">
         <source>
         Check your email and, once the installation is complete, the Trust1Connector will automatically be detected.
-      </source>
+      </source>        <target>
+        Check your email and, once the installation is complete, the Trust1Connector will automatically be detected.
+      </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">71</context>
@@ -346,7 +409,9 @@
       <trans-unit id="firefoxRestartRequired" datatype="html">
         <source>
           Because you are using Firefox, you will need to manually restart your browser after installation.
-        </source>
+        </source>        <target>
+          Because you are using Firefox, you will need to manually restart your browser after installation.
+        </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">75</context>
@@ -354,6 +419,7 @@
       </trans-unit>
       <trans-unit id="why" datatype="html">
         <source>Why?</source>
+        <target>Why?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">78</context>
@@ -361,6 +427,7 @@
       </trans-unit>
       <trans-unit id="firefoxTitle" datatype="html">
         <source>Why do I have to restart Firefox?</source>
+        <target>Why do I have to restart Firefox?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">87</context>
@@ -371,7 +438,11 @@
       We use trusted certificates to secure the communication between browser and card reader.
       During the installation, these certificates are added to the keychain,
       a collection of trusted certificates on your computer.
-    </source>
+    </source>        <target>
+      We use trusted certificates to secure the communication between browser and card reader.
+      During the installation, these certificates are added to the keychain,
+      a collection of trusted certificates on your computer.
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">91</context>
@@ -383,7 +454,12 @@
       separate, keychain. Because Firefox only reads the contents of this keychain when it is
       (re)started, we unfortunately have no other option but to do a full restart after the
       installation.
-    </source>
+    </source>        <target>
+      Most browsers use the operating system keychain, but Firefox has opted to use its own,
+      separate, keychain. Because Firefox only reads the contents of this keychain when it is
+      (re)started, we unfortunately have no other option but to do a full restart after the
+      installation.
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">97</context>
@@ -391,6 +467,7 @@
       </trans-unit>
       <trans-unit id="readingCard" datatype="html">
         <source>Reading Card...</source>
+        <target>Reading Card...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">5</context>
@@ -398,6 +475,7 @@
       </trans-unit>
       <trans-unit id="errorReadingCard" datatype="html">
         <source>Error reading card</source>
+        <target>Error reading card</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -405,6 +483,7 @@
       </trans-unit>
       <trans-unit id="errorNotSupported" datatype="html">
         <source>We&apos;re sorry, this type of card is currently not supported.</source>
+        <target>We&apos;re sorry, this type of card is currently not supported.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">17</context>
@@ -412,6 +491,7 @@
       </trans-unit>
       <trans-unit id="supportedCardTypes" datatype="html">
         <source>You can find the list of currently supported card types <x id="START_LINK" ctype="x-a"/>here<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+        <target>You can find the list of currently supported card types <x id="START_LINK" ctype="x-a"/>here<x id="CLOSE_LINK" ctype="x-a"/>.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">19</context>
@@ -419,6 +499,7 @@
       </trans-unit>
       <trans-unit id="insertDifferentCardToTryAgain" datatype="html">
         <source>Insert a different card to try again!</source>
+        <target>Insert a different card to try again!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">21</context>
@@ -426,6 +507,7 @@
       </trans-unit>
       <trans-unit id="futureSupport" datatype="html">
         <source>If you would like us to support this type of card in the future, let us know what kind of card this is.</source>
+        <target>If you would like us to support this type of card in the future, let us know what kind of card this is.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">25</context>
@@ -433,6 +515,7 @@
       </trans-unit>
       <trans-unit id="3d5350b41e24ef36af9232507880dd414a55832d" datatype="html">
         <source>Please provide a short description of the card</source>
+        <target>Please provide a short description of the card</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">29</context>
@@ -440,6 +523,7 @@
       </trans-unit>
       <trans-unit id="submitFeedback" datatype="html">
         <source>Submit</source>
+        <target>Submit</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">33</context>
@@ -447,6 +531,7 @@
       </trans-unit>
       <trans-unit id="thankYouForFeedback" datatype="html">
         <source>Thank you for your feedback!</source>
+        <target>Thank you for your feedback!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">36</context>
@@ -454,6 +539,7 @@
       </trans-unit>
       <trans-unit id="cardType" datatype="html">
         <source>Card Type:</source>
+        <target>Card Type:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">41</context>
@@ -461,6 +547,7 @@
       </trans-unit>
       <trans-unit id="printLegalCopy" datatype="html">
         <source>Print Legal Copy of Card</source>
+        <target>Print Legal Copy of Card</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -476,7 +563,12 @@
       This document will be digitally signed by you to be compliant with EU regulation and be considered as
       an original copy that you can distribute. No information will be stored on our side and you
       will be the only possessor of the generated copy.
-    </source>
+    </source>        <target>
+      We are going to provide you a secure PDF version of the content of your eID card.
+      This document will be digitally signed by you to be compliant with EU regulation and be considered as
+      an original copy that you can distribute. No information will be stored on our side and you
+      will be the only possessor of the generated copy.
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">6</context>
@@ -484,7 +576,8 @@
       </trans-unit>
       <trans-unit id="startPrinting" datatype="html">
         <source>Start Printing
-        </source>
+        </source>        <target>Start Printing
+        </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">18</context>
@@ -492,6 +585,7 @@
       </trans-unit>
       <trans-unit id="generatePdf" datatype="html">
         <source>Generate PDF</source>
+        <target>Generate PDF</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">31</context>
@@ -503,6 +597,7 @@
       </trans-unit>
       <trans-unit id="generating" datatype="html">
         <source>Generating...</source>
+        <target>Generating...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">32</context>
@@ -514,6 +609,7 @@
       </trans-unit>
       <trans-unit id="generated" datatype="html">
         <source>Generated</source>
+        <target>Generated</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">33</context>
@@ -525,6 +621,7 @@
       </trans-unit>
       <trans-unit id="sign" datatype="html">
         <source>Sign</source>
+        <target>Sign</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">43</context>
@@ -536,6 +633,7 @@
       </trans-unit>
       <trans-unit id="signing" datatype="html">
         <source>Signing...</source>
+        <target>Signing...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">44</context>
@@ -547,6 +645,7 @@
       </trans-unit>
       <trans-unit id="enterPinOnReader" datatype="html">
         <source>Enter PIN on reader...</source>
+        <target>Enter PIN on reader...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">45</context>
@@ -558,6 +657,7 @@
       </trans-unit>
       <trans-unit id="signed" datatype="html">
         <source>Signed</source>
+        <target>Signed</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">46</context>
@@ -569,6 +669,7 @@
       </trans-unit>
       <trans-unit id="download" datatype="html">
         <source>Download</source>
+        <target>Download</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">59</context>
@@ -588,6 +689,7 @@
       </trans-unit>
       <trans-unit id="downloadReady" datatype="html">
         <source>Download Ready!</source>
+        <target>Download Ready!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
           <context context-type="linenumber">60</context>
@@ -599,6 +701,7 @@
       </trans-unit>
       <trans-unit id="useReaderPinpad" datatype="html">
         <source>Enter the PIN code on your reader&apos;s pinpad</source>
+        <target>Enter the PIN code on your reader&apos;s pinpad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pin-check-modal/pin-check-modal.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -614,6 +717,7 @@
       </trans-unit>
       <trans-unit id="awaitingResponseFromReader" datatype="html">
         <source>Awaiting response from reader...</source>
+        <target>Awaiting response from reader...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pin-check-modal/pin-check-modal.component.ts</context>
           <context context-type="linenumber">6</context>
@@ -629,6 +733,7 @@
       </trans-unit>
       <trans-unit id="signXml" datatype="html">
         <source>Sign Example XML</source>
+        <target>Sign Example XML</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -641,7 +746,9 @@
       <trans-unit id="signXmlSubtitle" datatype="html">
         <source>
       This will digitally sign an example XML file with the certificates on your card. At the end of the process, you will be able to download the signed XML file.<x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/>
-    </source>
+    </source>        <target>
+      This will digitally sign an example XML file with the certificates on your card. At the end of the process, you will be able to download the signed XML file.<x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/>
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
           <context context-type="linenumber">6</context>
@@ -649,7 +756,8 @@
       </trans-unit>
       <trans-unit id="startSigning" datatype="html">
         <source>Start Signing
-        </source>
+        </source>        <target>Start Signing
+        </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
           <context context-type="linenumber">16</context>
@@ -657,6 +765,7 @@
       </trans-unit>
       <trans-unit id="additionalInformation" datatype="html">
         <source>Additional Information</source>
+        <target>Additional Information</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">15</context>
@@ -664,6 +773,7 @@
       </trans-unit>
       <trans-unit id="address" datatype="html">
         <source>Address</source>
+        <target>Address</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">21</context>
@@ -671,6 +781,7 @@
       </trans-unit>
       <trans-unit id="street" datatype="html">
         <source>Street</source>
+        <target>Street</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">23</context>
@@ -678,6 +789,7 @@
       </trans-unit>
       <trans-unit id="city" datatype="html">
         <source>City</source>
+        <target>City</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">24</context>
@@ -685,6 +797,7 @@
       </trans-unit>
       <trans-unit id="generalInformation" datatype="html">
         <source>General Information</source>
+        <target>General Information</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">32</context>
@@ -692,6 +805,7 @@
       </trans-unit>
       <trans-unit id="chipNumber" datatype="html">
         <source>Chip number</source>
+        <target>Chip number</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">33</context>
@@ -699,6 +813,7 @@
       </trans-unit>
       <trans-unit id="showCert" datatype="html">
         <source>Show extended info</source>
+        <target>Show extended info</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">43</context>
@@ -726,6 +841,7 @@
       </trans-unit>
       <trans-unit id="hideCert" datatype="html">
         <source>Hide extended info</source>
+        <target>Hide extended info</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">44</context>
@@ -753,6 +869,7 @@
       </trans-unit>
       <trans-unit id="loadingCerts" datatype="html">
         <source>Loading...</source>
+        <target>Loading...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">45</context>
@@ -780,6 +897,7 @@
       </trans-unit>
       <trans-unit id="certificates" datatype="html">
         <source>Certificates</source>
+        <target>Certificates</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">50</context>
@@ -807,6 +925,7 @@
       </trans-unit>
       <trans-unit id="1979da7460819153e11d2078244645d94291b69c" datatype="html">
         <source>Copy</source>
+        <target>Copy</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">60</context>
@@ -922,6 +1041,7 @@
       </trans-unit>
       <trans-unit id="nationalRegister" datatype="html">
         <source>National Register</source>
+        <target>National Register</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
           <context context-type="linenumber">138</context>
@@ -929,6 +1049,7 @@
       </trans-unit>
       <trans-unit id="checkingCertificates" datatype="html">
         <source>Validating card certificates...</source>
+        <target>Validating card certificates...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
           <context context-type="linenumber">1</context>
@@ -936,6 +1057,7 @@
       </trans-unit>
       <trans-unit id="errorCheckingCertificates" datatype="html">
         <source>An error occurred during the validation process. Please try again later.</source>
+        <target>An error occurred during the validation process. Please try again later.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
           <context context-type="linenumber">2</context>
@@ -943,6 +1065,7 @@
       </trans-unit>
       <trans-unit id="certificatesValid" datatype="html">
         <source>All certificates OK. Card is valid.</source>
+        <target>All certificates OK. Card is valid.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
           <context context-type="linenumber">3</context>
@@ -950,6 +1073,7 @@
       </trans-unit>
       <trans-unit id="certificatesInvalid" datatype="html">
         <source>Certificate check failed. Card invalid.</source>
+        <target>Certificate check failed. Card invalid.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -957,6 +1081,7 @@
       </trans-unit>
       <trans-unit id="clickToCheckPin" datatype="html">
         <source>Click to check PIN code</source>
+        <target>Click to check PIN code</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
           <context context-type="linenumber">3</context>
@@ -976,6 +1101,7 @@
       </trans-unit>
       <trans-unit id="pinCheckCancelled" datatype="html">
         <source>Cancelled on reader, click to try again.</source>
+        <target>Cancelled on reader, click to try again.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -995,6 +1121,7 @@
       </trans-unit>
       <trans-unit id="pinCheckError" datatype="html">
         <source>An error occurred during the validation process. Please try again later.</source>
+        <target>An error occurred during the validation process. Please try again later.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -1014,6 +1141,7 @@
       </trans-unit>
       <trans-unit id="pinTriesRemaining" datatype="html">
         <source>Wrong PIN entered; <x id="ICU"/> remaining.</source>
+        <target>Wrong PIN entered; <x id="ICU"/> remaining.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
           <context context-type="linenumber">15</context>
@@ -1033,6 +1161,7 @@
       </trans-unit>
       <trans-unit id="f8872b91ab938c2142ed93b817133a2aea772be4" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {1 try} other {<x id="INTERPOLATION"/> tries} }</source>
+        <target>{VAR_PLURAL, plural, =1 {1 try} other {<x id="INTERPOLATION"/> tries} }</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
           <context context-type="linenumber">15</context>
@@ -1052,6 +1181,7 @@
       </trans-unit>
       <trans-unit id="pinCheckOk" datatype="html">
         <source>PIN check ok.</source>
+        <target>PIN check ok.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
           <context context-type="linenumber">19</context>
@@ -1071,6 +1201,7 @@
       </trans-unit>
       <trans-unit id="pinBlocked" datatype="html">
         <source><x id="INTERPOLATION"/> invalid PINs entered. PIN blocked.</source>
+        <target><x id="INTERPOLATION"/> invalid PINs entered. PIN blocked.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
           <context context-type="linenumber">23</context>
@@ -1090,6 +1221,7 @@
       </trans-unit>
       <trans-unit id="card" datatype="html">
         <source>Card</source>
+        <target>Card</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/emv/emv-card/emv-card.component.ts</context>
           <context context-type="linenumber">8</context>
@@ -1097,6 +1229,7 @@
       </trans-unit>
       <trans-unit id="holder" datatype="html">
         <source>Holder</source>
+        <target>Holder</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/emv/emv-card/emv-card.component.ts</context>
           <context context-type="linenumber">16</context>
@@ -1104,6 +1237,7 @@
       </trans-unit>
       <trans-unit id="expires" datatype="html">
         <source>Expires</source>
+        <target>Expires</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/emv/emv-card/emv-card.component.ts</context>
           <context context-type="linenumber">24</context>
@@ -1112,7 +1246,9 @@
       <trans-unit id="accessToLuxRestricted" datatype="html">
         <source>
       Access to the Luxembourg eID card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb"/>Please provide your PIN to continue.
-    </source>
+    </source>       <target>
+      Access to the Luxembourg eID card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb"/>Please provide your PIN to continue.
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -1120,6 +1256,7 @@
       </trans-unit>
       <trans-unit id="waitingForReaderResponse" datatype="html">
         <source>Waiting for response from reader...</source>
+        <target>Waiting for response from reader...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
           <context context-type="linenumber">10</context>
@@ -1127,6 +1264,7 @@
       </trans-unit>
       <trans-unit id="userReaderPinpad" datatype="html">
         <source>Use your reader&apos;s pinpad to enter the PIN code.</source>
+        <target>Use your reader&apos;s pinpad to enter the PIN code.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -1134,6 +1272,7 @@
       </trans-unit>
       <trans-unit id="printSummary" datatype="html">
         <source>Print the content of my card</source>
+        <target>Print the content of my card</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
           <context context-type="linenumber">34</context>
@@ -1141,6 +1280,7 @@
       </trans-unit>
       <trans-unit id="biometricData" datatype="html">
         <source>Biometric Data</source>
+        <target>Biometric Data</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
           <context context-type="linenumber">96</context>
@@ -1148,6 +1288,7 @@
       </trans-unit>
       <trans-unit id="signPDFDemo" datatype="html">
         <source>Sign PDF (Demo)</source>
+        <target>Sign PDF (Demo)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/lux/lux-trust-viz/lux-trust-viz.component.ts</context>
           <context context-type="linenumber">15</context>
@@ -1155,6 +1296,7 @@
       </trans-unit>
       <trans-unit id="generate" datatype="html">
         <source>Generate</source>
+        <target>Generate</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/ocra/ocra-viz/ocra-viz.component.ts</context>
           <context context-type="linenumber">6</context>
@@ -1162,6 +1304,7 @@
       </trans-unit>
       <trans-unit id="16f315d85744836b580054b142b5cb2e8919b910" datatype="html">
         <source>Click to copy</source>
+        <target>Click to copy</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/ocra/ocra-viz/ocra-viz.component.ts</context>
           <context context-type="linenumber">14</context>
@@ -1170,7 +1313,9 @@
       <trans-unit id="pivAccessRestricted" datatype="html">
         <source>
       Access to the PIV card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb"/>Please provide your PIN to continue.
-    </source>
+    </source>        <target>
+      Access to the PIV card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb"/>Please provide your PIN to continue.
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/piv/piv-viz/piv-viz.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -1178,6 +1323,7 @@
       </trans-unit>
       <trans-unit id="readingData" datatype="html">
         <source>Reading data...</source>
+        <target>Reading data...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/piv/piv-viz/piv-viz.component.ts</context>
           <context context-type="linenumber">21</context>
@@ -1185,6 +1331,7 @@
       </trans-unit>
       <trans-unit id="ptAddressData" datatype="html">
         <source>Address Data</source>
+        <target>Address Data</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">20</context>
@@ -1192,6 +1339,7 @@
       </trans-unit>
       <trans-unit id="ptAbbrBuildingType" datatype="html">
         <source>Abbr. Building Type:</source>
+        <target>Abbr. Building Type:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">23</context>
@@ -1199,6 +1347,7 @@
       </trans-unit>
       <trans-unit id="ptAbbrStreetType" datatype="html">
         <source>Abbr. Street Type:</source>
+        <target>Abbr. Street Type:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">24</context>
@@ -1206,6 +1355,7 @@
       </trans-unit>
       <trans-unit id="ptBuildingType" datatype="html">
         <source>Building Type:</source>
+        <target>Building Type:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">25</context>
@@ -1213,6 +1363,7 @@
       </trans-unit>
       <trans-unit id="ptCivilParish" datatype="html">
         <source>Civil Parish:</source>
+        <target>Civil Parish:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">26</context>
@@ -1220,6 +1371,7 @@
       </trans-unit>
       <trans-unit id="ptCivilParishDesc" datatype="html">
         <source>Civil Parish Description:</source>
+        <target>Civil Parish Description:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">27</context>
@@ -1227,6 +1379,7 @@
       </trans-unit>
       <trans-unit id="ptDistrict" datatype="html">
         <source>District:</source>
+        <target>District:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">28</context>
@@ -1234,6 +1387,7 @@
       </trans-unit>
       <trans-unit id="ptDisctrictDesc" datatype="html">
         <source>District Description:</source>
+        <target>District Description:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">29</context>
@@ -1241,6 +1395,7 @@
       </trans-unit>
       <trans-unit id="ptDoorNumber" datatype="html">
         <source>Door No.:</source>
+        <target>Door No.:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">30</context>
@@ -1248,6 +1403,7 @@
       </trans-unit>
       <trans-unit id="ptFloor" datatype="html">
         <source>Floor:</source>
+        <target>Floor:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">31</context>
@@ -1255,6 +1411,7 @@
       </trans-unit>
       <trans-unit id="ptGeneralAddressNumber" datatype="html">
         <source>Gen. Address Num.:</source>
+        <target>Gen. Address Num.:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">32</context>
@@ -1262,6 +1419,7 @@
       </trans-unit>
       <trans-unit id="ptIsNational" datatype="html">
         <source>Is National:</source>
+        <target>Is National:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">33</context>
@@ -1269,6 +1427,7 @@
       </trans-unit>
       <trans-unit id="ptLocality" datatype="html">
         <source>Locality:</source>
+        <target>Locality:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">37</context>
@@ -1276,6 +1435,7 @@
       </trans-unit>
       <trans-unit id="ptMunicipality" datatype="html">
         <source>Municipality:</source>
+        <target>Municipality:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">38</context>
@@ -1283,6 +1443,7 @@
       </trans-unit>
       <trans-unit id="ptMunicipalityDesc" datatype="html">
         <source>Municipality Description:</source>
+        <target>Municipality Description:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">39</context>
@@ -1290,6 +1451,7 @@
       </trans-unit>
       <trans-unit id="ptPlace" datatype="html">
         <source>Place:</source>
+        <target>Place:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">40</context>
@@ -1297,6 +1459,7 @@
       </trans-unit>
       <trans-unit id="ptPostalLocality" datatype="html">
         <source>Postal Locality:</source>
+        <target>Postal Locality:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">41</context>
@@ -1304,6 +1467,7 @@
       </trans-unit>
       <trans-unit id="ptSide" datatype="html">
         <source>Side:</source>
+        <target>Side:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">42</context>
@@ -1311,6 +1475,7 @@
       </trans-unit>
       <trans-unit id="ptStreetName" datatype="html">
         <source>Street Name:</source>
+        <target>Street Name:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">43</context>
@@ -1318,6 +1483,7 @@
       </trans-unit>
       <trans-unit id="ptStreetType" datatype="html">
         <source>Street Type:</source>
+        <target>Street Type:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">44</context>
@@ -1325,6 +1491,7 @@
       </trans-unit>
       <trans-unit id="ptType" datatype="html">
         <source>Type:</source>
+        <target>Type:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">45</context>
@@ -1332,6 +1499,7 @@
       </trans-unit>
       <trans-unit id="ptZip3" datatype="html">
         <source>ZIP3:</source>
+        <target>ZIP3:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">46</context>
@@ -1339,6 +1507,7 @@
       </trans-unit>
       <trans-unit id="ptZip4" datatype="html">
         <source>ZIP4:</source>
+        <target>ZIP4:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">47</context>
@@ -1346,6 +1515,7 @@
       </trans-unit>
       <trans-unit id="mobibActive" datatype="html">
         <source><x id="START_TAG_STRONG" ctype="x-strong"/>Active<x id="CLOSE_TAG_STRONG" ctype="x-strong"/></source>
+        <target><x id="START_TAG_STRONG" ctype="x-strong"/>Active<x id="CLOSE_TAG_STRONG" ctype="x-strong"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-active-status/mobib-active-status.component.ts</context>
           <context context-type="linenumber">5</context>
@@ -1353,6 +1523,7 @@
       </trans-unit>
       <trans-unit id="mobibNotActive" datatype="html">
         <source><x id="START_TAG_STRONG" ctype="x-strong"/>Not active<x id="CLOSE_TAG_STRONG" ctype="x-strong"/></source>
+        <target><x id="START_TAG_STRONG" ctype="x-strong"/>Not active<x id="CLOSE_TAG_STRONG" ctype="x-strong"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-active-status/mobib-active-status.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -1360,6 +1531,7 @@
       </trans-unit>
       <trans-unit id="mobibValidityStartsOn" datatype="html">
         <source>Validity starts on <x id="INTERPOLATION"/></source>
+        <target>Validity starts on <x id="INTERPOLATION"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-validity-status/mobib-validity-status.component.ts</context>
           <context context-type="linenumber">5</context>
@@ -1367,6 +1539,7 @@
       </trans-unit>
       <trans-unit id="mobibExpired" datatype="html">
         <source><x id="START_TAG_STRONG" ctype="x-strong"/>Expired<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> on <x id="INTERPOLATION"/></source>
+        <target><x id="START_TAG_STRONG" ctype="x-strong"/>Expired<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> on <x id="INTERPOLATION"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-validity-status/mobib-validity-status.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -1374,6 +1547,7 @@
       </trans-unit>
       <trans-unit id="mobibValidUntil" datatype="html">
         <source><x id="START_TAG_STRONG" ctype="x-strong"/>Valid<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> until <x id="INTERPOLATION"/></source>
+        <target><x id="START_TAG_STRONG" ctype="x-strong"/>Valid<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> until <x id="INTERPOLATION"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-validity-status/mobib-validity-status.component.ts</context>
           <context context-type="linenumber">17</context>

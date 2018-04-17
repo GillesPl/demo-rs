@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RmcHeaderComponent } from './rmc-header/rmc-header.component';
@@ -33,6 +33,8 @@ import { ClipboardModule } from 'ngx-clipboard/dist';
 import { CardsModule } from './cards/cards.module';
 import { CollapseModule } from 'ngx-bootstrap';
 import { KeypadModule } from './rmc-keypad/keypad.module';
+
+const locale = localStorage.getItem('rmc-locale');
 
 
 @NgModule({
@@ -69,7 +71,9 @@ import { KeypadModule } from './rmc-keypad/keypad.module';
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
   ],
-  providers: [ ApiService,
+  providers: [
+    { provide: LOCALE_ID, useValue: locale },
+    ApiService,
     CardService,
     Connector,
     EventService,

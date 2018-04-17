@@ -14,6 +14,11 @@
     </div>
   </div>
 
+  <div class="lang-switcher">
+    <a class="clickable" [ngClass]="{ 'active': currentLocale === 'en' }" (click)="setLang('en')">EN</a>
+    <a class="clickable" [ngClass]="{ 'active': currentLocale === 'nl' }" (click)="setLang('nl')">NL</a>
+  </div>
+
   <div class="faq clickable" i18n-tooltip tooltip="FAQ" (click)="toggleFAQ()">
     <fa [name]="'question-circle'" [size]="2"></fa>
   </div>
