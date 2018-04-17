@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   pollTimeout: boolean;
   dlLink: string;
   readerWithCard: boolean;
+  hover: boolean;
 
   private pollIterations = 0;
 
