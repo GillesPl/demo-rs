@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EventService } from '../../event.service';
 import { CardService } from '../card.service';
 import { BsModalRef } from 'ngx-bootstrap';
-import { FileSaverService } from 'ngx-filesaver';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-download-summary-modal',
@@ -11,7 +11,6 @@ import { FileSaverService } from 'ngx-filesaver';
 })
 export class DownloadSummaryModalComponent implements OnInit {
   readerId;
-  pincode;
   pinpad;
   @Output() onSubmit = new EventEmitter();
   @Output() onCancel = new EventEmitter();
@@ -30,9 +29,12 @@ export class DownloadSummaryModalComponent implements OnInit {
 
   constructor(public bsModalRef: BsModalRef,
               private eventService: EventService,
-              private cardService: CardService,
-              private FileSaver: FileSaverService) {
+              private cardService: CardService) {
     this.eventService.startOver$.subscribe(() => this.cancel());
+  }
+
+  static handleDownload(blob, fileName) {
+    saveAs(blob, fileName);
   }
 
   ngOnInit() {
@@ -53,13 +55,9 @@ export class DownloadSummaryModalComponent implements OnInit {
   doDownload() {
     const comp = this;
     this.cardService.downloadDocument(comp.generatedFile.origFilename).toPromise().then(function (signedPdf: any) {
-      comp.handleDownload(signedPdf, comp.generatedFile.origFilename);
+      DownloadSummaryModalComponent.handleDownload(signedPdf, comp.generatedFile.origFilename);
       comp.ok();
     });
-  }
-
-  handleDownload(data, fileName) {
-    this.FileSaver.save(data, fileName);
   }
 
   submitPin(pinCode) {

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
-import { FileSaverService } from 'ngx-filesaver';
 import { EventService } from '../../../event.service';
 import { CardService } from '../../card.service';
-import * as _ from 'lodash';
 import { Connector } from '../../../connector.service';
 
 @Component({
@@ -13,14 +11,12 @@ import { Connector } from '../../../connector.service';
 })
 export class ChallengeModalComponent implements OnInit {
   readerId;
-  pincode;
   pinpad;
 
   constructor(public bsModalRef: BsModalRef,
               private Connector: Connector,
               private eventService: EventService,
-              private cardService: CardService,
-              private FileSaver: FileSaverService) {
+              private cardService: CardService) {
     this.eventService.startOver$.subscribe(() => this.cancel());
   }
 

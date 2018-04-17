@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EventService } from '../../event.service';
 import { BsModalRef } from 'ngx-bootstrap';
-import { FileSaverService } from 'ngx-filesaver';
 import { CardService } from '../card.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-download-xml-modal',
@@ -11,7 +11,6 @@ import { CardService } from '../card.service';
 })
 export class DownloadXmlModalComponent implements OnInit {
   readerId;
-  pincode;
   pinpad;
   generatedFile;
   @Output() onSubmit = new EventEmitter();
@@ -30,9 +29,12 @@ export class DownloadXmlModalComponent implements OnInit {
 
   constructor(public bsModalRef: BsModalRef,
               private eventService: EventService,
-              private cardService: CardService,
-              private FileSaver: FileSaverService) {
+              private cardService: CardService) {
     this.eventService.startOver$.subscribe(() => this.cancel());
+  }
+
+  static handleDownload(data, fileName) {
+    saveAs(data, fileName);
   }
 
   ngOnInit() {
@@ -53,14 +55,12 @@ export class DownloadXmlModalComponent implements OnInit {
   doDownload() {
     const comp = this;
     this.cardService.downloadRaw(comp.generatedFile.viewLink).toPromise().then(function (xml: any) {
-      comp.handleDownload(xml, comp.generatedFile.origFilename);
+      DownloadXmlModalComponent.handleDownload(xml, comp.generatedFile.origFilename);
       comp.ok();
     });
   }
 
-  handleDownload(data, fileName) {
-    this.FileSaver.save(data, fileName);
-  }
+
 
   submitPin(pinCode) {
     const comp = this;

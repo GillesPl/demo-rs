@@ -54,7 +54,6 @@ import { PinCheckModalComponent } from './pin-check-modal/pin-check-modal.compon
 import { KeypadModule } from '../rmc-keypad/keypad.module';
 import { PteidAddressPinModalComponent } from './pteid/pteid-address-pin-modal/pteid-address-pin-modal.component';
 import { DownloadSummaryModalComponent } from './download-summary-modal/download-summary-modal.component';
-import { FileSaverModule } from 'ngx-filesaver';
 import { ModalService } from './modal.service';
 import { DownloadXmlModalComponent } from './download-xml-modal/download-xml-modal.component';
 import { ChallengeModalComponent } from './ocra/challenge-modal/challenge-modal.component';
@@ -67,7 +66,6 @@ import { ChallengeModalComponent } from './ocra/challenge-modal/challenge-modal.
     CommonModule,
     CollapseModule.forRoot(),
     ClipboardModule,
-    FileSaverModule,
     FormsModule,
     KeypadModule,
     Ng2FittextModule,
