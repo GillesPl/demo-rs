@@ -13,7 +13,7 @@ import * as _ from 'lodash';
 })
 export class CardVisualizerComponent implements OnChanges, OnInit {
   @Input() readerId;
-  currentReaderId = this.readerId;
+  currentReaderId;
   loading: boolean;
   errorReadingCard: boolean;
   unknownCard: boolean;
@@ -22,7 +22,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   cardData;
   cardType: string;
   cardTypePretty: string;
-  cardDesc: string
+  cardDesc: string;
 
 
   constructor(private API: ApiService, private cardService: CardService,
@@ -35,10 +35,13 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.readerId && changes.readerId.currentValue !== this.currentReaderId) {
+      if (this.currentReaderId) {
+        // if set, the Reader ID has changed, we need to reinitialize the view
+        this.ngOnInit();
+        // if not set this is the first init and ngOnInit is called anyway
+      }
       // store new ID for future checks
       this.currentReaderId = changes.readerId.currentValue;
-      // Reader ID has changed, we need to reinitialize the view
-      this.ngOnInit();
     }
   }
 
