@@ -25,7 +25,7 @@ export class PteidService {
           idData: idData.data,
           photo: photo.data.base64Pic,
           printDate: moment().format('MMMM D, YYYY'),
-          printedBy: environment.name + ' v' + environment.version
+          printedBy: environment.name + ' v' + environment.version,
           docNumberPart1: _.pullAt(documentNumberComponents, 0)[0],
           docNumberPart2: _.join(documentNumberComponents, ' ')
         };
