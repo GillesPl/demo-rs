@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 import { CheckDigitService } from '../check-digit.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class BeidService {
@@ -54,7 +55,7 @@ export class BeidService {
       validFrom: moment(rnData.card_validity_date_begin, 'DD.MM.YYYY').format('MMMM D, YYYY'),
       validUntil: moment(rnData.card_validity_date_end, 'DD.MM.YYYY').format('MMMM D, YYYY'),
       printDate: moment().format('MMMM D, YYYY'),
-      printedBy: '@@name v@@version'
+      printedBy: environment.name + ' v' + environment.version
     };
   }
 

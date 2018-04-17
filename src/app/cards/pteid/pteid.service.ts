@@ -6,6 +6,7 @@ import { Connector } from '../../connector.service';
 import { HttpClient } from '@angular/common/http';
 import { PteidAddressPinCheckStatusComponent } from './pteid-address-pin-check-status/pteid-address-pin-check-status.component';
 import { BsModalService } from 'ngx-bootstrap';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class PteidService {
@@ -24,7 +25,7 @@ export class PteidService {
           idData: idData.data,
           photo: photo.data.base64Pic,
           printDate: moment().format('MMMM D, YYYY'),
-          printedBy: '@@name v@@version',
+          printedBy: environment.name + ' v' + environment.version
           docNumberPart1: _.pullAt(documentNumberComponents, 0)[0],
           docNumberPart2: _.join(documentNumberComponents, ' ')
         };

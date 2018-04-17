@@ -5,6 +5,7 @@ import { Connector } from '../../connector.service';
 import { HttpClient } from '@angular/common/http';
 import { CheckDigitService } from '../check-digit.service';
 import { ApiService } from '../../api.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class LuxService {
@@ -100,7 +101,7 @@ export class LuxService {
       machineReadable2: mrs[1],
       machineReadable3: mrs[2],
       printDate: moment().format('MMMM D, YYYY'),
-      printedBy: '@@name v@@version'
+      printedBy: environment.name + ' v' + environment.version
     };
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class LuxTrustService {
@@ -10,7 +11,7 @@ export class LuxTrustService {
   generateSummaryToSign(readerId) {
     const data = {
       printDate: moment().format('MMMM D, YYYY'),
-      printedBy: '@@name v@@version'
+      printedBy: environment.name + ' v' + environment.version
     };
 
     return this.http.post('api/cards/luxtrust/summarytosign', data).toPromise();
