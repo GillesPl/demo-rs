@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {EventService} from './event.service';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class Connector {
@@ -121,22 +122,14 @@ export class Connector {
   }
 
   generateConfig(agentPort?: number) {
-    // return new this.GCLLib.GCLConfig({
-    //   apiKey: CONFIG.APIKEY,
-    //   gwOrProxyUrl: CONFIG.GW_URL,
-    //   gclUrl: CONFIG.GCL_URL,
-    //   implicitDownload: CONFIG.IMPLICIT_DOWNLOAD,
-    //   agentPort,
-    //   osPinDialog: true
-    // });
-
+    // TODO move this to BFF!
     return new this.GCLLib.GCLConfig({
-      apiKey: '7de3b216-ade2-4391-b2e2-86b80bac4d7d',
-      gwOrProxyUrl: 'https://accapim.t1t.be:443',
-      gclUrl: 'https://localhost:10443/v2',
-      implicitDownload: false,
+      apiKey: environment.apiKey,
+      gwOrProxyUrl: environment.gwOrProxyUrl,
+      gclUrl: environment.gclUrl,
+      implicitDownload: environment.implicitDownload,
       agentPort,
-      osPinDialog: true
+      osPinDialog: environment.osPinDialog
     });
   }
 }
