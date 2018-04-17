@@ -122,7 +122,6 @@ export class Connector {
   }
 
   generateConfig(agentPort?: number) {
-    // TODO move this to BFF!
     return new this.GCLLib.GCLConfig({
       apiKey: environment.apiKey,
       gwOrProxyUrl: environment.gwOrProxyUrl,
