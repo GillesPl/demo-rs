@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class NgKeyComponent implements OnInit {
   @Input() ngKeyData;
+  @Input() keyClass;
   @Output() keyPressed = new EventEmitter<string>();
 
   constructor() { }
