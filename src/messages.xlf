@@ -15,6 +15,10 @@
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">7</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="emv" datatype="html">
         <source>EMV (Credit/Debit Cards)</source>
@@ -22,12 +26,20 @@
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">8</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="luxEid" datatype="html">
         <source>Luxembourgish eID</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="luxtrustCards" datatype="html">
@@ -43,12 +55,20 @@
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">11</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="oberthur" datatype="html">
         <source>Oberthur</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ocraOtp" datatype="html">
@@ -71,6 +91,21 @@
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">15</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pteid" datatype="html">
+        <source>Portuguese eID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="cardNotSupported" datatype="html">
         <source>
@@ -79,14 +114,14 @@
     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c32700dc008d1054d1e7db5ade4dd8a5916ec58d" datatype="html">
         <source>Refresh Data</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="supportedCards" datatype="html">
@@ -131,7 +166,7 @@
         <source>FAQ</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-footer/rmc-footer.component.ts</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cardContents" datatype="html">
@@ -457,6 +492,41 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="luxtrust" datatype="html">
+        <source>LuxTrust</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ocra" datatype="html">
+        <source>OCRA/OTP</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mobibBasic" datatype="html">
+        <source>MoBIB Basic</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="piv" datatype="html">
+        <source>PIV</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pkcs11Compatible" datatype="html">
+        <source>PKCS11 Compatible</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="printLegalCopy" datatype="html">
@@ -919,6 +989,10 @@
           <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
           <context context-type="linenumber">140</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pkcs11/cert-block/cert-block.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="nationalRegister" datatype="html">
         <source>National Register</source>
@@ -1377,6 +1451,20 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-validity-status/mobib-validity-status.component.ts</context>
           <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ba4e26b3f592f7842152eb57332422dfed2fe188" datatype="html">
+        <source>Slot <x id="INTERPOLATION"/> in <x id="INTERPOLATION_1"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pkcs11/slot-icon/slot-icon.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="selectSlot" datatype="html">
+        <source>Select Slot</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pkcs11/pkcs11-viz/pkcs11-viz.component.ts</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
     </body>

@@ -1553,6 +1553,74 @@
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
+            <trans-unit id="luxtrust" datatype="html">
+              <source>LuxTrust</source>
+              <target>LuxTrust</target>
+              <context-group purpose="location">
+                <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+                <context context-type="linenumber">46</context>
+              </context-group>
+            </trans-unit>
+            <trans-unit id="ocra" datatype="html">
+              <source>OCRA/OTP</source>
+              <target>OCRA/OTP</target>
+              <context-group purpose="location">
+                <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+                <context context-type="linenumber">47</context>
+              </context-group>
+            </trans-unit>
+            <trans-unit id="mobibBasic" datatype="html">
+              <source>MoBIB Basic</source>
+              <target>MoBIB Basic</target>
+              <context-group purpose="location">
+                <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+                <context context-type="linenumber">49</context>
+              </context-group>
+            </trans-unit>
+            <trans-unit id="piv" datatype="html">
+              <source>PIV</source>
+              <target>PIV</target>
+              <context-group purpose="location">
+                <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+                <context context-type="linenumber">51</context>
+              </context-group>
+            </trans-unit>
+            <trans-unit id="pkcs11Compatible" datatype="html">
+              <source>PKCS11 Compatible</source>
+              <target>PKCS11 Compatible</target>
+              <context-group purpose="location">
+                <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+                <context context-type="linenumber">52</context>
+              </context-group>
+            </trans-unit>
+      <trans-unit id="pteid" datatype="html">
+        <source>Portuguese eID</source>
+        <target>Portuguese eID</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+                  <trans-unit id="ba4e26b3f592f7842152eb57332422dfed2fe188" datatype="html">
+                    <source>Slot <x id="INTERPOLATION"/> in <x id="INTERPOLATION_1"/></source>
+                    <target>Slot <x id="INTERPOLATION"/> in <x id="INTERPOLATION_1"/></target>
+                    <context-group purpose="location">
+                      <context context-type="sourcefile">app/cards/pkcs11/slot-icon/slot-icon.component.ts</context>
+                      <context context-type="linenumber">3</context>
+                    </context-group>
+                  </trans-unit>
+                  <trans-unit id="selectSlot" datatype="html">
+                    <source>Select Slot</source>
+                    <target>Select Slot</target>
+                    <context-group purpose="location">
+                      <context context-type="sourcefile">app/cards/pkcs11/pkcs11-viz/pkcs11-viz.component.ts</context>
+                      <context context-type="linenumber">5</context>
+                    </context-group>
+                  </trans-unit>
     </body>
   </file>
 </xliff>
