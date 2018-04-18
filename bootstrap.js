@@ -62,8 +62,8 @@ function initializeExpress(callback) {
   // Uncomment to enable request logging
   // app.use(logger.middleware);
 
-  app.set('views', path.join(__dirname + '/server/', 'views'));
-  app.set('view engine', 'ejs');
+  // Point static path to dist
+  app.use(express.static(path.join(__dirname, 'dist')));
 
   // Include routes if exists
   loadRoutes();
