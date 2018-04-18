@@ -1,0 +1,91 @@
+@import "../../../../variables";
+
+.mobib-card {
+  font-family: Arial, sans-serif;
+
+  &.mobib-mivb {
+    .front {
+      //background-image: url('../images/mobib-mivb.jpg');
+      //background-size: cover;
+
+      .chip-icon {
+        width: 62px;
+        height: 55px;
+        top: 120px;
+        left: 60px;
+      }
+
+      .mivb-content {
+        position: relative;
+        height: 100%;
+        padding: 27px 27px 0 27px;
+
+        .mobib-logo-wrapper {
+          .mobib-logo {
+            max-height: 75px;
+          }
+        }
+
+        .mivb-inset {
+          margin-left: 115px;
+
+          .card-info {
+            margin-top: 28px;
+            line-height: 0.95;
+            font-size: 18px;
+          }
+
+          .names {
+            margin-top: 18px;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 1.1;
+            letter-spacing: 0;
+
+            .dob {
+              letter-spacing: 0.5px;
+            }
+          }
+        }
+
+        .serial-numbers {
+          font-weight: bold;
+          font-size: 15px;
+
+          .serial-number {
+            position: absolute;
+            bottom: 1px;
+          }
+
+          .short-serial {
+            position: absolute;
+            right: 25px;
+            bottom: 1px;
+          }
+        }
+
+      }
+
+      .mivb-picture-wrapper {
+        position: absolute;
+        top: 30px;
+        right: 32px;
+
+        .mivb-pic {
+          max-width: 128px;
+        }
+      }
+
+      .mivb-logo-wrapper {
+        position: absolute;
+        bottom: 28px;
+        right: 18px;
+
+        .mivb-logo {
+          max-width: 65px;
+        }
+      }
+    }
+
+  }
+}

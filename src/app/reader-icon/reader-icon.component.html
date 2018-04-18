@@ -1,0 +1,10 @@
+<div class="reader-icon clickable"
+     [ngClass]="{ 'active': reader.id === currentReaderId }" (click)="selectReader()">
+  <div class="index" tooltip="{{reader.cardType}} in {{reader.name}}" tooltip-placement="bottom">
+    <div class="card-bg">
+      <fa ></fa>
+      <span class="fa fa-credit-card"></span>
+    </div>
+    <span class="index-number">{{index}}</span>
+  </div>
+</div>

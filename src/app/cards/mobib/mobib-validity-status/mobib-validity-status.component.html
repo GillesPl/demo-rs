@@ -1,0 +1,18 @@
+<alert class="card-status mobib-valid-status"
+       type="success"
+       *ngIf="status === 'success'">
+  <fa [name]="'check-circle'" [size]="1"></fa>
+  <span class="info-text text-ultralight" i18n="@@mobibValidityStartsOn">Validity starts on {{validityDate}}</span>
+</alert>
+<alert class="card-status mobib-valid-status"
+       type="warning"
+       *ngIf="status === 'warning'">
+  <fa [name]="'exclamation-triangle'" [size]="1"></fa>
+  <span class="info-text text-ultralight" i18n="@@mobibExpired"><strong>Expired</strong> on {{validityDate}}</span>
+</alert>
+<alert class="card-status mobib-valid-status"
+       type="danger"
+       *ngIf="status === 'danger'">
+  <fa [name]="'times-circle'" [size]="1"></fa>
+  <span class="info-text text-ultralight" i18n="@@mobibValidUntil"><strong>Valid</strong> until {{validityDate}}</span>
+</alert>

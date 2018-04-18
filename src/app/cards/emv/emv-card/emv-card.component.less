@@ -1,0 +1,48 @@
+@import "../../../../variables";
+
+.emv-card {
+  font-family: Arial, sans-serif;
+  @chip-width: 132px;
+
+
+  .labels {
+    font-size: 0.75em;
+    font-weight: bold;
+    min-width: 80px;
+    vertical-align: text-top;
+  }
+
+  .values {
+    font-family: OCR-B, sans-serif;
+    font-size: 1.4em;
+    vertical-align: top;
+  }
+
+  .front {
+
+    .content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      .card-number,.name,.validity {
+        position: absolute;
+        left: 55px;
+      }
+
+      .card-number {
+        top: 200px;
+      }
+
+      .name {
+        top: 225px;
+      }
+
+      .validity {
+        top: 280px;
+      }
+
+    }
+  }
+
+}

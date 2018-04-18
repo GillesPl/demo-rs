@@ -1,0 +1,86 @@
+<div class="card-viz-container">
+  <div class="loading-block" *ngIf="loading">
+    <div class="spinner-container">
+      <span class="spinner fa fa-spinner fa-pulse"></span>
+      <p class="spinner-text text-light" i18n="@@readingCard">Reading Card...</p>
+    </div>
+  </div>
+
+  <div class="error-block" *ngIf="!loading && errorReadingCard">
+    <span class="spinner fa fa-warning"></span>
+    <p class="error-text text-thin" i18n="@@errorReadingCard">Error reading card</p>
+    <a class="try-again clickable" (click)="readAnother()" i18n="@@tryAgain">Try again?</a>
+  </div>
+
+  <div class="error-block" *ngIf="!loading && unknownCard">
+    <span class="spinner fa fa-question-circle"></span>
+    <p class="error-text text-thin" i18n="@@errorNotSupported">We're sorry, this type of card is currently not supported.</p>
+    <p class="info-text text-thin">
+      <span i18n="@@supportedCardTypes" class="clickable" (click)="showSupportedCardTypes()">You can find the list of currently supported card types <a>here</a>.</span>
+    </p>
+    <span class="try-again" i18n="@@insertDifferentCardToTryAgain">Insert a different card to try again!</span>
+
+    <div class="feedback">
+      <div class="unknown-card-form" [hidden]="submitted">
+        <p class="text-thin text-left" i18n="@@futureSupport">If you would like us to support this type of card in the future, let us know what kind of card this is.</p>
+        <form (submit)="registerUnknownType(cardDesc)" class="form-inline">
+          <input type="text"
+                 i18n-placeholder
+                 placeholder="Please provide a short description of the card"
+                 class="form-control"
+                 [(ngModel)]="cardDesc"
+                 autofocus>
+          <span type="submit" id="submit" class="btn btn-default" (click)="registerUnknownType(cardDesc)" i18n="@@submitFeedback">Submit</span>
+        </form>
+      </div>
+      <p class="info-text text-thin" [hidden]="!submitted" i18n="@@thankYouForFeedback">Thank you for your feedback!</p>
+    </div>
+  </div>
+
+  <div class="card-viz" *ngIf="!loading && !errorReadingCard && !unknownCard">
+    <div class="card-type"><span class="text-light" i18n="@@cardType">Card Type:</span>
+      <span class="text-bold" i18n="@@belgianEid" *ngIf="cardType === 'beid'">Belgian eID</span>
+      <span class="text-bold" i18n="@@spanishDnie" *ngIf="cardType === 'dnie'">Spanish DNIe</span>
+      <span class="text-bold" i18n="@@emv" *ngIf="cardType === 'emv'">EMV</span>
+      <span class="text-bold" i18n="@@luxEid" *ngIf="cardType === 'luxeid'">Luxembourgish eID</span>
+      <span class="text-bold" i18n="@@luxtrust" *ngIf="cardType === 'luxtrust'">LuxTrust</span>
+      <span class="text-bold" i18n="@@ocra" *ngIf="cardType === 'ocra'">OCRA/OTP</span>
+      <span class="text-bold" i18n="@@mobib" *ngIf="cardType === 'mobib' && cardTypePretty === 'MoBIB'">MoBIB</span>
+      <span class="text-bold" i18n="@@mobibBasic" *ngIf="cardType === 'mobib' && cardTypePretty === 'MoBIB Basic'">MoBIB Basic</span>
+      <span class="text-bold" i18n="@@oberthur" *ngIf="cardType === 'oberthur'">Oberthur</span>
+      <span class="text-bold" i18n="@@piv" *ngIf="cardType === 'piv'">PIV</span>
+      <span class="text-bold" i18n="@@pkcs11Compatible" *ngIf="cardType === 'pkcs11'">PKCS11 Compatible</span>
+      <span class="text-bold" i18n="@@pteid" *ngIf="cardType === 'pteid'">Portuguese eID</span>
+    </div>
+
+    <div class="viz-container">
+      <app-beid-viz [rnData]="cardData.rn"
+                    [addressData]="cardData.address"
+                    [picData]="cardData.picture"
+                    [certData]="cardData"
+                    [readerId]="readerId"
+                    *ngIf="cardType === 'beid'"></app-beid-viz>
+
+      <app-dnie-viz *ngIf="cardType === 'dnie'" [readerId]="readerId" [cardData]="cardData"></app-dnie-viz>
+
+      <app-emv-viz [data]="cardData" [readerId]="readerId" *ngIf="cardType === 'emv'"></app-emv-viz>
+
+      <app-lux-viz [readerId]="readerId" *ngIf="cardType === 'luxeid'"></app-lux-viz>
+
+      <app-lux-trust-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'luxtrust'"></app-lux-trust-viz>
+
+      <app-ocra-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'ocra'"></app-ocra-viz>
+
+      <app-mobib-viz [cardData]="cardData" [readerId]="readerId" [isBasic]="cardTypePretty === 'MOBIB Basic'"
+      *ngIf="cardType === 'mobib'"></app-mobib-viz>
+
+      <app-oberthur-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'oberthur'"></app-oberthur-viz>
+
+      <app-piv-viz *ngIf="cardType === 'piv'" [readerId]="readerId" [cardData]="cardData"></app-piv-viz>
+
+      <app-pkcs11-viz *ngIf="cardType === 'pkcs11'" [readerId]="readerId" [cardData]="cardData"></app-pkcs11-viz>
+
+      <app-pteid-viz *ngIf="cardType === 'pteid'" [readerId]="readerId" [cardData]="cardData"></app-pteid-viz>
+    </div>
+  </div>
+</div>

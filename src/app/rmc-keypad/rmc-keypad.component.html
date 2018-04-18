@@ -1,0 +1,16 @@
+<div>
+  <h3 class="text-center text-info mb20">Enter PIN code</h3>
+  <form class="form-horizontal" (submit)="submitPin()" role="form" id="askForPinCodeForm" name="askForPinCodeForm">
+    <div class="form-group">
+      <div class="col-sm-8 col-sm-offset-2">
+        <input id="pinCode" name="pinCode" type="password" class="keypad-display" [(ngModel)]="pincode" autocomplete="off"/>
+        <app-ng-keypad class="t1t-keypad">
+          <app-ng-key class="t1t-keypad-key" *ngFor="let key of keys" (keyPressed)="onKeyPressed($event)" [ngKeyData]="key">{{key}}</app-ng-key>
+          <app-ng-key class="t1t-keypad-key" [keyClass]="'keypad-cancel'" (keyPressed)="onKeyPressed($event)" [ngKeyData]="'<'">C</app-ng-key>
+          <app-ng-key class="t1t-keypad-key" [ngKeyData]="'0'" (keyPressed)="onKeyPressed($event)">0</app-ng-key>
+          <app-ng-key class="t1t-keypad-key" [keyClass]="'keypad-ok'" (keyPressed)="onKeyPressed($event)" [ngKeyData]="'>'">OK</app-ng-key>
+        </app-ng-keypad>
+      </div>
+    </div>
+  </form>
+</div>

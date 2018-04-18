@@ -1,0 +1,256 @@
+{
+  "META": {
+    "TITLE": "Read My Cards with Trust1Connector eID card reader tester"
+  },
+  "SUPPORTED_CARD_TYPES": {
+    "TITLE": "Supported Types",
+    "BE_EID": "Belgian eID",
+    "EMV": "EMV (Credit/Debit Cards)",
+    "LUX_EID": "Luxembourgish eID",
+    "LUXTRUST": "LuxTrust Cards",
+    "MOBIB": "MoBIB",
+    "OBERTHUR": "Oberthur",
+    "OCRA_OTP": "OCRA OTP Cards",
+    "PIV": "CIV/PIV Cards",
+    "DNIE": "Spanish DNIe",
+    "NOT_SUPPORTED": "Don't find your card in the list?<br>Send us an email with the card you want supported!"
+  },
+  "USER_PROMPTS": {
+    "INSERT_CARD": {
+      "TITLE": "Insert Card",
+      "DESC": "Insert the <strong>smartcard</strong> you want to read into the smartcard reader.",
+      "WAITING": "Waiting for smartcard...",
+      "NOT_RECOGNIZED": "Card not recognized?",
+      "CHECK_SUPPORTED": "Check if it is supported "
+    },
+    "CARD_VIZ": {
+      "READING": "Reading Card..."
+    },
+    "CARD_CONTENTS": {
+      "TITLE": "Card Contents",
+      "SELECT_CARD": "Select Card"
+    },
+    "CONNECT_READER": {
+      "TITLE": "Connect Reader",
+      "DESC": "Please connect your <strong>smartcard reader</strong> to your computer.<br>Once it is connected, this page will automatically detect it.",
+      "WAITING": "Looking for readers..."
+    },
+    "TRY_AGAIN": "Try again?",
+    "INSERT_DIFF_CARD": "Insert a different card to try again!"
+  },
+  "CARD_FEEDBACK": {
+    "FUTURE_SUPPORT": "If you would like us to support this type of card in the future, let us know what kind of card this is.",
+    "CARD_DESC": "Please provide a short description of the card",
+    "THANK_YOU": "Thank you for your feedback!"
+  },
+  "ERROR": {
+    "COMMUNICATING_WITH_READER": "Error communicating with reader",
+    "READING_CARD": "Error reading card",
+    "NOT_SUPPORTED": "We're sorry, this tupe of card is currently not supported."
+  },
+  "INFO": {
+    "SUPPORTED_CARDS": "You can find the list of currently supported card types"
+  },
+  "COMMON": {
+    "ADDRESS": {
+      "TITLE": "Address",
+      "STREET": "Street",
+      "CITY": "City"
+    },
+    "CARD_TYPE": "Card type",
+    "CERT": "{NUM, plural, one{Certificate} other{Certificates} }",
+    "CLICK_TO_COPY": "Click to copy",
+    "COPY": "Copy",
+    "DOWNLOAD": "Download",
+    "GENERATE": "Generate",
+    "HERE": "here",
+    "HIDE": "Hide",
+    "IN": "in",
+    "LOADING": "Loading...",
+    "SHOW": "Show",
+    "SUBMIT": "Submit",
+    "WHY": "Why?"
+  },
+  "DOWNLOAD": {
+    "RMC": "ReadMyCards",
+    "BY_T1C": "by Trust1Connector",
+    "PROMO_TEXT": "Read the content of your smartcard, using any type of reader, <strong>completely free</strong>.<br>This service is available for personal use, and we <strong>never</strong> save any data from your card.",
+    "TITLE": "Download the Trust1Connector",
+    "HELP_TEXT": "To use this website, you need to install the Trust1Connector. This is a small piece of software that enables the communication with your card reader, no matter which browser or reader you use.",
+    "ENTER_MAIL": "Enter your email address and we will send you a download link!",
+    "MAIL_PLACEHOLDER": "Insert your email address",
+    "REQUEST_LINK_BTN": "Request Link",
+    "NEWS_CHECKBOX": "Click here if you want to receive news/updates on the Trust1Connector or Trust1Team products and services. You can unsubscribe at any time!",
+    "MAIL_PRIVACY_NOTICE": "Your email address is required for validation purposes only and is not saved unless you give us express permission by selecting the checkbox above. It will never be shared with any third parties.",
+    "WAITING_INSTALL": "Waiting for installation...",
+    "INSTRUCTIONS_ON_THE_WAY": "An email with download instructions is on its way to you.",
+    "AUTODETECT_AFTER_INSTALL": "Check your email and, once the installation is complete, the Trust1Connector will automatically be detected.",
+    "FIREFOX_RESTART_REQUIRED": "Because you are using Firefox, you will need to manually restart your browser after installation."
+  },
+  "HEADER": {
+    "CARD_SUPPORTED": "Is my card supported?"
+  },
+  "FOOTER": {
+    "SERVICE_NOTICE": "This service is provided free of charge, and is intended for private use only. No personal info is saved when using this service.",
+    "ALL_RIGHTS_RESERVED": "All rights reserved."
+  },
+  "KEYPAD": {
+    "ENTER_PIN": "Enter PIN code"
+  },
+  "CARDS": {
+    "COMMON": {
+      "ENTER_PIN_PINPAD": "Use your reader's pinpad to enter the PIN code.",
+      "EXTENDED_INFO": "extended info",
+      "PRINT_LEGAL_COPY": "Print legal copy of my card",
+      "PRINT_SUMMARY": "Print the content of my card",
+      "READING_DATA": "Reading data...",
+      "WAITING_READER": "Waiting for response from reader...",
+      "UNKNOWN": "Unknown"
+    },
+    "AVENTRA": {
+      "NAME": "Aventra",
+      "SIGNER": "Signed with Aventra card"
+    },
+    "BEID": {
+      "ADDITIONAL": {
+        "TITLE": "Additional Information"
+      },
+      "GENERAL": {
+        "TITLE": "General Information",
+        "CHIP_NO": "Chip number"
+      },
+      "NAME": "Belgian eID",
+      "NAT_REGISTER": "National Register",
+      "PIN_OK": "PIN check ok."
+    },
+    "DNIE": {
+      "PIN_OK": "PIN check ok.",
+      "NAME": "Spanish DNIe"
+    },
+    "EMV": {
+      "CARD": "Card",
+      "HOLDER": "Holder",
+      "EXPIRES": "Expires",
+      "NAME": "EMV"
+    },
+    "LUX": {
+      "ACCESS_RESTRICTED": "Access to the Luxembourg eID card is secured with a PIN code.<br>Please provide your PIN to continue.",
+      "BIOMETRIC": "Biometric Data",
+      "PIN_OK": "Strong authentication OK.",
+      "NAME": "Luxembourgish eID"
+    },
+    "LUXTRUST": {
+      "PIN_OK": "PIN check ok.",
+      "NAME": "LuxTrust",
+      "SIGN_PDF_BTN": "Sign PDF (Demo)",
+      "SIGNER": "Signed with LuxTrust card"
+    },
+    "MOBIB": {
+      "NAME": "MoBIB",
+      "NAME_BASIC": "MoBIB Basic"
+    },
+    "OBERTHUR": {
+      "SIGN_XML": "Sign XML",
+      "PIN_OK": "PIN check ok.",
+      "NAME": "Oberthur",
+      "SIGNER": "Signed with Oberthur card"
+    },
+    "OTP": {
+      "NAME": "OCRA/OTP"
+    },
+    "PIV": {
+      "ACCESS_RESTRICTED": "Access to the PIV card is secured with a PIN code.<br>Please provide your PIN to continue.",
+      "PIN_OK": "PIN check ok.",
+      "NAME": "PIV",
+      "SIGNER": "Signed with PIV card"
+    },
+    "PTEID": {
+      "PIN_CHECK": "Click to check sign PIN",
+      "PIN_OK": "Sign PIN check ok.",
+      "ADDRESS_PIN_CHECK": "Click to check address PIN",
+      "ADDRESS_PIN_OK": "Address PIN ok.",
+      "ADDRESS": {
+        "TITLE": "Address Data",
+        "ABBR_BUILDING_TYPE": "Abbr. Bulding Type:",
+        "ABBR_STREET_TYPE": "Abbr. Street Type:",
+        "BUILDING_TYPE": "Building Type:",
+        "CIVIL_PARISH": "Civil Parish:",
+        "CIVIL_PARISH_DESC": "Civil Parish Description:",
+        "DISTRICT": "District:",
+        "DISTRICT_DESC": "District Description:",
+        "DOOR_NO": "Door No.:",
+        "FLOOR": "Floor:",
+        "GEN_ADDRESS_NUM": "Gen. Address Num.:",
+        "IS_NATIONAL": "Is National:",
+        "LOCALITY": "Locality:",
+        "MUNICIPALITY": "Municipality:",
+        "MUNICIPALITY_DESC": "Municipality Description:",
+        "PLACE": "Place:",
+        "POSTAL_LOC": "Postal Locality:",
+        "SIDE": "Side:",
+        "STREET_NAME": "Street Name:",
+        "STREET_TYPE": "Street Type:",
+        "TYPE": "Type:",
+        "ZIP3": "ZIP3:",
+        "ZIP4": "ZIP4"
+      },
+      "NAME": "Portuguese eID"
+    },
+    "CERT_CHECK": {
+      "CHECKING": "Validating card certificates...",
+      "ERROR": "An error occurred during the validation process. Please try again later.",
+      "INVALID": "Certificate check failed. Card invalid.",
+      "VALID": "All certificates OK. Card is valid."
+    },
+    "PIN_CHECK": {
+      "BLOCKED": "{{MAX_TRIES}} invalid PINs entered. PIN blocked.",
+      "CANCELLED": "Cancelled on reader, click to try again.",
+      "ERROR": "An error occurred during the validation process. Please try again later.",
+      "IDLE": "Click to check PIN code",
+      "VALID": "PIN check ok.",
+      "WRONG_PIN": "Wrong PIN entered; {{NUM}} {NUM, plural, one{try} other{tries} } remaining."
+    }
+  },
+  "SUMMARY": {
+    "GENERATE_PDF": "Generate PDF",
+    "ENTER_PIN": "Enter PIN Code",
+    "ENTER_PIN_ON_READER": "Enter PIN on reader...",
+    "DOWNLOAD_PDF": "Download PDF",
+    "SIGNING": "Signing...",
+    "SIGNED": "Signed",
+    "DOWNLOAD_READY": "Download Ready!",
+    "GENERATING": "Generating...",
+    "GENERATED": "Generated"
+  },
+  "FAQ": {
+    "TITLE": "FAQ"
+  },
+  "MODALS": {
+    "CHECK_PIN": {
+      "USE_READER": "Enter the PIN code on your reader's pinpad",
+      "WAITING": "Awaiting response from reader..."
+    },
+    "CONSENT": {
+      "TITLE": "Consent required",
+      "HELP_TEXT": "To use this website, you need to consent to your reader(s) being used.<br>Without consent, we are unable to access your card reader(s).",
+      "POPUP": "You should see a popup on your screen.",
+      "MATCHING_CODE": "Only click \"Yes\" if the code displayed matches the code below:"
+    },
+    "FIREFOX": {
+      "TITLE": "Why do I have to restart Firefox?",
+      "TRUSTED_CERTS": "We use trusted certificates to secure the communication between browser and card reader. During the installation, these certificates are added to the keychain, a collection of trusted certificates on your computer.",
+      "FIREFOX_KEYCHAIN": "Most browsers use the operating system keychain, but Firefox has opted to use its own, separate, keychain. Because Firefox only reads the contents of this keychain when it is (re)started, we unfortunately have no other option but to do a full restart after the installation."
+    },
+    "SUMMARY": {
+      "TITLE": "Print Legal Copy of Card",
+      "SUBTITLE": "We are going to provide you a secure PDF version of the content of your eID card. This document will be digitally signed by you to be compliant with EU regulation and be considered as an original copy that you can distribute. No information will be stored on our side and you will be the only possessor of the generated copy.",
+      "START_BTN": "Start Printing"
+    },
+    "XML_DOWNLOAD": {
+      "TITLE": "Sign Example XML",
+      "SUBTITLE": "This will digitally sign an example XML file with the certificates on your card. At the end of the process, you will be able to download the signed XML file.<br><br>",
+      "START_BTN": "Start Signing"
+    }
+
+  }
+}

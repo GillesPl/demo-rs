@@ -1,0 +1,52 @@
+<div class="cert-block col-sm-12">
+  <div class="col-sm-12 clickable" (click)="cert.collapsed = !cert.collapsed">
+    <h3>{{subject}}</h3>
+  </div>
+  <div (collapse)="cert.collapsed">
+    <div class="cert-info col-sm-12">
+      <h5 class="text-info text-light">Certificate Info</h5>
+      <div class="col-sm-12">
+        <div class="col-sm-2">
+          Issuer:
+        </div>
+        <div class="col-sm-10 text-bold">
+          {{issuer}}
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="col-sm-2">
+          Not Before:
+        </div>
+        <div class="col-sm-8 text-bold">
+          {{notBefore}}
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="col-sm-2">
+          Not After:
+        </div>
+        <div class="col-sm-10 text-bold">
+          {{notAfter}}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="cert-base64 col-sm-12">
+      <h5 class="text-info text-light">Base64</h5>
+      <div class="input-group">
+        <input id="cert-{{cert.id}}" type="text" class="form-control" [ngModel]="cert.base64">
+        <span class="input-group-btn">
+      <button class="btn btn-default"
+              i18n-tooltip
+              tooltip="Copy"
+              type="button"
+              ngxClipboard=""
+              [cbContent]="cert.base64"><fa [name]="'copy'"></fa></button>
+    </span>
+      </div>
+    </div>
+  </div>
+
+
+</div>

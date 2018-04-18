@@ -1,0 +1,27 @@
+<div class="card mobib-card mobib-delijn">
+  <div class="front">
+    <div class="specimen text-uppercase">Specimen</div>
+    <div class="chip-icon"></div>
+    <div class="delijn-content">
+      <div class="card-info">
+        <div class="reg">{{ formattedCardNumber1 }}</div>
+        <div class="card-number">{{ formattedCardNumber2 }}</div>
+      </div>
+      <div class="personal-info">
+        <div class="last-name text-uppercase">{{ lastName }}</div>
+        <div class="first-name text-uppercase">{{ firstName }}</div>
+        <div class="dob">{{ dob }}</div>
+      </div>
+    </div>
+    <div class="delijn-picture-wrapper">
+      <img class="delijn-pic" *ngIf="!cardData.picture || cardData.picture.length === 0" src="assets/images/default-pic.jpg"/>
+      <img class="delijn-pic" *ngIf="cardData.picture && cardData.picture.length > 0" [attr.src]="'data:image/jpeg;base64,' + cardData.picture"/>
+    </div>
+    <div class="delijn-logo-wrapper">
+      <img class="delijn-logo" src="assets/images/delijn.png" />
+    </div>
+    <div class="mobib-logo-wrapper">
+      <img class="mobib-logo" src="assets/images/mobib.png" />
+    </div>
+  </div>
+</div>

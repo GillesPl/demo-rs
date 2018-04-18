@@ -1,20 +1,110 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io//">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="root-container st-container">
+  <app-rmc-header id="rmc-header"></app-rmc-header>
 
+  <nav class="st-menu sliding-list" [ngClass]="{ 'st-menu-open': cardTypesOpen }" id="menu-1">
+    <h2><span i18n="@@supportedTypes">Supported Types</span>:</h2>
+    <ul>
+      <li><a i18n="@@belgianEid">Belgian eID</a></li>
+      <li><a i18n="@@emv">EMV (Credit/Debit Cards)</a></li>
+      <li><a i18n="@@luxEid">Luxembourgish eID</a></li>
+      <li><a i18n="@@luxtrustCards">LuxTrust Cards</a></li>
+      <li><a i18n="@@mobib">MoBIB</a></li>
+      <li><a i18n="@@oberthur">Oberthur</a></li>
+      <li><a i18n="@@ocraOtp">OCRA OTP Cards</a></li>
+      <li><a i18n="@@civPivCards">CIV/PIV Cards</a></li>
+      <li><a i18n="@@spanishDnie">Spanish DNIe</a></li>
+      <li><a i18n="@@pteid">Portuguese eID</a></li>
+    </ul>
+    <div class="not-supported" i18n="@@cardNotSupported">
+      Don't find your card in the list?
+      <br>Send us an email with the card you want supported!
+    </div>
+  </nav>
+
+
+  <nav class="st-admin-panel sliding-admin-panel" [ngClass]="{ 'st-admin-panel-open': adminPanelOpen }" id="menu-admin-panel">
+    <div class="fe-tabs">
+      <div class="refresh-btn" i18n-tooltip tooltip="Refresh Data" placement="left">
+                <span class="clickable fa fa-refresh fa-lg text-primary"
+                      [ngClass]="{ 'fa-spin': hover }"
+                      (init)="hover = false"
+                      (mouseenter)="hover = true"
+                      (mouseleave)="hover = false" (click)="refreshAdminData()"></span>
+      </div>
+
+      <main>
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1">Environment</label>
+
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2">Card Readers</label>
+
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3">Containers</label>
+
+        <input id="tab4" type="radio" name="tabs">
+        <label for="tab4">Device</label>
+
+        <input id="tab5" type="radio" name="tabs">
+        <label for="tab5">Dependencies</label>
+
+        <input id="tab6" type="radio" name="tabs">
+        <label for="tab6">PKCS11 Config</label>
+
+        <input id="tab7" type="radio" name="tabs">
+        <label for="tab7">Logs</label>
+
+
+
+        <section id="content1">
+          <app-t1c-info></app-t1c-info>
+        </section>
+
+        <section id="content2">
+          <app-card-reader-info></app-card-reader-info>
+        </section>
+
+        <section id="content3">
+          <app-container-info></app-container-info>
+        </section>
+
+        <section id="content4">
+          <app-device-info></app-device-info>
+        </section>
+
+        <section id="content5">
+          <app-dependency-info></app-dependency-info>
+        </section>
+
+        <section id="content6">
+          <app-pkcs11-config></app-pkcs11-config>
+        </section>
+
+        <section id="content7">
+          <app-log-info></app-log-info>
+        </section>
+      </main>
+    </div>
+
+  </nav>
+
+
+  <div class="content-overlay" [hidden]="!(cardTypesOpen || faqOpen)" [ngClass]="{ 'visible': cardTypesOpen || faqOpen }" (click)="dismissPanels()"></div>
+  <div id="rmc-content">
+    <app-rmc-consent *ngIf="noConsent"></app-rmc-consent>
+
+    <app-rmc-download-failed *ngIf="downloadError"></app-rmc-download-failed>
+
+    <app-download-gcl [dlUrl]="dlLink" [isFirefox]="isFirefox" *ngIf="gclChecked && !gclAvailable"></app-download-gcl>
+
+    <app-reader-polling [error]="error" *ngIf="pollingReaders"></app-reader-polling>
+
+    <app-card-polling [error]="error" [pollTimeout]="pollTimeout" *ngIf="pollingCard"></app-card-polling>
+
+    <app-reader-select [currentReaderId]="readerWithCard.id" *ngIf="readerWithCard"></app-reader-select>
+  </div>
+  <nav class="st-faq sliding-faq" [ngClass]="{ 'st-faq-open': faqOpen }" id="menu-2">
+    <app-rmc-faq></app-rmc-faq>
+  </nav>
+  <app-rmc-footer id="rmc-footer"></app-rmc-footer>
+</div>

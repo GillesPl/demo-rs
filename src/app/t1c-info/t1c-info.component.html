@@ -1,0 +1,46 @@
+<div>
+  <h4>Environment Info</h4>
+
+  <table class="table table-striped t1c-info-table">
+    <tr>
+      <td class="t1c-title">Architecture</td>
+      <td>{{info.arch}}</td>
+    </tr>
+    <tr>
+      <td class="t1c-title">OS</td>
+      <td>{{info.os}}</td>
+    </tr>
+    <tr>
+      <td class="t1c-title">Log Level</td>
+      <td>{{info.log_level}}</td>
+    </tr>
+    <tr>
+      <td class="t1c-title">Activated</td>
+      <td>
+        <span class="fa fa-lg fa-times text-danger" *ngIf="!info.activated"></span>
+        <span class="fa fa-lg fa-check text-success" *ngIf="info.activated"></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="t1c-title">Virtual Environment</td>
+      <td>
+        <span class="fa fa-lg fa-times text-muted" *ngIf="!info.citrix"></span>
+        <span class="fa fa-lg fa-check text-success" *ngIf="info.citrix"></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="t1c-title">Consent Required</td>
+      <td>
+        <span class="fa fa-lg fa-times text-muted" *ngIf="!info.consent"></span>
+        <span class="fa fa-lg fa-check text-success" *ngIf="info.consent"></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="t1c-title">Managed Install</td>
+      <td>
+        <span class="fa fa-lg fa-times text-muted" *ngIf="!info.managed"></span>
+        <span class="fa fa-lg fa-check text-success" *ngIf="info.managed"></span>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Trust1Connector">
+    <meta name="description" content="Read My Cards allows you to read your ID card, EMV bank card or Mobib smartcard
+using any reader. Trust1Connector is an alternative to FEDICT eID middleware.">
+    <meta name="keywords" content="gcl, trust1connector, t1c, smartcard, smartcards, smartcard reader, webapp,
+middleware and integration software, eid card reader installeren, middleware express, eid card reader belgium, carte d
+identité, fedict middleware alternative, ing card reader, belfius card reader, vasco card reader, smart card reader installeren, eid reader, sitecom card reader">
+    <meta name="google-site-verification" content="y5j6Dyj5z8eZfj0eB6sfagWID5fyTh8WQzZwlZ2rK2I" />
+    <title data-translate="META.TITLE"></title>
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="images/t1c.png" type="image/png" />
+    <link rel="stylesheet" href="styles/font-awesome.min.269550530cc127b6aa5a.css">
+
+    <!-- Css/Less Stylesheets -->
+    <link rel="stylesheet" href="styles/angular-material.min.26944ebdeffecae11b41.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.f04c3f0c60eaa1ca93ad.css">
+    <link rel="stylesheet" href="styles/main.min.38f27ef988e62085c38b.css">
+
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
+
+</head>
+<body id="app" custom-page class="app">
+
+
+<!-- main-container -->
+
+
+<div id="content" class="content-container" ui-view></div>
+
+
+<!-- #end main-container -->
+
+
+
+
+<script src="scripts/libs.4802e5fb993142f02560.js"></script>
+
+
+
+<script src="scripts/app.f3dd0cd53e7f34f4b0dd.js"></script>
+
+<script>
+    'use strict';
+
+    (function () {
+        "use strict";
+
+        angular.module('app.config', [])
+               .constant('CONFIG', {
+                   ALLOW_AUTOUPDATE: <%= config.connector.allow_autoupdate %>,
+                   APIKEY: '<%= config.connector.apikey %>',
+                   DS_URL: '<%= config.connector.ds_url %>',
+                   GCL_URL: '<%= config.connector.gcl_url %>',
+                   IMPLICIT_DOWNLOAD: <%= config.connector.implicit_download %>
+    });
+    })();
+</script>
+
+</body>
+</html>

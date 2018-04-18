@@ -1,0 +1,27 @@
+<div>
+  <h4>Card Reader Info</h4>
+  <table class="table table-striped t1c-reader-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Device ID</th>
+      <th class="text-center">Pinpad?</th>
+      <th class="text-center">Card Present?</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reader of readers">
+      <td>{{reader.name}}</td>
+      <td>{{reader.id}}</td>
+      <td class="text-center">
+        <span class="fa fa-lg fa-times text-muted" *ngIf="!reader.pinpad"></span>
+        <span class="fa fa-lg fa-check text-success" *ngIf="reader.pinpad"></span>
+      </td>
+      <td class="text-center">
+        <span class="fa fa-lg fa-times text-muted" *ngIf="!reader.card"></span>
+        <span class="fa fa-lg fa-check text-success" *ngIf="reader.card"></span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
