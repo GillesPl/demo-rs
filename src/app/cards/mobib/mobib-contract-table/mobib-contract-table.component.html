@@ -1,0 +1,101 @@
+<div class="mobib-contract-table">
+  <table class="table">
+    <thead>
+    <tr>
+      <th class="text-center" style="width: 10%;">Ready to travel?</th>
+      <th>Contract</th>
+      <th class="text-center" style="padding: 0 10px; width: 5%;">Valid until</th>
+      <th class="logos">Valid on</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let contract of contracts">
+      <tr class="clickable" [ngClass]="{ 'active': contract.active, 'inactive': !contract.active }"
+          (click)="contract.open = !contract.open">
+        <td class="text-center" *ngIf="!contract.countJourneys">
+          <i [ngClass]="{ 'fa-check-cirecle success': contract.active, 'fa-times-circle danger': !contract.active }"
+             class="fa fa-2x"></i>
+        </td>
+        <td class="text-center" *ngIf="contract.countJourneys">
+          <span [ngClass]="{ 'success': contract.active, 'danger': !contract.active }" class="text-bold" style="font-size: 2em;">
+            {{contract.journeys}}</span>
+        </td>
+        <td>{{contract.name}}</td>
+        <td>{{contract.validityEnd}}</td>
+        <td>
+          <div class="logo-wrapper" [ngClass]="{ 'success': contract.active, 'danger': !contract.active }">
+            <div class="contract-logo" *ngIf="contract.validDeLijn">
+              <div class="delijn"></div>
+            </div>
+            <div class="contract-logo" *ngIf="contract.validMIVB">
+              <div class="mivb"></div>
+            </div>
+            <div class="contract-logo" *ngIf="contract.validNMBS">
+              <div class="nmbs"></div>
+            </div>
+            <div class="contract-logo" *ngIf="contract.validTEC">
+              <div class="tec"></div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr class="additional-info-row" [hidden]="!contract.open">
+        <td class="additional-info" colspan="4">
+          <div class="additional-info-wrapper">
+            <div class="info-block time">
+              <div>
+                <div class="fa fa-clock-o fa-2x info-block-icon inline"></div>
+                <div class="info-block-column inline">
+                  <div class="col-xs-4 text-center text-thin">From</div>
+                  <div class="col-xs-4 text-center text-thin" *ngIf="contract.validityEnd">To</div>
+                  <div class="col-xs-4 text-center text-thin" *ngIf="contract.lastValidation">Last validation</div>
+                </div>
+              </div>
+              <div>
+                <div class="info-block-icon inline"></div>
+                <div class="info-block-column inline">
+                  <div class="col-xs-4 text-center">{{contract.validityStart}}</div>
+                  <div class="col-xs-4 text-center" *ngIf="contract.validityEnd">{{contract.validityEnd}}</div>
+                  <div class="col-xs-4 text-center" *ngIf="contract.lastValidation">{{contract.lastValidation}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="info-block geo" *ngIf="contract.origin && contract.destination">
+              <div>
+                <div class="fa fa-location-arrow fa-2x info-block-icon inline"></div>
+                <div class="info-block-column inline">
+                  <div class="col-xs-4 text-center text-thin">Origin</div>
+                  <div class="col-xs-4 text-center text-thin">Destination</div>
+                </div>
+              </div>
+              <div>
+                <div class="info-block-icon inline"></div>
+                <div class="info-block-column inline">
+                  <div class="col-xs-4 text-center">{{contract.origin}}</div>
+                  <div class="col-xs-4 text-center">{{contract.destination}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="info-block passenger" *ngIf="false">
+              <div>
+                <div class="fa fa-user-o fa-2x info-block-icon inline"></div>
+                <div class="info-block-column inline">
+                  <div class="col-xs-4 text-center text-thin">Passenger</div>
+                  <div class="col-xs-4 text-center text-thin">Passenger</div>
+                </div>
+              </div>
+              <div>
+                <div class="info-block-icon inline"></div>
+                <div class="info-block-column inline">
+                  <div class="col-xs-4 text-center">Vandervreken, Tania</div>
+                  <div class="col-xs-4 text-center">Vandervreken, Louis</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,42 @@
+<div class="card mobib-card mobib-tec">
+  <div class="front">
+    <div class="specimen text-uppercase">Specimen</div>
+    <div class="chip-icon"></div>
+
+    <div class="tec-header">
+      <div class="logos">
+        <img class="tec-logo" src="assets/images/tec.gif">
+        <img class="nfc-logo" src="assets/images/nfc.png">
+      </div>
+    </div>
+    <div class="content">
+      <div class="chip-mobib inline">
+        <img class="mobib-logo" src="assets/images/mobib.png" />
+      </div>
+      <div class="tec-content inline">
+        <div class="tec-picture inline">
+          <img class="pic" *ngIf="!cardData.picture || cardData.picture.length === 0"
+               src="assets/images/default-pic.jpg"/>
+          <img class="pic" *ngIf="cardData.picture && cardData.picture.length > 0"
+               [attr.src]="'data:image/jpeg;base64,' + cardData.picture"/>
+        </div>
+        <div class="tec-info inline">
+          <div class="personal-info section">
+            <div class="names text-uppercase">
+              <div class="first-name">{{ firstName }}</div>
+              <div class="last-name">{{ lastName }}</div>
+            </div>
+            <div class="dob">{{ dob }}</div>
+          </div>
+          <div class="card-info section">
+            <div class="registration-number">{{ formattedCardNumber1 }}</div>
+            <div class="card-number">{{ formattedCardNumber2 }}</div>
+          </div>
+          <div class="expiration section">
+            <div class="expiration-date">Exp: {{ cardExpiration }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

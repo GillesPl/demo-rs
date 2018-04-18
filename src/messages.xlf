@@ -1,0 +1,1520 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="supportedTypes" datatype="html">
+        <source>Supported Types</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="belgianEid" datatype="html">
+        <source>Belgian eID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emv" datatype="html">
+        <source>EMV (Credit/Debit Cards)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="luxEid" datatype="html">
+        <source>Luxembourgish eID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="luxtrustCards" datatype="html">
+        <source>LuxTrust Cards</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mobib" datatype="html">
+        <source>MoBIB</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="oberthur" datatype="html">
+        <source>Oberthur</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ocraOtp" datatype="html">
+        <source>OCRA OTP Cards</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="civPivCards" datatype="html">
+        <source>CIV/PIV Cards</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="spanishDnie" datatype="html">
+        <source>Spanish DNIe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pteid" datatype="html">
+        <source>Portuguese eID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cardNotSupported" datatype="html">
+        <source>
+      Don&apos;t find your card in the list?
+      <x id="LINE_BREAK" ctype="lb"/>Send us an email with the card you want supported!
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c32700dc008d1054d1e7db5ade4dd8a5916ec58d" datatype="html">
+        <source>Refresh Data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="supportedCards" datatype="html">
+        <source>Is my card supported?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminPanel" datatype="html">
+        <source>Admin Panel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faqTitle" datatype="html">
+        <source>FAQ</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-faq/rmc-faq.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="serviceNotice" datatype="html">
+        <source>
+      This service is provided free of charge, and is intended for private use only.
+      No personal info is saved when using this service.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-footer/rmc-footer.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="allRightReserved" datatype="html">
+        <source>All rights reserved.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-footer/rmc-footer.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4b6dbf2d92858e82bcf6ae5dbc8dfb4b29d82ad0" datatype="html">
+        <source>FAQ</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-footer/rmc-footer.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cardContents" datatype="html">
+        <source>Card Contents</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/reader-select/reader-select.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="selectCard" datatype="html">
+        <source>Select Card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/reader-select/reader-select.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="insertCard" datatype="html">
+        <source>Insert Card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="insertCardPrompt" datatype="html">
+        <source>Insert the <x id="START_TAG_STRONG" ctype="x-strong"/>smartcard<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> you want to read into the smartcard reader.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="waitingForCard" datatype="html">
+        <source>Waiting for smartcard...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cardNotRecognized" datatype="html">
+        <source>Card not recognized?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="checkCardSupported" datatype="html">
+        <source>Check if it is supported <x id="START_LINK" ctype="x-a"/>here<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="errorCommunicatingWithReader" datatype="html">
+        <source>Error communicating with reader</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/reader-polling/reader-polling.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tryAgain" datatype="html">
+        <source>Try again?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/reader-polling/reader-polling.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="connectReader" datatype="html">
+        <source>Connect Reader</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/reader-polling/reader-polling.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="connectReaderDesc" datatype="html">
+        <source>
+    Please connect your <x id="START_TAG_STRONG" ctype="x-strong"/>smartcard reader<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> to your computer.
+    <x id="LINE_BREAK" ctype="lb"/>
+    Once it is connected, this page will automatically detect it.
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/reader-polling/reader-polling.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="lookingForReaders" datatype="html">
+        <source>Looking for readers...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/reader-polling/reader-polling.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="readMyCards" datatype="html">
+        <source>ReadMyCards</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-download-failed/rmc-download-failed.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="byTrust1Connector" datatype="html">
+        <source>by Trust1Connector</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-download-failed/rmc-download-failed.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="promoText" datatype="html">
+        <source>
+    Read the content of your smartcard, using any type of reader,
+    <x id="START_TAG_STRONG" ctype="x-strong"/>completely free<x id="CLOSE_TAG_STRONG" ctype="x-strong"/>.
+    <x id="LINE_BREAK" ctype="lb"/>This service is available for personal use, and we
+    <x id="START_TAG_STRONG" ctype="x-strong"/>never<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> save any data from your card.
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="downloadTitle" datatype="html">
+        <source>Download the Trust1Connector</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="downloadHelpText" datatype="html">
+        <source>
+      To use this website, you need to install the Trust1Connector.
+      This is a small piece of software that enables the communication with your card reader,
+      no matter which browser or reader you use.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="enterEmail" datatype="html">
+        <source>Enter your email address and we will send you a download link!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="90f6e682bb79007ce7def6fd68159afb3680b62d" datatype="html">
+        <source>Insert your email address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="requestLink" datatype="html">
+        <source>Request Link</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="newsCheckbox" datatype="html">
+        <source>
+                Click here if you want to receive news/updates on
+                the Trust1Connector or Trust1Team products and services.
+                You can unsubscribe at any time!
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mailPrivacyNotice" datatype="html">
+        <source>
+        Your email address is required for validation purposes only and is not saved unless you give us express
+        permission by selecting the checkbox above. It will never be shared with any third parties.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="waitingForInstall" datatype="html">
+        <source>Waiting for installation...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="instructionsSent" datatype="html">
+        <source>An email with download instructions is on its way to you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="autodetectAfterInstall" datatype="html">
+        <source>
+        Check your email and, once the installation is complete, the Trust1Connector will automatically be detected.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="firefoxRestartRequired" datatype="html">
+        <source>
+          Because you are using Firefox, you will need to manually restart your browser after installation.
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="why" datatype="html">
+        <source>Why?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="firefoxTitle" datatype="html">
+        <source>Why do I have to restart Firefox?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="firefoxTrustedCertificates" datatype="html">
+        <source>
+      We use trusted certificates to secure the communication between browser and card reader.
+      During the installation, these certificates are added to the keychain,
+      a collection of trusted certificates on your computer.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="firefoxKeychain" datatype="html">
+        <source>
+      Most browsers use the operating system keychain, but Firefox has opted to use its own,
+      separate, keychain. Because Firefox only reads the contents of this keychain when it is
+      (re)started, we unfortunately have no other option but to do a full restart after the
+      installation.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="readingCard" datatype="html">
+        <source>Reading Card...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="errorReadingCard" datatype="html">
+        <source>Error reading card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="errorNotSupported" datatype="html">
+        <source>We&apos;re sorry, this type of card is currently not supported.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="supportedCardTypes" datatype="html">
+        <source>You can find the list of currently supported card types <x id="START_LINK" ctype="x-a"/>here<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="insertDifferentCardToTryAgain" datatype="html">
+        <source>Insert a different card to try again!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="futureSupport" datatype="html">
+        <source>If you would like us to support this type of card in the future, let us know what kind of card this is.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3d5350b41e24ef36af9232507880dd414a55832d" datatype="html">
+        <source>Please provide a short description of the card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="submitFeedback" datatype="html">
+        <source>Submit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="thankYouForFeedback" datatype="html">
+        <source>Thank you for your feedback!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cardType" datatype="html">
+        <source>Card Type:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="luxtrust" datatype="html">
+        <source>LuxTrust</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ocra" datatype="html">
+        <source>OCRA/OTP</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mobibBasic" datatype="html">
+        <source>MoBIB Basic</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="piv" datatype="html">
+        <source>PIV</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pkcs11Compatible" datatype="html">
+        <source>PKCS11 Compatible</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="consentRequired" datatype="html">
+        <source>
+      To use this website, you need to consent to your reader being used.<x id="LINE_BREAK" ctype="lb"/>Without consent, we are unable to access the card reader.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="consentReload" datatype="html">
+        <source>Click here to reload and answer &quot;Yes&quot; when asked for consent.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="printLegalCopy" datatype="html">
+        <source>Print Legal Copy of Card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/print-summary/print-summary.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="printLegalCopySubtitle" datatype="html">
+        <source>
+      We are going to provide you a secure PDF version of the content of your eID card.
+      This document will be digitally signed by you to be compliant with EU regulation and be considered as
+      an original copy that you can distribute. No information will be stored on our side and you
+      will be the only possessor of the generated copy.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="startPrinting" datatype="html">
+        <source>Start Printing
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="generatePdf" datatype="html">
+        <source>Generate PDF</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="generating" datatype="html">
+        <source>Generating...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="generated" datatype="html">
+        <source>Generated</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sign" datatype="html">
+        <source>Sign</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signing" datatype="html">
+        <source>Signing...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="enterPinOnReader" datatype="html">
+        <source>Enter PIN on reader...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signed" datatype="html">
+        <source>Signed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="download" datatype="html">
+        <source>Download</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="downloadReady" datatype="html">
+        <source>Download Ready!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="useReaderPinpad" datatype="html">
+        <source>Enter the PIN code on your reader&apos;s pinpad</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pin-check-modal/pin-check-modal.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/ocra/challenge-modal/challenge-modal.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-address-pin-modal/pteid-address-pin-modal.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="awaitingResponseFromReader" datatype="html">
+        <source>Awaiting response from reader...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pin-check-modal/pin-check-modal.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/ocra/challenge-modal/challenge-modal.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-address-pin-modal/pteid-address-pin-modal.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signXml" datatype="html">
+        <source>Sign Example XML</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/oberthur/oberthur-viz/oberthur-viz.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signXmlSubtitle" datatype="html">
+        <source>
+      This will digitally sign an example XML file with the certificates on your card. At the end of the process, you will be able to download the signed XML file.<x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/>
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="startSigning" datatype="html">
+        <source>Start Signing
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="additionalInformation" datatype="html">
+        <source>Additional Information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="address" datatype="html">
+        <source>Address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="street" datatype="html">
+        <source>Street</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="city" datatype="html">
+        <source>City</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="generalInformation" datatype="html">
+        <source>General Information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chipNumber" datatype="html">
+        <source>Chip number</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="showCert" datatype="html">
+        <source>Show extended info</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/dnie/dnie-viz/dnie-viz.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-trust-viz/lux-trust-viz.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/oberthur/oberthur-viz/oberthur-viz.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hideCert" datatype="html">
+        <source>Hide extended info</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/dnie/dnie-viz/dnie-viz.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-trust-viz/lux-trust-viz.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/oberthur/oberthur-viz/oberthur-viz.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loadingCerts" datatype="html">
+        <source>Loading...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/dnie/dnie-viz/dnie-viz.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-trust-viz/lux-trust-viz.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/oberthur/oberthur-viz/oberthur-viz.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="certificates" datatype="html">
+        <source>Certificates</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/dnie/dnie-viz/dnie-viz.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-trust-viz/lux-trust-viz.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/oberthur/oberthur-viz/oberthur-viz.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1979da7460819153e11d2078244645d94291b69c" datatype="html">
+        <source>Copy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">128</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">165</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/dnie/dnie-viz/dnie-viz.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/dnie/dnie-viz/dnie-viz.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/dnie/dnie-viz/dnie-viz.component.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">121</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-trust-viz/lux-trust-viz.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-trust-viz/lux-trust-viz.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-trust-viz/lux-trust-viz.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/oberthur/oberthur-viz/oberthur-viz.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/oberthur/oberthur-viz/oberthur-viz.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/oberthur/oberthur-viz/oberthur-viz.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/oberthur/oberthur-viz/oberthur-viz.component.ts</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/oberthur/oberthur-viz/oberthur-viz.component.ts</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">140</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pkcs11/cert-block/cert-block.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nationalRegister" datatype="html">
+        <source>National Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/beid/beid-viz/beid-viz.component.ts</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="checkingCertificates" datatype="html">
+        <source>Validating card certificates...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="errorCheckingCertificates" datatype="html">
+        <source>An error occurred during the validation process. Please try again later.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="certificatesValid" datatype="html">
+        <source>All certificates OK. Card is valid.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="certificatesInvalid" datatype="html">
+        <source>Certificate check failed. Card invalid.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clickToCheckPin" datatype="html">
+        <source>Click to check PIN code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-address-pin-check-status/pteid-address-pin-check-status.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-pin-check-status/lux-pin-check-status.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-pin-check-status/pteid-pin-check-status.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pinCheckCancelled" datatype="html">
+        <source>Cancelled on reader, click to try again.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-address-pin-check-status/pteid-address-pin-check-status.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-pin-check-status/lux-pin-check-status.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-pin-check-status/pteid-pin-check-status.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pinCheckError" datatype="html">
+        <source>An error occurred during the validation process. Please try again later.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-address-pin-check-status/pteid-address-pin-check-status.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-pin-check-status/lux-pin-check-status.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-pin-check-status/pteid-pin-check-status.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pinTriesRemaining" datatype="html">
+        <source>Wrong PIN entered; <x id="ICU"/> remaining.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-address-pin-check-status/pteid-address-pin-check-status.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-pin-check-status/lux-pin-check-status.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-pin-check-status/pteid-pin-check-status.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f8872b91ab938c2142ed93b817133a2aea772be4" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 try} other {<x id="INTERPOLATION"/> tries} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-address-pin-check-status/pteid-address-pin-check-status.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-pin-check-status/lux-pin-check-status.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-pin-check-status/pteid-pin-check-status.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pinCheckOk" datatype="html">
+        <source>PIN check ok.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-address-pin-check-status/pteid-address-pin-check-status.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-pin-check-status/lux-pin-check-status.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-pin-check-status/pteid-pin-check-status.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pinBlocked" datatype="html">
+        <source><x id="INTERPOLATION"/> invalid PINs entered. PIN blocked.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pin-check-status/pin-check-status.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-address-pin-check-status/pteid-address-pin-check-status.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-pin-check-status/lux-pin-check-status.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-pin-check-status/pteid-pin-check-status.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="card" datatype="html">
+        <source>Card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/emv/emv-card/emv-card.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="holder" datatype="html">
+        <source>Holder</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/emv/emv-card/emv-card.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="expires" datatype="html">
+        <source>Expires</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/emv/emv-card/emv-card.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="accessToLuxRestricted" datatype="html">
+        <source>
+      Access to the Luxembourg eID card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb"/>Please provide your PIN to continue.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="waitingForReaderResponse" datatype="html">
+        <source>Waiting for response from reader...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userReaderPinpad" datatype="html">
+        <source>Use your reader&apos;s pinpad to enter the PIN code.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="printSummary" datatype="html">
+        <source>Print the content of my card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="biometricData" datatype="html">
+        <source>Biometric Data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signPDFDemo" datatype="html">
+        <source>Sign PDF (Demo)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/lux/lux-trust-viz/lux-trust-viz.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="generate" datatype="html">
+        <source>Generate</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/ocra/ocra-viz/ocra-viz.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="16f315d85744836b580054b142b5cb2e8919b910" datatype="html">
+        <source>Click to copy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/ocra/ocra-viz/ocra-viz.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pivAccessRestricted" datatype="html">
+        <source>
+      Access to the PIV card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb"/>Please provide your PIN to continue.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/piv/piv-viz/piv-viz.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="readingData" datatype="html">
+        <source>Reading data...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/piv/piv-viz/piv-viz.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptAddressData" datatype="html">
+        <source>Address Data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptAbbrBuildingType" datatype="html">
+        <source>Abbr. Building Type:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptAbbrStreetType" datatype="html">
+        <source>Abbr. Street Type:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptBuildingType" datatype="html">
+        <source>Building Type:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptCivilParish" datatype="html">
+        <source>Civil Parish:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptCivilParishDesc" datatype="html">
+        <source>Civil Parish Description:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptDistrict" datatype="html">
+        <source>District:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptDisctrictDesc" datatype="html">
+        <source>District Description:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptDoorNumber" datatype="html">
+        <source>Door No.:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptFloor" datatype="html">
+        <source>Floor:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptGeneralAddressNumber" datatype="html">
+        <source>Gen. Address Num.:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptIsNational" datatype="html">
+        <source>Is National:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptLocality" datatype="html">
+        <source>Locality:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptMunicipality" datatype="html">
+        <source>Municipality:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptMunicipalityDesc" datatype="html">
+        <source>Municipality Description:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptPlace" datatype="html">
+        <source>Place:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptPostalLocality" datatype="html">
+        <source>Postal Locality:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptSide" datatype="html">
+        <source>Side:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptStreetName" datatype="html">
+        <source>Street Name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptStreetType" datatype="html">
+        <source>Street Type:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptType" datatype="html">
+        <source>Type:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptZip3" datatype="html">
+        <source>ZIP3:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ptZip4" datatype="html">
+        <source>ZIP4:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pteid/pteid-viz/pteid-viz.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mobibActive" datatype="html">
+        <source><x id="START_TAG_STRONG" ctype="x-strong"/>Active<x id="CLOSE_TAG_STRONG" ctype="x-strong"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/mobib/mobib-active-status/mobib-active-status.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mobibNotActive" datatype="html">
+        <source><x id="START_TAG_STRONG" ctype="x-strong"/>Not active<x id="CLOSE_TAG_STRONG" ctype="x-strong"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/mobib/mobib-active-status/mobib-active-status.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mobibValidityStartsOn" datatype="html">
+        <source>Validity starts on <x id="INTERPOLATION"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/mobib/mobib-validity-status/mobib-validity-status.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mobibExpired" datatype="html">
+        <source><x id="START_TAG_STRONG" ctype="x-strong"/>Expired<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> on <x id="INTERPOLATION"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/mobib/mobib-validity-status/mobib-validity-status.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mobibValidUntil" datatype="html">
+        <source><x id="START_TAG_STRONG" ctype="x-strong"/>Valid<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> until <x id="INTERPOLATION"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/mobib/mobib-validity-status/mobib-validity-status.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ba4e26b3f592f7842152eb57332422dfed2fe188" datatype="html">
+        <source>Slot <x id="INTERPOLATION"/> in <x id="INTERPOLATION_1"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pkcs11/slot-icon/slot-icon.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="selectSlot" datatype="html">
+        <source>Select Slot</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/pkcs11/pkcs11-viz/pkcs11-viz.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pluginDownloadFailed" datatype="html">
+        <source>
+      An error occurred while downloading the Trust1Connector plugins that are required for this website.<x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/>Reload the page to try again. If this error keeps occurring, please contact support.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-download-failed/rmc-download-failed.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pluginDownloadReload" datatype="html">
+        <source>Click here to reload.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-download-failed/rmc-download-failed.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

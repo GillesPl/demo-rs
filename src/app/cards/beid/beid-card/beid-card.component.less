@@ -1,0 +1,144 @@
+.beid-card {
+  font-family: Arial, sans-serif;
+  @chip-width: 132px;
+
+
+  .labels {
+    font-size: 0.75em;
+  }
+
+  .values {
+    font-size: 0.85em;
+    font-weight: bold;
+  }
+
+  .section {
+    padding-top: 5px;
+  }
+
+  .front {
+
+    .header {
+      height: 15%;
+      border-bottom: 1px solid #999;
+      padding: 0 10px;
+
+      .nl, .fr, .de, .en {
+        position: absolute;
+        top: 10px;
+      }
+
+      .fr {
+        left: 145px;
+      }
+
+      .de {
+        right: 125px;
+      }
+
+      .en {
+        right: 10px;
+      }
+
+      .lang {
+        line-height: 1;
+        margin: auto 0;
+
+        span {
+          display: block;
+        }
+        .belgium {
+          font-weight: bold;
+          font-size: 1.25em;
+        }
+
+        .id-card {
+          font-size: 0.75em;
+        }
+      }
+
+    }
+
+    .content {
+      padding: 0 10px;
+
+      .names-title {
+        position: absolute;
+        top: 64px;
+        line-height: 1.7;
+      }
+
+      .names {
+        padding-top: 15px;
+      }
+
+      .chip {
+        width: @chip-width;
+      }
+
+
+      .birth-sex-block {
+        width: calc(~"99% - " @chip-width);
+      }
+
+      .sex {
+        position: absolute;
+        top: 105px;
+        right: 25px;
+
+        .values {
+          text-align: right;
+          padding-right: 5px;
+        }
+      }
+
+
+      .other {
+        .pic {
+          position: absolute;
+          right: 25px;
+          bottom: 15px;
+
+          .pic-img {
+            width: 105px;
+            height: 150px;
+          }
+        }
+      }
+
+    }
+  }
+
+  .back {
+    .back-wrapper {
+      padding: 10px 20px;
+
+      .rrnr {
+        .labels {
+          line-height: 1.1;
+        }
+        .values {
+          padding-top: 2px;
+        }
+      }
+
+      .barcode {
+        font-family: 'Barcode', sans-serif;
+        transform : scale(1.25,3.3);
+
+        .barcode-wrapper {
+          margin-left: 35px;
+          margin-top: -12px;
+        }
+      }
+
+      .machine-readable-zone {
+        margin-top: 110px;
+        line-height: 1;
+        font-family: 'OCR-B', monospace;
+        font-size: 1.8em;
+      }
+    }
+
+  }
+}

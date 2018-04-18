@@ -1,0 +1,14 @@
+<div class="card-viz-container">
+  <div class="card-viz-title hit-the-floor" i18n="@@cardContents">Card Contents</div>
+
+  <div class="card-list" [hidden]="readers.length <= 1">
+    <span class="reader-list-header"><span i18n="@@selectCard">Select Card</span>:</span>
+    <app-reader-icon *ngFor="let reader of readers; let i = index"
+                     [index]="i + 1"
+                     [reader]="reader"
+                     [currentReaderId]="currentReaderId">
+    </app-reader-icon>
+  </div>
+
+  <app-card-visualizer [readerId]="currentReaderId"></app-card-visualizer>
+</div>

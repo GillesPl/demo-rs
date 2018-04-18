@@ -1,0 +1,29 @@
+<div>
+  <h4>PKCS11 Module Configuration</h4>
+
+  <table class="table t1c-info-table">
+    <tr>
+      <td class="t1c-title">Linux</td>
+      <td>
+        <input type="text" class="form-control" [(ngModel)]="pkcs11Config.linux">
+      </td>
+    </tr>
+    <tr>
+      <td class="t1c-title">Mac OS</td>
+      <td>
+        <input type="text" class="form-control" [(ngModel)]="pkcs11Config.mac">
+      </td>
+    </tr>
+    <tr>
+      <td class="t1c-title">Windows</td>
+      <td>
+        <input type="text" class="form-control" [(ngModel)]="pkcs11Config.win">
+      </td>
+    </tr>
+  </table>
+
+  <div class="buttons">
+    <span class="btn btn-line-primary btn-w140" (click)="savePkcs11Config()">Save</span>
+    <span class="btn btn-line-default" (click)="resetToDefault()">Reset to Defaults</span>
+  </div>
+</div>

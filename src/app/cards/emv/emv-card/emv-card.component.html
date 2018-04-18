@@ -1,0 +1,32 @@
+<div class="card emv-card">
+  <div class="front">
+    <div class="specimen text-uppercase">Specimen</div>
+    <div class="chip-icon"></div>
+    <div class="content">
+      <div class="card-number">
+        <div class="labels inline">
+          <div i18n="@@card" class="text-uppercase">Card</div>
+        </div>
+        <div class="values inline">
+          <div>{{ cardNumber }}</div>
+        </div>
+      </div>
+      <div class="name" [hidden]="!cardData.application_data.name">
+        <div class="labels inline">
+          <div i18n="@@holder" class="text-uppercase">Holder</div>
+        </div>
+        <div class="values inline text-uppercase">
+          <div>{{ cardData.application_data.name }}</div>
+        </div>
+      </div>
+      <div class="validity">
+        <div class="labels inline">
+          <div i18n="@@expires" class="text-uppercase">Expires</div>
+        </div>
+        <div class="values inline">
+          <div>{{ expiration }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

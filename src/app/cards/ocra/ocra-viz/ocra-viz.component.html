@@ -1,0 +1,24 @@
+<div id="lux-viz" class="clearfix top-info lux-otp">
+
+  <app-ocra-card></app-ocra-card>
+
+  <div class="print-button">
+    <span class="btn btn-lg btn-primary btn-summary-download" (click)="challenge()" i18n="@@generate">Generate</span>
+  </div>
+
+  <input [hidden]="true" type="text" class="form-control" [(ngModel)]="otpResult.challenge" #copyTarget>
+
+  <div class="response" *ngIf="otpResult">
+        <span class="clickable challenge"
+              [ngxClipboard]="copyTarget"
+              tooltip="Click to copy"
+              i18n-tooltip
+              placement="bottom">{{formattedChallenge}}</span>
+  </div>
+
+
+  <div class="counter" *ngIf="otpResult">
+    <span>{{otpResult.counter}}</span>
+  </div>
+
+</div>

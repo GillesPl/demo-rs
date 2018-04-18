@@ -1,0 +1,154 @@
+<div id="pteid-viz" class="clearfix top-info">
+
+  <div class="status-wrapper">
+    <app-certificate-status [status]="certStatus" (click)="trackCertificatesClick()"></app-certificate-status>
+    <app-pteid-pin-check-status [status]="signPinStatus" [maxTries]="3" (onPinCheck)="checkPin()"></app-pteid-pin-check-status>
+  </div>
+
+  <app-pteid-card [idData]="cardData.id" [photo]="photo"></app-pteid-card>
+
+  <div class="print-button">
+    <app-print-summary (onPrint)="downloadSummary()"></app-print-summary>
+  </div>
+
+  <div class="additional-info col-sm-12">
+    <!--<span class="size-h3 text-primary">Additional Information</span>-->
+    <div class="status-wrapper">
+      <app-pteid-address-pin-check-status [status]="addressPinStatus" [maxTries]="3" (onPinCheck)="addressData()"></app-pteid-address-pin-check-status>
+    </div>
+    <div class="col-sm-12" [hidden]="!addressInfo">
+      <h4 class="text-info text-light" i18n="@@ptAddressData">Address Data</h4>
+
+      <div class="col-sm-6">
+        <p><strong i18n="@@ptAbbrBuildingType">Abbr. Building Type:</strong>&nbsp;&nbsp;{{addressInfo.abbr_building_type}}</p>
+        <p><strong i18n="@@ptAbbrStreetType">Abbr. Street Type:</strong>&nbsp;&nbsp;{{addressInfo.abbr_street_type}}</p>
+        <p><strong i18n="@@ptBuildingType">Building Type:</strong>&nbsp;&nbsp;{{addressInfo.building_type}}</p>
+        <p><strong i18n="@@ptCivilParish">Civil Parish:</strong>&nbsp;&nbsp;{{addressInfo.civil_parish}}</p>
+        <p><strong i18n="@@ptCivilParishDesc">Civil Parish Description:</strong>&nbsp;&nbsp;{{addressInfo.civil_parish_description}}</p>
+        <p><strong i18n="@@ptDistrict">District:</strong>&nbsp;&nbsp;{{addressInfo.district}}</p>
+        <p><strong i18n="@@ptDisctrictDesc">District Description:</strong>&nbsp;&nbsp;{{addressInfo.district_description}}</p>
+        <p><strong i18n="@@ptDoorNumber">Door No.:</strong>&nbsp;&nbsp;{{addressInfo.door_no}}</p>
+        <p><strong i18n="@@ptFloor">Floor:</strong>&nbsp;&nbsp;{{addressInfo.floor}}</p>
+        <p><strong i18n="@@ptGeneralAddressNumber">Gen. Address Num.:</strong>&nbsp;&nbsp;{{addressInfo.gen_address_num}}</p>
+        <p><strong i18n="@@ptIsNational">Is National:</strong>&nbsp;&nbsp;{{addressInfo.is_national}}</p>
+      </div>
+
+      <div class="col-sm-6">
+        <p><strong i18n="@@ptLocality">Locality:</strong>&nbsp;&nbsp;{{addressInfo.locality}}</p>
+        <p><strong i18n="@@ptMunicipality">Municipality:</strong>&nbsp;&nbsp;{{addressInfo.municipality}}</p>
+        <p><strong i18n="@@ptMunicipalityDesc">Municipality Description:</strong>&nbsp;&nbsp;{{addressInfo.municipality_description}}</p>
+        <p><strong i18n="@@ptPlace">Place:</strong>&nbsp;&nbsp;{{addressInfo.place}}</p>
+        <p><strong i18n="@@ptPostalLocality">Postal Locality:</strong>&nbsp;&nbsp;{{addressInfo.postal_locality}}</p>
+        <p><strong i18n="@@ptSide">Side:</strong>&nbsp;&nbsp;{{addressInfo.side}}</p>
+        <p><strong i18n="@@ptStreetName">Street Name:</strong>&nbsp;&nbsp;{{addressInfo.street_name}}</p>
+        <p><strong i18n="@@ptStreetType">Street Type:</strong>&nbsp;&nbsp;{{addressInfo.street_type}}</p>
+        <p><strong i18n="@@ptType">Type:</strong>&nbsp;&nbsp;{{addressInfo.type}}</p>
+        <p><strong i18n="@@ptZip3">ZIP3:</strong>&nbsp;&nbsp;{{addressInfo.zip3}}</p>
+        <p><strong i18n="@@ptZip4">ZIP4:</strong>&nbsp;&nbsp;{{addressInfo.zip4}}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="certificates-toggle col-sm-12">
+    <span (click)="toggleCerts()" [hidden]="loadingCerts || !isCollapsed" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@showCert">Show extended info</span>
+    <span (click)="toggleCerts()" [hidden]="loadingCerts || isCollapsed" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@hideCert">Hide extended info</span>
+    <span [hidden]="!loadingCerts" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@loadingCerts">Loading...</span>
+  </div>
+  <div>
+    <div [collapse]="isCollapsed">
+      <div class="certificates col-sm-12">
+        <span class="size-h3 text-primary" i18n="@@certificates">Certificates</span>
+        <div class="col-sm-12" *ngIf="certData.root_certificate">
+          <h4 class="text-info text-light">Root</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" [ngModel]="certData.root_certificate.base64">
+            <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="certData.root_certificate.base64"><fa [name]="'copy'"></fa></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="certData.root_authentication_certificate">
+          <h4 class="text-info text-light">Root Authentication</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" [ngModel]="certData.root_authentication_certificate.base64">
+            <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="certData.root_authentication_certificate.base64"><fa [name]="'copy'"></fa></button>
+                        </span>
+          </div>
+
+        </div>
+
+        <div class="col-sm-12" *ngIf="certData.root_non_repudiation_certificate">
+          <h4 class="text-info text-light">Root Non Repudiation</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" [ngModel]="certData.root_non_repudiation_certificate.base64">
+            <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="certData.root_non_repudiation_certificate.base64"><fa [name]="'copy'"></fa></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="certData.authentication_certificate">
+          <h4 class="text-info text-light">Authentication</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" [ngModel]="certData.authentication_certificate.base64">
+            <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="certData.authentication_certificate.base64"><fa [name]="'copy'"></fa></button>
+                        </span>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="certData.non_repudiation_certificate">
+          <h4 class="text-info text-light">Non Repudiation</h4>
+
+          <div class="input-group">
+            <input type="text" class="form-control" [ngModel]="certData.non_repudiation_certificate.base64">
+            <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
+                                    i18n-tooltip
+                                    tooltip="Copy"
+                                    type="button"
+                                    ngxClipboard
+                                    [cbContent]="certData.non_repudiation_certificate.base64"><fa [name]="'copy'"></fa></button>
+                        </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

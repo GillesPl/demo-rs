@@ -1,0 +1,44 @@
+@import "../../variables";
+
+.t1t-keypad {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  color: blue;
+  background-color: lighten(@brand-primary, 75%);
+  margin: auto;
+}
+
+.t1t-keypad-key {
+  font-size: 2em;
+  float: left;
+  text-align: center;
+  height: 63px;
+  width: 33.33333%;
+  background: white;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 5px 0;
+}
+
+
+.keypad-display {
+  direction: ltr;
+  font-size: 2em;
+  padding: 0px -5% 10px 5%;
+  background-color: lighten(@brand-primary, 75%);
+  color: @brand-primary;
+  border: 1px solid @brand-primary;
+  outline: 0;
+  text-align: center;
+  border-radius: 0;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.keypad-display:disabled {
+  background: transparent;
+}

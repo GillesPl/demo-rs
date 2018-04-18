@@ -1,0 +1,89 @@
+@import "../../../../variables";
+
+.slot-icon {
+  position: relative;
+  display: inline-block;
+  padding: 2px 2px 4px 2px;
+  //border: 3px solid @brand-primary;
+  //background: lighten(@brand-primary, 25%);
+  //border-radius: 3px;
+  border-bottom: 2px solid transparent;
+  margin: 10px 20px 0;
+
+  .index {
+    position: relative;
+    color: white;
+    width: 52px;
+    height: 44px;
+
+    .card-bg {
+      position: absolute;
+      width: 52px;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 38px;
+      border-radius: 5px;
+      margin: auto;
+
+      .fa {
+        position: absolute;
+        font-size: 48px;
+        background: transparent;
+        top: 0;
+        bottom: 0;
+        left: 3px;
+        right: 0;
+        height: 44px;
+        margin: auto;
+        color: @brand-primary;
+      }
+    }
+
+
+    .index-number {
+      position: absolute;
+      color: whitesmoke;
+      font-weight: bolder;
+      text-shadow:
+          -1px -1px 0 #888,
+          1px -1px 0 #888,
+        -1px 1px 0 #888,
+        1px 1px 0 #888;
+      font-size: 42px;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      width: 24px;
+      margin: auto;
+    }
+  }
+
+  &.active {
+    border-bottom: 2px solid @brand-primary;
+  }
+
+  &.active,
+  &:hover {
+    .card-bg {
+
+      .fa {
+        color: darken(@brand-primary, 10%);
+      }
+
+    }
+
+    .index-number {
+      color: #fff;
+      text-shadow:
+          -1px -1px 0 #777,
+          1px -1px 0 #777,
+        -1px 1px 0 #777,
+        1px 1px 0 #777;
+    }
+  }
+
+}

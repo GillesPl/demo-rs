@@ -1,0 +1,18 @@
+<div class="log-viewer">
+
+  <div class="log-controls">
+    <label class="switch">
+      <input type="checkbox"
+             id="autoscroll"
+             [(ngModel)]="autoScroll"
+             (ngModelChange)="autoScrollChanged()">
+      <span class="slider round"></span>
+    </label>
+    <span class="checkbox-label">Autoscroll</span>
+  </div>
+
+  <div class="log-contents">
+    <textarea id="log-{{logfileName}}" disabled>{{logContents}}</textarea>
+  </div>
+
+</div>
