@@ -5,6 +5,7 @@ import {EventService} from './event.service';
 import {RMC} from './rmc.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2 } from 'angulartics2';
+import { CitrixService } from './citrix.service';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
 
   constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
               private angulartics2: Angulartics2,
+              private Citrix: CitrixService,
               private Connector: Connector,
               private eventService: EventService,
               private RMC: RMC) {
@@ -50,37 +52,42 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.Connector.init(this.Connector.generateConfig()).then(() => {
-      this.gclChecked = true;
-      this.gclAvailable = true;
+    const comp = this;
 
-      this.Connector.core('version').then(version => {
+    comp.Connector.init(this.Connector.generateConfig()).then(() => {
+      comp.gclChecked = true;
+      comp.gclAvailable = true;
+
+      comp.Connector.core('version').then(version => {
         console.log('Using T1C-JS ' + version);
       });
-      this.Connector.core('info').then(info => {
+      comp.Connector.core('info').then(info => {
         console.log('GCL version installed: ' + info.data.version);
       });
 
-      // Determine initial action we need to take
-      this.Connector.core('readers').then(readers => {
-        this.readers = readers.data;
-        if (_.isEmpty(readers.data)) {
-          // No readers present, poll for readers being connected
-          this.pollForReaders();
-        } else {
-          // Is there a card in at least one reader?
-          console.log(readers.data);
-          this.cardPresent = !!_.find(readers.data, r => {
-            return _.has(r, 'card');
-          });
-          if (this.cardPresent) {
-            // A card is present, determine type and read its data
-            this.readCard();
+      // Check if we need to do citrix init
+      comp.citrixInit().then(() => {
+        // Determine initial action we need to take
+        comp.Connector.core('readers').then(readers => {
+          comp.readers = readers.data;
+          if (_.isEmpty(readers.data)) {
+            // No readers present, poll for readers being connected
+            comp.pollForReaders();
           } else {
-            // No card found, polling
-            this.pollForCard();
+            // Is there a card in at least one reader?
+            console.log(readers.data);
+            comp.cardPresent = !!_.find(readers.data, r => {
+              return _.has(r, 'card');
+            });
+            if (comp.cardPresent) {
+              // A card is present, determine type and read its data
+              comp.readCard();
+            } else {
+              // No card found, polling
+              comp.pollForCard();
+            }
           }
-        }
+        });
       });
     }, err => {
       if (err.code === '903') {
@@ -95,6 +102,41 @@ export class AppComponent implements OnInit {
     });
 
     this.isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+  }
+
+  citrixInit() {
+    const comp = this;
+    return new Promise((resolve, reject) => {
+      resolve();
+
+      // // Check if we need to do citrix init
+      // if (_.isBoolean(info.data.citrix) && info.data.citrix) {
+      //   comp.Citrix.environment(info.data.citrix);
+      //   comp.Connector.plugin('agent', 'get', [], [comp.Citrix.userSelectionParams()]).then(res => {
+      //     if (res.data && typeof res.data === 'object' && !_.isArray(res.data)) {
+      //       comp.Citrix.agent(res.data).then(() => {
+      //         // Need to get new connector instance with agent port!
+      //         comp.Connector.core('readers').then(() => {
+      //           comp.Citrix.updateLocation();
+      //           available.resolve(true);
+      //         }, (err) => {
+      //           if (!err.noConsent) {
+      //             comp.Citrix.invalidLocalAgent().then(() => {
+      //               available.resolve(isGCLAvailable());
+      //             });
+      //           }
+      //         });
+      //       });
+      //     } else {
+      //       comp.Citrix.invalidLocalAgent().then(() => {
+      //         available.resolve(isGCLAvailable());
+      //       });
+      //     }
+      //   }, err => {
+      //     console.log(err);
+      //   });
+      // }
+    });
   }
 
   dismissPanels() {

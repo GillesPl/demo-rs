@@ -39,6 +39,8 @@ import { Angulartics2Module } from 'angulartics2';
 import { RouterModule, Routes } from '@angular/router';
 import { Pkcs11ConfigComponent } from './pkcs11-config/pkcs11-config.component';
 import { RmcDownloadFailedComponent } from './rmc-download-failed/rmc-download-failed.component';
+import { CitrixUserSelectModalComponent } from './citrix-user-select-modal/citrix-user-select-modal.component';
+import { CitrixService } from './citrix.service';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -71,6 +73,7 @@ const ROUTES: Routes = [
     CardVisualizerComponent,
     Pkcs11ConfigComponent,
     RmcDownloadFailedComponent,
+    CitrixUserSelectModalComponent,
   ],
   imports: [
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
@@ -90,6 +93,7 @@ const ROUTES: Routes = [
     { provide: LOCALE_ID, useValue: locale },
     ApiService,
     CardService,
+    CitrixService,
     Connector,
     EventService,
     RMC
