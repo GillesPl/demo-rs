@@ -21,6 +21,19 @@ if (environment.production) {
 
 // use the require method provided by webpack
 declare const require;
+
+// check if pkcs11-config is present and set if necessary
+let pkcs11 = localStorage.getItem('rmc-pkcs11-config');
+if (!pkcs11) {
+  pkcs11 = JSON.stringify({
+    linux: '/usr/local/lib/libeTPkcs11.so',
+    mac: '/usr/local/lib/libeTPkcs11.dylib',
+    win: 'C:\\Windows\\System32\\eTPKCS11.dll'
+  });
+  localStorage.setItem('rmc-pkcs11-config', pkcs11);
+}
+
+// retrieve locale and set default if none is set
 let locale = localStorage.getItem('rmc-locale');
 if (!locale) {
   locale = 'en';

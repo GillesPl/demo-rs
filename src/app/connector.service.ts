@@ -122,13 +122,18 @@ export class Connector {
   }
 
   generateConfig(agentPort?: number) {
+    // retrieve PKCS11Config from local storage
+    const pkcs11 = JSON.parse(localStorage.getItem('rmc-pkcs11-config'));
+
+    // generate config
     return new this.GCLLib.GCLConfig({
       apiKey: environment.apiKey,
       gwOrProxyUrl: environment.gwOrProxyUrl,
       gclUrl: environment.gclUrl,
       implicitDownload: environment.implicitDownload,
       agentPort,
-      osPinDialog: environment.osPinDialog
+      osPinDialog: environment.osPinDialog,
+      pkcs11Config: pkcs11
     });
   }
 }
