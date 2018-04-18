@@ -279,6 +279,10 @@
           <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
           <context context-type="linenumber">3</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-download-failed/rmc-download-failed.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="byTrust1Connector" datatype="html">
         <source>by Trust1Connector</source>
@@ -288,6 +292,10 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-download-failed/rmc-download-failed.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -1489,6 +1497,22 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/pkcs11/pkcs11-viz/pkcs11-viz.component.ts</context>
           <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pluginDownloadFailed" datatype="html">
+        <source>
+      An error occurred while downloading the Trust1Connector plugins that are required for this website.<x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/>Reload the page to try again. If this error keeps occurring, please contact support.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-download-failed/rmc-download-failed.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pluginDownloadReload" datatype="html">
+        <source>Click here to reload.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-download-failed/rmc-download-failed.component.ts</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
     </body>
