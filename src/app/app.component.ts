@@ -64,11 +64,12 @@ export class AppComponent implements OnInit {
       // Determine initial action we need to take
       this.Connector.core('readers').then(readers => {
         this.readers = readers.data;
-        if (_.isEmpty(readers)) {
+        if (_.isEmpty(readers.data)) {
           // No readers present, poll for readers being connected
           this.pollForReaders();
         } else {
           // Is there a card in at least one reader?
+          console.log(readers.data);
           this.cardPresent = !!_.find(readers.data, r => {
             return _.has(r, 'card');
           });
