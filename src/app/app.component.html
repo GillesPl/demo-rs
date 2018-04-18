@@ -93,6 +93,8 @@
   <div id="rmc-content">
     <app-rmc-consent *ngIf="noConsent"></app-rmc-consent>
 
+    <app-rmc-download-failed *ngIf="downloadError"></app-rmc-download-failed>
+
     <app-download-gcl [dlUrl]="dlLink" [isFirefox]="isFirefox" *ngIf="gclChecked && !gclAvailable"></app-download-gcl>
 
     <app-reader-polling [error]="error" *ngIf="pollingReaders"></app-reader-polling>

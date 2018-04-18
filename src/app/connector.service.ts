@@ -11,13 +11,6 @@ export class Connector {
   private connector;
   private consent: Promise<any>;
 
-  isGCLAvailable() {
-    const service = this;
-    return this.init(this.generateConfig()).then(() => {
-      return service.core('info').then(() => true);
-    }).catch(() => false);
-  }
-
   // TODO make sure connector is initialized before sending requests
   promise() {
     return Promise.resolve(this.connector);
@@ -114,10 +107,12 @@ export class Connector {
     const service = this;
     service.connector = this.GCLLib.GCLClient.initialize(gclConfig).then(client => {
       service.connector = client;
+      return Promise.resolve(service.connector);
     }, err => {
       service.connector = err.client;
+      return Promise.reject(err);
     });
-    return Promise.resolve(service.connector);
+    return service.connector;
   }
 
   generateConfig(agentPort?: number) {

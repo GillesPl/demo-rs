@@ -21,9 +21,9 @@ export class PteidVizComponent implements OnInit {
   addressPinStatus;
   signPinStatus;
   photo;
-  certData;
+  certData = {};
   loadingCerts;
-  addressInfo;
+  addressInfo = {};
   isCollapsed;
 
   constructor(private angulartics2: Angulartics2,
@@ -46,7 +46,7 @@ export class PteidVizComponent implements OnInit {
     // validate certificate chain
     comp.Connector.plugin('pteid', 'allCerts', [comp.readerId], [ { filter: [], parseCerts: false }]).then(res => {
       comp.API.convertJPEG2000toJPEG(comp.cardData.id.photo).toPromise().then((converted: any) => {
-        comp.photo = converted.data.base64Pic;
+        comp.photo = converted.base64Pic;
       });
 
       const validationReq = {

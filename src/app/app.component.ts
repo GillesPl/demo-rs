@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
   readerWithCard: boolean;
   hover: boolean;
   noConsent: boolean;
+  downloadError: boolean;
 
   private pollIterations = 0;
 
@@ -49,40 +50,45 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.Connector.isGCLAvailable().then(available => {
+    this.Connector.init(this.Connector.generateConfig()).then(() => {
       this.gclChecked = true;
-      this.gclAvailable = available;
+      this.gclAvailable = true;
 
-      if (this.gclAvailable) {
-        this.Connector.core('version').then(version => {
-          console.log('Using T1C-JS ' + version);
-        });
-        this.Connector.core('info').then(info => {
-          console.log('GCL version installed: ' + info.data.version);
-        });
+      this.Connector.core('version').then(version => {
+        console.log('Using T1C-JS ' + version);
+      });
+      this.Connector.core('info').then(info => {
+        console.log('GCL version installed: ' + info.data.version);
+      });
 
-        // Determine initial action we need to take
-        this.Connector.core('readers').then(readers => {
-          this.readers = readers.data;
-          if (_.isEmpty(readers)) {
-            // No readers present, poll for readers being connected
-            this.pollForReaders();
+      // Determine initial action we need to take
+      this.Connector.core('readers').then(readers => {
+        this.readers = readers.data;
+        if (_.isEmpty(readers)) {
+          // No readers present, poll for readers being connected
+          this.pollForReaders();
+        } else {
+          // Is there a card in at least one reader?
+          this.cardPresent = !!_.find(readers.data, r => {
+            return _.has(r, 'card');
+          });
+          if (this.cardPresent) {
+            // A card is present, determine type and read its data
+            this.readCard();
           } else {
-            // Is there a card in at least one reader?
-            this.cardPresent = !!_.find(readers.data, r => {
-              return _.has(r, 'card');
-            });
-            if (this.cardPresent) {
-              // A card is present, determine type and read its data
-              this.readCard();
-            } else {
-              // No card found, polling
-              this.pollForCard();
-            }
+            // No card found, polling
+            this.pollForCard();
           }
-        });
+        }
+      });
+    }, err => {
+      if (err.code === '903') {
+        this.onDownloadError();
       } else {
+        // assume gcl unavailable
         console.log('No GCL installation found');
+        this.gclChecked = true;
+        this.gclAvailable = false;
         this.promptDownload();
       }
     });
@@ -107,7 +113,17 @@ export class AppComponent implements OnInit {
     this.gclChecked = false;
     this.pollingReaders = false;
     this.pollingCard = false;
+    this.downloadError = false;
     this.noConsent = true;
+  }
+
+  onDownloadError() {
+    this.readerWithCard = false;
+    this.gclChecked = false;
+    this.pollingReaders = false;
+    this.pollingCard = false;
+    this.downloadError = true;
+    this.noConsent = false;
   }
 
   onReaderSelected(item) {
@@ -115,15 +131,12 @@ export class AppComponent implements OnInit {
   }
 
   onGclInstalled() {
-    const controller = this;
     this.angulartics2.eventTrack.next({
       action: 'install',
       properties: { category: 'T1C', label: 'Trust1Connector installed'}
     });
-    this.Connector.init(this.Connector.generateConfig()).then(() => {
-      controller.gclAvailable = true;
-      this.pollForReaders();
-    });
+    // reinit to load GCL config
+    this.ngOnInit();
   }
 
   onSidebarOpened() {

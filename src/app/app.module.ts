@@ -38,6 +38,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Module } from 'angulartics2';
 import { RouterModule, Routes } from '@angular/router';
 import { Pkcs11ConfigComponent } from './pkcs11-config/pkcs11-config.component';
+import { RmcDownloadFailedComponent } from './rmc-download-failed/rmc-download-failed.component';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -69,6 +70,7 @@ const ROUTES: Routes = [
     DownloadGclComponent,
     CardVisualizerComponent,
     Pkcs11ConfigComponent,
+    RmcDownloadFailedComponent,
   ],
   imports: [
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
