@@ -12,4 +12,8 @@ export class RmcConsentComponent implements OnInit {
   ngOnInit() {
   }
 
+  reload() {
+    console.log('reloading');
+    location.reload(true);
+  }
 }

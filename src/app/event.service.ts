@@ -27,6 +27,7 @@ export class ChallengeEvent {
 export class EventService {
   public adminPanelClosed$: EventEmitter<Event>;
   public adminPanelOpened$: EventEmitter<Event>;
+  public consentError$: EventEmitter<Event>;
   public consentRequired$: EventEmitter<Event>;
   public consentResult$: EventEmitter<ConsentEvent>;
   public faqClosed$: EventEmitter<Event>;
@@ -49,6 +50,7 @@ export class EventService {
   constructor() {
     this.adminPanelClosed$ = new EventEmitter();
     this.adminPanelOpened$ = new EventEmitter();
+    this.consentError$ = new EventEmitter();
     this.consentRequired$ = new EventEmitter();
     this.consentResult$ = new EventEmitter();
     this.faqClosed$ = new EventEmitter();
@@ -87,6 +89,10 @@ export class EventService {
 
   public closeSidebar(): void {
     this.sidebarClosed$.emit(new Event('sidebar-close'));
+  }
+
+  public consentError(): void {
+    this.consentError$.emit(new Event('consent-error'));
   }
 
   public consentRequired(): void {

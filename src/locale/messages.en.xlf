@@ -1621,6 +1621,25 @@
                       <context context-type="linenumber">5</context>
                     </context-group>
                   </trans-unit>
+      <trans-unit id="consentRequired" datatype="html">
+        <source>
+      To use this website, you need to consent to your reader being used.<x id="LINE_BREAK" ctype="lb"/>Without consent, we are unable to access the card reader.
+    </source>        <target>
+      To use this website, you need to consent to your reader being used.<x id="LINE_BREAK" ctype="lb"/>Without consent, we are unable to access the card reader.
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="consentReload" datatype="html">
+        <source>Click here to reload and answer &quot;Yes&quot; when asked for consent.</source>
+        <target>Click here to reload and answer &quot;Yes&quot; when asked for consent.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>

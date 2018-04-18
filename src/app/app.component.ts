@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
   dlLink: string;
   readerWithCard: boolean;
   hover: boolean;
+  noConsent: boolean;
 
   private pollIterations = 0;
 
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit {
               private eventService: EventService,
               private RMC: RMC) {
     this.eventService.adminPanelOpened$.subscribe(() => this.onAdminPanelOpened());
+    this.eventService.consentError$.subscribe(() => this.onConsentError());
     this.eventService.faqOpened$.subscribe(() => this.onFaqOpened());
     this.eventService.gclInstalled$.subscribe(() => this.onGclInstalled());
     this.eventService.readerSelected$.subscribe(item => this.onReaderSelected(item));
@@ -100,6 +102,14 @@ export class AppComponent implements OnInit {
   }
 
   // Event handlers
+  onConsentError() {
+    this.readerWithCard = false;
+    this.gclChecked = false;
+    this.pollingReaders = false;
+    this.pollingCard = false;
+    this.noConsent = true;
+  }
+
   onReaderSelected(item) {
     this.readerWithCard = item;
   }

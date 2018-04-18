@@ -47,8 +47,7 @@ export class Connector {
             });
           } else { return this.promise().then(conn => { return conn[erroredRequest.func](...erroredRequest.args); }); }
         } else {
-          // TODO go to consent-required page
-          // $state.go('consent-required');
+          this.eventService.consentError();
           return Promise.reject({ noConsent: true });
         }
       }, () => {

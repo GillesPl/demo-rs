@@ -1,3 +1,14 @@
-<p>
-  rmc-consent works!
-</p>
+<div class="rmc-step">
+  <div class="rmc-title-block">
+    <span class="rmc-title hit-the-floor" i18n="@@readMyCards">ReadMyCards</span>
+    <div class="rmc-subtitle"><span class="rmc-subtitle-text" i18n="@@byTrust1Connector">by Trust1Connector</span>
+    </div>
+  </div>
+
+  <div class="rmc-download-prompt">
+    <div class="prompt-text text-ultralight" i18n="@@consentRequired">
+      To use this website, you need to consent to your reader being used.<br>Without consent, we are unable to access the card reader.
+    </div>
+    <div class="prompt-text"><a class="clickable" (click)="reload()" i18n="@@consentReload">Click here to reload and answer "Yes" when asked for consent.</a></div>
+  </div>
+</div>

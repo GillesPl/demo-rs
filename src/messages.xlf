@@ -275,11 +275,19 @@
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
           <context context-type="linenumber">3</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="byTrust1Connector" datatype="html">
         <source>by Trust1Connector</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -527,6 +535,22 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="consentRequired" datatype="html">
+        <source>
+      To use this website, you need to consent to your reader being used.<x id="LINE_BREAK" ctype="lb"/>Without consent, we are unable to access the card reader.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="consentReload" datatype="html">
+        <source>Click here to reload and answer &quot;Yes&quot; when asked for consent.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="printLegalCopy" datatype="html">
