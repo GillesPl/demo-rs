@@ -85,6 +85,8 @@ export class CardService {
         return 'Oberthur';
       case 'piv':
         return 'PIV';
+      case 'pkcs11':
+        return 'PKCS11 Compatible';
       case 'pteid':
         return 'Portuguese eID';
       default:

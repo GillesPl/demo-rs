@@ -57,6 +57,10 @@ import { DownloadSummaryModalComponent } from './download-summary-modal/download
 import { ModalService } from './modal.service';
 import { DownloadXmlModalComponent } from './download-xml-modal/download-xml-modal.component';
 import { ChallengeModalComponent } from './ocra/challenge-modal/challenge-modal.component';
+import { SlotIconComponent } from './pkcs11/slot-icon/slot-icon.component';
+import { SlotVizComponent } from './pkcs11/slot-viz/slot-viz.component';
+import { Pkcs11VizComponent } from './pkcs11/pkcs11-viz/pkcs11-viz.component';
+import { CertBlockComponent } from './pkcs11/cert-block/cert-block.component';
 
 
 @NgModule({
@@ -109,7 +113,11 @@ import { ChallengeModalComponent } from './ocra/challenge-modal/challenge-modal.
     PteidAddressPinModalComponent,
     DownloadSummaryModalComponent,
     DownloadXmlModalComponent,
-    ChallengeModalComponent
+    ChallengeModalComponent,
+    SlotIconComponent,
+    SlotVizComponent,
+    Pkcs11VizComponent,
+    CertBlockComponent
   ],
   providers: [
     BeidService,
@@ -134,6 +142,7 @@ import { ChallengeModalComponent } from './ocra/challenge-modal/challenge-modal.
     OberthurVizComponent,
     OcraVizComponent,
     PivVizComponent,
+    Pkcs11VizComponent,
     PteidVizComponent,
   ],
   entryComponents: [ ChallengeModalComponent, PinCheckModalComponent,

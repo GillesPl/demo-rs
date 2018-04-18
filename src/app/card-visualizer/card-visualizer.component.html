@@ -39,7 +39,18 @@
 
   <div class="card-viz" *ngIf="!loading && !errorReadingCard && !unknownCard">
     <div class="card-type"><span class="text-light" i18n="@@cardType">Card Type:</span>
-      <span class="text-bold">{{cardTypePretty}}</span>
+      <span class="text-bold" i18n="@@belgianEid" *ngIf="cardType === 'beid'">Belgian eID</span>
+      <span class="text-bold" i18n="@@spanishDnie" *ngIf="cardType === 'dnie'">Spanish DNIe</span>
+      <span class="text-bold" i18n="@@emv" *ngIf="cardType === 'emv'">EMV</span>
+      <span class="text-bold" i18n="@@luxEid" *ngIf="cardType === 'luxeid'">Luxembourgish eID</span>
+      <span class="text-bold" i18n="@@luxtrust" *ngIf="cardType === 'luxtrust'">LuxTrust</span>
+      <span class="text-bold" i18n="@@ocra" *ngIf="cardType === 'ocra'">OCRA/OTP</span>
+      <span class="text-bold" i18n="@@mobib" *ngIf="cardType === 'mobib' && cardTypePretty === 'MoBIB'">MoBIB</span>
+      <span class="text-bold" i18n="@@mobibBasic" *ngIf="cardType === 'mobib' && cardTypePretty === 'MoBIB Basic'">MoBIB Basic</span>
+      <span class="text-bold" i18n="@@oberthur" *ngIf="cardType === 'oberthur'">Oberthur</span>
+      <span class="text-bold" i18n="@@piv" *ngIf="cardType === 'piv'">PIV</span>
+      <span class="text-bold" i18n="@@pkcs11Compatible" *ngIf="cardType === 'pkcs11'">PKCS11 Compatible</span>
+      <span class="text-bold" i18n="@@pteid" *ngIf="cardType === 'pteid'">Portuguese eID</span>
     </div>
 
     <div class="viz-container">
@@ -66,6 +77,8 @@
       <app-oberthur-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'oberthur'"></app-oberthur-viz>
 
       <app-piv-viz *ngIf="cardType === 'piv'" [readerId]="readerId" [cardData]="cardData"></app-piv-viz>
+
+      <app-pkcs11-viz *ngIf="cardType === 'pkcs11'" [readerId]="readerId" [cardData]="cardData"></app-pkcs11-viz>
 
       <app-pteid-viz *ngIf="cardType === 'pteid'" [readerId]="readerId" [cardData]="cardData"></app-pteid-viz>
     </div>

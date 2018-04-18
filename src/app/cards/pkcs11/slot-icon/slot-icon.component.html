@@ -1,0 +1,10 @@
+<div class="slot-icon clickable"
+     [ngClass]="{ 'active': slot.slot_id === currentSlotId }"
+     (click)="selectSlot()" i18n-tooltip tooltip="Slot {{slot.slot_id}} in {{slot.description}}" placement="bottom">
+  <div class="index">
+    <div class="card-bg">
+      <span class="fa fa-archive"></span>
+    </div>
+    <span class="index-number">{{index}}</span>
+  </div>
+</div>
