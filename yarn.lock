@@ -8935,9 +8935,9 @@ trim-right@^1.0.1:
   dependencies:
     glob "^6.0.4"
 
-trust1connector@2.1.2:
-  version "2.1.2"
-  resolved "https://repo.t1t.be/repository/npm-group/trust1connector/-/trust1connector-2.1.2.tgz#560dcd50bcf843dde9401acd07616952cbcc7baf"
+trust1connector@2.1.4:
+  version "2.1.4"
+  resolved "https://repo.t1t.be/repository/npm-group/trust1connector/-/trust1connector-2.1.4.tgz#39d892c9b04a41f40b2f432faace7813f9951291"
   dependencies:
     Base64 "1.0.1"
     axios "0.15.3"
