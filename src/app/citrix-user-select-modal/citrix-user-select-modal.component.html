@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h3>Select Agent</h3>
+</div>
+<div class="modal-body">
+  <!--<h4 class="text-info text-light">Username</h4>-->
+  <form name="agentForm" class="form-inline" (ngSubmit)="ok()">
+    <p *ngIf="retry">No active Agent was found for the previously entered parameters, please try again.</p>
+    <p *ngIf="!retry">Enter Agent selection parameters:</p>
+    <div *ngFor="let param of params; let i = index" class="form-row" style="margin-bottom: 10px;">
+      <div class="form-group col">
+        <label for="param_key_{{i}}">Key</label>
+        <input id="param_key_{{i}}" type="text" class="form-control" [(ngModel)]="param.key" name="param_key_{{i}}.key">
+      </div>
+      <div class="form-group col">
+        <label for="param_val_{{i}}">Value</label>
+        <input id="param_val_{{i}}" type="text" class="form-control" [(ngModel)]="param.value" name="param_val_{{i}}.value">
+      </div>
+      <div class="form-group col">
+        <i class="btn btn-line-primary btn-sm fa fa-times" (click)="removeParam(param)" type="button"></i>
+      </div>
+    </div>
+    <input type="submit" class="hidden">
+  </form>
+
+  <div style="margin-top: 10px;">
+    <span class="btn btn-default btn-sm fa fa-plus" (click)="addParam()"></span>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-line-primary" type="submit" (click)="ok()"
+        [disabled]="insufficientParameters()">OK</button>
+</div>
