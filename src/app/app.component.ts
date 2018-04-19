@@ -69,7 +69,6 @@ export class AppComponent implements OnInit {
           this.pollForReaders();
         } else {
           // Is there a card in at least one reader?
-          console.log(readers.data);
           this.cardPresent = !!_.find(readers.data, r => {
             return _.has(r, 'card');
           });
