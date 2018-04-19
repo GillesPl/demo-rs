@@ -27,6 +27,7 @@ export class ChallengeEvent {
 export class EventService {
   public adminPanelClosed$: EventEmitter<Event>;
   public adminPanelOpened$: EventEmitter<Event>;
+  public citrixUserNameHandled$: EventEmitter<Event>;
   public consentError$: EventEmitter<Event>;
   public consentRequired$: EventEmitter<Event>;
   public consentResult$: EventEmitter<ConsentEvent>;
@@ -50,6 +51,7 @@ export class EventService {
   constructor() {
     this.adminPanelClosed$ = new EventEmitter();
     this.adminPanelOpened$ = new EventEmitter();
+    this.citrixUserNameHandled$ = new EventEmitter();
     this.consentError$ = new EventEmitter();
     this.consentRequired$ = new EventEmitter();
     this.consentResult$ = new EventEmitter();
@@ -77,6 +79,10 @@ export class EventService {
 
   public challengeHandled(result, error?: boolean, cancelled?: boolean) {
     this.challengeHandled$.emit(new ChallengeEvent(result, error || false, cancelled || false));
+  }
+
+  public citrixUserNameHandled(citrixParams) {
+    this.citrixUserNameHandled$.emit(citrixParams);
   }
 
   public closeAdminPanel() {
