@@ -28,7 +28,7 @@ export class CitrixService {
     });
   }
 
-  environment(isCitrix) {
+  environment(isCitrix?) {
     if (_.isBoolean(isCitrix)) { this.citrixEnvironment = isCitrix; }
     return this.citrixEnvironment;
   }
@@ -37,7 +37,7 @@ export class CitrixService {
     return this.citrixPort;
   }
 
-  userSelectionParams(params) {
+  userSelectionParams(params?) {
     if (params) { this.citrixUserSelectionParams = params; }
     return this.citrixUserSelectionParams;
   }
@@ -57,7 +57,6 @@ export class CitrixService {
   }
 
   checkUserName() {
-    console.log('check username');
     const svc = this;
     return new Promise((resolve, reject) => {
       const params = JSON.parse(localStorage.getItem('rmc-citrix-selection-params')); // $location.search();
@@ -80,6 +79,7 @@ export class CitrixService {
     return new Promise((resolve) => {
       const initialState = {
         retry,
+        params: this.userSelectionParams()
       };
       const config = {
         backdrop: true,

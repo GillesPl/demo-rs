@@ -98,6 +98,7 @@ const ROUTES: Routes = [
     EventService,
     RMC
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ CitrixUserSelectModalComponent ]
 })
 export class AppModule { }

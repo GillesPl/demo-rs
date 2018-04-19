@@ -75,7 +75,6 @@ export class AppComponent implements OnInit {
             comp.pollForReaders();
           } else {
             // Is there a card in at least one reader?
-            console.log(readers.data);
             comp.cardPresent = !!_.find(readers.data, r => {
               return _.has(r, 'card');
             });
@@ -106,36 +105,60 @@ export class AppComponent implements OnInit {
 
   citrixInit() {
     const comp = this;
-    return new Promise((resolve, reject) => {
-      resolve();
+    return new Promise((resolve) => {
+      // check if we are in citrix environment
+      comp.Connector.core('info').then(info => {
+        // check citrix flag
+        if (_.isBoolean(info.data.citrix) && info.data.citrix) {
+          // set to citrix environment
+          comp.Citrix.environment(info.data.citrix);
+          // check if username or other parameters are set in the local storage
+          comp.Citrix.checkUserName().then(() => {
+            // determine agent port to use
+            resolve(comp.determineAgentPort());
+          });
+        } else {
+          // not in citrix environment, resolve the promise
+          resolve();
+        }
+      });
+    });
+  }
 
-      // // Check if we need to do citrix init
-      // if (_.isBoolean(info.data.citrix) && info.data.citrix) {
-      //   comp.Citrix.environment(info.data.citrix);
-      //   comp.Connector.plugin('agent', 'get', [], [comp.Citrix.userSelectionParams()]).then(res => {
-      //     if (res.data && typeof res.data === 'object' && !_.isArray(res.data)) {
-      //       comp.Citrix.agent(res.data).then(() => {
-      //         // Need to get new connector instance with agent port!
-      //         comp.Connector.core('readers').then(() => {
-      //           comp.Citrix.updateLocation();
-      //           available.resolve(true);
-      //         }, (err) => {
-      //           if (!err.noConsent) {
-      //             comp.Citrix.invalidLocalAgent().then(() => {
-      //               available.resolve(isGCLAvailable());
-      //             });
-      //           }
-      //         });
-      //       });
-      //     } else {
-      //       comp.Citrix.invalidLocalAgent().then(() => {
-      //         available.resolve(isGCLAvailable());
-      //       });
-      //     }
-      //   }, err => {
-      //     console.log(err);
-      //   });
-      // }
+  determineAgentPort() {
+    const comp = this;
+    // retrieve GCL info
+    return new Promise((resolve) => {
+      // get agent filtering params
+      const params = comp.Citrix.userSelectionParams();
+      // get filtered agent list
+      comp.Connector.plugin('agent', 'get', [], [params]).then(res => {
+        // check if matching agents was found
+        if (res.data && typeof res.data === 'object' && !_.isArray(res.data)) {
+          // Save the agent and reinitialize the connector with agent port!
+          comp.Citrix.agent(res.data).then(() => {
+            // check if all is well
+            comp.Connector.core('readers').then(() => {
+              comp.Citrix.updateLocation();
+              resolve(true);
+            }, (err) => {
+              // check if the error was intercepted by the consent handler for missing consent
+              if (!err.noConsent) {
+                comp.Citrix.invalidLocalAgent().then(() => {
+                  resolve(comp.determineAgentPort());
+                });
+              }
+            });
+          });
+        } else {
+          // no agent found, or too many agents matching, prompt again
+          comp.Citrix.invalidLocalAgent().then(() => {
+            resolve(comp.determineAgentPort());
+          });
+        }
+      }, err => {
+        console.log(err);
+      });
     });
   }
 

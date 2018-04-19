@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
 import * as _ from 'lodash';
 import { EventService } from '../event.service';
@@ -15,7 +15,12 @@ export class CitrixUserSelectModalComponent implements OnInit {
   constructor(public bsModalRef: BsModalRef, private eventService: EventService) {}
 
   ngOnInit() {
-    this.params = this.useCurrentParams() || [ { key: 'username', value: '' }];
+    if (this.params && typeof this.params === 'object') {
+      this.params = this.deconstructParams(this.params);
+    }
+    if (!this.params || _.isEmpty(this.params)) {
+      this.params = this.useCurrentParams() || [ { key: 'username', value: '' }];
+    }
   }
 
   ok() {
@@ -52,6 +57,10 @@ export class CitrixUserSelectModalComponent implements OnInit {
 
   useCurrentParams() {
     const params = JSON.parse(localStorage.getItem('rmc-citrix-selection-params'));
+    return this.deconstructParams(params);
+  }
+
+  private deconstructParams(params) {
     if (params && !_.isEmpty(params)) {
       const deconstructed = [];
       _.forEach(params, (value, key) => {
