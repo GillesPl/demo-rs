@@ -1,7 +1,7 @@
 <div id="lux-viz" class="clearfix top-info">
 
   <div class="status-wrapper">
-    <app-certificate-status [status]="certStatus"></app-certificate-status>
+    <app-certificate-status [validationPromises]="validationArray" [cardType]="'luxtrust'"></app-certificate-status>
     <app-pin-check-status [status]="pinStatus" [maxTries]="5" (onPinCheck)="checkPin()"></app-pin-check-status>
   </div>
 

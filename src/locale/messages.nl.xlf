@@ -1556,6 +1556,14 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="certificatesQualified" datatype="html">
+        <source>Card certificates EU-LOTL qualified.</source>
+        <target>Kaartcertificaten EU-LOTL qualified.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>

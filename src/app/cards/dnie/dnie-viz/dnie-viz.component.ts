@@ -16,7 +16,7 @@ export class DnieVizComponent implements OnInit {
   @Input() cardData;
   @Input() readerId;
 
-  certStatus;
+  validationArray;
   pinStatus;
   isCollapsed;
 
@@ -33,12 +33,8 @@ export class DnieVizComponent implements OnInit {
 
   ngOnInit() {
     const comp = this;
-
-    comp.certStatus = 'checking';
     comp.pinStatus = 'idle';
     comp.isCollapsed = true;
-
-    console.log(this.cardData);
 
     const filter = ['authentication-certificate', 'signing-certificate', 'intermediate-certificate'];
     comp.Connector.plugin('dnie', 'allCerts', [this.readerId], filter).then(res => {
@@ -49,31 +45,7 @@ export class DnieVizComponent implements OnInit {
           { 'order': 2, certificate: res.data.intermediate_certificate.base64 },
         ]
       };
-      comp.angulartics2.eventTrack.next({
-        action: 'cert-check',
-        properties: { category: 'dnie', label: 'Start certificate check'}
-      });
-      comp.Connector.ocv('validateCertificateChain', [validationReq]).then(valRes => {
-        if (valRes.crlResponse && valRes.crlResponse.status && valRes.ocspResponse && res.ocspResponse.status) {
-          comp.angulartics2.eventTrack.next({
-            action: 'cert-valid',
-            properties: { category: 'dnie', label: 'Certificates are valid'}
-          });
-          comp.certStatus = 'valid';
-        } else {
-          comp.angulartics2.eventTrack.next({
-            action: 'cert-invalid',
-            properties: { category: 'dnie', label: 'Certificates are not valid'}
-          });
-          comp.certStatus = 'invalid';
-        }
-      }, () => {
-        comp.angulartics2.eventTrack.next({
-          action: 'cert-error',
-          properties: { category: 'dnie', label: 'Error occurred while checking certificate validity'}
-        });
-        comp.certStatus = 'error';
-      });
+      comp.validationArray = [ comp.Connector.ocv('validateCertificateChain', [validationReq])];
     });
   }
 

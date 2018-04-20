@@ -16,7 +16,7 @@ export class OberthurVizComponent implements OnInit {
   @Input() readerId;
 
   doCollapse;
-  certStatus;
+  validationArray;
   pinStatus;
   loadingCerts;
 
@@ -31,7 +31,6 @@ export class OberthurVizComponent implements OnInit {
 
   ngOnInit() {
     const comp = this;
-    comp.certStatus = 'checking';
     comp.pinStatus = 'idle';
 
     comp.doCollapse = true;
@@ -43,32 +42,7 @@ export class OberthurVizComponent implements OnInit {
         { order: 2, certificate: comp.cardData.root_certificate.base64 }
       ]
     };
-    comp.angulartics2.eventTrack.next({
-      action: 'cert-check',
-      properties: { category: 'oberthur', label: 'Start certificate check'}
-    });
-    this.Connector.ocv('validateCertificateChain', [validationReq]).then(res => {
-      if (res.crlResponse && res.crlResponse.status && res.ocspResponse && res.ocspResponse.status) {
-        comp.angulartics2.eventTrack.next({
-          action: 'cert-valid',
-          properties: { category: 'oberthur', label: 'Certificates are valid'}
-        });
-        comp.certStatus = 'valid';
-      } else {
-        comp.angulartics2.eventTrack.next({
-          action: 'cert-invalid',
-          properties: { category: 'oberthur', label: 'Certificates are not valid'}
-        });
-        comp.certStatus = 'invalid';
-      }
-    }, () => {
-      comp.angulartics2.eventTrack.next({
-        action: 'cert-error',
-        properties: { category: 'oberthur', label: 'Error occurred while checking certificate validity'}
-      });
-      comp.certStatus = 'error';
-    });
-
+    this.validationArray = [ this.Connector.ocv('validateCertificateChain', [validationReq]) ];
   }
 
   checkPin() {

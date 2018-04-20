@@ -18,7 +18,7 @@ export class BeidVizComponent implements OnInit {
   @Input() readerId;
   @Input() certData;
 
-  certStatus;
+  validationArray;
   pinStatus;
   loadingCerts: boolean;
   isCollapsed = true;
@@ -34,8 +34,6 @@ export class BeidVizComponent implements OnInit {
 
   ngOnInit() {
     const comp = this;
-
-    this.certStatus = 'checking';
     this.pinStatus = 'idle';
     const filter = ['authentication-certificate', 'citizen-certificate', 'root-certificate'];
     comp.Connector.plugin('beid', 'allCerts', [comp.readerId], filter).then(res => {
@@ -46,32 +44,7 @@ export class BeidVizComponent implements OnInit {
           { order: 2, certificate: res.data.root_certificate.base64 },
         ]
       };
-      comp.angulartics2.eventTrack.next({
-        action: 'cert-check',
-        properties: { category: 'beid', label: 'Start certificate check'}
-      });
-      comp.Connector.ocv('validateCertificateChain', [validationReq]).then(validationRes => {
-        if (validationRes.crlResponse && validationRes.crlResponse.status &&
-          validationRes.ocspResponse && validationRes.ocspResponse.status) {
-          comp.angulartics2.eventTrack.next({
-            action: 'cert-valid',
-            properties: { category: 'beid', label: 'Certificates are valid'}
-          });
-          comp.certStatus = 'valid';
-        } else {
-          comp.angulartics2.eventTrack.next({
-            action: 'cert-invalid',
-            properties: { category: 'beid', label: 'Certificates are not valid'}
-          });
-          comp.certStatus = 'invalid';
-        }
-      }, () => {
-        comp.angulartics2.eventTrack.next({
-          action: 'cert-error',
-          properties: { category: 'beid', label: 'Error occured while checking certificate validity'}
-        });
-        comp.certStatus = 'error';
-      });
+      comp.validationArray = [ comp.Connector.ocv('validateCertificateChain', [validationReq])];
     });
   }
 

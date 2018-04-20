@@ -1,7 +1,7 @@
 <div id="beid-viz" class="clearfix top-info">
 
   <div class="status-wrapper">
-    <app-certificate-status [status]="certStatus" (click)="trackCertificatesClick()"></app-certificate-status>
+    <app-certificate-status [validationPromises]="validationArray" [cardType]="'beid'" (click)="trackCertificatesClick()"></app-certificate-status>
     <app-pin-check-status [status]="pinStatus" [maxTries]="3" (onPinCheck)="checkPin()"></app-pin-check-status>
   </div>
 

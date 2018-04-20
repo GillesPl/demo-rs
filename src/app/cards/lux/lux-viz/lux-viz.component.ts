@@ -19,7 +19,7 @@ export class LuxVizComponent implements OnInit {
   readingData: boolean;
   pincode;
   pinStatus;
-  certStatus;
+  validationArray;
   biometricData;
   signatureObject;
   picData;
@@ -70,7 +70,6 @@ export class LuxVizComponent implements OnInit {
     this.readingData = true;
     comp.Connector.plugin('luxeid', 'allData', [comp.readerId, pin]).then(res => {
       comp.pinStatus = 'valid';
-      comp.certStatus = 'checking';
       comp.biometricData = res.data.biometric;
       comp.signatureObject = res.data.signature_object;
       comp.picData = res.data.picture;
@@ -108,16 +107,8 @@ export class LuxVizComponent implements OnInit {
           { order: 2, certificate: res.data.root_certificates[0].base64 },
         ]
       };
-      const promises = [ comp.Connector.ocv('validateCertificateChain', [validationReq1]),
+      comp.validationArray = [ comp.Connector.ocv('validateCertificateChain', [validationReq1]),
         comp.Connector.ocv('validateCertificateChain', [validationReq2]) ];
-      Promise.all(promises).then(results => {
-        let status = 'valid';
-        _.forEach(results, (valRes: any) => {
-          if (!(valRes.crlResponse && valRes.crlResponse.status &&
-            valRes.ocspResponse && valRes.ocspResponse.status)) { status = 'invalid'; }
-        });
-        comp.certStatus = status;
-      });
     });
   }
 }
