@@ -1,7 +1,7 @@
 <div id="pteid-viz" class="clearfix top-info">
 
   <div class="status-wrapper">
-    <app-certificate-status [status]="certStatus" (click)="trackCertificatesClick()"></app-certificate-status>
+    <app-certificate-status [cardType]="'pteid'" [validationPromises]="validationArray" (click)="trackCertificatesClick()"></app-certificate-status>
     <app-pteid-pin-check-status [status]="signPinStatus" [maxTries]="3" (onPinCheck)="checkPin()"></app-pteid-pin-check-status>
   </div>
 

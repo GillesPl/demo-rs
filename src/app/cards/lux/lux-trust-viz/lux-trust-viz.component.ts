@@ -17,7 +17,7 @@ export class LuxTrustVizComponent implements OnInit {
 
   certData;
   pinStatus;
-  certStatus;
+  validationArray;
   loadingCerts;
 
   constructor(private Connector: Connector,
@@ -30,7 +30,6 @@ export class LuxTrustVizComponent implements OnInit {
 
   ngOnInit() {
     this.pinStatus = 'idle';
-    this.certStatus = 'checking';
 
     const validationReq1 = {
       certificateChain: [
@@ -46,16 +45,8 @@ export class LuxTrustVizComponent implements OnInit {
         { order: 2, certificate: this.cardData.root_certificates[0].base64 },
       ]
     };
-    const promises = [ this.Connector.ocv('validateCertificateChain', [validationReq1]),
+    this.validationArray = [ this.Connector.ocv('validateCertificateChain', [validationReq1]),
       this.Connector.ocv('validateCertificateChain', [validationReq2]) ];
-
-    Promise.all(promises).then(results => {
-      let status = 'valid';
-      _.forEach(results, res => {
-        if (!(res.crlResponse && res.crlResponse.status && res.ocspResponse && res.ocspResponse.status)) { status = 'invalid'; }
-      });
-      this.certStatus = status;
-    });
   }
 
   checkPin() {

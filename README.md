@@ -1,4 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2678697a03074ac986ea89f50d424bac)](https://www.codacy.com/app/Trust1Team/readmycards-webapp-ng?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Trust1Team/readmycards-webapp-ng&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/Trust1Team/readmycards-webapp-ng.svg?branch=master)](https://travis-ci.org/Trust1Team/readmycards-webapp-ng) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2678697a03074ac986ea89f50d424bac)](https://www.codacy.com/app/Trust1Team/readmycards-webapp-ng?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Trust1Team/readmycards-webapp-ng&amp;utm_campaign=Badge_Grade)
 
 
 # ReadMyCards.eu

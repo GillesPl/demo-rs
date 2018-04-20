@@ -2,6 +2,144 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="printLegalCopy" datatype="html">
+        <source>Print Legal Copy of Card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/print-summary/print-summary.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="printLegalCopySubtitle" datatype="html">
+        <source>
+      We are going to provide you a secure PDF version of the content of your eID card.
+      This document will be digitally signed by you to be compliant with EU regulation and be considered as
+      an original copy that you can distribute. No information will be stored on our side and you
+      will be the only possessor of the generated copy.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="startPrinting" datatype="html">
+        <source>Start Printing
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="generatePdf" datatype="html">
+        <source>Generate PDF</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="generating" datatype="html">
+        <source>Generating...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="generated" datatype="html">
+        <source>Generated</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sign" datatype="html">
+        <source>Sign</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signing" datatype="html">
+        <source>Signing...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="enterPinOnReader" datatype="html">
+        <source>Enter PIN on reader...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="signed" datatype="html">
+        <source>Signed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="download" datatype="html">
+        <source>Download</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="downloadReady" datatype="html">
+        <source>Download Ready!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="supportedTypes" datatype="html">
         <source>Supported Types</source>
         <context-group purpose="location">
@@ -561,144 +699,6 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="printLegalCopy" datatype="html">
-        <source>Print Legal Copy of Card</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/print-summary/print-summary.component.ts</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="printLegalCopySubtitle" datatype="html">
-        <source>
-      We are going to provide you a secure PDF version of the content of your eID card.
-      This document will be digitally signed by you to be compliant with EU regulation and be considered as
-      an original copy that you can distribute. No information will be stored on our side and you
-      will be the only possessor of the generated copy.
-    </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="startPrinting" datatype="html">
-        <source>Start Printing
-        </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="generatePdf" datatype="html">
-        <source>Generate PDF</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="generating" datatype="html">
-        <source>Generating...</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="generated" datatype="html">
-        <source>Generated</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">33</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="sign" datatype="html">
-        <source>Sign</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
-          <context context-type="linenumber">41</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="signing" datatype="html">
-        <source>Signing...</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="enterPinOnReader" datatype="html">
-        <source>Enter PIN on reader...</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">45</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="signed" datatype="html">
-        <source>Signed</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">46</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="download" datatype="html">
-        <source>Download</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">59</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">74</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
-          <context context-type="linenumber">57</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
-          <context context-type="linenumber">73</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="downloadReady" datatype="html">
-        <source>Download Ready!</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-summary-modal/download-summary-modal.component.ts</context>
-          <context context-type="linenumber">60</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
-          <context context-type="linenumber">58</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="useReaderPinpad" datatype="html">
         <source>Enter the PIN code on your reader&apos;s pinpad</source>
         <context-group purpose="location">
@@ -1054,11 +1054,18 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="certificatesQualified" datatype="html">
+        <source>Card certificates EU-LOTL qualified.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="certificatesInvalid" datatype="html">
         <source>Certificate check failed. Card invalid.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/certificate-status/certificate-status.component.ts</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clickToCheckPin" datatype="html">

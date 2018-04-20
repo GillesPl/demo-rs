@@ -24,7 +24,7 @@
 
   <div *ngIf="!needPin && !readingData">
     <div class="status-wrapper">
-      <app-certificate-status [status]="certStatus"></app-certificate-status>
+      <app-certificate-status [cardType]="'luxeid'" [validationPromises]="validationArray"></app-certificate-status>
       <app-lux-pin-check-status [status]="pinStatus" [maxTries]="5" [pinCheckFunc]="checkPin"></app-lux-pin-check-status>
     </div>
 

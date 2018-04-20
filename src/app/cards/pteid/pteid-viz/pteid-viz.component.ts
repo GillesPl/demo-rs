@@ -17,7 +17,7 @@ export class PteidVizComponent implements OnInit {
   @Input() cardData;
   @Input() readerId;
 
-  certStatus;
+  validationArray;
   addressPinStatus;
   signPinStatus;
   photo;
@@ -39,7 +39,6 @@ export class PteidVizComponent implements OnInit {
 
   ngOnInit() {
     const comp = this;
-    comp.certStatus = 'checking';
     comp.addressPinStatus = 'idle';
     comp.signPinStatus = 'idle';
 
@@ -63,17 +62,8 @@ export class PteidVizComponent implements OnInit {
           { order: 2, certificate: res.data.root_certificate.base64 },
         ]
       };
-      const promises = [ comp.Connector.ocv('validateCertificateChain', [validationReq]),
+      comp.validationArray = [ comp.Connector.ocv('validateCertificateChain', [validationReq]),
         comp.Connector.ocv('validateCertificateChain', [validationReq2]) ];
-
-      Promise.all(promises).then(results => {
-        let status = 'valid';
-        _.forEach(results, valRes => {
-          if (!(valRes.crlResponse && valRes.crlResponse.status &&
-            valRes.ocspResponse && valRes.ocspResponse.status)) { status = 'invalid'; }
-        });
-        comp.certStatus = status;
-      });
     });
   }
 
