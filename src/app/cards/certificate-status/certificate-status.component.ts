@@ -35,7 +35,7 @@ export class CertificateStatusComponent implements OnChanges, OnInit {
         let qualified = true;
         let valid = true;
         _.forEach(res, validationRes => {
-          if (!validationRes.qualified) {
+          if (!validationRes.qualifiedIssuer) {
             qualified = false;
           }
           if ((validationRes.crlResponse && !validationRes.crlResponse.status) ||
