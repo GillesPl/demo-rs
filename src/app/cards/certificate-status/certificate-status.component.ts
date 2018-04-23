@@ -29,8 +29,6 @@ export class CertificateStatusComponent implements OnChanges, OnInit {
       });
       // resolve all promises in the array
       Promise.all(this.validationPromises).then((res) => {
-        // TODO remove
-        console.log(res);
         // check all results for validity and qualification
         let qualified = true;
         let valid = true;
