@@ -1541,7 +1541,7 @@
         <source>
       An error occurred while downloading the Trust1Connector plugins that are required for this website.<x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/>Reload the page to try again. If this error keeps occurring, please contact support.
     </source>        <target>
-      Er trad een fout op tijdens het downloaden van de Trust1Connector containers die noodzakelijk zijn voor deze websit.<x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/>Herlaad te pagina om opnieuw te proberen. Als dit probleem zich blijft voordoen, contacteer support.
+      Er trad een fout op tijdens het downloaden van de Trust1Connector containers die noodzakelijk zijn voor deze website.<x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/>Herlaad te pagina om opnieuw te proberen. Als dit probleem zich blijft voordoen, contacteer support.
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-download-failed/rmc-download-failed.component.ts</context>
