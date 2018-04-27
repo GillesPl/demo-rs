@@ -22,6 +22,9 @@ export class LogInfoComponent implements OnInit {
   getData() {
     this.Connector.plugin('admin', 'getLogfileList').then(res => {
       this.info = _.reverse(res.data);
+    }, () => {
+      // could not retrieve logfile list, set empty
+      this.info = [];
     });
   }
 
