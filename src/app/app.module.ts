@@ -41,6 +41,7 @@ import { Pkcs11ConfigComponent } from './pkcs11-config/pkcs11-config.component';
 import { RmcDownloadFailedComponent } from './rmc-download-failed/rmc-download-failed.component';
 import { CitrixUserSelectModalComponent } from './citrix-user-select-modal/citrix-user-select-modal.component';
 import { CitrixService } from './citrix.service';
+import { ConsentModalComponent } from './consent-modal/consent-modal.component';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -74,6 +75,7 @@ const ROUTES: Routes = [
     Pkcs11ConfigComponent,
     RmcDownloadFailedComponent,
     CitrixUserSelectModalComponent,
+    ConsentModalComponent,
   ],
   imports: [
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
@@ -99,6 +101,6 @@ const ROUTES: Routes = [
     RMC
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ CitrixUserSelectModalComponent ]
+  entryComponents: [ CitrixUserSelectModalComponent, ConsentModalComponent ]
 })
 export class AppModule { }

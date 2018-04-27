@@ -29,12 +29,11 @@ export class CertificateStatusComponent implements OnChanges, OnInit {
       });
       // resolve all promises in the array
       Promise.all(this.validationPromises).then((res) => {
-        console.log(res);
         // check all results for validity and qualification
         let qualified = true;
         let valid = true;
         _.forEach(res, validationRes => {
-          if (!validationRes.qualified) {
+          if (!validationRes.qualifiedIssuer) {
             qualified = false;
           }
           if ((validationRes.crlResponse && !validationRes.crlResponse.status) ||

@@ -1,6 +1,5 @@
 <div>
-  <!--<t1c-logs-info data="$ctrl.info"></t1c-logs-info>-->
-  <div class="fe-log-tabs">
+  <div class="fe-log-tabs" *ngIf="info && info.length">
     <main>
       <div *ngFor="let file of info; let i = index">
         <input id="log-tab{{i + 1}}"
@@ -17,6 +16,10 @@
           [hidden]="selectedTab != i"></app-log-viewer>
       </section>
     </main>
+
+  </div>
+  <div *ngIf="!info || !info.length">
+    No logfiles available.
   </div>
 
 </div>

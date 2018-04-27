@@ -11,5 +11,8 @@ export const environment = {
   gwOrProxyUrl: 'https://accapim.t1t.be:443',
   gclUrl: 'https://localhost:10443/v2',
   implicitDownload: false,
-  osPinDialog: true
+  osPinDialog: true,
+  consentCodeLength: 8,
+  consentDuration: 1,
+  consentTimeout: 20
 };
