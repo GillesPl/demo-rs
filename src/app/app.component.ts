@@ -58,51 +58,54 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     const comp = this;
 
-    comp.Connector.init(this.Connector.generateConfig()).then(() => {
-      comp.gclChecked = true;
-      comp.gclAvailable = true;
+    this.Connector.generateConfig().then(cfg => {
+      comp.Connector.init(cfg).then(() => {
+        comp.gclChecked = true;
+        comp.gclAvailable = true;
 
-      comp.Connector.core('version').then(version => {
-        console.log('Using T1C-JS ' + version);
-      });
-      comp.Connector.core('info').then(info => {
-        console.log('GCL version installed: ' + info.data.version);
-      });
-
-      // Check if we need to do citrix init
-      comp.citrixInit().then(() => {
-        // Determine initial action we need to take
-        comp.Connector.core('readers').then(readers => {
-          comp.readers = readers.data;
-          if (_.isEmpty(readers.data)) {
-            // No readers present, poll for readers being connected
-            comp.pollForReaders();
-          } else {
-            // Is there a card in at least one reader?
-            comp.cardPresent = !!_.find(readers.data, r => {
-              return _.has(r, 'card');
-            });
-            if (comp.cardPresent) {
-              // A card is present, determine type and read its data
-              comp.readCard();
-            } else {
-              // No card found, polling
-              comp.pollForCard();
-            }
-          }
+        comp.Connector.core('version').then(version => {
+          console.log('Using T1C-JS ' + version);
         });
+        comp.Connector.core('info').then(info => {
+          console.log('GCL version installed: ' + info.data.version);
+        });
+
+        // Check if we need to do citrix init
+        comp.citrixInit().then(() => {
+          // Determine initial action we need to take
+          comp.Connector.core('readers').then(readers => {
+            comp.readers = readers.data;
+            if (_.isEmpty(readers.data)) {
+              // No readers present, poll for readers being connected
+              comp.pollForReaders();
+            } else {
+              // Is there a card in at least one reader?
+              comp.cardPresent = !!_.find(readers.data, r => {
+                return _.has(r, 'card');
+              });
+              if (comp.cardPresent) {
+                // A card is present, determine type and read its data
+                comp.readCard();
+              } else {
+                // No card found, polling
+                comp.pollForCard();
+              }
+            }
+          });
+        });
+      }, err => {
+        if (err.code === '903') {
+          this.onDownloadError();
+        } else {
+          // assume gcl unavailable
+          console.log('No GCL installation found');
+          this.gclChecked = true;
+          this.gclAvailable = false;
+          this.promptDownload();
+        }
       });
-    }, err => {
-      if (err.code === '903') {
-        this.onDownloadError();
-      } else {
-        // assume gcl unavailable
-        console.log('No GCL installation found');
-        this.gclChecked = true;
-        this.gclAvailable = false;
-        this.promptDownload();
-      }
     });
+
 
     this.isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
   }

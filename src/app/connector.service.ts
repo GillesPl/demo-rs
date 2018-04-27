@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {EventService} from './event.service';
 import { environment } from '../environments/environment';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable()
 export class Connector {
 
-  constructor(private eventService: EventService) {}
+  constructor(private http: HttpClient, private eventService: EventService) {}
 
   private GCLLib = window['GCLLib'];
   private connector;
@@ -17,6 +19,7 @@ export class Connector {
   }
 
   errorHandler(erroredRequest) {
+    console.log(erroredRequest);
     const svc = this;
     if (!erroredRequest.pluginArgs) { erroredRequest.pluginArgs = []; }
     const error = erroredRequest.error;
@@ -48,6 +51,22 @@ export class Connector {
         svc.consent = undefined;
         // TODO handle error?
         return Promise.reject({ noConsent: true });
+      });
+    } else if (error.status === 400 && error.code === '205') {
+      // jwt expired, refresh
+      // re-use current agentPort!
+      return svc.generateConfig(svc.connector.config().agentPort).then(cfg => {
+        return svc.init(cfg).then(() => {
+          if (erroredRequest.plugin) {
+            return svc.promise().then(conn => {
+              return conn[erroredRequest.plugin](...erroredRequest.pluginArgs)[erroredRequest.func](...erroredRequest.args);
+            });
+          } else {
+            return svc.promise().then(conn => {
+              return conn[erroredRequest.func](...erroredRequest.args);
+            });
+          }
+        });
       });
     } else {
       return Promise.reject(error);
@@ -116,19 +135,25 @@ export class Connector {
     return service.connector;
   }
 
+  private getJWt() {
+    return this.http.get('/api/jwt');
+  }
+
   generateConfig(agentPort?: number) {
     // retrieve PKCS11Config from local storage
     const pkcs11 = JSON.parse(localStorage.getItem('rmc-pkcs11-config'));
-
-    // generate config
-    return new this.GCLLib.GCLConfig({
-      apiKey: environment.apiKey,
-      gwOrProxyUrl: environment.gwOrProxyUrl,
-      gclUrl: environment.gclUrl,
-      implicitDownload: environment.implicitDownload,
-      agentPort,
-      osPinDialog: environment.osPinDialog,
-      pkcs11Config: pkcs11
+    const svc = this;
+    return svc.getJWt().toPromise().then((res: { token: string }) => {
+      // generate config
+      return new this.GCLLib.GCLConfig({
+        gwJwt: res.token,
+        gwOrProxyUrl: environment.gwOrProxyUrl,
+        gclUrl: environment.gclUrl,
+        implicitDownload: environment.implicitDownload,
+        agentPort,
+        osPinDialog: environment.osPinDialog,
+        pkcs11Config: pkcs11
+      });
     });
   }
 }
