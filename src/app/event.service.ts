@@ -29,7 +29,7 @@ export class EventService {
   public adminPanelOpened$: EventEmitter<Event>;
   public citrixUserNameHandled$: EventEmitter<Event>;
   public consentError$: EventEmitter<Event>;
-  public consentRequired$: EventEmitter<Event>;
+  public consentRequired$: EventEmitter<boolean>;
   public consentResult$: EventEmitter<ConsentEvent>;
   public faqClosed$: EventEmitter<Event>;
   public faqOpened$: EventEmitter<Event>;
@@ -101,8 +101,12 @@ export class EventService {
     this.consentError$.emit(new Event('consent-error'));
   }
 
-  public consentRequired(): void {
-    this.consentRequired$.emit(new Event('consent-required'));
+  public consentRequired(isFileConsent: boolean): void {
+    this.consentRequired$.emit(isFileConsent);
+  }
+
+  public consentResult(res: ConsentEvent): void {
+    this.consentResult$.emit(res);
   }
 
   public gclInstalled(): void {

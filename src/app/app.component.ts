@@ -6,6 +6,8 @@ import {RMC} from './rmc.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2 } from 'angulartics2';
 import { CitrixService } from './citrix.service';
+import { BsModalService } from 'ngx-bootstrap';
+import { ConsentModalComponent } from './consent-modal/consent-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -39,8 +41,10 @@ export class AppComponent implements OnInit {
               private Citrix: CitrixService,
               private Connector: Connector,
               private eventService: EventService,
+              private modalService: BsModalService,
               private RMC: RMC) {
     this.eventService.adminPanelOpened$.subscribe(() => this.onAdminPanelOpened());
+    this.eventService.consentRequired$.subscribe((isFileConsent) => this.onConsentRequired(isFileConsent));
     this.eventService.consentError$.subscribe(() => this.onConsentError());
     this.eventService.faqOpened$.subscribe(() => this.onFaqOpened());
     this.eventService.gclInstalled$.subscribe(() => this.onGclInstalled());
@@ -64,7 +68,6 @@ export class AppComponent implements OnInit {
       comp.Connector.core('info').then(info => {
         console.log('GCL version installed: ' + info.data.version);
       });
-
 
       // Check if we need to do citrix init
       comp.citrixInit().then(() => {
@@ -175,6 +178,7 @@ export class AppComponent implements OnInit {
   }
 
   // Event handlers
+  // ==============
   onConsentError() {
     this.readerWithCard = false;
     this.gclChecked = false;
@@ -182,6 +186,21 @@ export class AppComponent implements OnInit {
     this.pollingCard = false;
     this.downloadError = false;
     this.noConsent = true;
+  }
+
+  onConsentRequired(isFileConsent) {
+    // open consent code modal and trigger consent on Connector
+    const svc = this;
+    const initialState = {
+      file: isFileConsent
+    };
+    const config = {
+      backdrop: true,
+      class: 'modal-lg',
+      ignoreBackdropClick: true,
+      initialState
+    };
+    svc.modalService.show(ConsentModalComponent, config);
   }
 
   onDownloadError() {

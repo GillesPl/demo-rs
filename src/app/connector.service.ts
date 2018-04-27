@@ -17,34 +17,35 @@ export class Connector {
   }
 
   errorHandler(erroredRequest) {
+    const svc = this;
     if (!erroredRequest.pluginArgs) { erroredRequest.pluginArgs = []; }
     const error = erroredRequest.error;
     if (error.status === 401) {
       // Unauthorized, need to request consent
-      if (!this.consent) {
-        this.consent = new Promise((resolve => {
-          this.eventService.consentRequired();
-          this.eventService.consentResult$.subscribe((result) => {
+      if (!svc.consent) {
+        svc.consent = new Promise((resolve => {
+          svc.eventService.consentRequired(erroredRequest.plugin === 'fileExchange');
+          svc.eventService.consentResult$.subscribe((result) => {
             resolve(result);
           });
         }));
       }
 
-      return this.consent.then(res => {
-        this.consent = undefined;
+      return svc.consent.then(res => {
+        svc.consent = undefined;
         if (res.data) {
           // consent given, re-fire original request
           if (erroredRequest.plugin) {
-            return this.promise().then(conn => {
+            return svc.promise().then(conn => {
               return conn[erroredRequest.plugin](...erroredRequest.pluginArgs)[erroredRequest.func](...erroredRequest.args);
             });
-          } else { return this.promise().then(conn => { return conn[erroredRequest.func](...erroredRequest.args); }); }
+          } else { return svc.promise().then(conn => { return conn[erroredRequest.func](...erroredRequest.args); }); }
         } else {
-          this.eventService.consentError();
+          svc.eventService.consentError();
           return Promise.reject({ noConsent: true });
         }
       }, () => {
-        this.consent = undefined;
+        svc.consent = undefined;
         // TODO handle error?
         return Promise.reject({ noConsent: true });
       });
@@ -59,7 +60,7 @@ export class Connector {
       return conn.core()[func](...args).then(res => {
         return Promise.resolve(res);
       }, error => {
-        return Promise.resolve({ error, plugin: 'core', func, args }).then(this.errorHandler);
+        return Promise.resolve({ error, plugin: 'core', func, args }).then(this.errorHandler.bind(this));
       });
     });
   }
@@ -70,7 +71,7 @@ export class Connector {
       return conn[func](...args).then(res => {
         return Promise.resolve(res);
       }, error => {
-        return Promise.resolve({ error, func, args }).then(this.errorHandler);
+        return Promise.resolve({ error, func, args }).then(this.errorHandler.bind(this));
       });
     });
   }
@@ -81,7 +82,7 @@ export class Connector {
       return conn.ocv()[func](...args).then(res => {
         return Promise.resolve(res);
       }, error => {
-        return Promise.resolve({ error, plugin: 'ocv', func, args }).then(this.errorHandler);
+        return Promise.resolve({ error, plugin: 'ocv', func, args }).then(this.errorHandler.bind(this));
       });
     });
   }
@@ -93,7 +94,7 @@ export class Connector {
       return conn[plugin](...pluginArgs)[func](...args).then(res => {
         return Promise.resolve(res);
       }, error => {
-        return Promise.resolve({ error, plugin, func, pluginArgs, args }).then(this.errorHandler);
+        return Promise.resolve({ error, plugin, func, pluginArgs, args }).then(this.errorHandler.bind(this));
       });
     });
   }
