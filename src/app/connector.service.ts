@@ -42,7 +42,7 @@ export class Connector {
             return svc.promise().then(conn => {
               return conn[erroredRequest.plugin](...erroredRequest.pluginArgs)[erroredRequest.func](...erroredRequest.args);
             });
-          } else { return svc.promise().then(conn => { return conn[erroredRequest.func](...erroredRequest.args); }); }
+          } else { return svc.promise().then(conn => conn[erroredRequest.func](...erroredRequest.args)); }
         } else {
           svc.eventService.consentError();
           return Promise.reject({ noConsent: true });
@@ -149,6 +149,7 @@ export class Connector {
         gwJwt: res.token,
         gwOrProxyUrl: environment.gwOrProxyUrl,
         gclUrl: environment.gclUrl,
+        ocvContextPath: environment.ocvContextPath,
         implicitDownload: environment.implicitDownload,
         agentPort,
         osPinDialog: environment.osPinDialog,

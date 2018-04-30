@@ -4,6 +4,7 @@ export const environment = {
   version: '2.0.0',
   gwOrProxyUrl: 'https://apim.t1t.be:443',
   gclUrl: 'https://localhost:10443/v2',
+  ocvContextPath: '/trust1team/ocv-api/v2',
   implicitDownload: false,
   osPinDialog: true,
   consentCodeLength: 8,
