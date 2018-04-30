@@ -21,7 +21,9 @@ export class CitrixService {
       if (!_.isEmpty(newAgent)) {
         svc.citrixAgent = newAgent;
         svc.citrixPort = newAgent.port;
-        resolve(svc.Connector.init(svc.Connector.generateConfig(svc.citrixPort)));
+        svc.Connector.generateConfig(svc.citrixPort).then(cfg => {
+          resolve(svc.Connector.init(cfg));
+        });
       } else {
         resolve();
       }
