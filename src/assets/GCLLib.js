@@ -115,7 +115,16 @@ var GCLLib =
 	        else {
 	            this.dsClient = new DSClient_1.DSClient(this.cfg.dsUrl, this.remoteConnection, this.cfg);
 	        }
+<<<<<<< HEAD
 	        this.ocvClient = new OCVClient_1.OCVClient(this.cfg.ocvUrl, this.remoteApiKeyConnection);
+=======
+	        if (this.cfg.apiKey && this.cfg.apiKey.length) {
+	            this.ocvClient = new OCVClient_1.OCVClient(this.cfg.ocvUrl, this.remoteApiKeyConnection);
+	        }
+	        else {
+	            this.ocvClient = new OCVClient_1.OCVClient(this.cfg.ocvUrl, this.remoteConnection);
+	        }
+>>>>>>> jwt-initialisation
 	        this.authClient = new Auth_1.AuthClient(this.cfg, this.remoteApiKeyConnection);
 	        ClientService_1.ClientService.setClient(this);
 	        if (this.cfg.implicitDownload && true) {
