@@ -23,7 +23,7 @@
         "styles.less"
       ],
       "scripts": [
-        "assets/GCLLib.js"
+        "../node_modules/trust1connector/dist/GCLLib.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
