@@ -1,0 +1,17 @@
+<div>
+  <h4>File Exchange</h4>
+
+  <table class="table table-striped t1c-info-table">
+    <tr>
+      <td class="t1c-title">Device UID</td>
+      <td>{{info.uid}}</td>
+    </tr>
+    <tr>
+      <td class="t1c-title">Activated</td>
+      <td>
+        <span class="fa fa-lg fa-times text-danger" *ngIf="!info.activated"></span>
+        <span class="fa fa-lg fa-check text-success" *ngIf="info.activated"></span>
+      </td>
+    </tr>
+  </table>
+</div>

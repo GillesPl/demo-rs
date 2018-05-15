@@ -42,6 +42,7 @@ import { RmcDownloadFailedComponent } from './rmc-download-failed/rmc-download-f
 import { CitrixUserSelectModalComponent } from './citrix-user-select-modal/citrix-user-select-modal.component';
 import { CitrixService } from './citrix.service';
 import { ConsentModalComponent } from './consent-modal/consent-modal.component';
+import {FileexchangeComponent} from './file-exchange/fileexchange.component';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -76,6 +77,7 @@ const ROUTES: Routes = [
     RmcDownloadFailedComponent,
     CitrixUserSelectModalComponent,
     ConsentModalComponent,
+    FileexchangeComponent
   ],
   imports: [
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),

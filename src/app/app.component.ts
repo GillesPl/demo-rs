@@ -45,6 +45,7 @@ export class AppComponent implements OnInit {
               private modalService: BsModalService,
               private RMC: RMC) {
     this.eventService.adminPanelOpened$.subscribe(() => this.onAdminPanelOpened());
+    this.eventService.fileExchangePanelOpened$.subscribe(() => this.onFileExchangePanelOpened());
     this.eventService.consentRequired$.subscribe((isFileConsent) => this.onConsentRequired(isFileConsent));
     this.eventService.consentError$.subscribe(() => this.onConsentError());
     this.eventService.faqOpened$.subscribe(() => this.onFaqOpened());
@@ -182,7 +183,7 @@ export class AppComponent implements OnInit {
   }
 
   refreshFileExchangeData() {
-    this.eventService.refreshAdminData();
+    this.eventService.refreshFileExcchangeData();
   }
 
   // Event handlers
@@ -238,6 +239,7 @@ export class AppComponent implements OnInit {
     if (!this.cardTypesOpen) {
       this.faqOpen = false;
       this.eventService.closeAdminPanel();
+      this.eventService.closeFileExchangePanel();
       this.adminPanelOpen = false;
     }
     this.cardTypesOpen = !this.cardTypesOpen;
@@ -247,10 +249,22 @@ export class AppComponent implements OnInit {
     if (!this.adminPanelOpen) {
       this.faqOpen = false;
       this.eventService.closeSidebar();
+      this.eventService.closeFileExchangePanel();
       this.cardTypesOpen = false;
 
     }
     this.adminPanelOpen = !this.adminPanelOpen;
+  }
+
+  onFileExchangePanelOpened() {
+    if (!this.fileExchangePanelOpen) {
+      this.faqOpen = false;
+      this.eventService.closeSidebar();
+      this.eventService.closeAdminPanel();
+      this.cardTypesOpen = false;
+
+    }
+    this.fileExchangePanelOpen = !this.fileExchangePanelOpen;
   }
 
   onFaqOpened() {
@@ -258,6 +272,7 @@ export class AppComponent implements OnInit {
     if (!this.faqOpen) {
       this.eventService.closeSidebar();
       this.eventService.closeAdminPanel();
+      this.eventService.closeFileExchangePanel();
       this.cardTypesOpen = false;
       this.adminPanelOpen = false;
 
