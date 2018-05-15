@@ -241,6 +241,7 @@ export class AppComponent implements OnInit {
       this.eventService.closeAdminPanel();
       this.eventService.closeFileExchangePanel();
       this.adminPanelOpen = false;
+      this.fileExchangePanelOpen = false;
     }
     this.cardTypesOpen = !this.cardTypesOpen;
   }
@@ -251,7 +252,7 @@ export class AppComponent implements OnInit {
       this.eventService.closeSidebar();
       this.eventService.closeFileExchangePanel();
       this.cardTypesOpen = false;
-
+      this.fileExchangePanelOpen = false;
     }
     this.adminPanelOpen = !this.adminPanelOpen;
   }
@@ -262,7 +263,7 @@ export class AppComponent implements OnInit {
       this.eventService.closeSidebar();
       this.eventService.closeAdminPanel();
       this.cardTypesOpen = false;
-
+      this.adminPanelOpen = false;
     }
     this.fileExchangePanelOpen = !this.fileExchangePanelOpen;
   }

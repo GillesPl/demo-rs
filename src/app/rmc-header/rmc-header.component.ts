@@ -14,6 +14,8 @@ export class RmcHeaderComponent implements OnInit {
   constructor(private eventService: EventService) {
     this.eventService.adminPanelClosed$.subscribe(() => this.onAdminPanelClose());
     this.eventService.adminPanelOpened$.subscribe(() => this.onAdminPanelOpen());
+    this.eventService.fileExchangePanelClosed$.subscribe(() => this.onFileExchangePanelClose());
+    this.eventService.fileExchangePanelOpened$.subscribe(() => this.onFileExchangePanelOpen());
     this.eventService.sidebarClosed$.subscribe(() => this.onSidebarClose());
     this.eventService.sidebarOpened$.subscribe(() => this.onSidebarOpen());
   }
