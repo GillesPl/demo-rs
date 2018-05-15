@@ -638,7 +638,7 @@ html {
 }
 
 
-/* Slide in on top */
+/* Slide in on top fileexchange*/
 .sliding-admin-panel {
   &.st-admin-panel {
     visibility: hidden;
@@ -648,6 +648,24 @@ html {
     transform: translate3d(100%, 0, 0);
 
     &.st-admin-panel-open {
+      visibility: visible;
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+/* Slide in on top fileexchange */
+.sliding-fileexchange-panel {
+  &.st-admin-panel {
+    visibility: hidden;
+    overflow-y: auto;
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+
+    &.st-fileexchange-panel-open {
       visibility: visible;
       opacity: 1;
       -webkit-transform: translate3d(0, 0, 0);

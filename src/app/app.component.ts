@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   pollingReaders: boolean;
   pollingCard: boolean;
   adminPanelOpen: boolean;
+  fileExchangePanelOpen: boolean;
   cardTypesOpen: boolean;
   faqOpen: boolean;
   error: boolean;
@@ -177,6 +178,10 @@ export class AppComponent implements OnInit {
   }
 
   refreshAdminData() {
+    this.eventService.refreshAdminData();
+  }
+
+  refreshFileExchangeData() {
     this.eventService.refreshAdminData();
   }
 

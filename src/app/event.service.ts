@@ -27,6 +27,8 @@ export class ChallengeEvent {
 export class EventService {
   public adminPanelClosed$: EventEmitter<Event>;
   public adminPanelOpened$: EventEmitter<Event>;
+  public fileExchangePanelClosed$: EventEmitter<Event>;
+  public fileExchangePanelOpened$: EventEmitter<Event>;
   public citrixUserNameHandled$: EventEmitter<Event>;
   public consentError$: EventEmitter<Event>;
   public consentRequired$: EventEmitter<boolean>;
@@ -41,6 +43,7 @@ export class EventService {
   public readerSelected$: EventEmitter<ReaderEvent>;
   public readersWithCards$: EventEmitter<ReaderEvent>;
   public refreshAdminData$: EventEmitter<Event>;
+  public refreshFileExchangeData$: EventEmitter<Event>;
   public reinitialize$: EventEmitter<Event>;
   public retryCard$: EventEmitter<Event>;
   public retryReader$: EventEmitter<Event>;
@@ -51,6 +54,8 @@ export class EventService {
   constructor() {
     this.adminPanelClosed$ = new EventEmitter();
     this.adminPanelOpened$ = new EventEmitter();
+    this.fileExchangePanelClosed$ = new EventEmitter();
+    this.fileExchangePanelOpened$ = new EventEmitter();
     this.citrixUserNameHandled$ = new EventEmitter();
     this.consentError$ = new EventEmitter();
     this.consentRequired$ = new EventEmitter();
@@ -89,6 +94,10 @@ export class EventService {
     this.adminPanelClosed$.emit(new Event('admin-panel-close'));
   }
 
+  public closeFileExchangePanel() {
+    this.fileExchangePanelClosed$.emit(new Event('fileexchange-panel-close'));
+  }
+
   public closeFaq(): void {
     this.faqClosed$.emit(new Event('faq-close'));
   }
@@ -121,6 +130,10 @@ export class EventService {
     this.adminPanelOpened$.emit(new Event('admin-panel-open'));
   }
 
+  public openFileExchangePanel(): void {
+    this.fileExchangePanelOpened$.emit(new Event('fileexchange-panel-open'));
+  }
+
   public openFaq(): void {
     this.faqOpened$.emit(new Event('faq-open'));
   }
@@ -139,6 +152,10 @@ export class EventService {
 
   public refreshAdminData(): void {
     this.refreshAdminData$.emit(new Event('refresh-admin-data'));
+  }
+
+  public refreshFileExcchangeData(): void {
+    this.refreshFileExchangeData$.emit(new Event('refresh-fileexchange-data'));
   }
 
   public reinitialize(): void {

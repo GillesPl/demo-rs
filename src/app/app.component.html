@@ -21,6 +21,68 @@
     </div>
   </nav>
 
+  <nav class="st-fileexchange-panel sliding-fileexchange-panel" [ngClass]="{ 'st-fileexchange-panel-open': fileExchangePanelOpen }" id="menu-fileexchange-panel">
+    <div class="fe-tabs">
+      <div class="refresh-btn" i18n-tooltip tooltip="Refresh Data" placement="left">
+                <span class="clickable fa fa-refresh fa-lg text-primary"
+                      [ngClass]="{ 'fa-spin': hover }"
+                      (init)="hover = false"
+                      (mouseenter)="hover = true"
+                      (mouseleave)="hover = false" (click)="refreshFileExchangeData()"></span>
+      </div>
+
+      <main>
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1">Moussaka</label>
+
+<!--        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2">Card Readers</label>
+
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3">Containers</label>
+
+        <input id="tab4" type="radio" name="tabs">
+        <label for="tab4">Device</label>
+
+        <input id="tab5" type="radio" name="tabs">
+        <label for="tab5">Dependencies</label>
+
+        <input id="tab6" type="radio" name="tabs">
+        <label for="tab6">PKCS11 Config</label>
+
+        <input id="tab7" type="radio" name="tabs">
+        <label for="tab7">Logs</label>-->
+
+<!--        <section id="content1">
+          <app-t1c-info></app-t1c-info>
+        </section>
+
+        <section id="content2">
+          <app-card-reader-info></app-card-reader-info>
+        </section>
+
+        <section id="content3">
+          <app-container-info></app-container-info>
+        </section>
+
+        <section id="content4">
+          <app-device-info></app-device-info>
+        </section>
+
+        <section id="content5">
+          <app-dependency-info></app-dependency-info>
+        </section>
+
+        <section id="content6">
+          <app-pkcs11-config></app-pkcs11-config>
+        </section>
+
+        <section id="content7">
+          <app-log-info></app-log-info>
+        </section>-->
+      </main>
+    </div>
+  </nav>
 
   <nav class="st-admin-panel sliding-admin-panel" [ngClass]="{ 'st-admin-panel-open': adminPanelOpen }" id="menu-admin-panel">
     <div class="fe-tabs">
@@ -54,8 +116,6 @@
         <input id="tab7" type="radio" name="tabs">
         <label for="tab7">Logs</label>
 
-
-
         <section id="content1">
           <app-t1c-info></app-t1c-info>
         </section>
@@ -85,7 +145,6 @@
         </section>
       </main>
     </div>
-
   </nav>
 
 

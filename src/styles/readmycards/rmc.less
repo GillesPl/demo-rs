@@ -658,6 +658,23 @@ html {
   }
 }
 
+.sliding-fileexchange-panel {
+  &.st-fileexchange-panel {
+    visibility: hidden;
+    overflow-y: auto;
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+
+    &.st-fileexchange-panel-open {
+      visibility: visible;
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
 .fe-tabs {
   .refresh-btn {
     position: absolute;
