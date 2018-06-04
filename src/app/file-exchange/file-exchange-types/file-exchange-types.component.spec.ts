@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {FileexchangeComponent} from './fileexchange.component';
+import {FileExchangeTypesComponent} from './file-exchange-types.component';
 
 describe('FileExchangeComponent', () => {
-  let component: FileexchangeComponent;
-  let fixture: ComponentFixture<FileexchangeComponent>;
+  let component: FileExchangeTypesComponent;
+  let fixture: ComponentFixture<FileExchangeTypesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FileexchangeComponent ]
+      declarations: [ FileExchangeTypesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FileexchangeComponent);
+    fixture = TestBed.createComponent(FileExchangeTypesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

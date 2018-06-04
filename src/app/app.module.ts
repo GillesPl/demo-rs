@@ -42,7 +42,13 @@ import { RmcDownloadFailedComponent } from './rmc-download-failed/rmc-download-f
 import { CitrixUserSelectModalComponent } from './citrix-user-select-modal/citrix-user-select-modal.component';
 import { CitrixService } from './citrix.service';
 import { ConsentModalComponent } from './consent-modal/consent-modal.component';
-import {FileexchangeComponent} from './file-exchange/fileexchange.component';
+import {FileExchangeMiscComponent} from './file-exchange/file-exchange-misc/file-exchange-misc.component';
+import {FileExchangeTypesComponent} from './file-exchange/file-exchange-types/file-exchange-types.component';
+import {FileExchangeTypeopsComponent} from './file-exchange/file-exchange-typeops/file-exchange-typeops.component';
+import {FileExchangeFileopsComponent} from './file-exchange/file-exchange-fileops/file-exchange-fileops.component';
+import {FileExchangeUploadComponent} from './file-exchange/file-exchange-upload/file-exchange-upload.component';
+import {FileExchangeDownloadComponent} from './file-exchange/file-exchange-download/file-exchange-download.component';
+import {FileExchangeModule} from './file-exchange/file-exchange.module';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -76,8 +82,7 @@ const ROUTES: Routes = [
     Pkcs11ConfigComponent,
     RmcDownloadFailedComponent,
     CitrixUserSelectModalComponent,
-    ConsentModalComponent,
-    FileexchangeComponent
+    ConsentModalComponent
   ],
   imports: [
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
@@ -91,7 +96,8 @@ const ROUTES: Routes = [
     KeypadModule,
     ModalModule.forRoot(),
     RouterModule.forRoot(ROUTES),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    FileExchangeModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: locale },

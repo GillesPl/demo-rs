@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {Connector} from '../connector.service';
-import {EventService} from '../event.service';
+import {Connector} from '../../connector.service';
+import {EventService} from '../../event.service';
 
 @Component({
-  selector: 'app-file-exchange',
-  templateUrl: './fileexchange.component.html',
-  styleUrls: ['./fileexchange.component.less']
+  selector: 'app-file-exchange-misc',
+  templateUrl: './file-exchange-misc.component.html',
+  styleUrls: ['./file-exchange-misc.component.less']
 })
-export class FileexchangeComponent implements OnInit {
+export class FileExchangeMiscComponent implements OnInit {
   info: { uid?: string, activated?: boolean } = {};
 
   constructor(private Connector: Connector, private eventService: EventService) {

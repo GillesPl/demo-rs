@@ -70,6 +70,7 @@ export class EventService {
     this.readerSelected$ = new EventEmitter();
     this.readersWithCards$ = new EventEmitter();
     this.refreshAdminData$ = new EventEmitter();
+    this.refreshFileExchangeData$ = new EventEmitter<Event>();
     this.reinitialize$ = new EventEmitter();
     this.retryCard$ = new EventEmitter();
     this.retryReader$ = new EventEmitter();
