@@ -639,6 +639,52 @@ html {
   }
 }
 
+.st-fileexchange-panel {
+  position: absolute;
+  bottom: 60px;
+  height: 100%;
+  padding-top: 60px;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #ccc;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+
+
+  h2 {
+    margin: 0;
+    padding: 1em 1em .25em .5em;
+    color: #333;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    font-weight: 300;
+    font-size: 2em;
+  }
+
+  dl {
+    margin: 0;
+    padding: 1em 1em 1em 1em;
+
+    dt {
+      margin-top: 10px;
+      color: rgba(255,255,255,1);
+    }
+
+    dd {
+      margin-bottom: 5px;
+      color: rgba(255,255,255,0.9);
+    }
+  }
+
+  a {
+    color: rgba(255,255,255,0.95);
+    text-decoration: underline;
+
+    &:hover, &:active {
+      color: @t1t-grey;
+    }
+  }
+}
 
 /* Slide in on top */
 .sliding-admin-panel {
