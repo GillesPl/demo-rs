@@ -8,18 +8,15 @@ import {EventService} from '../../event.service';
   styleUrls: ['./file-exchange-types.component.less']
 })
 export class FileExchangeTypesComponent implements OnInit {
-  info: { uid?: string, activated?: boolean } = {};
 
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
-    this.eventService.refreshFileExchangeData$.subscribe(() => this.getData());
   }
 
   ngOnInit() {}
 
   getData() {
-    this.Connector.core('info').then(res => {
-      this.info = res.data;
-    });
+    this.Connector.plugin('filex', 'createType', [], ['mpc', 'coda']).then(res => {
+      console.log('filex res:' + res.data); }, err => { console.log(err); });
   }
 }

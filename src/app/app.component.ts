@@ -142,10 +142,10 @@ export class AppComponent implements OnInit {
       const params = comp.Citrix.userSelectionParams();
       // get filtered agent list
       comp.Connector.plugin('agent', 'get', [], [params]).then(res => {
-        // check if matching agents was found
-        if (res.data && typeof res.data === 'object' && !_.isArray(res.data)) {
+        // check if matching agents was found - we check to have 1 agent, we assume no multiple agents can be used for one single user.
+        if (res.data && typeof res.data === 'object' && res.data && _.isArray(res.data) && res.data.length === 1) {
           // Save the agent and reinitialize the connector with agent port!
-          comp.Citrix.agent(res.data).then(() => {
+          comp.Citrix.agent(res.data[0]).then(() => {
             // check if all is well
             comp.Connector.core('readers').then(() => {
               comp.Citrix.updateLocation();

@@ -29,11 +29,11 @@ export class DependencyInfoComponent implements OnInit {
 
     this.Connector.ocv('getInfo').then(res => {
         this.info.ocv = res;
-    });
+    }, error => { console.log('OCV dependency info error:' + error); });
 
     this.Connector.plugin('ds', 'getInfo').then(res => {
         this.info.ds = res;
-    });
+    }, error => { console.log('DS dependency info error:' + error); });
 
     this.API.signboxVersion().subscribe(res => {
       this.info.signbox = res;
