@@ -1,0 +1,54 @@
+<div>
+  <h4>Entities and Types</h4>
+  <table class="table table-striped t1c-plugin-table">
+    <thead>
+    <tr>
+      <th>Entity</th>
+      <th>Type</th>
+      <th>Abs Path</th>
+      <th>Access Mode</th>
+      <th>Files</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let entity of entities">
+      <td>{{entity.entity}}</td>
+      <td>{{entity.type}}</td>
+      <td>{{entity.abs_path}}</td>
+      <td>{{entity.access_mode}}</td>
+      <td>{{entity.files}}</td>
+      <td>{{entity.status}}</td>
+      <td><button type="button" class="btn btn-line-primary" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a></button></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="files">
+    <table class="table table-striped t1c-plugin-table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Entity</th>
+        <th>Abs Path</th>
+        <th>Access Mode</th>
+        <th>Files</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let file of files">
+        <td>{{file.name}}</td>
+        <td>{{file.path}}</td>
+        <td>{{file.size}}</td>
+        <td>{{file.is_dir}}</td>
+        <td>{{file.access_mode}}</td>
+        <td>{{file.last_modification_time}}</td>
+        <td><button type="button" class="btn btn-line-primary" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a></button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

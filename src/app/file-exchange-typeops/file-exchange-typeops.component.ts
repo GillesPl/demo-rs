@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Connector} from '../../connector.service';
-import {EventService} from '../../event.service';
+import {Connector} from '../connector.service';
+import {EventService} from '../event.service';
 
 @Component({
   selector: 'app-file-exchange-typeops',
@@ -17,9 +17,5 @@ export class FileExchangeTypeopsComponent implements OnInit {
 
   ngOnInit() {}
 
-  getData() {
-    this.Connector.core('info').then(res => {
-      this.info = res.data;
-    });
-  }
+  getData() {}
 }
