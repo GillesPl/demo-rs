@@ -47,7 +47,7 @@ export class FileExchangeDownloadComponent implements OnInit {
 
   public getFile(path: string): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Origin': 'http://localhost:4200' })
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     return this.http.get(path, httpOptions);
   }
