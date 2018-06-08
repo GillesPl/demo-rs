@@ -30,25 +30,25 @@
       <thead>
       <tr>
         <th>Name</th>
-        <th>Entity</th>
-        <th>Abs Path</th>
-        <th>Access Mode</th>
-        <th>Files</th>
-        <th>Status</th>
+        <th>Extension</th>
+        <th>Size</th>
+        <th>Is directory</th>
+        <th>Access mode</th>
+        <th>Last modification date</th>
         <th></th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let file of files">
         <td>{{file.name}}</td>
-        <td>{{file.path}}</td>
+        <td>{{file.extension}}</td>
         <td>{{file.size}}</td>
         <td>{{file.is_dir}}</td>
         <td>{{file.access_mode}}</td>
-        <td>{{file.last_modification_time}}</td>
-        <td><button type="button" class="btn btn-line-primary" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a></button></td>
+        <td>{{file.last_modification_time | date}}</td>
       </tr>
       </tbody>
     </table>
+    <div>Total Files: <b>{{totalFiles}}</b></div>
   </div>
 </div>

@@ -10,6 +10,7 @@ import {EventService} from '../event.service';
 export class FileExchangeTypesComponent implements OnInit {
   entities;
   files;
+  totalFiles;
 
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
@@ -27,6 +28,7 @@ export class FileExchangeTypesComponent implements OnInit {
   getFilesForType(entity) {
     this.Connector.plugin('filex', 'listTypeContent', [], [entity.entity, entity.type]).then(res => {
       this.files = res.data.files;
+      this.totalFiles = res.data.total;
     });
   }
 }
