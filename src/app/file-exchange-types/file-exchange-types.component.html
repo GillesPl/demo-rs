@@ -20,7 +20,12 @@
       <td>{{entity.access_mode}}</td>
       <td>{{entity.files}}</td>
       <td>{{entity.status}}</td>
-      <td><button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a></button></td>
+      <td>
+        <div class="buttons">
+          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a></button>
+          <button type="button" class="btn btn-line-default t1t-text-color" md-ink-ripple><a (click)="deleteTypeMapping(entity)">Delete</a></button>
+        </div>
+      </td>
     </tr>
     </tbody>
   </table>

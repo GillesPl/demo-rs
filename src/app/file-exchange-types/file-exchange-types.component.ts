@@ -31,4 +31,12 @@ export class FileExchangeTypesComponent implements OnInit {
       this.totalFiles = res.data.total;
     });
   }
+
+  deleteTypeMapping(entity){
+    this.Connector.plugin('filex', 'deleteType', [], [entity.entity, entity.type]).then( res => {
+        this.files = undefined;
+        this.totalFiles = 0;
+        this.eventService.refreshFileExcchangeData();
+      });
+  }
 }
