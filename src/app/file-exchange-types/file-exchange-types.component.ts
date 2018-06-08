@@ -20,7 +20,7 @@ export class FileExchangeTypesComponent implements OnInit {
   ngOnInit() {}
 
   getData() {
-    this.Connector.plugin('filex', 'listTypes', [], ['mpc']).then(res => {
+    this.Connector.plugin('filex', 'listTypes', [], []).then(res => {
         this.entities = res.data;
       });
   }

@@ -20,35 +20,43 @@
       <td>{{entity.access_mode}}</td>
       <td>{{entity.files}}</td>
       <td>{{entity.status}}</td>
-      <td><button type="button" class="btn btn-line-primary" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a></button></td>
+      <td><button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a></button></td>
     </tr>
     </tbody>
   </table>
 
   <div *ngIf="files">
-    <table class="table table-striped t1c-plugin-table">
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Extension</th>
-        <th>Size</th>
-        <th>Is directory</th>
-        <th>Access mode</th>
-        <th>Last modification date</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let file of files">
-        <td>{{file.name}}</td>
-        <td>{{file.extension}}</td>
-        <td>{{file.size}}</td>
-        <td>{{file.is_dir}}</td>
-        <td>{{file.access_mode}}</td>
-        <td>{{file.last_modification_time | date}}</td>
-      </tr>
-      </tbody>
-    </table>
-    <div>Total Files: <b>{{totalFiles}}</b></div>
+    <h5>Files overview</h5>
+    <div *ngIf="files && totalFiles > 0">
+      <table class="table table-striped t1c-plugin-table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Extension</th>
+          <th>Size</th>
+          <th>Is directory</th>
+          <th>Access mode</th>
+          <th>Last modification date</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let file of files">
+          <td>{{file.name}}</td>
+          <td>{{file.extension}}</td>
+          <td>{{file.size}}</td>
+          <td>{{file.is_dir}}</td>
+          <td>{{file.access_mode}}</td>
+          <td>{{file.last_modification_time | date}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <div>Total Files: <b>{{totalFiles}}</b></div>
+    </div>
+
+    <div *ngIf="!files || totalFiles == 0">
+      No files found for selected type.
+    </div>
   </div>
+
 </div>
