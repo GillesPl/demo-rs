@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Connector} from '../connector.service';
 import {EventService} from '../event.service';
 import {Observable} from 'rxjs/Observable';
@@ -11,7 +11,7 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
   styleUrls: ['./file-exchange-download.component.less']
 })
 export class FileExchangeDownloadComponent implements OnInit {
-  exampleFile = 'https://storage.googleapis.com/rmc-test-files/T1T_test_green.pdf';
+  exampleFile = '../assets/T1T_test_green.pdf';
   entity;
   type;
   relpath;
@@ -21,9 +21,11 @@ export class FileExchangeDownloadComponent implements OnInit {
     this.eventService.refreshFileExchangeData$.subscribe(() => this.getData());
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
-  getData() {}
+  getData() {
+  }
 
   downloadSimpleExample() {
     console.log('File downloaded started');
@@ -38,17 +40,29 @@ export class FileExchangeDownloadComponent implements OnInit {
   }
 
   downloadFile(entity, type, relpath, createMissingDir, notifyOnCompletion) {
-    this.getFile(this.exampleFile).subscribe((fileData) => {
-          const innerFile = new Blob([fileData], { type: 'application/pdf' });
-          this.download(entity, type, innerFile, relpath, createMissingDir, notifyOnCompletion);
-        }
-      );
+    this.downloadFileFromURL().subscribe((fileData) => {
+        this.download(entity, type, fileData.data, relpath, createMissingDir, notifyOnCompletion);
+      }
+    );
   }
 
   public getFile(path: string): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
     return this.http.get(path, httpOptions);
+  }
+
+  downloadFileFromURL(): Observable<any> {
+    const responseTypeOptions = {
+      responseType: 'blob'
+    };
+    return this.http.get(this.exampleFile)
+      .map((res) => {
+        return {
+          data: new Blob([res], {type: 'application/pdf'}),
+          filename: 'example.pdf'
+        };
+      });
   }
 }
