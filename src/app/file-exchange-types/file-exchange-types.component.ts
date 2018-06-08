@@ -39,4 +39,8 @@ export class FileExchangeTypesComponent implements OnInit {
         this.eventService.refreshFileExcchangeData();
       });
   }
+
+  uploadFile(file) {
+    console.log('upload file: ' + file.name);
+  }
 }

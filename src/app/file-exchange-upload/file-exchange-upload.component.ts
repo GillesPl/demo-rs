@@ -8,7 +8,9 @@ import {EventService} from '../event.service';
   styleUrls: ['./file-exchange-upload.component.less']
 })
 export class FileExchangeUploadComponent implements OnInit {
-  info: { uid?: string, activated?: boolean } = {};
+  entities;
+  files;
+  totalFiles;
 
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
@@ -18,8 +20,27 @@ export class FileExchangeUploadComponent implements OnInit {
   ngOnInit() {}
 
   getData() {
-    this.Connector.core('info').then(res => {
-      this.info = res.data;
+    this.Connector.plugin('filex', 'listTypes', [], []).then(res => {
+      this.entities = res.data;
     });
+  }
+
+  getFilesForType(entity) {
+    this.Connector.plugin('filex', 'listTypeContent', [], [entity.entity, entity.type]).then(res => {
+      this.files = res.data.files;
+      this.totalFiles = res.data.total;
+    });
+  }
+
+  deleteTypeMapping(entity) {
+    this.Connector.plugin('filex', 'deleteType', [], [entity.entity, entity.type]).then( res => {
+      this.files = undefined;
+      this.totalFiles = 0;
+      this.eventService.refreshFileExcchangeData();
+    });
+  }
+
+  uploadFile(file) {
+    console.log('upload file: ' + file.name);
   }
 }
