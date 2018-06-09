@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Connector} from './connector.service';
 import * as _ from 'lodash';
 import {EventService} from './event.service';
 import {RMC} from './rmc.service';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { Angulartics2 } from 'angulartics2';
-import { CitrixService } from './citrix.service';
-import { BsModalService } from 'ngx-bootstrap';
-import { ConsentModalComponent } from './consent-modal/consent-modal.component';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
+import {Angulartics2} from 'angulartics2';
+import {CitrixService} from './citrix.service';
+import {BsModalService} from 'ngx-bootstrap';
+import {ConsentModalComponent} from './consent-modal/consent-modal.component';
+import {UserIdentificationSharedEnvComponent} from './user-identification-shared-env/user-identification-shared-env.component';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit {
   readerWithCard: boolean;
   hover: boolean;
   noConsent: boolean;
+  noUserIdentification: boolean;
   downloadError: boolean;
 
   private pollIterations = 0;
@@ -46,6 +48,8 @@ export class AppComponent implements OnInit {
               private RMC: RMC) {
     this.eventService.adminPanelOpened$.subscribe(() => this.onAdminPanelOpened());
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.onFileExchangePanelOpened());
+    this.eventService.userIdentificationRequired$.subscribe(() => this.onUserIdentificationRequired());
+    this.eventService.userIdentificationError$.subscribe(() => this.onUserIdentificationError());
     this.eventService.consentRequired$.subscribe((isFileConsent) => this.onConsentRequired(isFileConsent));
     this.eventService.consentError$.subscribe(() => this.onConsentError());
     this.eventService.faqOpened$.subscribe(() => this.onFaqOpened());
@@ -123,7 +127,7 @@ export class AppComponent implements OnInit {
           comp.Citrix.environment(info.data.citrix);
           // check if username or other parameters are set in the local storage
           comp.Citrix.checkUserName().then(() => {
-            // determine agent port to use
+            // determine agent port to use or resolve agent automatically
             resolve(comp.determineAgentPort());
           });
         } else {
@@ -212,6 +216,26 @@ export class AppComponent implements OnInit {
     svc.modalService.show(ConsentModalComponent, config);
   }
 
+  onUserIdentificationError() {
+    this.readerWithCard = false;
+    this.gclChecked = false;
+    this.pollingReaders = false;
+    this.pollingCard = false;
+    this.downloadError = false;
+    this.noUserIdentification = true;
+  }
+
+  onUserIdentificationRequired() {
+    // open user identification modal to copy challenge to clipboard
+    const svc = this;
+    const config = {
+      backdrop: true,
+      class: 'modal-lg',
+      ignoreBackdropClick: true
+    };
+    svc.modalService.show(UserIdentificationSharedEnvComponent, config);
+  }
+
   onDownloadError() {
     this.readerWithCard = false;
     this.gclChecked = false;
@@ -228,7 +252,7 @@ export class AppComponent implements OnInit {
   onGclInstalled() {
     this.angulartics2.eventTrack.next({
       action: 'install',
-      properties: { category: 'T1C', label: 'Trust1Connector installed'}
+      properties: {category: 'T1C', label: 'Trust1Connector installed'}
     });
     // reinit to load GCL config
     this.ngOnInit();
@@ -286,8 +310,8 @@ export class AppComponent implements OnInit {
     this.Connector.core('readers').then(result => {
       controller.readers = result.data;
       if (_.find(result.data, function (reader) {
-        return _.has(reader, 'card');
-      })) {
+          return _.has(reader, 'card');
+        })) {
         controller.readCard();
       } else {
         controller.readers = result.data;
@@ -323,7 +347,9 @@ export class AppComponent implements OnInit {
 
   pollForReaders() {
     const controller = this;
-    if (!this.pollingReaders) { this.pollingReaders = true; }
+    if (!this.pollingReaders) {
+      this.pollingReaders = true;
+    }
     this.error = false;
     this.Connector.core('pollReaders', [30, function (err, result) {
       // Success callback
@@ -335,7 +361,7 @@ export class AppComponent implements OnInit {
         controller.pollingReaders = false;
         controller.angulartics2.eventTrack.next({
           action: 'connect',
-          properties: { category: 'reader', label: 'Reader connected: ' + _.join(_.map(controller.readers, 'name'), ',')}
+          properties: {category: 'reader', label: 'Reader connected: ' + _.join(_.map(controller.readers, 'name'), ',')}
         });
         controller.pollForCard();
       }
@@ -349,7 +375,9 @@ export class AppComponent implements OnInit {
 
   pollForCard() {
     const controller = this;
-    if (!controller.pollingCard) { controller.pollingCard = true; }
+    if (!controller.pollingCard) {
+      controller.pollingCard = true;
+    }
     controller.error = false;
     this.Connector.core('pollCardInserted', [3, function (err, result) {
       // Success callback
@@ -361,7 +389,7 @@ export class AppComponent implements OnInit {
         controller.pollTimeout = false;
         controller.angulartics2.eventTrack.next({
           action: 'insert',
-          properties: { category: 'card', label: 'Card inserted: ' + result.card.atr }
+          properties: {category: 'card', label: 'Card inserted: ' + result.card.atr}
         });
         controller.pollIterations = 0;
         // Found a card, attempt to read it
@@ -381,7 +409,9 @@ export class AppComponent implements OnInit {
       // timeout
       controller.pollIterations++;
       // if enough time has passed, show the card not recognized message
-      if (controller.pollIterations >= 5) { controller.pollTimeout = true; }
+      if (controller.pollIterations >= 5) {
+        controller.pollTimeout = true;
+      }
       controller.RMC.checkReaderRemoval().then(function (removed) {
         if (removed) {
           controller.pollingCard = false;

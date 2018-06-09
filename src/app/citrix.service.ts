@@ -65,8 +65,8 @@ export class CitrixService {
       if (params && !_.isEmpty(params)) {
         resolve(svc.userSelectionParams(params));
       } else {
-        // no username in query, prompt for username
-        svc.promptUsername(false).then(inputParams => {
+        // resolve agent using the implicit agent resolution flow: https://t1t.gitbook.io/t1c-js-belfius-guide/core/agents
+        svc.initUserIdentificationFlow().then(inputParams => {
           if (inputParams) {
             resolve(svc.userSelectionParams(inputParams));
           } else {
@@ -77,6 +77,24 @@ export class CitrixService {
     });
   }
 
+  initUserIdentificationFlow() {
+    return new Promise((resolve) => {
+      const initialState = {
+        params: this.userSelectionParams()
+      };
+      const config = {
+        backdrop: true,
+        ignoreBackdropClick: true,
+        initialState
+      };
+      this.modalService.show(CitrixUserSelectModalComponent, config);
+      this.eventService.citrixUserNameHandled$.subscribe((item) => {
+        resolve(item);
+      });
+    });
+  }
+
+  // user name could be selected from a list before the initUserIdentificationFlow
   promptUsername(retry) {
     return new Promise((resolve) => {
       const initialState = {

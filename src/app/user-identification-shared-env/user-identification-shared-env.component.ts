@@ -26,10 +26,12 @@ export class UserIdentificationSharedEnvComponent implements OnInit {
   constructor(public bsRef: BsModalRef, private Connector: Connector, private eventService: EventService) { }
 
   ngOnInit() {
-
     // Generate random code
     this.code = UserIdentificationSharedEnvComponent.generateCode();
+  }
 
+  ok() {
+    console.log('I want to access do your magic: ' + this.code);
     this.Connector.get().agent().resolve(this.code).then(res => {
       this.eventService.userIdentificationResult(res);
       this.bsRef.hide();
@@ -38,6 +40,10 @@ export class UserIdentificationSharedEnvComponent implements OnInit {
       this.eventService.userIdentificationResult({ data: {}, success: true });
       this.bsRef.hide();
     });
+    // copy to clipboard should have been done - this method resolves the after click
+    // request agent resolve
+    // sent event with response
+
   }
 
 

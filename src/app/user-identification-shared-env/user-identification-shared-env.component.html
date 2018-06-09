@@ -2,19 +2,15 @@
   <h3>User Identification</h3>
 </div>
 <div class="modal-body">
-
-  <div *ngIf="!file">
-    <p>To use this website, you need to consent to your reader(s) being used.</p>
-    <p>Without consent, we are unable to access your card reader(s).</p>
-  </div>
-  <div *ngIf="file">
-    <p>To use the File Exchange POC, you need to consent to your file system being accessed by Trust1Connector.</p>
-    <p>Without consent, we are unable to read and save files.</p>
+  <div>
+    <p>Do you want to access the application based on your citrix session?</p>
   </div>
 
-  <p>You should see a popup on your screen.</p>
+</div>
 
-  <p class="text-bold">Only click "Yes" if the code displayed matches the code below:</p>
-
-  <p class="consent-code text-primary">{{code}}</p>
+<div class="modal-footer">
+  <button class="btn btn-default" i18n-tooltip tooltip="Copy" type="button" ngxClipboard
+          [cbContent]="code">
+    <fa [name]="'copy'"></fa>
+  </button>
 </div>
