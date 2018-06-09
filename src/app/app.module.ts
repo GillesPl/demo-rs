@@ -115,7 +115,7 @@ const ROUTES: Routes = [
     RMC
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CitrixUserSelectModalComponent, ConsentModalComponent]
+  entryComponents: [CitrixUserSelectModalComponent, ConsentModalComponent, UserIdentificationSharedEnvComponent]
 })
 export class AppModule {
 }

@@ -3,14 +3,14 @@
 </div>
 <div class="modal-body">
   <div>
-    <p>Do you want to access the application based on your citrix session?</p>
+    <p>Do you want to access the application based on your citrix user session?</p>
   </div>
 
 </div>
 
 <div class="modal-footer">
   <button class="btn btn-default" i18n-tooltip tooltip="Copy" type="button" ngxClipboard
-          [cbContent]="code">
+          [cbContent]="code" (click)="ok()">
     <fa [name]="'copy'"></fa>
   </button>
 </div>

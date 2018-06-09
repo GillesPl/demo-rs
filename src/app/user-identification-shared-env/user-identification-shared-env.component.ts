@@ -33,12 +33,14 @@ export class UserIdentificationSharedEnvComponent implements OnInit {
   ok() {
     console.log('I want to access do your magic: ' + this.code);
     this.Connector.get().agent().resolve(this.code).then(res => {
-      this.eventService.userIdentificationResult(res);
+      console.log('Agent found: ' + res.data.username);
+      this.eventService.citrixUserNameHandled(res.data.username);
       this.bsRef.hide();
-    }, () => {
+    }, (err) => {
+      console.log('Agent not found: ' + err.message);
       // TODO inspect error and react accordingly
-      this.eventService.userIdentificationResult({ data: {}, success: true });
-      this.bsRef.hide();
+      // this.eventService.citrixUserNameHandled(undefined);
+      // this.bsRef.hide();
     });
     // copy to clipboard should have been done - this method resolves the after click
     // request agent resolve

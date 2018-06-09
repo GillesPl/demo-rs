@@ -5,6 +5,7 @@ import { DownloadSummaryModalComponent } from './cards/download-summary-modal/do
 import { CitrixUserSelectModalComponent } from './citrix-user-select-modal/citrix-user-select-modal.component';
 import { BsModalService } from 'ngx-bootstrap';
 import { EventService } from './event.service';
+import {UserIdentificationSharedEnvComponent} from './user-identification-shared-env/user-identification-shared-env.component';
 
 @Injectable()
 export class CitrixService {
@@ -87,7 +88,7 @@ export class CitrixService {
         ignoreBackdropClick: true,
         initialState
       };
-      this.modalService.show(CitrixUserSelectModalComponent, config);
+      this.modalService.show(UserIdentificationSharedEnvComponent, config); // CitrixUserSelectModalComponent
       this.eventService.citrixUserNameHandled$.subscribe((item) => {
         resolve(item);
       });
