@@ -48,6 +48,7 @@ import {FileExchangeTypeopsComponent} from './file-exchange-typeops/file-exchang
 import {FileExchangeFileopsComponent} from './file-exchange-fileops/file-exchange-fileops.component';
 import {FileExchangeUploadComponent} from './file-exchange-upload/file-exchange-upload.component';
 import {FileExchangeDownloadComponent} from './file-exchange-download/file-exchange-download.component';
+import {UserIdentificationSharedEnvComponent} from './user-identification-shared-env/user-identification-shared-env.component';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -87,7 +88,8 @@ const ROUTES: Routes = [
     FileExchangeTypeopsComponent,
     FileExchangeFileopsComponent,
     FileExchangeUploadComponent,
-    FileExchangeDownloadComponent
+    FileExchangeDownloadComponent,
+    UserIdentificationSharedEnvComponent
   ],
   imports: [
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),

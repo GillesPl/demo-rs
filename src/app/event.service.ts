@@ -15,6 +15,22 @@ export class ConsentEvent {
   constructor(public data: boolean, public success: boolean) {}
 }
 
+export class UserIdentificationEvent {
+  constructor(public data: UserIdentification, public success: boolean) {}
+}
+
+export class UserIdentification {
+  constructor(
+    public challenge?: string,
+    public hostname?: string,
+    public last_update?: string,
+    public metadata?: any,
+    public port?: number,
+    public type?: string,
+    public username?: string
+  ) {}
+}
+
 export class PinCheckEvent {
   constructor(public result: any, public error: boolean, public cancelled: boolean) {}
 }
@@ -30,7 +46,10 @@ export class EventService {
   public fileExchangePanelClosed$: EventEmitter<Event>;
   public fileExchangePanelOpened$: EventEmitter<Event>;
   public citrixUserNameHandled$: EventEmitter<Event>;
+  public userIdentificationError$: EventEmitter<Event>;
   public consentError$: EventEmitter<Event>;
+  public userIdentificationRequired$: EventEmitter<boolean>;
+  public userIdentificationResult$: EventEmitter<UserIdentificationEvent>;
   public consentRequired$: EventEmitter<boolean>;
   public consentResult$: EventEmitter<ConsentEvent>;
   public faqClosed$: EventEmitter<Event>;
@@ -58,6 +77,9 @@ export class EventService {
     this.fileExchangePanelOpened$ = new EventEmitter();
     this.citrixUserNameHandled$ = new EventEmitter();
     this.consentError$ = new EventEmitter();
+    this.userIdentificationError$ = new EventEmitter();
+    this.userIdentificationRequired$ = new EventEmitter();
+    this.userIdentificationResult$ = new EventEmitter();
     this.consentRequired$ = new EventEmitter();
     this.consentResult$ = new EventEmitter();
     this.faqClosed$ = new EventEmitter();
@@ -105,6 +127,18 @@ export class EventService {
 
   public closeSidebar(): void {
     this.sidebarClosed$.emit(new Event('sidebar-close'));
+  }
+
+  public userIdentificationError(): void{
+    this.userIdentificationError$.emit(new Event('user-identification-error'));
+  }
+
+  public userIdentificationRequired(): void {
+    this.userIdentificationRequired$.emit();
+  }
+
+  public userIdentificationResult(res: UserIdentificationEvent): void {
+    this.userIdentificationResult$.emit(res);
   }
 
   public consentError(): void {
