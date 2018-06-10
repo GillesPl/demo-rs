@@ -8,7 +8,6 @@ import {EventService} from '../event.service';
   styleUrls: ['./file-exchange-misc.component.less']
 })
 export class FileExchangeMiscComponent implements OnInit {
-  info: { uid?: string, activated?: boolean } = {};
 
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
@@ -18,4 +17,18 @@ export class FileExchangeMiscComponent implements OnInit {
   ngOnInit() {}
 
   getData() {}
+
+  showInfo(title, text, timeout) {
+    this.Connector.plugin('filex', 'showModal', [],
+      [title.value, text.value, 'info', parseInt(timeout.value, 10)]).then(res => {
+        console.log('showing info modal from operating system, returned: ' + res.data);
+    });
+  }
+
+  showChoice(title, text, timeout) {
+    this.Connector.plugin('filex', 'showModal', [],
+      [title.value, text.value, 'choice', parseInt(timeout.value, 10)]).then(res => {
+      console.log('showing info modal from operating system, returned: ' + res.data);
+    });
+  }
 }

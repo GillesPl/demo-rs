@@ -30,7 +30,7 @@ export class FileExchangeTypeopsComponent implements OnInit {
     const inputEntity = entity.value;
     const inputType = type.value;
     const inputInitAbsPath = abspath.value;
-    console.log('path resulst:' + this.cleanArray(inputInitAbsPath.split('/')));
+    // console.log('path resulst:' + this.cleanArray(inputInitAbsPath.split('/')));
     this.Connector.plugin('filex', 'createType', [],
       [inputEntity, inputType, this.cleanArray(inputInitAbsPath.split('/')), this.showModal]).then(res => {
       this.createdType = res.data;
