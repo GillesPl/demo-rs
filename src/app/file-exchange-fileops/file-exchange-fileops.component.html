@@ -1,18 +1,4 @@
 <div>
-  <h4>File Operations</h4>
-  <div>to be implemented</div>
-  this tab will:
-  - set entity and type (existing on the local env)
-  - listTypeContent
-  - listContent
-  - existFile/dir
-  - getAccessMode File/dir
-  - createDir
-  - copyFile
-  - moveFile
-  - renameFile
-  - getFileInfo
-
   <h4>Enter file path to verify if existing</h4>
   <div class="panel-body">
     <form role="form" class="form-horizontal">
@@ -36,6 +22,31 @@
   <div *ngIf="existingEntity && existingType && existingFilePath">
     <label *ngIf="fileExists" class="color_green" > File exists! </label>
     <label *ngIf="!fileExists" class="color_red" > File does not exist! </label>
+  </div>
+  <hr class="hr-primary">
+  <h4>Get Access Mode for type, directory or file</h4>
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="amEntityInput" type="text" class="form-control" placeholder="Entity name" aria-describedby="basic-addon1" #amEntityInput>
+      </div>
+
+      <div class="input-group">
+        <input id="amTypeInput" type="text" class="form-control" placeholder="Type name" aria-describedby="basic-addon1" #amTypeInput>
+      </div>
+
+      <div class="input-group">
+        <input id="amFilePathInput" type="text" class="form-control" placeholder="File path (using '/')" aria-describedby="basic-addon1" #amFilePathInput>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="existsFile(existsEntityInput, existsTypeInput, existsFilePathInput)">Exists?</a></button>
+    </div>
+  </div>
+  <div *ngIf="amEntity && amType && amFilePath">
+    <label *ngIf="accessMode" class="color_green" > {{accessMode}} </label>
+    <label *ngIf="!accessMode" class="color_red" > {{accessMode}} </label>
   </div>
 
 <!--  <div>

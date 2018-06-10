@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Connector} from '../connector.service';
 import {EventService} from '../event.service';
 
@@ -8,19 +8,29 @@ import {EventService} from '../event.service';
   styleUrls: ['./file-exchange-fileops.component.less']
 })
 export class FileExchangeFileopsComponent implements OnInit {
-  fileExists: boolean;
+
+  // for check if file exists
   existingEntity: string;
   existingType: string;
   existingFilePath: string[];
+  fileExists: boolean;
+
+  // for access mode of type, dir or file
+  amEntity: string;
+  amType: string;
+  amFilePath: string[];
+  accessMode: boolean;
 
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
     this.eventService.refreshFileExchangeData$.subscribe(() => this.getData());
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
-  getData() {}
+  getData() {
+  }
 
   existsFile(entity, type, filepath) {
     this.existingEntity = entity.value;
@@ -30,6 +40,17 @@ export class FileExchangeFileopsComponent implements OnInit {
     this.Connector.plugin('filex', 'existsFile', [],
       [this.existingEntity, this.existingType, this.existingFilePath]).then(res => {
       this.fileExists = res.data;
+    });
+  }
+
+  getAccessMode(entity, type, filepath) {
+    this.amEntity = entity.value;
+    this.amType = type.value;
+    this.amFilePath = this.cleanArray(filepath.value.split('/'));
+    // split to string array
+    this.Connector.plugin('filex', 'getAccessMode', [],
+      [this.amEntity, this.amType, this.amFilePath]).then(res => {
+      this.accessMode = res.data;
     });
   }
 

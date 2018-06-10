@@ -22,7 +22,10 @@
       </div>
 
       <div class="input-group">
-        <button type="button" [ngClass]="{ ' btn btn-primary': showModal}" [ngClass]="{ 'btn btn-info': !showModal}" data-toggle="button"  autocomplete="off" (click)="updateModal()">Show modal</button>
+        <div class="form-check">
+          <input id="showModalCheck" type="checkbox" [checked]="showModal" (change)="showModal = !showModal" />
+          <label class="form-check-label" for="showModalCheck">Explicitly show file chooser (even when mapping exists)</label>
+        </div>
       </div>
 
     </form>
@@ -57,6 +60,10 @@
       </tbody>
     </table>
   </div>
+
+
+  <hr class="hr-primary">
+
 
   <h4>Enter type to verify if existant</h4>
   <div class="panel-body">

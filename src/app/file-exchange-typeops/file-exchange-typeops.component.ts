@@ -47,11 +47,6 @@ export class FileExchangeTypeopsComponent implements OnInit {
     });
   }
 
-  updateModal() {
-    this.showModal = !this.showModal;
-    console.log('showModal: ' + this.showModal);
-  }
-
   // Will remove all falsy values: undefined, null, 0, false, NaN and "" (empty string)
   cleanArray(actual) {
     const newArr = new Array();

@@ -11,6 +11,7 @@ export class FileExchangeTypesComponent implements OnInit {
   entities;
   files;
   totalFiles;
+  selectedEntity;
 
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
@@ -29,7 +30,18 @@ export class FileExchangeTypesComponent implements OnInit {
     this.Connector.plugin('filex', 'listTypeContent', [], [entity.entity, entity.type]).then(res => {
       this.files = res.data.files;
       this.totalFiles = res.data.total;
+      this.selectedEntity = entity;
     });
+  }
+
+  getTypeInfo(entity) {
+    this.Connector.plugin('filex', 'listType', [], [entity.entity, entity.type]).then(res => {
+      this.selectedEntity = res.data;
+    });
+  }
+
+  resetTypeInfo(entity) {
+    this.selectedEntity = undefined;
   }
 
   deleteTypeMapping(entity) {
