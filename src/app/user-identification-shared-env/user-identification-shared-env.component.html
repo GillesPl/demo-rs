@@ -10,7 +10,7 @@
 
 <div class="modal-footer">
   <button class="btn btn-default" i18n-tooltip tooltip="Copy" type="button" ngxClipboard
-          [cbContent]="code" (click)="ok()">
+          [cbContent]="code" (cbOnSuccess)="ok()">
     <fa [name]="'copy'"></fa>
   </button>
 </div>

@@ -32,9 +32,11 @@ export class UserIdentificationSharedEnvComponent implements OnInit {
 
   ok() {
     console.log('I want to access do your magic: ' + this.code);
-    this.Connector.get().agent().resolve(this.code).then(res => {
-      console.log('Agent found: ' + res.data.username);
-      this.eventService.citrixUserNameHandled(res.data.username);
+    this.Connector.plugin('admin', 'resolveAgent', [], [this.code]).then(res => {
+      console.log('Agent found: ' + res);
+      const paramObject = {};
+      paramObject['username'] = res.data[0].username;
+      this.eventService.citrixUserNameHandled(paramObject);
       this.bsRef.hide();
     }, (err) => {
       console.log('Agent not found: ' + err.message);
