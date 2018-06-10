@@ -23,7 +23,7 @@ export class FileExchangeDownloadComponent implements OnInit {
 
   ngOnInit() {
     this.pdfSrc = '/assets/test.pdf';
-    // this.pdfSrc = 'http://www.pdf995.com/samples/pdf.pdf';
+    // this.pdfSrc = 'http://www.pdf995.com/samples/pdf.pdf'; <= cors when doing this online
   }
 
   getData() {
@@ -48,33 +48,15 @@ export class FileExchangeDownloadComponent implements OnInit {
     );
   }
 
-/*  public getFile(path: string): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
-    return this.http.get(path, httpOptions);
-  }*/
-
   downloadFileFromURL(): Observable<ArrayBuffer> {
-    const responseTypeOptions = {
+    // for future use when issue is resolved on angular http
+/*    const responseTypeOptions = {
       responseType: 'blob',
       observe: 'response',
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
-    };
+    };*/
+    // had to any-type because get with options for blob was not found in IDE
     return this.http.get(this.pdfSrc, <any>{ responseType: 'blob',
       headers: new HttpHeaders( {'Content-Type': 'application/x-www-form-urlencoded'}) } );
   }
-
-/*  downloadLocalFile() {
-    const httpOptions = {
-      method: RequestMethod.Post,
-      responseType: ResponseContentType.Blob,
-      headers: new Headers({'Content-Type', 'application/x-www-form-urlencoded'})
-    }
-    this.http.post(this.pdfSrc, null, httpOptions).subscribe(response => {
-      return {
-        blob: new Blob([response.blob()], {type: 'application/pdf'}),
-        filename: 'test.pdf'
-      }; });
-  }*/
 }
