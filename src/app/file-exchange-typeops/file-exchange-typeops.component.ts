@@ -10,6 +10,9 @@ import {EventService} from '../event.service';
 export class FileExchangeTypeopsComponent implements OnInit {
   showModal: boolean;
   createdType;
+  typeExists: boolean;
+  existingEntity: string;
+  existingType: string;
 
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
@@ -18,6 +21,7 @@ export class FileExchangeTypeopsComponent implements OnInit {
 
   ngOnInit() {
     this.showModal = true; // default
+    this.typeExists = false;
   }
 
   getData() {}
@@ -31,6 +35,15 @@ export class FileExchangeTypeopsComponent implements OnInit {
       [inputEntity, inputType, this.cleanArray(inputInitAbsPath.split('/')), this.showModal]).then(res => {
       this.createdType = res.data;
       this.eventService.refreshFileExcchangeData();
+    });
+  }
+
+  existsType(entity, type) {
+    this.existingEntity = entity.value;
+    this.existingType = type.value;
+    this.Connector.plugin('filex', 'existsType', [],
+      [this.existingEntity, this.existingType]).then(res => {
+      this.typeExists = res.data;
     });
   }
 

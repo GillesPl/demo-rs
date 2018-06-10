@@ -32,12 +32,20 @@ export class FileExchangeTypesComponent implements OnInit {
     });
   }
 
-  deleteTypeMapping(entity){
+  deleteTypeMapping(entity) {
     this.Connector.plugin('filex', 'deleteType', [], [entity.entity, entity.type]).then( res => {
         this.files = undefined;
         this.totalFiles = 0;
         this.eventService.refreshFileExcchangeData();
       });
+  }
+
+  updateTypeMapping(entity) {
+    this.Connector.plugin('filex', 'updateType', [], [entity.entity, entity.type, 30]).then( res => {
+      this.files = undefined;
+      this.totalFiles = 0;
+      this.eventService.refreshFileExcchangeData();
+    });
   }
 
   uploadFile(file) {
