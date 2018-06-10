@@ -624,6 +624,10 @@
   version "8.10.4"
   resolved "https://repo.t1t.be/repository/npm-group/@types/node/-/node-8.10.4.tgz#d3ca40ee884c853e2b786ee73096726ec59a5b31"
 
+"@types/pdfjs-dist@^0.1.1":
+  version "0.1.2"
+  resolved "https://repo.t1t.be/repository/npm-group/@types/pdfjs-dist/-/pdfjs-dist-0.1.2.tgz#91a28961916deab21745482bb26242005fb5b7c7"
+
 "@types/q@^0.0.32":
   version "0.0.32"
   resolved "https://repo.t1t.be/repository/npm-group/@types/q/-/q-0.0.32.tgz#bd284e57c84f1325da702babfc82a5328190c0c5"
@@ -6097,6 +6101,13 @@ ng2-fittext@^1.1.1:
   version "1.1.1"
   resolved "https://repo.t1t.be/repository/npm-group/ng2-fittext/-/ng2-fittext-1.1.1.tgz#d991685cf03c547becaaff4b415a15723fed9025"
 
+ng2-pdf-viewer@3.0.8:
+  version "3.0.8"
+  resolved "https://repo.t1t.be/repository/npm-group/ng2-pdf-viewer/-/ng2-pdf-viewer-3.0.8.tgz#23c3f55a4ba548b73a0717baf2d40c6a9cc9f3f9"
+  dependencies:
+    "@types/pdfjs-dist" "^0.1.1"
+    pdfjs-dist "1.9.489"
+
 ngx-bootstrap@^2.0.3:
   version "2.0.3"
   resolved "https://repo.t1t.be/repository/npm-group/ngx-bootstrap/-/ngx-bootstrap-2.0.3.tgz#b8ca4be305be4e2e99f60d941cc8a3e906f198d7"
@@ -6120,6 +6131,10 @@ no-case@^2.2.0:
 nocache@2.0.0:
   version "2.0.0"
   resolved "https://repo.t1t.be/repository/npm-group/nocache/-/nocache-2.0.0.tgz#202b48021a0c4cbde2df80de15a17443c8b43980"
+
+node-ensure@^0.0.0:
+  version "0.0.0"
+  resolved "https://repo.t1t.be/repository/npm-group/node-ensure/-/node-ensure-0.0.0.tgz#ecae764150de99861ec5c810fd5d096b183932a7"
 
 node-fingerprint@0.0.2:
   version "0.0.2"
@@ -6673,6 +6688,13 @@ pbkdf2@^3.0.3:
     ripemd160 "^2.0.1"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+pdfjs-dist@1.9.489:
+  version "1.9.489"
+  resolved "https://repo.t1t.be/repository/npm-group/pdfjs-dist/-/pdfjs-dist-1.9.489.tgz#cae59feddd16a2e5d195aa69527955cfe4002c1d"
+  dependencies:
+    node-ensure "^0.0.0"
+    worker-loader "^0.8.0"
 
 performance-now@^0.2.0:
   version "0.2.0"
@@ -9576,6 +9598,13 @@ wordwrap@0.0.2:
 wordwrap@~0.0.2:
   version "0.0.3"
   resolved "https://repo.t1t.be/repository/npm-group/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
+
+worker-loader@^0.8.0:
+  version "0.8.1"
+  resolved "https://repo.t1t.be/repository/npm-group/worker-loader/-/worker-loader-0.8.1.tgz#e8e995331ea34df5bf68296824bfb7f0ad578d43"
+  dependencies:
+    loader-utils "^1.0.2"
+    schema-utils "^0.3.0"
 
 wrap-ansi@^2.0.0:
   version "2.1.0"

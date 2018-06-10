@@ -49,6 +49,7 @@ import {FileExchangeFileopsComponent} from './file-exchange-fileops/file-exchang
 import {FileExchangeUploadComponent} from './file-exchange-upload/file-exchange-upload.component';
 import {FileExchangeDownloadComponent} from './file-exchange-download/file-exchange-download.component';
 import {UserIdentificationSharedEnvComponent} from './user-identification-shared-env/user-identification-shared-env.component';
+import {PdfViewerModule} from 'ng2-pdf-viewer';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -103,7 +104,8 @@ const ROUTES: Routes = [
     KeypadModule,
     ModalModule.forRoot(),
     RouterModule.forRoot(ROUTES),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    PdfViewerModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: locale},
