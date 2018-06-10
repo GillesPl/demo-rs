@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Connector} from '../connector.service';
 import {EventService} from '../event.service';
 
@@ -8,11 +8,18 @@ import {EventService} from '../event.service';
   styleUrls: ['./file-exchange-typeops.component.less']
 })
 export class FileExchangeTypeopsComponent implements OnInit {
+  // create Type properties
   showModal: boolean;
   createdType;
+
+  // check Type exists properties
   typeExists: boolean;
   existingEntity: string;
   existingType: string;
+
+  // create Type and dirs properties
+  dirShowModal: boolean;
+  dirCreatedType;
 
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
@@ -24,7 +31,8 @@ export class FileExchangeTypeopsComponent implements OnInit {
     this.typeExists = false;
   }
 
-  getData() {}
+  getData() {
+  }
 
   createType(entity, type, abspath) {
     const inputEntity = entity.value;
@@ -34,6 +42,17 @@ export class FileExchangeTypeopsComponent implements OnInit {
     this.Connector.plugin('filex', 'createType', [],
       [inputEntity, inputType, this.cleanArray(inputInitAbsPath.split('/')), this.showModal]).then(res => {
       this.createdType = res.data;
+      this.eventService.refreshFileExcchangeData();
+    });
+  }
+
+  createTypeDirs(entity, type, relpath) {
+    const inputEntity = entity.value;
+    const inputType = type.value;
+    const inputRelPath = relpath.value;
+    this.Connector.plugin('filex', 'createTypeDirs', [],
+      [inputEntity, inputType, this.cleanArray(inputRelPath.split('/')), this.dirShowModal]).then(res => {
+      this.dirCreatedType = res.data;
       this.eventService.refreshFileExcchangeData();
     });
   }

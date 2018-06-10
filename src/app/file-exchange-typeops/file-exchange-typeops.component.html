@@ -65,6 +65,64 @@
   <hr class="hr-primary">
 
 
+  <h4>Create new type including directories</h4>
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="entityDirInput" type="text" class="form-control" placeholder="Entity name" aria-describedby="basic-addon1" #entityDirInput>
+      </div>
+
+      <div class="input-group">
+        <input id="typeDirInput" type="text" class="form-control" placeholder="Type name" aria-describedby="basic-addon1" #typeDirInput>
+      </div>
+
+      <div class="input-group">
+        <input id="relpathDirInput" type="text" class="form-control" placeholder="Relative path (file separator = '/')" aria-describedby="basic-addon1" #relpathDirInput>
+      </div>
+
+      <div class="input-group">
+        <div class="form-check">
+          <input id="showModalDirCheck" type="checkbox" [checked]="dirShowModal" (change)="dirShowModal = !dirShowModal" />
+          <label class="form-check-label" for="showModalDirCheck">Explicitly show file chooser (even when mapping exists)</label>
+        </div>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="createTypeDirs(entityDirInput, typeDirInput, relpathDirInput)">Create Type</a></button>
+    </div>
+  </div>
+  <div *ngIf="dirCreatedType">
+    <h5>Created Type</h5>
+    <table class="table table-striped t1c-plugin-table">
+      <thead>
+      <tr>
+        <th>Entity</th>
+        <th>Type</th>
+        <th>Abs Path</th>
+        <th>Access Mode</th>
+        <th>Files</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{dirCreatedType.entity}}</td>
+        <td>{{dirCreatedType.type}}</td>
+        <td>{{dirCreatedType.abs_path}}</td>
+        <td>{{dirCreatedType.access_mode}}</td>
+        <td>{{dirCreatedType.files}}</td>
+        <td>{{dirCreatedType.status}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <hr class="hr-primary">
+
+
   <h4>Enter type to verify if existant</h4>
   <div class="panel-body">
     <form role="form" class="form-horizontal">
