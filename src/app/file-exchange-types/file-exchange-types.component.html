@@ -1,0 +1,98 @@
+<div>
+  <h4>Entities and Types</h4>
+  <table class="table table-striped t1c-plugin-table">
+    <thead>
+    <tr>
+      <th>Entity</th>
+      <th>Type</th>
+      <th>Access Mode</th>
+      <th>Files</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let entity of entities">
+      <td>{{entity.entity}}</td>
+      <td>{{entity.type}}</td>
+      <td>{{entity.access_mode}}</td>
+      <td>{{entity.files}}</td>
+      <td>{{entity.status}}</td>
+      <td>
+        <div class="buttons">
+          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a>
+          </button>
+          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="updateTypeMapping(entity)">Update</a>
+          </button>
+          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getTypeInfo(entity)">Info</a></button>
+          <button type="button" class="btn btn-warning" md-ink-ripple><a (click)="deleteTypeMapping(entity)">Delete</a>
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedEntity">
+    <h4>Type info for entity <b class="color_entity">{{selectedEntity.entity}}</b> with type <b class="color_type">{{selectedEntity.type}}</b></h4>
+    <table class="table table-striped t1c-plugin-table">
+      <thead>
+      <tr>
+        <th>Context</th>
+        <th>Absolute path</th>
+        <th>Access Mode</th>
+        <th>File count</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{selectedEntity.app_id}}</td>
+        <td>{{selectedEntity.abs_path}}</td>
+        <td>{{selectedEntity.access_mode}}</td>
+        <td>{{selectedEntity.files}}</td>
+        <td>
+          <div i18n-tooltip tooltip="Remove section">
+            <span class="clickable fa fa-ban fa-lg text-primary" (click)="resetTypeInfo(selectedEntity)"></span>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="files">
+    <h4>Files overview for entity <b class="color_entity">{{selectedEntity.entity}}</b> with type <b class="color_type">{{selectedEntity.type}}</b></h4>
+    <div *ngIf="files && totalFiles > 0">
+      <table class="table table-striped t1c-plugin-table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Extension</th>
+          <th>Size</th>
+          <th>Is directory</th>
+          <th>Access mode</th>
+          <th>Last modification date</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let file of files">
+          <td>{{file.name}}</td>
+          <td>{{file.extension}}</td>
+          <td>{{file.size}}</td>
+          <td>{{file.is_dir}}</td>
+          <td>{{file.access_mode}}</td>
+          <td>{{file.last_modification_time | date}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <div>Total Files: <b>{{totalFiles}}</b></div>
+    </div>
+
+    <div *ngIf="!files || totalFiles == 0">
+      No files found for selected type.
+    </div>
+  </div>
+
+</div>

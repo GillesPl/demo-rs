@@ -21,6 +21,62 @@
     </div>
   </nav>
 
+  <nav class="st-fileexchange-panel sliding-fileexchange-panel" [ngClass]="{ 'st-fileexchange-panel-open': fileExchangePanelOpen }" id="menu-fileexchange-panel">
+    <div class="fe-tabs">
+      <div class="refresh-btn" i18n-tooltip tooltip="Refresh Data" placement="left">
+                <span class="clickable fa fa-refresh fa-lg text-primary"
+                      [ngClass]="{ 'fa-spin': hover }"
+                      (init)="hover = false"
+                      (mouseenter)="hover = true"
+                      (mouseleave)="hover = false" (click)="refreshFileExchangeData()"></span>
+      </div>
+
+      <main>
+        <input id="tab8" type="radio" name="tabs" checked>
+        <label for="tab8" i18n="@@filexEntityTypes">Entities and types</label>
+
+        <input id="tab9" type="radio" name="tabs" checked>
+        <label for="tab9" i18n="@@filexTypeOps">Type Ops</label>
+
+        <input id="tab10" type="radio" name="tabs" checked>
+        <label for="tab10" i18n="@@filexFileUpload">File Upload</label>
+
+        <input id="tab11" type="radio" name="tabs" checked>
+        <label for="tab11" i18n="@@filexFileDownload">File Download</label>
+
+        <input id="tab12" type="radio" name="tabs" checked>
+        <label for="tab12" i18n="@@filexFileOps">File Ops</label>
+
+        <input id="tab13" type="radio" name="tabs" checked>
+        <label for="tab13" i18n="@@filexMisc">Miscellaneous</label>
+
+        <section id="content8">
+          <app-file-exchange-types></app-file-exchange-types>
+
+        </section>
+
+        <section id="content9">
+          <app-file-exchange-typeops></app-file-exchange-typeops>
+        </section>
+
+        <section id="content10">
+          <app-file-exchange-upload></app-file-exchange-upload>
+        </section>
+
+        <section id="content11">
+          <app-file-exchange-download></app-file-exchange-download>
+        </section>
+
+        <section id="content12">
+          <app-file-exchange-fileops></app-file-exchange-fileops>
+        </section>
+
+        <section id="content13">
+          <app-file-exchange-misc></app-file-exchange-misc>
+        </section>
+      </main>
+    </div>
+  </nav>
 
   <nav class="st-admin-panel sliding-admin-panel" [ngClass]="{ 'st-admin-panel-open': adminPanelOpen }" id="menu-admin-panel">
     <div class="fe-tabs">
@@ -34,27 +90,25 @@
 
       <main>
         <input id="tab1" type="radio" name="tabs" checked>
-        <label for="tab1">Environment</label>
+        <label for="tab1" i18n="@@adminEnvironment" >Environment</label>
 
         <input id="tab2" type="radio" name="tabs">
-        <label for="tab2">Card Readers</label>
+        <label for="tab2" i18n="@@adminCardReader" >Card Readers</label>
 
         <input id="tab3" type="radio" name="tabs">
-        <label for="tab3">Containers</label>
+        <label for="tab3" i18n="@@adminContainer" >Containers</label>
 
         <input id="tab4" type="radio" name="tabs">
-        <label for="tab4">Device</label>
+        <label for="tab4" i18n="@@adminDevice" >Device</label>
 
         <input id="tab5" type="radio" name="tabs">
-        <label for="tab5">Dependencies</label>
+        <label for="tab5" i18n="@@adminDependencies" >Dependencies</label>
 
         <input id="tab6" type="radio" name="tabs">
-        <label for="tab6">PKCS11 Config</label>
+        <label for="tab6" i18n="@@adminPkcs11" >PKCS11 Config</label>
 
         <input id="tab7" type="radio" name="tabs">
-        <label for="tab7">Logs</label>
-
-
+        <label for="tab7" i18n="@@adminLogs" >Logs</label>
 
         <section id="content1">
           <app-t1c-info></app-t1c-info>
@@ -85,7 +139,6 @@
         </section>
       </main>
     </div>
-
   </nav>
 
 

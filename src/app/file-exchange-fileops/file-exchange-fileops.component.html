@@ -1,0 +1,183 @@
+<div>
+  <h4>Enter file path to verify if existing</h4>
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="existsEntityInput" type="text" class="form-control" placeholder="Entity name" aria-describedby="basic-addon1" #existsEntityInput>
+      </div>
+
+      <div class="input-group">
+        <input id="existsTypeInput" type="text" class="form-control" placeholder="Type name" aria-describedby="basic-addon1" #existsTypeInput>
+      </div>
+
+      <div class="input-group">
+        <input id="existsFilePathInput" type="text" class="form-control" placeholder="File path (using '/')" aria-describedby="basic-addon1" #existsFilePathInput>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="existsFile(existsEntityInput, existsTypeInput, existsFilePathInput)">Exists?</a></button>
+    </div>
+  </div>
+  <div *ngIf="existingEntity && existingType && existingFilePath">
+    <label *ngIf="fileExists" class="color_green" > File exists! </label>
+    <label *ngIf="!fileExists" class="color_red" > File does not exist! </label>
+  </div>
+
+
+  <hr class="hr-primary">
+
+
+  <h4>Get Access Mode for type, directory or file</h4>
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="amEntityInput" type="text" class="form-control" placeholder="Entity name" aria-describedby="basic-addon1" #amEntityInput>
+      </div>
+
+      <div class="input-group">
+        <input id="amTypeInput" type="text" class="form-control" placeholder="Type name" aria-describedby="basic-addon1" #amTypeInput>
+      </div>
+
+      <div class="input-group">
+        <input id="amFilePathInput" type="text" class="form-control" placeholder="File path (using '/')" aria-describedby="basic-addon1" #amFilePathInput>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="existsFile(existsEntityInput, existsTypeInput, existsFilePathInput)">Exists?</a></button>
+    </div>
+  </div>
+  <div *ngIf="amEntity && amType && amFilePath">
+    <label *ngIf="accessMode" class="color_green" > {{accessMode}} </label>
+    <label *ngIf="!accessMode" class="color_red" > {{accessMode}} </label>
+  </div>
+
+
+  <hr class="hr-primary">
+
+
+  <h4>Move file from type to another type</h4>
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="moveFromEntity" type="text" class="form-control" placeholder="Source Entity name" aria-describedby="basic-addon1" #moveFromEntity>
+      </div>
+
+      <div class="input-group">
+        <input id="moveFromType" type="text" class="form-control" placeholder="Source Type name" aria-describedby="basic-addon1" #moveFromType>
+      </div>
+
+      <div class="input-group">
+        <input id="moveFromRelPath" type="text" class="form-control" placeholder="Source optional relative path" aria-describedby="basic-addon1" #moveFromRelPath>
+      </div>
+
+      <div class="input-group">
+        <input id="moveFile" type="text" class="form-control" placeholder="Filename" aria-describedby="basic-addon1" #moveFilename>
+      </div>
+
+      <div class="input-group">
+        <input id="moveToType" type="text" class="form-control" placeholder="Target Type name" aria-describedby="basic-addon1" #moveToType>
+      </div>
+
+      <div class="input-group">
+        <input id="moveToRelPath" type="text" class="form-control" placeholder="Target optional relative path" aria-describedby="basic-addon1" #moveToRelPath>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="moveFile(moveFromEntity, moveFromType, moveFromRelPath, moveFilename, moveToType, moveToRelPath)">Move file</a></button>
+    </div>
+  </div>
+  <div *ngIf="mvFromEntity && mvFromType && mvFilename && mvToType">
+    <div *ngIf="movedFile">
+      <table class="table table-striped t1c-info-table">
+        <tr>
+          <td class="t1c-title">Entity</td>
+          <td>{{movedFile.entity}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Type</td>
+          <td>{{movedFile.type}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Filename</td>
+          <td>{{movedFile.name}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Extension</td>
+          <td>{{movedFile.extension}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Size</td>
+          <td>{{movedFile.size}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Access Mode</td>
+          <td>{{movedFile.access_mode}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Path</td>
+          <td>{{movedFile.path}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Last modification</td>
+          <td>{{movedFile.last_modification_time|date}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Is directory?</td>
+          <td>
+            <span class="fa fa-lg fa-times text-danger" *ngIf="!movedFile.is_dir"></span>
+            <span class="fa fa-lg fa-check text-success" *ngIf="movedFile.is_dir"></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+
+<!--  <div>
+    <div class="no-files text-center text-light" data-ng-if="!$ctrl.fileList.length">
+      <p>No files in this directory.</p>
+    </div>
+    <div data-ng-if="$ctrl.fileList.length">
+      <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th width="1%">Type</th>
+          <th>Name</th>
+          <th width="250px">Last Modified</th>
+          <th width="125px">Size</th>
+          <th width="125px">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="file in $ctrl.fileList">
+          <td>
+            <span class="fa fa-lg" data-ng-class="file.fileTypeClass ? file.fileTypeClass : $ctrl.setFileTypeClass(file)" data-uib-tooltip="{{ file.fileTypeName }}"></span>
+          </td>
+          <td><b>{{file.name}}</b></td>
+          <td>{{file.last_modification_date}}&nbsp;&nbsp;{{file.last_modification_time}}</td>
+          <td>{{file.size | filesize}}</td>
+          <td class="actions">
+          <span class="clickable text-primary" data-ng-if="$ctrl.showActions"
+                data-uib-tooltip="Sign"
+                data-tooltip-placement="top"
+                data-ng-click="$ctrl.signFile(file)">
+            <i class="fa fa-lg fa-pencil"></i>
+          </span>
+            <span class="clickable text-primary"
+                  data-uib-tooltip="View File"
+                  data-tooltip-placement="top"
+                  data-ng-click="$ctrl.viewFile(file)">
+            <i class="fa fa-lg fa-search"></i>
+          </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>-->
+
+</div>

@@ -1,0 +1,97 @@
+<div>
+  <h4>Select entity and type</h4>
+  <table class="table table-striped t1c-plugin-table">
+    <thead>
+    <tr>
+      <th>Entity</th>
+      <th>Type</th>
+      <th>Abs Path</th>
+      <th>Access Mode</th>
+      <th>Files</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let entity of entities">
+      <td>{{entity.entity}}</td>
+      <td>{{entity.type}}</td>
+      <td>{{entity.abs_path}}</td>
+      <td>{{entity.access_mode}}</td>
+      <td>{{entity.files}}</td>
+      <td>{{entity.status}}</td>
+      <td>
+        <div class="buttons">
+          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a></button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="files">
+    <h5>Files overview</h5>
+    <div *ngIf="files && totalFiles > 0">
+      <table class="table table-striped t1c-plugin-table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Extension</th>
+          <th>Size</th>
+          <th>Is directory</th>
+          <th>Access mode</th>
+          <th>Last modification date</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let file of files">
+          <td>{{file.name}}</td>
+          <td>{{file.extension}}</td>
+          <td>{{file.size}}</td>
+          <td>{{file.is_dir}}</td>
+          <td>{{file.access_mode}}</td>
+          <td>{{file.last_modification_time | date}}</td>
+          <td>
+            <div class="buttons">
+              <button type="button" class="btn btn-info" md-ink-ripple><a (click)="uploadFile(file)">Upload</a></button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div>Total Files: <b>{{totalFiles}}</b></div>
+    </div>
+
+    <div *ngIf="!files || totalFiles == 0">
+      No files found for selected type.
+    </div>
+  </div>
+
+</div>
+
+<!--  <div class="fe-button">
+    <div class="fe-button-title">Upload path:</div>
+    <div class="fe-button-input">
+      <div class="input-group input-group-sm">
+        <input type="text" >
+        <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Change</button>
+      </span>
+      </div>&lt;!&ndash; /input-group &ndash;&gt;
+    </div>
+  </div>
+
+  <div class="fe-button">
+    <div class="fe-button-title">Download path:</div>
+    <div class="fe-button-input">
+      <div class="input-group input-group-sm">
+        <input type="text">
+        <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Change</button>
+      </span>
+      </div>&lt;!&ndash; /input-group &ndash;&gt;
+    </div>
+  </div>-->
+
+

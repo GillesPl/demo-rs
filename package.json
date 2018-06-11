@@ -1,6 +1,6 @@
 {
   "name": "readmycards-webapp-ng",
-  "version": "2.0.0",
+  "version": "2.1.7",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -42,6 +42,7 @@
     "mississippi2": "^1.0.5",
     "moment": "^2.22.0",
     "ng2-fittext": "^1.1.1",
+    "ng2-pdf-viewer": "3.0.8",
     "ngx-bootstrap": "^2.0.3",
     "ngx-clipboard": "8.1.4",
     "request-promise-native": "^1.0.3",

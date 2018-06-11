@@ -1,0 +1,47 @@
+<div>
+  <h4>Show OS Info modal</h4>
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="infoTitleInput" type="text" class="form-control" placeholder="Title of the info modal" aria-describedby="basic-addon1" #infoTitleInput>
+      </div>
+
+      <div class="input-group">
+        <input id="infoTextInput" type="text" class="form-control" placeholder="Some text to show up in the modal" aria-describedby="basic-addon1" #infoTextInput>
+      </div>
+
+      <div class="input-group">
+        <input id="infoTimeoutInput" type="number" class="form-control" placeholder="Timeout in seconds" aria-describedby="basic-addon1" #infoTimeoutInput>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="showInfo(infoTitleInput, infoTextInput, infoTimeoutInput)">Show Info modal</a></button>
+    </div>
+  </div>
+
+
+  <hr class="hr-primary">
+
+
+  <h4>Show OS Choice modal</h4>
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="choiceTitleInput" type="text" class="form-control" placeholder="Title of the choice modal" aria-describedby="basic-addon1" #choiceTitleInput>
+      </div>
+
+      <div class="input-group">
+        <input id="choiceTextInput" type="text" class="form-control" placeholder="Some text to show up in the modal" aria-describedby="basic-addon1" #choiceTextInput>
+      </div>
+
+      <div class="input-group">
+        <input id="choiceTimeoutInput" type="number" class="form-control" placeholder="Timeout in seconds" aria-describedby="basic-addon1" #choiceTimeoutInput>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="showChoice(infoTitleInput, infoTextInput, infoTimeoutInput)">Show Choice modal</a></button>
+    </div>
+  </div>
+</div>

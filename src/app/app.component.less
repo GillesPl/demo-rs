@@ -637,8 +637,55 @@ html {
   }
 }
 
+.st-fileexchange-panel {
+  position: absolute;
+  bottom: 60px;
+  height: 100%;
+  padding-top: 60px;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #ccc;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 
-/* Slide in on top */
+
+  h2 {
+    margin: 0;
+    padding: 1em 1em .25em .5em;
+    color: #333;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    font-weight: 300;
+    font-size: 2em;
+  }
+
+  dl {
+    margin: 0;
+    padding: 1em 1em 1em 1em;
+
+    dt {
+      margin-top: 10px;
+      color: rgba(255,255,255,1);
+    }
+
+    dd {
+      margin-bottom: 5px;
+      color: rgba(255,255,255,0.9);
+    }
+  }
+
+  a {
+    color: rgba(255,255,255,0.95);
+    text-decoration: underline;
+
+    &:hover, &:active {
+      color: @t1t-grey;
+    }
+  }
+}
+
+
+/* Slide in on top fileexchange*/
 .sliding-admin-panel {
   &.st-admin-panel {
     visibility: hidden;
@@ -648,6 +695,24 @@ html {
     transform: translate3d(100%, 0, 0);
 
     &.st-admin-panel-open {
+      visibility: visible;
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+/* Slide in on top fileexchange */
+.sliding-fileexchange-panel {
+  &.st-fileexchange-panel {
+    visibility: hidden;
+    overflow-y: auto;
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+
+    &.st-fileexchange-panel-open {
       visibility: visible;
       opacity: 1;
       -webkit-transform: translate3d(0, 0, 0);
@@ -696,6 +761,7 @@ html {
     margin-right: 10px;
   }
 
+  /*http://astronautweb.co/snippet/font-awesome/*/
   label[for*='1']:before { content: '\f108'; }
   label[for*='2']:before { content: '\f09d'; }
   label[for*='3']:before { content: '\f1b3'; }
@@ -703,6 +769,13 @@ html {
   label[for*='5']:before { content: '\f12e'; }
   label[for*='6']:before { content: '\f013'; }
   label[for*='7']:before { content: '\f0f6'; }
+
+  label[for*='8']:before { content: '\f05b'; }
+  label[for*='9']:before { content: '\f046'; }
+  label[for*='10']:before { content: '\f085'; }
+  label[for*='11']:before { content: '\f093'; }
+  label[for*='12']:before { content: '\f019'; }
+  label[for*='13']:before { content: '\f013'; }
 
   label:hover {
     color: #888;
@@ -722,7 +795,13 @@ html {
   #tab4:checked ~ #content4,
   #tab5:checked ~ #content5,
   #tab6:checked ~ #content6,
-  #tab7:checked ~ #content7 {
+  #tab7:checked ~ #content7,
+  #tab8:checked ~ #content8,
+  #tab9:checked ~ #content9,
+  #tab10:checked ~ #content10,
+  #tab11:checked ~ #content11,
+  #tab12:checked ~ #content12,
+  #tab13:checked ~ #content13{
     display: block;
   }
 }

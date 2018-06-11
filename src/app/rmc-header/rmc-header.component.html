@@ -2,6 +2,10 @@
   <span [hidden]="menuOpen" i18n="@@supportedCards">Is my card supported?</span>
   <fa [name]="'times'" [hidden]="!menuOpen"></fa>
 </div>
+<div class="fileexchange-panel-toggle clickable text-bold" (click)="toggleFileExchangePanel()">
+  <span [hidden]="fileExchangeOpen" i18n="@@fileexchangePanel">File Exchange Panel</span>
+  <fa [name]="'times'" [hidden]="!fileExchangeOpen"></fa>
+</div>
 <div class="admin-panel-toggle clickable text-bold" (click)="toggleAdminPanel()">
   <span [hidden]="adminOpen" i18n="@@adminPanel">Admin Panel</span>
   <fa [name]="'times'" [hidden]="!adminOpen"></fa>
