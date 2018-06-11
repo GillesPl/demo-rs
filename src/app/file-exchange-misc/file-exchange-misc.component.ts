@@ -28,7 +28,7 @@ export class FileExchangeMiscComponent implements OnInit {
   showChoice(title, text, timeout) {
     this.Connector.plugin('filex', 'showModal', [],
       [title.value, text.value, 'choice', parseInt(timeout.value, 10)]).then(res => {
-      console.log('showing info modal from operating system, returned: ' + res.data);
+      console.log('showing choice modal from operating system, returned: ' + res.data);
     });
   }
 }

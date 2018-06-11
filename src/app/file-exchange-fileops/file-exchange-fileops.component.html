@@ -23,7 +23,11 @@
     <label *ngIf="fileExists" class="color_green" > File exists! </label>
     <label *ngIf="!fileExists" class="color_red" > File does not exist! </label>
   </div>
+
+
   <hr class="hr-primary">
+
+
   <h4>Get Access Mode for type, directory or file</h4>
   <div class="panel-body">
     <form role="form" class="form-horizontal">
@@ -48,6 +52,90 @@
     <label *ngIf="accessMode" class="color_green" > {{accessMode}} </label>
     <label *ngIf="!accessMode" class="color_red" > {{accessMode}} </label>
   </div>
+
+
+  <hr class="hr-primary">
+
+
+  <h4>Move file from type to another type</h4>
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="moveFromEntity" type="text" class="form-control" placeholder="Source Entity name" aria-describedby="basic-addon1" #moveFromEntity>
+      </div>
+
+      <div class="input-group">
+        <input id="moveFromType" type="text" class="form-control" placeholder="Source Type name" aria-describedby="basic-addon1" #moveFromType>
+      </div>
+
+      <div class="input-group">
+        <input id="moveFromRelPath" type="text" class="form-control" placeholder="Source optional relative path" aria-describedby="basic-addon1" #moveFromRelPath>
+      </div>
+
+      <div class="input-group">
+        <input id="moveFile" type="text" class="form-control" placeholder="Filename" aria-describedby="basic-addon1" #moveFilename>
+      </div>
+
+      <div class="input-group">
+        <input id="moveToType" type="text" class="form-control" placeholder="Target Type name" aria-describedby="basic-addon1" #moveToType>
+      </div>
+
+      <div class="input-group">
+        <input id="moveToRelPath" type="text" class="form-control" placeholder="Target optional relative path" aria-describedby="basic-addon1" #moveToRelPath>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="moveFile(moveFromEntity, moveFromType, moveFromRelPath, moveFilename, moveToType, moveToRelPath)">Move file</a></button>
+    </div>
+  </div>
+  <div *ngIf="mvFromEntity && mvFromType && mvFilename && mvToType">
+    <div *ngIf="movedFile">
+      <table class="table table-striped t1c-info-table">
+        <tr>
+          <td class="t1c-title">Entity</td>
+          <td>{{movedFile.entity}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Type</td>
+          <td>{{movedFile.type}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Filename</td>
+          <td>{{movedFile.name}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Extension</td>
+          <td>{{movedFile.extension}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Size</td>
+          <td>{{movedFile.size}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Access Mode</td>
+          <td>{{movedFile.access_mode}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Path</td>
+          <td>{{movedFile.path}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Last modification</td>
+          <td>{{movedFile.last_modification_time|date}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Is directory?</td>
+          <td>
+            <span class="fa fa-lg fa-times text-danger" *ngIf="!movedFile.is_dir"></span>
+            <span class="fa fa-lg fa-check text-success" *ngIf="movedFile.is_dir"></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
 
 <!--  <div>
     <div class="no-files text-center text-light" data-ng-if="!$ctrl.fileList.length">

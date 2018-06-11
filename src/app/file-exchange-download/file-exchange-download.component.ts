@@ -31,7 +31,7 @@ export class FileExchangeDownloadComponent implements OnInit {
 
   downloadSimpleExample() {
     console.log('File downloaded started');
-    this.downloadFile('mpc', 'extra', ['downloads'], true, true);
+    this.downloadFile('t1c', 'test', ['downloads'], true, true);
   }
 
   download(entity, type, file, relpath, createMissingDir, notifyOnCompletion) {

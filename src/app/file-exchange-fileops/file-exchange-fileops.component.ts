@@ -21,6 +21,15 @@ export class FileExchangeFileopsComponent implements OnInit {
   amFilePath: string[];
   accessMode: boolean;
 
+  // move file
+  mvFromEntity: string;
+  mvFromType: string;
+  mvFromRelPath: string[];
+  mvFilename: string;
+  mvToType: string;
+  mvToRelPath: string[];
+  movedFile;
+
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
     this.eventService.refreshFileExchangeData$.subscribe(() => this.getData());
@@ -51,6 +60,20 @@ export class FileExchangeFileopsComponent implements OnInit {
     this.Connector.plugin('filex', 'getAccessMode', [],
       [this.amEntity, this.amType, this.amFilePath]).then(res => {
       this.accessMode = res.data;
+    });
+  }
+
+  moveFile(fromEnt, fromType, fromRelpath, filename, toType, toRelPath) {
+    this.mvFromEntity = fromEnt.value;
+    this.mvFromType = fromType.value;
+    this.mvFromRelPath = this.cleanArray(fromRelpath.value.split('/'));
+    this.mvFilename = filename.value;
+    this.mvToType = toType.value;
+    this.mvToRelPath = this.cleanArray(toRelPath.value.split('/'));
+    this.Connector.plugin('filex', 'moveFile', [],
+      [this.mvFromEntity, this.mvFromType, this.mvToType, this.mvFilename, this.mvFromRelPath, this.mvToRelPath]).then(res => {
+        console.log('file: ' + res.data.name);
+      this.movedFile = res.data;
     });
   }
 

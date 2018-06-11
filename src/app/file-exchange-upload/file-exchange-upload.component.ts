@@ -41,6 +41,7 @@ export class FileExchangeUploadComponent implements OnInit {
   }
 
   uploadFile(file) {
-    console.log('upload file: ' + file.name);
+
+    console.log('uploaded file: ' + file.name);
   }
 }
