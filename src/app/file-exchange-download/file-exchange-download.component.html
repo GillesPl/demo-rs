@@ -17,14 +17,14 @@
 
       <div class="input-group">
         <div class="form-check">
-          <input id="implBoolInput" type="checkbox" [checked]="isImplicitCreationEnabled" (change)="dirShowModal = !isImplicitCreationEnabled" />
+          <input id="implBoolInput" type="checkbox" [checked]="isImplicitCreationEnabled" (change)="isImplicitCreationEnabled = !isImplicitCreationEnabled" />
           <label class="form-check-label" for="implBoolInput">Implicit creation type (creates type and directories when not existing).</label>
         </div>
       </div>
 
       <div class="input-group">
         <div class="form-check">
-          <input id="notifyBoolInput" type="checkbox" [checked]="isNotificationEnabled" (change)="dirShowModal = !isNotificationEnabled" />
+          <input id="notifyBoolInput" type="checkbox" [checked]="isNotificationEnabled" (change)="isNotificationEnabled = !isNotificationEnabled" />
           <label class="form-check-label" for="notifyBoolInput">Notification when use case finished.</label>
         </div>
       </div>
