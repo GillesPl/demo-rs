@@ -1,4 +1,44 @@
 <div>
+  <h4>Entity and Types manual input</h4>
+  <form role="form" class="form-horizontal">
+
+    <table class="table table-striped t1c-plugin-table">
+      <thead>
+      <tr>
+        <th>Entity</th>
+        <th>Type</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <div class="input-group">
+          <input id="inpEntity" type="text" class="form-control" placeholder="Entity name" aria-describedby="basic-addon1" #inpEntity>
+        </div>
+
+        <div class="input-group">
+          <input id="inpType" type="text" class="form-control" placeholder="Type name" aria-describedby="basic-addon1" #inpType>
+        </div>
+        <td>
+          <div class="buttons">
+            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType({ entity: inpEntity.value, type: inpType.value})">Show files</a>
+            </button>
+            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="updateTypeMapping({ entity: inpEntity.value, type: inpType.value})">Update</a>
+            </button>
+            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getTypeInfo({ entity: inpEntity.value, type: inpType.value})">Info</a></button>
+            <button type="button" class="btn btn-warning" md-ink-ripple><a
+              (click)="deleteTypeMapping(entity)">Delete</a>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+
+  <hr class="hr-primary">
+
+
   <h4>Entities and Types</h4>
   <table class="table table-striped t1c-plugin-table">
     <thead>
@@ -34,7 +74,8 @@
   </table>
 
   <div *ngIf="selectedEntity">
-    <h4>Type info for entity <b class="color_entity">{{selectedEntity.entity}}</b> with type <b class="color_type">{{selectedEntity.type}}</b></h4>
+    <h4>Type info for entity <b class="color_entity">{{selectedEntity.entity}}</b> with type <b class="color_type">{{selectedEntity.type}}</b>
+    </h4>
     <table class="table table-striped t1c-plugin-table">
       <thead>
       <tr>
@@ -62,7 +103,8 @@
   </div>
 
   <div *ngIf="files">
-    <h4>Files overview for entity <b class="color_entity">{{selectedEntity.entity}}</b> with type <b class="color_type">{{selectedEntity.type}}</b></h4>
+    <h4>Files overview for entity <b class="color_entity">{{selectedEntity.entity}}</b> with type <b class="color_type">{{selectedEntity.type}}</b>
+    </h4>
     <div *ngIf="files && totalFiles > 0">
       <table class="table table-striped t1c-plugin-table">
         <thead>
