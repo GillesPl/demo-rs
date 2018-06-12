@@ -1,12 +1,43 @@
 <div>
   <h4>File Download</h4>
-  <div class="buttons">
-    <div>Clicking this button, will download an example file using entity 't1c' and type 'test' in a subfolder 'downloads'. The user will see a file chooser to perform the type mapping.</div>
-    <button type="button" class="btn btn-info" md-ink-ripple><a (click)="downloadSimpleExample()">Download example file</a></button>
+
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="entityInput" type="text" class="form-control" placeholder="Entity name" aria-describedby="basic-addon1" #entityInput>
+      </div>
+
+      <div class="input-group">
+        <input id="typeInput" type="text" class="form-control" placeholder="Type name" aria-describedby="basic-addon1" #typeInput>
+      </div>
+
+      <div class="input-group">
+        <input id="relpathInput" type="text" class="form-control" placeholder="Relative path (file separator = '/')" aria-describedby="basic-addon1" #relpathInput>
+      </div>
+
+      <div class="input-group">
+        <div class="form-check">
+          <input id="implBoolInput" type="checkbox" [checked]="isImplicitCreationEnabled" (change)="isImplicitCreationEnabled = !isImplicitCreationEnabled" />
+          <label class="form-check-label" for="implBoolInput">Implicit creation type (creates type and directories when not existing).</label>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="form-check">
+          <input id="notifyBoolInput" type="checkbox" [checked]="isNotificationEnabled" (change)="isNotificationEnabled = !isNotificationEnabled" />
+          <label class="form-check-label" for="notifyBoolInput">Notification when use case finished.</label>
+        </div>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <div>Clicking this button, will download an example file using entity 't1c' and type 'test' in a subfolder 'downloads'. The user will see a file chooser to perform the type mapping.</div>
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="downloadSimpleExample(entityInput.value, typeInput.value, relpathInput.value)">Download example file</a></button>
+    </div>
+  </div>
 <!--    <div>
       <label>Example PDF</label>
       <input type="text" placeholder="PDF src" [(ngModel)]="pdfSrc">
     </div>-->
     <!--<pdf-viewer [src]="'/assets/test.pdf'" style="display: block;" [page]="1"></pdf-viewer>-->
-  </div>
 </div>

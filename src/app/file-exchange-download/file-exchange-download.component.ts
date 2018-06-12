@@ -11,9 +11,10 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
   styleUrls: ['./file-exchange-download.component.less']
 })
 export class FileExchangeDownloadComponent implements OnInit {
-  entity;
-  type;
-  relpath;
+  inEntity;
+  inType;
+  isNotificationEnabled;
+  isImplicitCreationEnabled;
   pdfSrc;
 
   constructor(private Connector: Connector, private eventService: EventService, private http: HttpClient) {
@@ -23,27 +24,30 @@ export class FileExchangeDownloadComponent implements OnInit {
 
   ngOnInit() {
     this.pdfSrc = '/assets/test.pdf';
+    this.isNotificationEnabled = true;
+    this.isImplicitCreationEnabled = true;
     // this.pdfSrc = 'http://www.pdf995.com/samples/pdf.pdf'; <= cors when doing this online
   }
 
   getData() {
   }
 
-  downloadSimpleExample() {
+  downloadSimpleExample(entity, type, relpath) {
     console.log('File downloaded started');
-    this.downloadFile('t1c', 'test', ['downloads'], true, true);
+    this.downloadFile(entity, type, relpath);
   }
 
-  download(entity, type, file, relpath, createMissingDir, notifyOnCompletion) {
+  connDownloadFile(entity, type, file, relpath) {
     this.Connector.plugin('filex', 'download', [],
-      [entity, type, file, 'test.pdf', 'subfolder', createMissingDir, notifyOnCompletion]).then(res => { // comma separated
+      [entity, type, file, 'test.pdf', this.cleanArray(relpath.split('/')), this.isImplicitCreationEnabled,
+        this.isNotificationEnabled]).then(res => { // comma separated
       console.log('File downloaded: ' + res.data);
     });
   }
 
-  downloadFile(entity, type, relpath, createMissingDir, notifyOnCompletion) {
+  downloadFile(entity, type, relpath) {
     this.downloadFileFromURL().subscribe((fileData) => {
-        this.download(entity, type, fileData, relpath, createMissingDir, notifyOnCompletion);
+        this.connDownloadFile(entity, type, fileData, relpath);
       }
     );
   }
@@ -58,5 +62,16 @@ export class FileExchangeDownloadComponent implements OnInit {
     // had to any-type because get with options for blob was not found in IDE
     return this.http.get(this.pdfSrc, <any>{ responseType: 'blob',
       headers: new HttpHeaders( {'Content-Type': 'application/x-www-form-urlencoded'}) } );
+  }
+
+  // Will remove all falsy values: undefined, null, 0, false, NaN and "" (empty string)
+  cleanArray(actual) {
+    const newArr = new Array();
+    for (let i = 0; i < actual.length; i++) {
+      if (actual[i]) {
+        newArr.push(actual[i]);
+      }
+    }
+    return newArr;
   }
 }
