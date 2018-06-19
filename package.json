@@ -75,7 +75,7 @@
     "rxjs-tslint": "^0.1.4",
     "ts-node": "~3.2.0",
     "tslint": "^5.10.0",
-    "typescript": "^2.7.2",
+    "typescript": "2.7.2",
     "webpack": "^4.12.0"
   }
 }
