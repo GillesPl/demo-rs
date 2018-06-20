@@ -1,15 +1,19 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {EventService} from './event.service';
-import { environment } from '../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import {environment} from '../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {GCLClient} from 'trust1connector';
 
 
 @Injectable()
-export class Connector {
+export class Connector implements OnInit{
 
   constructor(private http: HttpClient, private eventService: EventService) {}
 
-  private GCLLib = window['GCLLib'];
+  ngOnInit(): void {
+    console.log('init executed');
+  }
+
   private connector;
   private consent: Promise<any>;
 
@@ -21,7 +25,9 @@ export class Connector {
   errorHandler(erroredRequest) {
     console.log(erroredRequest);
     const svc = this;
-    if (!erroredRequest.pluginArgs) { erroredRequest.pluginArgs = []; }
+    if (!erroredRequest.pluginArgs) {
+      erroredRequest.pluginArgs = [];
+    }
     const error = erroredRequest.error;
     if (error.status === 401) {
       // Unauthorized, need to request consent
@@ -42,15 +48,17 @@ export class Connector {
             return svc.promise().then(conn => {
               return conn[erroredRequest.plugin](...erroredRequest.pluginArgs)[erroredRequest.func](...erroredRequest.args);
             });
-          } else { return svc.promise().then(conn => conn[erroredRequest.func](...erroredRequest.args)); }
+          } else {
+            return svc.promise().then(conn => conn[erroredRequest.func](...erroredRequest.args));
+          }
         } else {
           svc.eventService.consentError();
-          return Promise.reject({ noConsent: true });
+          return Promise.reject({noConsent: true});
         }
       }, () => {
         svc.consent = undefined;
         // TODO handle error?
-        return Promise.reject({ noConsent: true });
+        return Promise.reject({noConsent: true});
       });
     } else if (error.status === 400 && error.code === '205') {
       // jwt expired, refresh
@@ -74,46 +82,56 @@ export class Connector {
   }
 
   core(func, args?) {
-    if (!args) { args = []; }
+    if (!args) {
+      args = [];
+    }
     return this.promise().then(conn => {
       return conn.core()[func](...args).then(res => {
         return Promise.resolve(res);
       }, error => {
-        return Promise.resolve({ error, plugin: 'core', func, args }).then(this.errorHandler.bind(this));
+        return Promise.resolve({error, plugin: 'core', func, args}).then(this.errorHandler.bind(this));
       });
     });
   }
 
   generic(func, args?) {
-    if (!args) { args = []; }
+    if (!args) {
+      args = [];
+    }
     return this.promise().then(conn => {
       return conn[func](...args).then(res => {
         return Promise.resolve(res);
       }, error => {
-        return Promise.resolve({ error, func, args }).then(this.errorHandler.bind(this));
+        return Promise.resolve({error, func, args}).then(this.errorHandler.bind(this));
       });
     });
   }
 
   ocv(func, args?) {
-    if (!args) { args = []; }
+    if (!args) {
+      args = [];
+    }
     return this.promise().then(conn => {
       return conn.ocv()[func](...args).then(res => {
         return Promise.resolve(res);
       }, error => {
-        return Promise.resolve({ error, plugin: 'ocv', func, args }).then(this.errorHandler.bind(this));
+        return Promise.resolve({error, plugin: 'ocv', func, args}).then(this.errorHandler.bind(this));
       });
     });
   }
 
   plugin(plugin, func, pluginArgs?, args?) {
-    if (!args) { args = []; }
-    if (!pluginArgs) { pluginArgs = []; }
+    if (!args) {
+      args = [];
+    }
+    if (!pluginArgs) {
+      pluginArgs = [];
+    }
     return this.promise().then(conn => {
       return conn[plugin](...pluginArgs)[func](...args).then(res => {
         return Promise.resolve(res);
       }, error => {
-        return Promise.resolve({ error, plugin, func, pluginArgs, args }).then(this.errorHandler.bind(this));
+        return Promise.resolve({error, plugin, func, pluginArgs, args}).then(this.errorHandler.bind(this));
       });
     });
   }
@@ -125,7 +143,8 @@ export class Connector {
   // Initialize the T1C connector with some custom config
   init(gclConfig) {
     const service = this;
-    service.connector = this.GCLLib.GCLClient.initialize(gclConfig).then(client => {
+    console.log('config:' + gclConfig);
+    service.connector = GCLClient.initialize(gclConfig).then(client => {
       service.connector = client;
       return Promise.resolve(service.connector);
     }, err => {
@@ -154,8 +173,9 @@ export class Connector {
         agentPort,
         osPinDialog: environment.osPinDialog,
         pkcs11Config: pkcs11
-      });
-    });
+    };})
   }
+
+
 }
 
