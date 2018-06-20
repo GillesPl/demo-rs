@@ -145,7 +145,7 @@ export class Connector {
     const svc = this;
     return svc.getJWt().toPromise().then((res: { token: string }) => {
       // generate config
-      return new this.GCLLib.GCLConfig({
+      return {
         gwJwt: res.token,
         gwOrProxyUrl: environment.gwOrProxyUrl,
         gclUrl: environment.gclUrl,
