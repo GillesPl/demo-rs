@@ -27,8 +27,7 @@
               "src/styles.less"
             ],
             "scripts": [
-              "./node_modules/trust1connector/dist/GCLLib.min.js",
-              "./node_modules/trust1connector/dist/GCLLib.d.ts"
+              "./node_modules/trust1connector/dist/GCLLib.js"
             ]
           },
           "configurations": {
