@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import {EventService} from './event.service';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import {GCLConfig, GCLConfigOptions} from 'trust1connector';
-
 
 @Injectable()
 export class Connector {
@@ -145,8 +143,10 @@ export class Connector {
     const pkcs11 = JSON.parse(localStorage.getItem('rmc-pkcs11-config'));
     const svc = this;
     return svc.getJWt().toPromise().then((res: { token: string }) => {
+      let optConfig = new this.GCLLib.GCLConfig();
+      optConfig.agentPort = agentPort;
       // generate config
-      return new GCLConfig({
+      return new this.GCLLib.GCLConfig({
         gwJwt: res.token,
         gwOrProxyUrl: environment.gwOrProxyUrl,
         gclUrl: environment.gclUrl,
