@@ -39,16 +39,24 @@ export class FileExchangeTypesComponent implements OnInit {
     });
   }
 
-  getFilesForType(entity, optionalPath) {
+  getFilesForType(entity, optionalPath, pgStart, pgSize, pgSort) {
     let typePath: string [];
-    console.log('optional type path: ' + optionalPath);
+    let paging;
     if (optionalPath) {
       typePath = this.cleanArray(optionalPath.split('/'));
-      console.log('resovled type path: ' + typePath);
     } else {
       typePath = undefined;
     }
-    this.Connector.plugin('filex', 'listTypeContent', [], [entity.entity, entity.type, typePath]).then(res => {
+    //paging
+    if(pgStart && pgSize && pgSort){
+      paging = {
+        start: +pgStart,
+        size: +pgSize,
+        sort: pgSort.toLowerCase()
+      };
+    }
+    console.log('paging: ' + paging.start);
+    this.Connector.plugin('filex', 'listTypeContent', [], [entity.entity, entity.type, typePath, paging]).then(res => {
       this.files = res.data.files;
       this.totalFiles = res.data.total;
       this.selectedEntity = entity;

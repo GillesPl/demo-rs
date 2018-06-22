@@ -100,6 +100,9 @@
       <th>Files</th>
       <th>Status</th>
       <th>Optional path</th>
+      <th>Paging start</th>
+      <th>Paging size</th>
+      <th>Paging sort (asc or desc)</th>
       <th></th>
     </tr>
     </thead>
@@ -116,8 +119,23 @@
         </div>
       </td>
       <td>
+        <div class="input-group">
+          <input id="inpPgStart" type="text" class="form-control" placeholder="Page start" aria-describedby="basic-addon1" #inpPgStart>
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input id="inpPgSize" type="text" class="form-control" placeholder="Page size" aria-describedby="basic-addon1" #inpPgSize>
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input id="inpPgSort" type="text" class="form-control" placeholder="Page sort" aria-describedby="basic-addon1" #inpPgSort>
+        </div>
+      </td>
+      <td>
         <div class="buttons">
-          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity, inpPath.value)">Show files</a>
+          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity, inpPath.value, inpPgStart.value, inpPgSize.value, inpPgSort.value)">Show files</a>
           </button>
           <button type="button" class="btn btn-info" md-ink-ripple><a (click)="updateTypeMapping(entity)">Update</a>
           </button>
