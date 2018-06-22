@@ -40,6 +40,14 @@ export class FileExchangeFileopsComponent implements OnInit {
   cpNewFilename: string;
   copiedFile;
 
+  // rename file
+  renEntity: string;
+  renType: string;
+  renRelPath: string[];
+  renFilename: string;
+  renNewFilename: string;
+  rennedFile;
+
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
     this.eventService.refreshFileExchangeData$.subscribe(() => this.getData());
@@ -99,6 +107,19 @@ export class FileExchangeFileopsComponent implements OnInit {
       [this.cpFromEntity, this.cpFromType, this.cpToType, this.cpFilename, this.cpNewFilename, this.cpFromRelPath, this.cpToRelPath]).then(res => {
       console.log('file: ' + res.data.name);
       this.copiedFile = res.data;
+    });
+  }
+
+  renameFile(renEntity, renType, renRelPath, renFileName, renNewFile) {
+    this.renEntity = renEntity.value;
+    this.renType = renType.value;
+    this.renRelPath = this.cleanArray(renRelPath.value.split('/'));
+    this.renFilename = renFileName.value;
+    this.renNewFilename = renNewFile.value;
+    this.Connector.plugin('filex', 'renameFile', [],
+      [this.renEntity, this.renType, this.renFilename, this.renNewFilename, this.renRelPath]).then(res => {
+      console.log('file: ' + res.data.name);
+      this.rennedFile = res.data;
     });
   }
 
