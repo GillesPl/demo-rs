@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Connector} from '../connector.service';
 import {EventService} from '../event.service';
+import {BsModalService} from 'ngx-bootstrap';
+import {ConsentModalComponent} from '../consent-modal/consent-modal.component';
+import {FileExchangeFileViewComponent} from './file-exchange-file-view/file-exchange-file-view.component';
 
 @Component({
   selector: 'app-file-exchange-types',
@@ -17,7 +20,7 @@ export class FileExchangeTypesComponent implements OnInit {
   selectedTypes;
   inputEntity;
 
-  constructor(private Connector: Connector, private eventService: EventService) {
+  constructor(private Connector: Connector, private eventService: EventService, private modalService: BsModalService,) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
     this.eventService.refreshFileExchangeData$.subscribe(() => this.getData());
   }
@@ -55,7 +58,6 @@ export class FileExchangeTypesComponent implements OnInit {
         sort: pgSort.toLowerCase()
       };
     }
-    console.log('paging: ' + paging.start);
     this.Connector.plugin('filex', 'listTypeContent', [], [entity.entity, entity.type, typePath, paging]).then(res => {
       this.files = res.data.files;
       this.totalFiles = res.data.total;
@@ -94,8 +96,19 @@ export class FileExchangeTypesComponent implements OnInit {
   }
 
   getFileInfo(file) {
-    this.Connector.plugin('filex', 'getFileInfo', [], []).then(res => {
-      console.info('not provided');
+    // open consent code modal with selected file info
+    const svc = this;
+    this.Connector.plugin('filex', 'getFileInfo', [], [file.entity, file.type, file.name, file.rel_path]).then(res => {
+      const initialState = {
+        selectedFile: res.data
+      };
+      const config = {
+        backdrop: true,
+        class: 'modal-lg',
+        ignoreBackdropClick: true,
+        initialState
+      };
+      this.modalService.show(FileExchangeFileViewComponent, Object.assign({}, config, { initialState }));
     });
   }
 

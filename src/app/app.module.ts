@@ -50,6 +50,7 @@ import {FileExchangeUploadComponent} from './file-exchange-upload/file-exchange-
 import {FileExchangeDownloadComponent} from './file-exchange-download/file-exchange-download.component';
 import {UserIdentificationSharedEnvComponent} from './user-identification-shared-env/user-identification-shared-env.component';
 import {PdfViewerModule} from 'ng2-pdf-viewer';
+import {FileExchangeFileViewComponent} from './file-exchange-types/file-exchange-file-view/file-exchange-file-view.component';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -90,7 +91,8 @@ const ROUTES: Routes = [
     FileExchangeFileopsComponent,
     FileExchangeUploadComponent,
     FileExchangeDownloadComponent,
-    UserIdentificationSharedEnvComponent
+    UserIdentificationSharedEnvComponent,
+    FileExchangeFileViewComponent
   ],
   imports: [
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
@@ -117,7 +119,7 @@ const ROUTES: Routes = [
     RMC
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CitrixUserSelectModalComponent, ConsentModalComponent, UserIdentificationSharedEnvComponent]
+  entryComponents: [CitrixUserSelectModalComponent, ConsentModalComponent, UserIdentificationSharedEnvComponent, FileExchangeFileViewComponent]
 })
 export class AppModule {
 }

@@ -154,7 +154,8 @@ export class Connector {
         implicitDownload: environment.implicitDownload,
         agentPort,
         osPinDialog: environment.osPinDialog,
-        pkcs11Config: pkcs11
+        pkcs11Config: pkcs11,
+        lang: 'nl'
       });
     });
   }
