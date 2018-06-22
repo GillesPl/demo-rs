@@ -99,6 +99,7 @@
       <th>Access Mode</th>
       <th>Files</th>
       <th>Status</th>
+      <th>Optional path</th>
       <th></th>
     </tr>
     </thead>
@@ -110,8 +111,13 @@
       <td>{{entity.files}}</td>
       <td>{{entity.status}}</td>
       <td>
+        <div class="input-group">
+          <input id="inpPath" type="text" class="form-control" placeholder="Type name" aria-describedby="basic-addon1" #inpPath>
+        </div>
+      </td>
+      <td>
         <div class="buttons">
-          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a>
+          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity, inpPath.value)">Show files</a>
           </button>
           <button type="button" class="btn btn-info" md-ink-ripple><a (click)="updateTypeMapping(entity)">Update</a>
           </button>
@@ -177,6 +183,7 @@
           <td>{{file.is_dir}}</td>
           <td>{{file.access_mode}}</td>
           <td>{{file.last_modification_time | date}}</td>
+          <td><button type="button" class="btn btn-warning" md-ink-ripple><a (click)="getFileInfo(file)">Info</a></button></td>
         </tr>
         </tbody>
       </table>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Connector} from '../connector.service';
 import {EventService} from '../event.service';
 
@@ -22,24 +22,33 @@ export class FileExchangeTypesComponent implements OnInit {
     this.eventService.refreshFileExchangeData$.subscribe(() => this.getData());
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   getData() {
     this.Connector.plugin('filex', 'listTypes', [], []).then(res => {
-        this.entities = res.data;
-      });
+      this.entities = res.data;
+    });
   }
 
-  getTypesForEntity(entity){
+  getTypesForEntity(entity) {
     this.Connector.plugin('filex', 'listTypes', [], [entity.entity]).then(res => {
       this.selectedTypes = res.data;
-      this.inputEntity = entity;
+      this.inputEntity = entity.entity;
       this.eventService.refreshFileExcchangeData();
     });
   }
 
-  getFilesForType(entity) {
-    this.Connector.plugin('filex', 'listTypeContent', [], [entity.entity, entity.type]).then(res => {
+  getFilesForType(entity, optionalPath) {
+    let typePath: string [];
+    console.log('optional type path: ' + optionalPath);
+    if (optionalPath) {
+      typePath = this.cleanArray(optionalPath.split('/'));
+      console.log('resovled type path: ' + typePath);
+    } else {
+      typePath = undefined;
+    }
+    this.Connector.plugin('filex', 'listTypeContent', [], [entity.entity, entity.type, typePath]).then(res => {
       this.files = res.data.files;
       this.totalFiles = res.data.total;
       this.selectedEntity = entity;
@@ -57,15 +66,15 @@ export class FileExchangeTypesComponent implements OnInit {
   }
 
   deleteTypeMapping(entity) {
-    this.Connector.plugin('filex', 'deleteType', [], [entity.entity, entity.type]).then( res => {
-        this.files = undefined;
-        this.totalFiles = 0;
-        this.eventService.refreshFileExcchangeData();
-      });
+    this.Connector.plugin('filex', 'deleteType', [], [entity.entity, entity.type]).then(res => {
+      this.files = undefined;
+      this.totalFiles = 0;
+      this.eventService.refreshFileExcchangeData();
+    });
   }
 
   updateTypeMapping(entity) {
-    this.Connector.plugin('filex', 'updateType', [], [entity.entity, entity.type, 30]).then( res => {
+    this.Connector.plugin('filex', 'updateType', [], [entity.entity, entity.type, 30]).then(res => {
       this.files = undefined;
       this.totalFiles = 0;
       this.eventService.refreshFileExcchangeData();
@@ -74,5 +83,23 @@ export class FileExchangeTypesComponent implements OnInit {
 
   uploadFile(file) {
     console.log('upload file: ' + file.name);
+  }
+
+  getFileInfo(file) {
+    this.Connector.plugin('filex', 'getFileInfo', [], []).then(res => {
+      console.info('not provided');
+    });
+  }
+
+  // Will remove all falsy values: undefined, null, 0, false, NaN and "" (empty string)
+  cleanArray(actual) {
+    const newArr = new Array();
+    console.log('array found');
+    for (let i = 0; i < actual.length; i++) {
+      if (actual[i]) {
+        newArr.push(actual[i]);
+      }
+    }
+    return newArr;
   }
 }
