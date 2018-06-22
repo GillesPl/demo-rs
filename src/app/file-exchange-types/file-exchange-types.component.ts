@@ -13,6 +13,10 @@ export class FileExchangeTypesComponent implements OnInit {
   totalFiles;
   selectedEntity;
 
+  // listTypes (for entity input)
+  selectedTypes;
+  inputEntity;
+
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
     this.eventService.refreshFileExchangeData$.subscribe(() => this.getData());
@@ -24,6 +28,14 @@ export class FileExchangeTypesComponent implements OnInit {
     this.Connector.plugin('filex', 'listTypes', [], []).then(res => {
         this.entities = res.data;
       });
+  }
+
+  getTypesForEntity(entity){
+    this.Connector.plugin('filex', 'listTypes', [], [entity.entity]).then(res => {
+      this.selectedTypes = res.data;
+      this.inputEntity = entity;
+      this.eventService.refreshFileExcchangeData();
+    });
   }
 
   getFilesForType(entity) {

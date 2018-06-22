@@ -1,4 +1,55 @@
 <div>
+  <h4>Entity manual input</h4>
+  <form role="form" class="form-horizontal">
+
+    <table class="table table-striped t1c-plugin-table">
+      <thead>
+      <tr>
+        <th>Entity</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <div class="input-group">
+          <input id="inpTypesForEntity" type="text" class="form-control" placeholder="Entity name" aria-describedby="basic-addon1" #inpTypesForEntity>
+        </div>
+
+        <td>
+          <div class="buttons">
+            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getTypesForEntity({ entity: inpTypesForEntity.value})">Show types</a>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+
+  <div *ngIf="inputEntity">
+    <h4>Types for entity <b class="color_entity">{{inputEntity}}</b></h4>
+    <table class="table table-striped t1c-plugin-table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Absolute path</th>
+        <th>Access Mode</th>
+        <th>File count</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let tp of selectedTypes">
+        <td>{{tp.type}}</td>
+        <td>{{tp.abs_path}}</td>
+        <td>{{tp.access_mode}}</td>
+        <td>{{tp.files}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <hr class="hr-primary">
   <h4>Entity and Types manual input</h4>
   <form role="form" class="form-horizontal">
 
