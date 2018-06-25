@@ -1,4 +1,95 @@
 <div>
+  <h4>Entity manual input</h4>
+  <form role="form" class="form-horizontal">
+
+    <table class="table table-striped t1c-plugin-table">
+      <thead>
+      <tr>
+        <th>Entity</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <div class="input-group">
+          <input id="inpTypesForEntity" type="text" class="form-control" placeholder="Entity name" aria-describedby="basic-addon1" #inpTypesForEntity>
+        </div>
+
+        <td>
+          <div class="buttons">
+            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getTypesForEntity({ entity: inpTypesForEntity.value})">Show types</a>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+
+  <div *ngIf="inputEntity">
+    <h4>Types for entity <b class="color_entity">{{inputEntity}}</b></h4>
+    <table class="table table-striped t1c-plugin-table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Absolute path</th>
+        <th>Access Mode</th>
+        <th>File count</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let tp of selectedTypes">
+        <td>{{tp.type}}</td>
+        <td>{{tp.abs_path}}</td>
+        <td>{{tp.access_mode}}</td>
+        <td>{{tp.files}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <hr class="hr-primary">
+  <h4>Entity and Types manual input</h4>
+  <form role="form" class="form-horizontal">
+
+    <table class="table table-striped t1c-plugin-table">
+      <thead>
+      <tr>
+        <th>Entity</th>
+        <th>Type</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <div class="input-group">
+          <input id="inpEntity" type="text" class="form-control" placeholder="Entity name" aria-describedby="basic-addon1" #inpEntity>
+        </div>
+
+        <div class="input-group">
+          <input id="inpType" type="text" class="form-control" placeholder="Type name" aria-describedby="basic-addon1" #inpType>
+        </div>
+        <td>
+          <div class="buttons">
+            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType({ entity: inpEntity.value, type: inpType.value})">Show files</a>
+            </button>
+            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="updateTypeMapping({ entity: inpEntity.value, type: inpType.value})">Update</a>
+            </button>
+            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getTypeInfo({ entity: inpEntity.value, type: inpType.value})">Info</a></button>
+            <button type="button" class="btn btn-warning" md-ink-ripple><a
+              (click)="deleteTypeMapping(entity)">Delete</a>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+
+  <hr class="hr-primary">
+
+
   <h4>Entities and Types</h4>
   <table class="table table-striped t1c-plugin-table">
     <thead>
@@ -8,6 +99,10 @@
       <th>Access Mode</th>
       <th>Files</th>
       <th>Status</th>
+      <th>Optional path</th>
+      <th>Paging start</th>
+      <th>Paging size</th>
+      <th>Paging sort (asc or desc)</th>
       <th></th>
     </tr>
     </thead>
@@ -19,8 +114,28 @@
       <td>{{entity.files}}</td>
       <td>{{entity.status}}</td>
       <td>
+        <div class="input-group">
+          <input id="inpPath" type="text" class="form-control" placeholder="Type name" aria-describedby="basic-addon1" #inpPath>
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input id="inpPgStart" type="text" class="form-control" placeholder="Page start" aria-describedby="basic-addon1" #inpPgStart>
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input id="inpPgSize" type="text" class="form-control" placeholder="Page size" aria-describedby="basic-addon1" #inpPgSize>
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input id="inpPgSort" type="text" class="form-control" placeholder="Page sort" aria-describedby="basic-addon1" #inpPgSort>
+        </div>
+      </td>
+      <td>
         <div class="buttons">
-          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a>
+          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity, inpPath.value, inpPgStart.value, inpPgSize.value, inpPgSort.value)">Show files</a>
           </button>
           <button type="button" class="btn btn-info" md-ink-ripple><a (click)="updateTypeMapping(entity)">Update</a>
           </button>
@@ -34,7 +149,8 @@
   </table>
 
   <div *ngIf="selectedEntity">
-    <h4>Type info for entity <b class="color_entity">{{selectedEntity.entity}}</b> with type <b class="color_type">{{selectedEntity.type}}</b></h4>
+    <h4>Type info for entity <b class="color_entity">{{selectedEntity.entity}}</b> with type <b class="color_type">{{selectedEntity.type}}</b>
+    </h4>
     <table class="table table-striped t1c-plugin-table">
       <thead>
       <tr>
@@ -62,7 +178,8 @@
   </div>
 
   <div *ngIf="files">
-    <h4>Files overview for entity <b class="color_entity">{{selectedEntity.entity}}</b> with type <b class="color_type">{{selectedEntity.type}}</b></h4>
+    <h4>Files overview for entity <b class="color_entity">{{selectedEntity.entity}}</b> with type <b class="color_type">{{selectedEntity.type}}</b>
+    </h4>
     <div *ngIf="files && totalFiles > 0">
       <table class="table table-striped t1c-plugin-table">
         <thead>
@@ -84,6 +201,7 @@
           <td>{{file.is_dir}}</td>
           <td>{{file.access_mode}}</td>
           <td>{{file.last_modification_time | date}}</td>
+          <!--<td><button type="button" class="btn btn-warning" md-ink-ripple><a (click)="getFileInfo(file)">Info</a></button></td>-->
         </tr>
         </tbody>
       </table>

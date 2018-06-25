@@ -21,6 +21,10 @@ export class FileExchangeTypeopsComponent implements OnInit {
   dirShowModal: boolean;
   dirCreatedType;
 
+  // create dirs
+  dirRecursive: boolean;
+  dirRecursiveCreated;
+
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
     this.eventService.refreshFileExchangeData$.subscribe(() => this.getData());
@@ -29,6 +33,8 @@ export class FileExchangeTypeopsComponent implements OnInit {
   ngOnInit() {
     this.showModal = true; // default
     this.typeExists = false;
+    this.dirShowModal = true; // default
+    this.dirRecursive = true; //default
   }
 
   getData() {
@@ -53,6 +59,17 @@ export class FileExchangeTypeopsComponent implements OnInit {
     this.Connector.plugin('filex', 'createTypeDirs', [],
       [inputEntity, inputType, this.cleanArray(inputRelPath.split('/')), this.dirShowModal]).then(res => {
       this.dirCreatedType = res.data;
+      this.eventService.refreshFileExcchangeData();
+    });
+  }
+
+  createDirs(entity, type, relpath) {
+    const inputEntity = entity.value;
+    const inputType = type.value;
+    const inputRelPath = relpath.value;
+    this.Connector.plugin('filex', 'createDir', [],
+      [inputEntity, inputType, this.cleanArray(inputRelPath.split('/')), this.dirRecursive]).then(res => {
+      this.dirRecursiveCreated = res.data;
       this.eventService.refreshFileExcchangeData();
     });
   }
