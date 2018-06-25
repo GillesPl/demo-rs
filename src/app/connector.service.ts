@@ -3,7 +3,6 @@ import {EventService} from './event.service';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
-
 @Injectable()
 export class Connector {
 
@@ -144,6 +143,8 @@ export class Connector {
     const pkcs11 = JSON.parse(localStorage.getItem('rmc-pkcs11-config'));
     const svc = this;
     return svc.getJWt().toPromise().then((res: { token: string }) => {
+      let optConfig = new this.GCLLib.GCLConfig();
+      optConfig.agentPort = agentPort;
       // generate config
       return new this.GCLLib.GCLConfig({
         gwJwt: res.token,
@@ -153,7 +154,8 @@ export class Connector {
         implicitDownload: environment.implicitDownload,
         agentPort,
         osPinDialog: environment.osPinDialog,
-        pkcs11Config: pkcs11
+        pkcs11Config: pkcs11,
+        lang: 'nl'
       });
     });
   }

@@ -30,6 +30,24 @@ export class FileExchangeFileopsComponent implements OnInit {
   mvToRelPath: string[];
   movedFile;
 
+  // copy file
+  cpFromEntity: string;
+  cpFromType: string;
+  cpFromRelPath: string[];
+  cpFilename: string;
+  cpToType: string;
+  cpToRelPath: string[];
+  cpNewFilename: string;
+  copiedFile;
+
+  // rename file
+  renEntity: string;
+  renType: string;
+  renRelPath: string[];
+  renFilename: string;
+  renNewFilename: string;
+  rennedFile;
+
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
     this.eventService.refreshFileExchangeData$.subscribe(() => this.getData());
@@ -74,6 +92,34 @@ export class FileExchangeFileopsComponent implements OnInit {
       [this.mvFromEntity, this.mvFromType, this.mvToType, this.mvFilename, this.mvFromRelPath, this.mvToRelPath]).then(res => {
         console.log('file: ' + res.data.name);
       this.movedFile = res.data;
+    });
+  }
+
+  copyFile(fromEnt, fromType, fromRelpath, filename, toType, toRelPath, newFilename) {
+    this.cpFromEntity = fromEnt.value;
+    this.cpFromType = fromType.value;
+    this.cpFromRelPath = this.cleanArray(fromRelpath.value.split('/'));
+    this.cpFilename = filename.value;
+    this.cpToType = toType.value;
+    this.cpToRelPath = this.cleanArray(toRelPath.value.split('/'));
+    this.cpNewFilename = newFilename.value;
+    this.Connector.plugin('filex', 'copyFile', [],
+      [this.cpFromEntity, this.cpFromType, this.cpToType, this.cpFilename, this.cpNewFilename, this.cpFromRelPath, this.cpToRelPath]).then(res => {
+      console.log('file: ' + res.data.name);
+      this.copiedFile = res.data;
+    });
+  }
+
+  renameFile(renEntity, renType, renRelPath, renFileName, renNewFile) {
+    this.renEntity = renEntity.value;
+    this.renType = renType.value;
+    this.renRelPath = this.cleanArray(renRelPath.value.split('/'));
+    this.renFilename = renFileName.value;
+    this.renNewFilename = renNewFile.value;
+    this.Connector.plugin('filex', 'renameFile', [],
+      [this.renEntity, this.renType, this.renFilename, this.renNewFilename, this.renRelPath]).then(res => {
+      console.log('file: ' + res.data.name);
+      this.rennedFile = res.data;
     });
   }
 

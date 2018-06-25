@@ -136,48 +136,166 @@
   </div>
 
 
+  <hr class="hr-primary">
 
-<!--  <div>
-    <div class="no-files text-center text-light" data-ng-if="!$ctrl.fileList.length">
-      <p>No files in this directory.</p>
+
+  <h4>Copy file from type to another type</h4>
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="copyFromEntity" type="text" class="form-control" placeholder="Source Entity name" aria-describedby="basic-addon1" #copyFromEntity>
+      </div>
+
+      <div class="input-group">
+        <input id="copyFromType" type="text" class="form-control" placeholder="Source Type name" aria-describedby="basic-addon1" #copyFromType>
+      </div>
+
+      <div class="input-group">
+        <input id="copyFromRelPath" type="text" class="form-control" placeholder="Source optional relative path" aria-describedby="basic-addon1" #copyFromRelPath>
+      </div>
+
+      <div class="input-group">
+        <input id="copyFileName" type="text" class="form-control" placeholder="Original Filename" aria-describedby="basic-addon1" #copyFileName>
+      </div>
+
+      <div class="input-group">
+        <input id="copyToType" type="text" class="form-control" placeholder="Target Type name" aria-describedby="basic-addon1" #copyToType>
+      </div>
+
+      <div class="input-group">
+        <input id="copyToRelPath" type="text" class="form-control" placeholder="Target optional relative path" aria-describedby="basic-addon1" #copyToRelPath>
+      </div>
+
+      <div class="input-group">
+        <input id="copyNewFile" type="text" class="form-control" placeholder="Optional new filename" aria-describedby="basic-addon1" #copyNewFile>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="copyFile(copyFromEntity, copyFromType, copyFromRelPath, copyFileName, copyToType, copyToRelPath, copyNewFile)">Copy file</a></button>
     </div>
-    <div data-ng-if="$ctrl.fileList.length">
-      <table class="table table-hover table-striped">
-        <thead>
+  </div>
+  <div *ngIf="cpFromEntity && cpFromType && cpFilename && cpToType">
+    <div *ngIf="copiedFile">
+      <table class="table table-striped t1c-info-table">
         <tr>
-          <th width="1%">Type</th>
-          <th>Name</th>
-          <th width="250px">Last Modified</th>
-          <th width="125px">Size</th>
-          <th width="125px">Actions</th>
+          <td class="t1c-title">Entity</td>
+          <td>{{copiedFile.entity}}</td>
         </tr>
-        </thead>
-        <tbody>
-        <tr data-ng-repeat="file in $ctrl.fileList">
+        <tr>
+          <td class="t1c-title">Type</td>
+          <td>{{copiedFile.type}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Filename</td>
+          <td>{{copiedFile.name}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Extension</td>
+          <td>{{copiedFile.extension}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Size</td>
+          <td>{{copiedFile.size}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Access Mode</td>
+          <td>{{copiedFile.access_mode}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Path</td>
+          <td>{{copiedFile.path}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Last modification</td>
+          <td>{{copiedFile.last_modification_time|date}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Is directory?</td>
           <td>
-            <span class="fa fa-lg" data-ng-class="file.fileTypeClass ? file.fileTypeClass : $ctrl.setFileTypeClass(file)" data-uib-tooltip="{{ file.fileTypeName }}"></span>
-          </td>
-          <td><b>{{file.name}}</b></td>
-          <td>{{file.last_modification_date}}&nbsp;&nbsp;{{file.last_modification_time}}</td>
-          <td>{{file.size | filesize}}</td>
-          <td class="actions">
-          <span class="clickable text-primary" data-ng-if="$ctrl.showActions"
-                data-uib-tooltip="Sign"
-                data-tooltip-placement="top"
-                data-ng-click="$ctrl.signFile(file)">
-            <i class="fa fa-lg fa-pencil"></i>
-          </span>
-            <span class="clickable text-primary"
-                  data-uib-tooltip="View File"
-                  data-tooltip-placement="top"
-                  data-ng-click="$ctrl.viewFile(file)">
-            <i class="fa fa-lg fa-search"></i>
-          </span>
+            <span class="fa fa-lg fa-times text-danger" *ngIf="!copiedFile.is_dir"></span>
+            <span class="fa fa-lg fa-check text-success" *ngIf="copiedFile.is_dir"></span>
           </td>
         </tr>
-        </tbody>
       </table>
     </div>
-  </div>-->
+  </div>
 
+
+  <hr class="hr-primary">
+
+
+  <h4>Rename file</h4>
+  <div class="panel-body">
+    <form role="form" class="form-horizontal">
+      <div class="input-group">
+        <input id="renEntity" type="text" class="form-control" placeholder="Source Entity name" aria-describedby="basic-addon1" #renEntity>
+      </div>
+
+      <div class="input-group">
+        <input id="renType" type="text" class="form-control" placeholder="Source Type name" aria-describedby="basic-addon1" #renType>
+      </div>
+
+      <div class="input-group">
+        <input id="renRelPath" type="text" class="form-control" placeholder="Source optional relative path" aria-describedby="basic-addon1" #renRelPath>
+      </div>
+
+      <div class="input-group">
+        <input id="renFileName" type="text" class="form-control" placeholder="Original Filename" aria-describedby="basic-addon1" #renFileName>
+      </div>
+
+      <div class="input-group">
+        <input id="renNewFile" type="text" class="form-control" placeholder="Optional new filename" aria-describedby="basic-addon1" #renNewFile>
+      </div>
+
+    </form>
+    <div class="buttons">
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="renameFile(renEntity, renType, renRelPath, renFileName, renNewFile)">Copy file</a></button>
+    </div>
+  </div>
+  <div *ngIf="renEntity && renType && renFileName && renNewFile">
+    <div *ngIf="rennedFile">
+      <table class="table table-striped t1c-info-table">
+        <tr>
+          <td class="t1c-title">Entity</td>
+          <td>{{rennedFile.entity}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Type</td>
+          <td>{{rennedFile.type}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Filename</td>
+          <td>{{rennedFile.name}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Extension</td>
+          <td>{{rennedFile.extension}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Size</td>
+          <td>{{rennedFile.size}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Access Mode</td>
+          <td>{{rennedFile.access_mode}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Path</td>
+          <td>{{rennedFile.path}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Last modification</td>
+          <td>{{rennedFile.last_modification_time|date}}</td>
+        </tr>
+        <tr>
+          <td class="t1c-title">Is directory?</td>
+          <td>
+            <span class="fa fa-lg fa-times text-danger" *ngIf="!rennedFile.is_dir"></span>
+            <span class="fa fa-lg fa-check text-success" *ngIf="rennedFile.is_dir"></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>

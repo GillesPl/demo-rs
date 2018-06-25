@@ -8,6 +8,7 @@ import {EventService} from '../event.service';
   styleUrls: ['./file-exchange-misc.component.less']
 })
 export class FileExchangeMiscComponent implements OnInit {
+  enabledContainers;
 
   constructor(private Connector: Connector, private eventService: EventService) {
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.getData());
@@ -30,5 +31,12 @@ export class FileExchangeMiscComponent implements OnInit {
       [title.value, text.value, 'choice', parseInt(timeout.value, 10)]).then(res => {
       console.log('showing choice modal from operating system, returned: ' + res.data);
     });
+  }
+
+  getContainers(){
+    this.Connector.get().filex().getEnabledContainers().then(res => {
+        this.enabledContainers = res.data;
+      }
+    );
   }
 }

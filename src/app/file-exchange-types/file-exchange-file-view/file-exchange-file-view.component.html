@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h3>File Info</h3>
+</div>
+<div *ngIf="selectedFile">
+  <table class="table table-striped t1c-plugin-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Extension</th>
+      <th>Size</th>
+      <th>Is directory</th>
+      <th>Access mode</th>
+      <th>Last modification date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{selectedFile.name}}</td>
+      <td>{{selectedFile.extension}}</td>
+      <td>{{selectedFile.size}}</td>
+      <td>{{selectedFile.is_dir}}</td>
+      <td>{{selectedFile.access_mode}}</td>
+      <td>{{selectedFile.last_modification_time | date}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

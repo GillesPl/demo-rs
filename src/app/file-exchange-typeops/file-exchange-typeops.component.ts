@@ -33,6 +33,8 @@ export class FileExchangeTypeopsComponent implements OnInit {
   ngOnInit() {
     this.showModal = true; // default
     this.typeExists = false;
+    this.dirShowModal = true; // default
+    this.dirRecursive = true; //default
   }
 
   getData() {
