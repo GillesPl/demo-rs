@@ -97,6 +97,16 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## PDF viewer used in file exchange
+During deployment you need to add a zlib folder in node_modules with a packag.json file:
+{
+  "name": "zlib",
+  "version": "1.0.0"
+}
+
+And an empty index.js file. 
+This is due to pdf-vier issue:
+https://github.com/VadimDez/ng2-pdf-viewer/issues/322
 
 ## Extract translation files
 
