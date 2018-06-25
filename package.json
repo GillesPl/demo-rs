@@ -10,6 +10,13 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false,
+    "stream": false,
+    "zlib": false
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.5",
@@ -43,9 +50,10 @@
     "mississippi2": "^1.0.5",
     "moment": "^2.22.0",
     "ng2-fittext": "^1.1.1",
-    "ng2-pdf-viewer": "3.0.8",
+    "ng2-pdf-viewer": "^5.1.0",
     "ngx-bootstrap": "^2.0.3",
     "ngx-clipboard": "8.1.4",
+    "pdfjs-dist": "^2.0.489",
     "request-promise-native": "^1.0.3",
     "roboto-fontface": "^0.9.0",
     "rxjs": "^6.2.1",
