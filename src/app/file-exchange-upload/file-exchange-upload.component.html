@@ -22,8 +22,7 @@
       <td>{{entity.status}}</td>
       <td>
         <div class="buttons">
-          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity)">Show files</a>
-          </button>
+          <span class="btn btn-info" (click)="getFilesForType(entity)">Show files</span>
         </div>
       </td>
     </tr>
@@ -55,7 +54,7 @@
           <td>{{file.last_modification_time | date}}</td>
           <td>
             <div class="buttons">
-              <button type="button" class="btn btn-info" md-ink-ripple><a (click)="uploadFile(file)">Upload</a></button>
+              <span class="btn btn-info" (click)="uploadFile(file)">Upload</span>
             </div>
           </td>
         </tr>

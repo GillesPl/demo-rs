@@ -17,8 +17,7 @@
 
         <td>
           <div class="buttons">
-            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getTypesForEntity({ entity: inpTypesForEntity.value})">Show types</a>
-            </button>
+            <span class="btn btn-info" (click)="getTypesForEntity({ entity: inpTypesForEntity.value})">Show types</span>
           </div>
         </td>
       </tr>
@@ -72,14 +71,10 @@
         </div>
         <td>
           <div class="buttons">
-            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType({ entity: inpEntity.value, type: inpType.value})">Show files</a>
-            </button>
-            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="updateTypeMapping({ entity: inpEntity.value, type: inpType.value})">Update</a>
-            </button>
-            <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getTypeInfo({ entity: inpEntity.value, type: inpType.value})">Info</a></button>
-            <button type="button" class="btn btn-warning" md-ink-ripple><a
-              (click)="deleteTypeMapping(entity)">Delete</a>
-            </button>
+            <span class="btn btn-info" (click)="getFilesForType({ entity: inpEntity.value, type: inpType.value})">Show files</span>
+            <span class="btn btn-info" (click)="updateTypeMapping({ entity: inpEntity.value, type: inpType.value})">Update</span>
+            <span class="btn btn-info" (click)="getTypeInfo({ entity: inpEntity.value, type: inpType.value})">Info</span>
+            <span class="btn btn-warning"  (click)="deleteTypeMapping(entity)">Delete</span>
           </div>
         </td>
       </tr>
@@ -135,13 +130,10 @@
       </td>
       <td>
         <div class="buttons">
-          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getFilesForType(entity, inpPath.value, inpPgStart.value, inpPgSize.value, inpPgSort.value)">Show files</a>
-          </button>
-          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="updateTypeMapping(entity)">Update</a>
-          </button>
-          <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getTypeInfo(entity)">Info</a></button>
-          <button type="button" class="btn btn-warning" md-ink-ripple><a (click)="deleteTypeMapping(entity)">Delete</a>
-          </button>
+          <span class="btn btn-info" (click)="getFilesForType(entity, inpPath.value, inpPgStart.value, inpPgSize.value, inpPgSort.value)">Show files</span>
+          <span class="btn btn-info" (click)="updateTypeMapping(entity)">Update</span>
+          <span class="btn btn-info" (click)="getTypeInfo(entity)">Info</span>
+          <span class="btn btn-warning" (click)="deleteTypeMapping(entity)">Delete</span>
         </div>
       </td>
     </tr>
@@ -201,7 +193,6 @@
           <td>{{file.is_dir}}</td>
           <td>{{file.access_mode}}</td>
           <td>{{file.last_modification_time | date}}</td>
-          <!--<td><button type="button" class="btn btn-warning" md-ink-ripple><a (click)="getFileInfo(file)">Info</a></button></td>-->
         </tr>
         </tbody>
       </table>
