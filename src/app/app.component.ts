@@ -369,7 +369,7 @@ export class AppComponent implements OnInit {
       // Not used
     }, function () {
       // timeout, poll again
-      controller.pollForReaders();
+      if (!controller.adminPanelOpen && !controller.fileExchangePanelOpen ) { controller.pollForReaders(); }
     }]);
   }
 
@@ -398,7 +398,7 @@ export class AppComponent implements OnInit {
           controller.readers = readerResult.data;
           controller.readCard();
         }, function () {
-          controller.pollForCard();
+          if (!controller.adminPanelOpen && !controller.fileExchangePanelOpen ) { controller.pollForCard(); }
         });
       }
     }, function () {
@@ -416,7 +416,7 @@ export class AppComponent implements OnInit {
         if (removed) {
           controller.pollingCard = false;
         } else {
-          controller.pollForCard();
+          if (!controller.adminPanelOpen && !controller.fileExchangePanelOpen ) { controller.pollForCard(); }
         }
       });
     }]);

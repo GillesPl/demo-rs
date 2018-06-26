@@ -70,10 +70,10 @@ export class FileExchangeFileopsComponent implements OnInit {
     });
   }
 
-  getAccessMode(entity, type, filepath) {
+  getAccessMode(entity, type, relpath) {
     this.amEntity = entity.value;
     this.amType = type.value;
-    this.amFilePath = this.cleanArray(filepath.value.split('/'));
+    this.amFilePath = this.cleanArray(relpath.value.split('/'));
     // split to string array
     this.Connector.plugin('filex', 'getAccessMode', [],
       [this.amEntity, this.amType, this.amFilePath]).then(res => {

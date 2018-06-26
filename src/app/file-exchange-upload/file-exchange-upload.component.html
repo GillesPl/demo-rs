@@ -103,7 +103,7 @@
 
   <div *ngIf="uploadedPDF">
     <h3>Preview {{selectedPDF.name}} - only implemented for PDF</h3>
-    <pdf-viewer [src]="uploadedPDF" [render-text]="true" style="display: block;"></pdf-viewer>
+    <pdf-viewer [src]="uploadedPDF" [render-text]="true" [page]="1" style="display: block;"></pdf-viewer>
   </div>
 
 
