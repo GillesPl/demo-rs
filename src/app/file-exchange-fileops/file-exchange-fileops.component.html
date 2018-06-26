@@ -45,7 +45,7 @@
 
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="existsFile(existsEntityInput, existsTypeInput, existsFilePathInput)">Exists?</a></button>
+      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getAccessMode(existsEntityInput, existsTypeInput, existsFilePathInput)">Exists?</a></button>
     </div>
   </div>
   <div *ngIf="amEntity && amType && amFilePath">
