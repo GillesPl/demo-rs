@@ -74,7 +74,7 @@
             <span class="btn btn-info" (click)="getFilesForType({ entity: inpEntity.value, type: inpType.value})">Show files</span>
             <span class="btn btn-info" (click)="updateTypeMapping({ entity: inpEntity.value, type: inpType.value})">Update</span>
             <span class="btn btn-info" (click)="getTypeInfo({ entity: inpEntity.value, type: inpType.value})">Info</span>
-            <span class="btn btn-warning"  (click)="deleteTypeMapping(entity)">Delete</span>
+            <span class="btn btn-warning"  (click)="deleteTypeMapping({ entity: inpEntity.value, type: inpType.value})">Delete</span>
           </div>
         </td>
       </tr>
