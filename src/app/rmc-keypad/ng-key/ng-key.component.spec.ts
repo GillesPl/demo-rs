@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgKeyComponent } from './ng-key.component';
 
-describe('NgKeyComponent', () => {
+describe('NgKeyModularComponent', () => {
   let component: NgKeyComponent;
   let fixture: ComponentFixture<NgKeyComponent>;
 

@@ -6,6 +6,7 @@ import { Connector } from '../connector.service';
 import { DownloadXmlModalComponent } from './download-xml-modal/download-xml-modal.component';
 import { ChallengeModalComponent } from './ocra/challenge-modal/challenge-modal.component';
 import { Angulartics2 } from 'angulartics2';
+import {PinChangeModalComponent} from './lux/pin-change-modal/pin-change-modal.component';
 
 @Injectable()
 export class ModalService {
@@ -89,6 +90,28 @@ export class ModalService {
         initialState
       };
       svc.modalService.show(DownloadXmlModalComponent, config);
+    });
+  }
+
+  openChangePinModalForReader(readerId, title) {
+    const svc = this;
+    svc.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'PIN change clicked'}
+    });
+
+    this.Connector.core('reader', [readerId]).then(res => {
+      const initialState = {
+        readerId,
+        pinpad: res.data.pinpad,
+        title
+      };
+      const config = {
+        backdrop: true,
+        ignoreBackdropClick: true,
+        initialState
+      };
+      svc.modalService.show(PinChangeModalComponent, config);
     });
   }
 }

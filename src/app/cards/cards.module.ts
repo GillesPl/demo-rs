@@ -61,6 +61,7 @@ import { SlotIconComponent } from './pkcs11/slot-icon/slot-icon.component';
 import { SlotVizComponent } from './pkcs11/slot-viz/slot-viz.component';
 import { Pkcs11VizComponent } from './pkcs11/pkcs11-viz/pkcs11-viz.component';
 import { CertBlockComponent } from './pkcs11/cert-block/cert-block.component';
+import { PinChangeModalComponent } from './lux/pin-change-modal/pin-change-modal.component';
 
 
 @NgModule({
@@ -117,7 +118,8 @@ import { CertBlockComponent } from './pkcs11/cert-block/cert-block.component';
     SlotIconComponent,
     SlotVizComponent,
     Pkcs11VizComponent,
-    CertBlockComponent
+    CertBlockComponent,
+    PinChangeModalComponent
   ],
   providers: [
     BeidService,
@@ -146,6 +148,6 @@ import { CertBlockComponent } from './pkcs11/cert-block/cert-block.component';
     PteidVizComponent,
   ],
   entryComponents: [ ChallengeModalComponent, PinCheckModalComponent,
-    DownloadSummaryModalComponent, DownloadXmlModalComponent ]
+    DownloadSummaryModalComponent, DownloadXmlModalComponent,PinChangeModalComponent ]
 })
 export class CardsModule { }

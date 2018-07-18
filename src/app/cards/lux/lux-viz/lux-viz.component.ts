@@ -15,8 +15,9 @@ export class LuxVizComponent implements OnInit {
 
   certData;
   pinpad: boolean;
-  needPin: boolean;
+  needCan: boolean;
   readingData: boolean;
+  canCode: string;
   pincode;
   pinStatus;
   validationArray;
@@ -25,6 +26,7 @@ export class LuxVizComponent implements OnInit {
   picData;
   pic;
   signature;
+
 
   authCert;
   nonRepCert;
@@ -35,9 +37,8 @@ export class LuxVizComponent implements OnInit {
               private lux: LuxService, private modalService: ModalService) { }
 
   ngOnInit() {
+    this.needCan = true;
     const comp = this;
-    this.needPin = true;
-
     // check type of reader
     comp.Connector.core('reader', [comp.readerId]).then(res => {
       this.pinpad = res.data.pinpad;
@@ -50,10 +51,27 @@ export class LuxVizComponent implements OnInit {
     });
   }
 
+  //implementation for check pin status component
+  checkPin() {
 
-  submitPin(pincode) {
-    this.needPin = false;
-    this.getAllData(pincode);
+}
+
+  resetPin() {
+
+  }
+
+  unblockPin() {
+    this.modalService.openPinModalForReader(this.readerId)
+  }
+
+  changePin() {
+    this.modalService.openChangePinModalForReader(this.readerId, 'Change pin');
+  }
+
+  submitCan(canCode) {
+    this.needCan = false;
+    this.canCode = canCode;
+    this.getAllData(canCode);
   }
 
   downloadSummary() {
@@ -64,11 +82,10 @@ export class LuxVizComponent implements OnInit {
     this.certData = !this.certData;
   }
 
-  getAllData(pin) {
+  getAllData(can) {
     const comp = this;
-
     this.readingData = true;
-    comp.Connector.plugin('luxeid', 'allData', [comp.readerId, pin]).then(res => {
+    comp.Connector.plugin('luxeid', 'allData', [comp.readerId, can]).then(res => {
       comp.pinStatus = 'valid';
       comp.biometricData = res.data.biometric;
       comp.signatureObject = res.data.signature_object;
