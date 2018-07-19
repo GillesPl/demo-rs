@@ -28,6 +28,8 @@ export class LuxVizComponent implements OnInit {
   picData;
   pic;
   signature;
+  pinCounterUser: number;
+  pinCounterAdmin: number; //PUK counter
 
   authCert;
   nonRepCert;
@@ -50,7 +52,7 @@ export class LuxVizComponent implements OnInit {
         comp.pincode = { value: '' };
       } else {
         // launch data request
-        comp.getAllData(null);
+        comp.getAllData()
       }
     });
   }
@@ -79,7 +81,9 @@ export class LuxVizComponent implements OnInit {
     this.readingData = true;
     this.needCan = false;
     this.canCode = canCode;
-    this.getAllData(canCode);
+
+    this.getAllData();
+    this.getPinTryCounter();
   }
 
   downloadSummary() {
@@ -90,9 +94,22 @@ export class LuxVizComponent implements OnInit {
     this.certData = !this.certData;
   }
 
-  getAllData(can) {
+  getPinTryCounter() {
+    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.canCode],[{"pin_reference" : 'user'}]).then(res => {
+          this.pinCounterUser = res.data;
+    }, error => {
+      console.error(error);
+    })
+    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.canCode],[{"pin_reference" : 'admin'}]).then(res => {
+      this.pinCounterAdmin = res.data;
+    }, error => {
+      console.error(error);
+    })
+  }
+
+  getAllData() {
     const comp = this;
-    comp.Connector.plugin('luxeid', 'allData', [comp.readerId, can]).then(res => {
+    comp.Connector.plugin('luxeid', 'allData', [comp.readerId, comp.canCode]).then(res => {
       this.readingData = false;
 
       comp.biometricData = res.data.biometric;

@@ -31,6 +31,11 @@
 
     <app-lux-card [biometricData]="biometricData" [picData]="pic" [signatureData]="signature"></app-lux-card>
 
+    <div *ngIf="pinCounterUser && pinCounterAdmin">
+      <p>PUK tries remaining: {{pinCounterAdmin}}</p>
+      <p>PIN tries remaining: {{pinCounterUser}}</p>
+    </div>
+
     <div class="print-button">
       <span class="btn btn-lg btn-primary btn-summary-download" (click)="downloadSummary()" i18n="@@printSummary">Print the content of my card</span>
     </div>
