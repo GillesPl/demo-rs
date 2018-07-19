@@ -5,15 +5,14 @@ import {EventService} from '../../../event.service';
 
 
 @Component({
-  selector: 'app-pin-change-modal',
-  templateUrl: './pin-change-modal.component.html',
-  styleUrls: ['./pin-change-modal.component.less']
+  selector: 'app-pin-reset-modal',
+  templateUrl: './pin-reset-modal.component.html',
+  styleUrls: ['./pin-reset-modal.component.less']
 })
-export class PinChangeModalComponent implements OnInit {
-  pincode;
-  newPincode;
-
+export class PinResetModalComponent implements OnInit {
   pinpad: boolean;
+  pukcode;
+  newPincode;
   readerId;
   result: string;
   error: boolean;
@@ -31,9 +30,10 @@ export class PinChangeModalComponent implements OnInit {
     this.bsModalRef.hide();
   }
 
-  verifyPin() {
-    let body = new LuxPinChangeData(false,this.pincode,this.newPincode);
-    this.Connector.plugin('luxeid', 'pinChange', [this.readerId, this.cancode],[body]).then(res => {
+  resetPin() {
+    console.log(this.pukcode,this.newPincode,this.readerId);
+    let body = new LuxPinResetData(false,false,this.pukcode,this.newPincode);
+    this.Connector.plugin('luxeid', 'pinReset', [this.readerId, this.cancode],[body]).then(res => {
       // success notification
       this.bsModalRef.hide();
     }, err => {
@@ -43,7 +43,7 @@ export class PinChangeModalComponent implements OnInit {
 
   }
 }
-export class LuxPinChangeData {
-  constructor(public os_dialog: boolean, public old_pin?: string, public new_pin?: string) {
+export class LuxPinResetData {
+  constructor(public os_dialog: boolean, public reset_only: boolean, public puk: string, public pin: string) {
   }
 }

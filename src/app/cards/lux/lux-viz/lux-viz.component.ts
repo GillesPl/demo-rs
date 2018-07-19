@@ -64,15 +64,15 @@ export class LuxVizComponent implements OnInit {
   }
 
   resetPin() {
-
+    this.modalService.openResetPinModalForReader(this.readerId, 'Reset pin', this.canCode);
   }
 
   unblockPin() {
-    this.modalService.openPinModalForReader(this.readerId)
+    this.modalService.openUnblockPinModalForReader(this.readerId, 'Unblock pin' , this.canCode);
   }
 
   changePin() {
-    this.modalService.openChangePinModalForReader(this.readerId, 'Change pin');
+    this.modalService.openChangePinModalForReader(this.readerId, 'Change pin',this.canCode);
   }
 
   submitCan(canCode) {

@@ -7,6 +7,8 @@ import { DownloadXmlModalComponent } from './download-xml-modal/download-xml-mod
 import { ChallengeModalComponent } from './ocra/challenge-modal/challenge-modal.component';
 import { Angulartics2 } from 'angulartics2';
 import {PinChangeModalComponent} from './lux/pin-change-modal/pin-change-modal.component';
+import {PinUnblockModalComponent} from './lux/pin-unblock-modal/pin-unblock-modal.component';
+import {PinResetModalComponent} from './lux/pin-reset-modal/pin-reset-modal.component';
 
 @Injectable()
 export class ModalService {
@@ -93,7 +95,7 @@ export class ModalService {
     });
   }
 
-  openChangePinModalForReader(readerId, title) {
+  openChangePinModalForReader(readerId, title, cancode) {
     const svc = this;
     svc.angulartics2.eventTrack.next({
       action: 'click',
@@ -104,7 +106,8 @@ export class ModalService {
       const initialState = {
         readerId,
         pinpad: res.data.pinpad,
-        title
+        title,
+        cancode
       };
       const config = {
         backdrop: true,
@@ -112,6 +115,52 @@ export class ModalService {
         initialState
       };
       svc.modalService.show(PinChangeModalComponent, config);
+    });
+  }
+
+  openResetPinModalForReader(readerId, title, cancode) {
+    const svc = this;
+    svc.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'PIN reset clicked'}
+    });
+
+    this.Connector.core('reader', [readerId]).then(res => {
+      const initialState = {
+        readerId,
+        pinpad: res.data.pinpad,
+        title,
+        cancode
+      };
+      const config = {
+        backdrop: true,
+        ignoreBackdropClick: true,
+        initialState
+      };
+      svc.modalService.show(PinResetModalComponent, config);
+    });
+  }
+
+  openUnblockPinModalForReader(readerId, title, cancode) {
+    const svc = this;
+    svc.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'PIN unblock clicked'}
+    });
+
+    this.Connector.core('reader', [readerId]).then(res => {
+      const initialState = {
+        readerId,
+        pinpad: res.data.pinpad,
+        title,
+        cancode
+      };
+      const config = {
+        backdrop: true,
+        ignoreBackdropClick: true,
+        initialState
+      };
+      svc.modalService.show(PinUnblockModalComponent, config);
     });
   }
 }
