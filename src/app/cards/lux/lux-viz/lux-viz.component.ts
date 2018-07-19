@@ -4,6 +4,8 @@ import { ApiService } from '../../../api.service';
 import * as _ from 'lodash';
 import { LuxService } from '../lux.service';
 import { ModalService } from '../../modal.service';
+import {EventService} from '../../../event.service';
+import {CardService} from '../../card.service';
 
 @Component({
   selector: 'app-lux-viz',
@@ -15,8 +17,8 @@ export class LuxVizComponent implements OnInit {
 
   certData;
   pinpad: boolean;
-  needCan: boolean;
-  readingData: boolean;
+  needCan: boolean = true;
+  readingData: boolean = false;
   canCode: string;
   pincode;
   pinStatus;
@@ -27,17 +29,19 @@ export class LuxVizComponent implements OnInit {
   pic;
   signature;
 
-
   authCert;
   nonRepCert;
   rootCerts;
   loadingCerts;
 
   constructor(private API: ApiService, private Connector: Connector,
-              private lux: LuxService, private modalService: ModalService) { }
+              private lux: LuxService, private modalService: ModalService,
+              private eventService: EventService, private cardService: CardService,) {
+    this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results))
+  }
 
   ngOnInit() {
-    this.needCan = true;
+    this.pinStatus = 'idle';
     const comp = this;
     // check type of reader
     comp.Connector.core('reader', [comp.readerId]).then(res => {
@@ -51,10 +55,13 @@ export class LuxVizComponent implements OnInit {
     });
   }
 
-  //implementation for check pin status component
   checkPin() {
+    this.modalService.openPinModalForReader(this.readerId);
+  }
 
-}
+  handlePinCheckResult(pinCheck) {
+    this.pinStatus = this.cardService.determinePinModalResult(pinCheck, 'luxeid');
+  }
 
   resetPin() {
 
@@ -69,6 +76,7 @@ export class LuxVizComponent implements OnInit {
   }
 
   submitCan(canCode) {
+    this.readingData = true;
     this.needCan = false;
     this.canCode = canCode;
     this.getAllData(canCode);
@@ -84,9 +92,9 @@ export class LuxVizComponent implements OnInit {
 
   getAllData(can) {
     const comp = this;
-    this.readingData = true;
     comp.Connector.plugin('luxeid', 'allData', [comp.readerId, can]).then(res => {
-      comp.pinStatus = 'valid';
+      this.readingData = false;
+
       comp.biometricData = res.data.biometric;
       comp.signatureObject = res.data.signature_object;
       comp.picData = res.data.picture;
