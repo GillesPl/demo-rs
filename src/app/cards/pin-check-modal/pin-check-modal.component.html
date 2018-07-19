@@ -7,7 +7,7 @@
   </div>
 
   <div *ngIf="!pinpad">
-    <app-rmc-keypad (onSubmit)="submitPin($event)" (onCancel)="cancel()"></app-rmc-keypad>
+    <app-rmc-keypad (onSubmit)="submitPin($event)" title="Enter PIN code" (onCancel)="cancel()"></app-rmc-keypad>
   </div>
 
 </div>

@@ -8,6 +8,7 @@ import * as _ from 'lodash';
 })
 export class RmcKeypadComponent implements OnInit {
   pincode;
+  @Input() title;
   @Output() onSubmit = new EventEmitter<string>();
   @Output() onCancel = new EventEmitter();
 
