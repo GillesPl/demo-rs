@@ -1,5 +1,9 @@
 <div id="lux-viz" class="clearfix top-info">
 
+  <div *ngIf="error" class="alert alert-danger">
+    <strong>Error!</strong> {{error}}
+  </div>
+
   <div class="pin-required text-center" *ngIf="needCan">
     <p class="info-text" i18n="@@accessToLuxRestricted">
       Access to the Luxembourg eID card is secured with a CAN code.<br>Please provide your CAN to continue.
@@ -31,25 +35,30 @@
 
     <app-lux-card [biometricData]="biometricData" [picData]="pic" [signatureData]="signature"></app-lux-card>
 
-    <div *ngIf="pinCounterUser && pinCounterAdmin">
-      <p>PUK tries remaining: {{pinCounterAdmin}}</p>
-      <p>PIN tries remaining: {{pinCounterUser}}</p>
-    </div>
-
     <div class="print-button">
       <span class="btn btn-lg btn-primary btn-summary-download" (click)="downloadSummary()" i18n="@@printSummary">Print the content of my card</span>
     </div>
 
-    <div>
-      <span class="btn btn-lg btn-primary btn-summary-changepin" (click)="changePin($event)">Change pin</span>
+    <div class="print-button">
+      <span class="btn btn-lg btn-primary btn-summary-download" (click)="changePin($event)">Change pin</span>
     </div>
 
-    <div>
-      <span class="btn btn-lg btn-primary btn-summary-resetpin" (click)="resetPin()">Reset pin</span>
+    <div class="print-button">
+      <span class="btn btn-lg btn-primary btn-summary-download" (click)="resetPin()">Reset pin</span>
     </div>
 
-    <div>
-      <span class="btn btn-lg btn-primary btn-summary-unblockpin" (click)="unblockPin()">Unblock pin</span>
+    <div class="print-button">
+      <span class="btn btn-lg btn-primary btn-summary-download" (click)="unblockPin()">Unblock pin</span>
+    </div>
+
+    <div class="pin-puk-retries col-sm-12">
+      <span class="size-h3 text-primary">PUK and PIN tries remaining</span>
+      <div *ngIf="pinCounterUser && pinCounterAdmin">
+        <p>PUK tries remaining: {{pinCounterAdmin}}</p>
+        <p>PIN tries remaining: {{pinCounterUser}}</p>
+        <span class="btn btn-lg btn-primary" (click)="refreshPinTryCounter()">Refresh</span>
+      </div>
+      <p *ngIf="!pinCounterUser && !pinCounterAdmin" class="spinner"><i class="fa fa-4x fa-spinner fa-pulse"></i></p>
     </div>
 
     <div class="certificates-toggle col-sm-12">

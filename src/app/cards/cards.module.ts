@@ -64,6 +64,7 @@ import { CertBlockComponent } from './pkcs11/cert-block/cert-block.component';
 import { PinChangeModalComponent } from './lux/pin-change-modal/pin-change-modal.component';
 import {PinResetModalComponent} from './lux/pin-reset-modal/pin-reset-modal.component';
 import {PinUnblockModalComponent} from './lux/pin-unblock-modal/pin-unblock-modal.component';
+import {PinCheckWithCanModalComponent} from './pin-check-with-can-modal/pin-check-with-can-modal.component';
 
 
 @NgModule({
@@ -123,7 +124,8 @@ import {PinUnblockModalComponent} from './lux/pin-unblock-modal/pin-unblock-moda
     CertBlockComponent,
     PinChangeModalComponent,
     PinResetModalComponent,
-    PinUnblockModalComponent
+    PinUnblockModalComponent,
+    PinCheckWithCanModalComponent
   ],
   providers: [
     BeidService,
@@ -151,7 +153,6 @@ import {PinUnblockModalComponent} from './lux/pin-unblock-modal/pin-unblock-moda
     Pkcs11VizComponent,
     PteidVizComponent,
   ],
-  entryComponents: [ ChallengeModalComponent, PinCheckModalComponent,
-    DownloadSummaryModalComponent, DownloadXmlModalComponent,PinChangeModalComponent, PinResetModalComponent, PinUnblockModalComponent ]
+  entryComponents: [ ChallengeModalComponent, PinCheckModalComponent, DownloadSummaryModalComponent, DownloadXmlModalComponent,PinChangeModalComponent, PinResetModalComponent, PinUnblockModalComponent, PinCheckWithCanModalComponent ]
 })
 export class CardsModule { }

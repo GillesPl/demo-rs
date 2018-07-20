@@ -28,6 +28,9 @@ export class LuxVizComponent implements OnInit {
   picData;
   pic;
   signature;
+
+  error: string;
+
   pinCounterUser: number;
   pinCounterAdmin: number; //PUK counter
 
@@ -58,7 +61,7 @@ export class LuxVizComponent implements OnInit {
   }
 
   checkPin() {
-    this.modalService.openPinModalForReader(this.readerId);
+    this.modalService.openPinWithCanModalForReader(this.readerId,this.canCode);
   }
 
   handlePinCheckResult(pinCheck) {
@@ -83,7 +86,6 @@ export class LuxVizComponent implements OnInit {
     this.canCode = canCode;
 
     this.getAllData();
-    this.getPinTryCounter();
   }
 
   downloadSummary() {
@@ -94,16 +96,24 @@ export class LuxVizComponent implements OnInit {
     this.certData = !this.certData;
   }
 
+  refreshPinTryCounter() {
+    this.pinCounterAdmin = null;
+    this.pinCounterUser = null;
+    this.getPinTryCounter();
+  }
+
   getPinTryCounter() {
     this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.canCode],[{"pin_reference" : 'user'}]).then(res => {
-          this.pinCounterUser = res.data;
+      this.error = null;
+      this.pinCounterUser = res.data;
     }, error => {
-      console.error(error);
+      this.setError(error.description)
     })
     this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.canCode],[{"pin_reference" : 'admin'}]).then(res => {
+      this.error = null;
       this.pinCounterAdmin = res.data;
     }, error => {
-      console.error(error);
+      this.setError(error.description)
     })
   }
 
@@ -111,6 +121,8 @@ export class LuxVizComponent implements OnInit {
     const comp = this;
     comp.Connector.plugin('luxeid', 'allData', [comp.readerId, comp.canCode]).then(res => {
       this.readingData = false;
+      this.error = null;
+      this.getPinTryCounter();
 
       comp.biometricData = res.data.biometric;
       comp.signatureObject = res.data.signature_object;
@@ -151,6 +163,15 @@ export class LuxVizComponent implements OnInit {
       };
       comp.validationArray = [ comp.Connector.ocv('validateCertificateChain', [validationReq1]),
         comp.Connector.ocv('validateCertificateChain', [validationReq2]) ];
+    }, err => {
+      this.setError(err.description)
     });
+  }
+
+
+  private setError(description:string) {
+    this.error = description;
+    this.readingData = false;
+    this.needCan = true;
   }
 }

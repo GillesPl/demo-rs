@@ -9,6 +9,7 @@ import { Angulartics2 } from 'angulartics2';
 import {PinChangeModalComponent} from './lux/pin-change-modal/pin-change-modal.component';
 import {PinUnblockModalComponent} from './lux/pin-unblock-modal/pin-unblock-modal.component';
 import {PinResetModalComponent} from './lux/pin-reset-modal/pin-reset-modal.component';
+import {PinCheckWithCanModalComponent} from './pin-check-with-can-modal/pin-check-with-can-modal.component';
 
 @Injectable()
 export class ModalService {
@@ -54,6 +55,28 @@ export class ModalService {
         initialState
       };
       svc.modalService.show(PinCheckModalComponent, config);
+    });
+  }
+
+  openPinWithCanModalForReader(readerId,canCode) {
+    const svc = this;
+    svc.angulartics2.eventTrack.next({
+      action: 'click',
+      properties: { category: 'button', label: 'PIN check clicked'}
+    });
+
+    this.Connector.core('reader', [readerId]).then(res => {
+      const initialState = {
+        readerId,
+        pinpad: res.data.pinpad,
+        canCode
+      };
+      const config = {
+        backdrop: true,
+        ignoreBackdropClick: true,
+        initialState
+      };
+      svc.modalService.show(PinCheckWithCanModalComponent, config);
     });
   }
 
