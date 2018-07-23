@@ -4,6 +4,8 @@ import { ApiService } from '../../../api.service';
 import * as _ from 'lodash';
 import { LuxService } from '../lux.service';
 import { ModalService } from '../../modal.service';
+import {EventService} from '../../../event.service';
+import {CardService} from '../../card.service';
 
 @Component({
   selector: 'app-lux-viz',
@@ -15,8 +17,9 @@ export class LuxVizComponent implements OnInit {
 
   certData;
   pinpad: boolean;
-  needPin: boolean;
-  readingData: boolean;
+  needCan: boolean = true;
+  readingData: boolean = false;
+  canCode: string;
   pincode;
   pinStatus;
   validationArray;
@@ -26,18 +29,25 @@ export class LuxVizComponent implements OnInit {
   pic;
   signature;
 
+  error: string;
+
+  pinCounterUser: number;
+  pinCounterAdmin: number; //PUK counter
+
   authCert;
   nonRepCert;
   rootCerts;
   loadingCerts;
 
   constructor(private API: ApiService, private Connector: Connector,
-              private lux: LuxService, private modalService: ModalService) { }
+              private lux: LuxService, private modalService: ModalService,
+              private eventService: EventService, private cardService: CardService,) {
+    this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results))
+  }
 
   ngOnInit() {
+    this.pinStatus = 'idle';
     const comp = this;
-    this.needPin = true;
-
     // check type of reader
     comp.Connector.core('reader', [comp.readerId]).then(res => {
       this.pinpad = res.data.pinpad;
@@ -45,15 +55,37 @@ export class LuxVizComponent implements OnInit {
         comp.pincode = { value: '' };
       } else {
         // launch data request
-        comp.getAllData(null);
+        comp.getAllData()
       }
     });
   }
 
+  checkPin() {
+    this.modalService.openPinWithCanModalForReader(this.readerId,this.canCode);
+  }
 
-  submitPin(pincode) {
-    this.needPin = false;
-    this.getAllData(pincode);
+  handlePinCheckResult(pinCheck) {
+    this.pinStatus = this.cardService.determinePinModalResult(pinCheck, 'luxeid');
+  }
+
+  resetPin() {
+    this.modalService.openResetPinModalForReader(this.readerId, 'Reset pin', this.canCode);
+  }
+
+  unblockPin() {
+    this.modalService.openUnblockPinModalForReader(this.readerId, 'Unblock pin' , this.canCode);
+  }
+
+  changePin() {
+    this.modalService.openChangePinModalForReader(this.readerId, 'Change pin',this.canCode);
+  }
+
+  submitCan(canCode) {
+    this.readingData = true;
+    this.needCan = false;
+    this.canCode = canCode;
+
+    this.getAllData();
   }
 
   downloadSummary() {
@@ -64,12 +96,34 @@ export class LuxVizComponent implements OnInit {
     this.certData = !this.certData;
   }
 
-  getAllData(pin) {
-    const comp = this;
+  refreshPinTryCounter() {
+    this.pinCounterAdmin = null;
+    this.pinCounterUser = null;
+    this.getPinTryCounter();
+  }
 
-    this.readingData = true;
-    comp.Connector.plugin('luxeid', 'allData', [comp.readerId, pin]).then(res => {
-      comp.pinStatus = 'valid';
+  getPinTryCounter() {
+    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.canCode],[{"pin_reference" : 'user'}]).then(res => {
+      this.error = null;
+      this.pinCounterUser = res.data;
+    }, error => {
+      this.setError(error.description)
+    })
+    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.canCode],[{"pin_reference" : 'admin'}]).then(res => {
+      this.error = null;
+      this.pinCounterAdmin = res.data;
+    }, error => {
+      this.setError(error.description)
+    })
+  }
+
+  getAllData() {
+    const comp = this;
+    comp.Connector.plugin('luxeid', 'allData', [comp.readerId, comp.canCode]).then(res => {
+      this.readingData = false;
+      this.error = null;
+      this.getPinTryCounter();
+
       comp.biometricData = res.data.biometric;
       comp.signatureObject = res.data.signature_object;
       comp.picData = res.data.picture;
@@ -109,6 +163,15 @@ export class LuxVizComponent implements OnInit {
       };
       comp.validationArray = [ comp.Connector.ocv('validateCertificateChain', [validationReq1]),
         comp.Connector.ocv('validateCertificateChain', [validationReq2]) ];
+    }, err => {
+      this.setError(err.description)
     });
+  }
+
+
+  private setError(description:string) {
+    this.error = description;
+    this.readingData = false;
+    this.needCan = true;
   }
 }

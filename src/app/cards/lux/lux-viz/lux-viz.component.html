@@ -1,18 +1,22 @@
 <div id="lux-viz" class="clearfix top-info">
 
-  <div class="pin-required text-center" *ngIf="needPin">
+  <div *ngIf="error" class="alert alert-danger">
+    <strong>Error!</strong> {{error}}
+  </div>
+
+  <div class="pin-required text-center" *ngIf="needCan">
     <p class="info-text" i18n="@@accessToLuxRestricted">
-      Access to the Luxembourg eID card is secured with a PIN code.<br>Please provide your PIN to continue.
+      Access to the Luxembourg eID card is secured with a CAN code.<br>Please provide your CAN to continue.
     </p>
 
-    <div class="text-center waiting-for-pin" *ngIf="pinpad">
+    <div class="text-center waiting-for-pin" *ngIf="readingData">
       <p class="spinner"><i class="fa fa-4x fa-spinner fa-pulse"></i></p>
       <p class="spinner-text text-thin" i18n="@@waitingForReaderResponse">Waiting for response from reader...</p>
-      <h3 class="text-primary text-thin" i18n="@@userReaderPinpad">Use your reader's pinpad to enter the PIN code.</h3>
+      <h3 class="text-primary text-thin" i18n="@@userReaderPinpad">Use your reader's pinpad to enter the CAN code.</h3>
     </div>
 
     <div class="pinpad" *ngIf="!pinpad">
-      <app-rmc-keypad (onSubmit)="submitPin($event)"></app-rmc-keypad>
+      <app-rmc-keypad title="Enter CAN code" (onSubmit)="submitCan($event)"></app-rmc-keypad>
     </div>
   </div>
 
@@ -22,16 +26,39 @@
   </div>
 
 
-  <div *ngIf="!needPin && !readingData">
+  <div *ngIf="!readingData && !needCan">
     <div class="status-wrapper">
       <app-certificate-status [cardType]="'luxeid'" [validationPromises]="validationArray"></app-certificate-status>
-      <app-lux-pin-check-status [status]="pinStatus" [maxTries]="5" [pinCheckFunc]="checkPin"></app-lux-pin-check-status>
+      <!--<app-lux-pin-check-status [status]="pinStatus" [maxTries]="5" (onPinCheck)="checkPin()"></app-lux-pin-check-status>-->
+      <app-pin-check-status [status]="pinStatus" [maxTries]="5" (onPinCheck)="checkPin()"></app-pin-check-status>
     </div>
 
     <app-lux-card [biometricData]="biometricData" [picData]="pic" [signatureData]="signature"></app-lux-card>
 
     <div class="print-button">
       <span class="btn btn-lg btn-primary btn-summary-download" (click)="downloadSummary()" i18n="@@printSummary">Print the content of my card</span>
+    </div>
+
+    <div class="print-button">
+      <span class="btn btn-lg btn-primary btn-summary-download" (click)="changePin($event)">Change pin</span>
+    </div>
+
+    <div class="print-button">
+      <span class="btn btn-lg btn-primary btn-summary-download" (click)="resetPin()">Reset pin</span>
+    </div>
+
+    <div class="print-button">
+      <span class="btn btn-lg btn-primary btn-summary-download" (click)="unblockPin()">Unblock pin</span>
+    </div>
+
+    <div class="pin-puk-retries col-sm-12">
+      <span class="size-h3 text-primary">PUK and PIN tries remaining</span>
+      <div *ngIf="pinCounterUser && pinCounterAdmin">
+        <p>PUK tries remaining: {{pinCounterAdmin}}</p>
+        <p>PIN tries remaining: {{pinCounterUser}}</p>
+        <span class="btn btn-lg btn-primary" (click)="refreshPinTryCounter()">Refresh</span>
+      </div>
+      <p *ngIf="!pinCounterUser && !pinCounterAdmin" class="spinner"><i class="fa fa-4x fa-spinner fa-pulse"></i></p>
     </div>
 
     <div class="certificates-toggle col-sm-12">

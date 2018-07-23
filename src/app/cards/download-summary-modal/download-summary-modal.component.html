@@ -47,7 +47,7 @@
     </li>
     <li *ngIf="!pinpad && enterPin">
       <div class="pinpad">
-        <app-rmc-keypad (onSubmit)="submitPin($event)" (onCancel)="cancel()"></app-rmc-keypad>
+        <app-rmc-keypad (onSubmit)="submitPin($event)" title="Enter PIN code" (onCancel)="cancel()"></app-rmc-keypad>
       </div>
     </li>
     <li class="step" [ngClass]="{ 'active': currentStep === 3, 'completed': currentStep > 3 }">
