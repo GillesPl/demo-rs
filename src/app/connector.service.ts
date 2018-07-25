@@ -149,6 +149,7 @@ export class Connector {
       return new this.GCLLib.GCLConfig({
         gwJwt: res.token,
         gwOrProxyUrl: environment.gwOrProxyUrl,
+        dsContextPath: environment.dsContextPath,
         gclUrl: environment.gclUrl,
         ocvContextPath: environment.ocvContextPath,
         implicitDownload: environment.implicitDownload,
