@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import {EventService} from './event.service';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import {GCLClient, GCLConfig} from 'trust1connector';
 
 @Injectable()
 export class Connector {
 
   constructor(private http: HttpClient, private eventService: EventService) {}
 
-  private GCLLib = window['GCLLib'];
   private connector;
   private consent: Promise<any>;
 
@@ -124,7 +124,7 @@ export class Connector {
   // Initialize the T1C connector with some custom config
   init(gclConfig) {
     const service = this;
-    service.connector = this.GCLLib.GCLClient.initialize(gclConfig).then(client => {
+    service.connector = GCLClient.initialize(gclConfig).then(client => {
       service.connector = client;
       return Promise.resolve(service.connector);
     }, err => {
@@ -143,10 +143,9 @@ export class Connector {
     const pkcs11 = JSON.parse(localStorage.getItem('rmc-pkcs11-config'));
     const svc = this;
     return svc.getJWt().toPromise().then((res: { token: string }) => {
-      let optConfig = new this.GCLLib.GCLConfig();
-      optConfig.agentPort = agentPort;
+      
       // generate config
-      return new this.GCLLib.GCLConfig({
+      return new GCLConfig({
         gwJwt: res.token,
         gwOrProxyUrl: environment.gwOrProxyUrl,
         dsContextPath: environment.dsContextPath,

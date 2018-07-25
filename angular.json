@@ -25,9 +25,6 @@
             "styles": [
               "./node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
               "src/styles.less"
-            ],
-            "scripts": [
-              "./node_modules/trust1connector/dist/GCLLib.js"
             ]
           },
           "configurations": {
