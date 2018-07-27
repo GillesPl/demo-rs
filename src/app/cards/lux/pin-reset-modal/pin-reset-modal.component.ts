@@ -31,7 +31,6 @@ export class PinResetModalComponent implements OnInit {
   }
 
   resetPin() {
-    console.log(this.pukcode,this.newPincode,this.readerId);
     let body = new LuxPinResetData(false,false,this.pukcode,this.newPincode);
     this.Connector.plugin('luxeid', 'pinReset', [this.readerId, this.cancode],[body]).then(res => {
       // success notification

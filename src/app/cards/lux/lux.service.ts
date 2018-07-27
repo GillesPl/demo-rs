@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { CheckDigitService } from '../check-digit.service';
 import { ApiService } from '../../api.service';
 import { environment } from '../../../environments/environment';
+import {Observable} from 'rxjs/Rx';
+import {reject} from 'q';
 
 @Injectable()
 export class LuxService {
@@ -64,56 +66,20 @@ export class LuxService {
     return this.http.post('api/cards/lux/xmltosign', undefined).toPromise();
   }
 
-  generateSummaryToSign(readerId, pin, cancode) {
-    const service = this;
-    return this.Connector.plugin('luxeid', 'allData', [readerId, cancode]).then(results => {
-      const conversions = [];
-      conversions.push(service.API.convertJPEG2000toJPEG(results.data.picture.image));
-
-      if (!_.isEmpty(results.data.signature_image) && !_.isEmpty(results.data.signature_image.image)) {
-        conversions.push(service.API.convertJPEG2000toJPEG(results.data.signature_image.image));
+  generateSummaryToSign(readerId, pin, pic, signature) : Promise<any> {
+    let self = this;
+    const filter = ["biometric","authentication-certificate", "non_repudiation_certificate", "root_certificates"];
+    return this.Connector.plugin('luxeid', 'allData', [readerId, pin, "Pin", filter]).then(res => {
+      let data;
+      if (signature) {
+        data = self.prepareSummaryData(res.data.biometric, pic, signature);
       }
-
-      conversions[0].subscribe(pic1 => {
-        if (conversions[1]) {
-          conversions[1].subscribe(pic2 => {
-            let data = service.prepareSummaryData(results.data.biometric, pic1.base64Pic, pic2.base64Pic);
-            console.log('generatesummtosign2', data);
-            return service.http.post('api/cards/lux/summarytosign', data).toPromise();
-          })
-        }
-        else {
-          let data = service.prepareSummaryData(results.data.biometric, pic1.base64Pic, null);
-          console.log('generatesummtosign1', data)
-          return service.http.post('api/cards/lux/summarytosign', data).toPromise();
-        }
-      })
-
-      // Promise.all(conversions).then(converted => {
-      //   let data;
-      //   if (converted.length === 2) {
-      //     converted[0].subscribe(pic1 => {
-      //       converted[1].subscribe(pic2 => {
-      //         data = service.prepareSummaryData(results.data.biometric, pic1.base64Pic, pic2.base64Pic);
-      //         console.log('generatesummtosign', data);
-      //         return service.http.post('api/cards/lux/summarytosign', data).toPromise();
-      //       });
-      //     });
-      //   } else {
-      //     converted[0].subscribe(pic => {
-      //       data = service.prepareSummaryData(results.data.biometric, pic.base64Pic, null);
-      //       console.log('generatesummtosign', data)
-      //       return service.http.post('api/cards/lux/summarytosign', data).toPromise();
-      //     });
-      //   }
-      //
-      // }, error => {
-      //   // TODO handle conversion failure
-      //   console.error(error);
-      // });
-
-    }, error => {
-      console.log(error)
+      else{
+        data = self.prepareSummaryData(res.data.biometric, pic, null);
+      }
+      return self.http.post('api/cards/lux/summarytosign', data).toPromise();
+    }, err => {
+      console.log(err)
     });
   }
 

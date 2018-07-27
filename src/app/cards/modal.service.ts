@@ -102,7 +102,7 @@ export class ModalService {
     });
   }
 
-  openSummaryPaceModalForReader(readerId, needPinToGenerate, util, cancode) {
+  openSummaryPaceModalForReader(readerId, needPinToGenerate, util, code, pic, signature) {
     const svc = this;
     svc.Connector.core('reader', [readerId]).then(res => {
       const initialState = {
@@ -110,7 +110,9 @@ export class ModalService {
         needPinToGenerate,
         pinpad: res.data.pinpad,
         util,
-        cancode
+        code,
+        pic,
+        signature
       };
       const config = {
         backdrop: true,

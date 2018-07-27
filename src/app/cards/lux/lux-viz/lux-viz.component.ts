@@ -17,9 +17,9 @@ export class LuxVizComponent implements OnInit {
 
   certData;
   pinpad: boolean;
-  needCan: boolean = true;
+  needPin: boolean = true;
   readingData: boolean = false;
-  canCode: string;
+  pinCode: string;
   pincode;
   pinStatus;
   validationArray;
@@ -38,6 +38,7 @@ export class LuxVizComponent implements OnInit {
   nonRepCert;
   rootCerts;
   loadingCerts;
+
 
   constructor(private API: ApiService, private Connector: Connector,
               private lux: LuxService, private modalService: ModalService,
@@ -61,7 +62,7 @@ export class LuxVizComponent implements OnInit {
   }
 
   checkPin() {
-    this.modalService.openPinWithCanModalForReader(this.readerId,this.canCode);
+    this.modalService.openPinWithCanModalForReader(this.readerId,this.pinCode);
   }
 
   handlePinCheckResult(pinCheck) {
@@ -69,27 +70,29 @@ export class LuxVizComponent implements OnInit {
   }
 
   resetPin() {
-    this.modalService.openResetPinModalForReader(this.readerId, 'Reset pin', this.canCode);
+    this.modalService.openResetPinModalForReader(this.readerId, 'Reset pin', this.pinCode);
   }
 
   unblockPin() {
-    this.modalService.openUnblockPinModalForReader(this.readerId, 'Unblock pin' , this.canCode);
+    this.modalService.openUnblockPinModalForReader(this.readerId, 'Unblock pin' , this.pinCode);
   }
 
   changePin() {
-    this.modalService.openChangePinModalForReader(this.readerId, 'Change pin',this.canCode);
+    this.modalService.openChangePinModalForReader(this.readerId, 'Change pin',this.pinCode);
   }
 
-  submitCan(canCode) {
+  submitPin(pinCode) {
     this.readingData = true;
-    this.needCan = false;
-    this.canCode = canCode;
+    this.needPin = false;
+    this.pinCode = pinCode;
 
     this.getAllData();
   }
 
   downloadSummary() {
-    this.modalService.openSummaryPaceModalForReader(this.readerId, true, this.lux, this.canCode);
+    if (this.pic || this.signature) {
+      this.modalService.openSummaryPaceModalForReader(this.readerId, true, this.lux, this.pinCode, this.pic, this.signature);
+    }
   }
 
   toggleCerts() {
@@ -103,13 +106,13 @@ export class LuxVizComponent implements OnInit {
   }
 
   getPinTryCounter() {
-    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.canCode],[{"pin_reference" : 'user'}]).then(res => {
+    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.pinCode],[{"pin_reference" : 'user'}]).then(res => {
       this.error = null;
       this.pinCounterUser = res.data;
     }, error => {
       this.setError(error.description)
     })
-    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.canCode],[{"pin_reference" : 'admin'}]).then(res => {
+    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.pinCode],[{"pin_reference" : 'admin'}]).then(res => {
       this.error = null;
       this.pinCounterAdmin = res.data;
     }, error => {
@@ -119,7 +122,7 @@ export class LuxVizComponent implements OnInit {
 
   getAllData() {
     const comp = this;
-    comp.Connector.plugin('luxeid', 'allData', [comp.readerId, comp.canCode]).then(res => {
+    comp.Connector.plugin('luxeid', 'allData', [comp.readerId, comp.pinCode]).then(res => {
       this.readingData = false;
       this.error = null;
       this.getPinTryCounter();
@@ -173,13 +176,13 @@ export class LuxVizComponent implements OnInit {
         comp.Connector.ocv('validateCertificateChain', [validationReq2]) ];
     }, err => {
       this.setError(err.description)
-    }).then(value => console.log(value));
+    });
   }
 
 
   private setError(description:string) {
     this.error = description;
     this.readingData = false;
-    this.needCan = true;
+    this.needPin = true;
   }
 }

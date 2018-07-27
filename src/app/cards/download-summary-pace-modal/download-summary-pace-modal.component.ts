@@ -18,11 +18,12 @@ export class DownloadSummaryPaceModalComponent implements OnInit {
   needPinToGenerate: boolean;
   generatedFile;
   enterPin: boolean;
-
+  pic;
+  signature;
   // utility to use to generate summary
   util;
 
-  cancode;
+  code;
   // text statuses
   generateText;
   pinText;
@@ -61,13 +62,13 @@ export class DownloadSummaryPaceModalComponent implements OnInit {
     });
   }
 
-  async submitPin(pinCode) {
+  submitPin(pinCode) {
     const comp = this;
     comp.enterPin = false;
     if (comp.needPinToGenerate) {
       // still need to generate the summary
       comp.generateText = 'ongoing';
-      await comp.util.generateSummaryToSign(comp.readerId, pinCode, this.cancode).then(res => {
+      comp.util.generateSummaryToSign(comp.readerId, pinCode,this.pic, this.signature).then(res => {
         console.log(res);
         comp.generatedFile = res;
         comp.currentStep = 2;
