@@ -15,6 +15,11 @@
       <h3 class="text-primary text-thin" i18n="@@userReaderPinpad">Use your reader's pinpad to enter the PIN code.</h3>
     </div>
 
+    <div>
+      <!-- switcher -->
+      <app-toggle (toggled)="usePin"></app-toggle>
+    </div>
+
     <div class="pinpad" *ngIf="!pinpad">
       <app-rmc-keypad title="Enter PIN code" (onSubmit)="submitPin($event)"></app-rmc-keypad>
     </div>

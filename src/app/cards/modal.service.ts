@@ -145,7 +145,7 @@ export class ModalService {
     });
   }
 
-  openChangePinModalForReader(readerId, title, cancode) {
+  openChangePinModalForReader(readerId, title, cancode, pinType) {
     const svc = this;
     svc.angulartics2.eventTrack.next({
       action: 'click',
@@ -157,7 +157,8 @@ export class ModalService {
         readerId,
         pinpad: res.data.pinpad,
         title,
-        cancode
+        cancode,
+        pinType
       };
       const config = {
         backdrop: true,
@@ -168,7 +169,7 @@ export class ModalService {
     });
   }
 
-  openResetPinModalForReader(readerId, title, cancode) {
+  openResetPinModalForReader(readerId, title, cancode, pinType) {
     const svc = this;
     svc.angulartics2.eventTrack.next({
       action: 'click',
@@ -180,7 +181,8 @@ export class ModalService {
         readerId,
         pinpad: res.data.pinpad,
         title,
-        cancode
+        cancode,
+        pinType
       };
       const config = {
         backdrop: true,
@@ -191,7 +193,7 @@ export class ModalService {
     });
   }
 
-  openUnblockPinModalForReader(readerId, title, cancode) {
+  openUnblockPinModalForReader(readerId, title, cancode, pinType) {
     const svc = this;
     svc.angulartics2.eventTrack.next({
       action: 'click',
@@ -203,7 +205,8 @@ export class ModalService {
         readerId,
         pinpad: res.data.pinpad,
         title,
-        cancode
+        cancode,
+        pinType
       };
       const config = {
         backdrop: true,

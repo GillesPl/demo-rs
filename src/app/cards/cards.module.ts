@@ -66,6 +66,8 @@ import {PinResetModalComponent} from './lux/pin-reset-modal/pin-reset-modal.comp
 import {PinUnblockModalComponent} from './lux/pin-unblock-modal/pin-unblock-modal.component';
 import {PinCheckWithCanModalComponent} from './pin-check-with-can-modal/pin-check-with-can-modal.component';
 import {DownloadSummaryPaceModalComponent} from './download-summary-pace-modal/download-summary-pace-modal.component';
+import {ToggleComponent} from '../toggle/toggle.component';
+import {SwitchComponent} from '../switch/switch.component';
 
 
 @NgModule({
@@ -81,6 +83,8 @@ import {DownloadSummaryPaceModalComponent} from './download-summary-pace-modal/d
     TooltipModule.forRoot(),
   ],
   declarations: [
+    SwitchComponent,
+    ToggleComponent,
     BeidCardComponent,
     BeidVizComponent,
     CertificateStatusComponent,

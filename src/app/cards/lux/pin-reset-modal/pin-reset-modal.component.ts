@@ -18,6 +18,7 @@ export class PinResetModalComponent implements OnInit {
   error: boolean;
   title:string;
   cancode:string;
+  pinType: string
 
   constructor(public bsModalRef: BsModalRef, private Connector: Connector, private eventService: EventService) {
     this.eventService.startOver$.subscribe(() => this.cancel());
@@ -32,7 +33,7 @@ export class PinResetModalComponent implements OnInit {
 
   resetPin() {
     let body = new LuxPinResetData(false,false,this.pukcode,this.newPincode);
-    this.Connector.plugin('luxeid', 'pinReset', [this.readerId, this.cancode],[body]).then(res => {
+    this.Connector.plugin('luxeid', 'pinReset', [this.readerId, this.cancode, this.pinType],[body]).then(res => {
       // success notification
       this.bsModalRef.hide();
     }, err => {

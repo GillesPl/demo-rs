@@ -72,7 +72,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [
-              "../node_modules/trust1connector/dist/GCLLib.min.js"
+
             ],
             "styles": [
               "src/styles.scss"
