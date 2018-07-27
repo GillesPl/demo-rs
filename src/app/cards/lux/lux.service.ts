@@ -64,9 +64,9 @@ export class LuxService {
     return this.http.post('api/cards/lux/xmltosign', undefined).toPromise();
   }
 
-  generateSummaryToSign(readerId, pin) {
+  generateSummaryToSign(readerId, pin, cancode) {
     const service = this;
-    return this.Connector.plugin('luxeid', 'allData', [readerId, pin]).then(results => {
+    return this.Connector.plugin('luxeid', 'allData', [readerId, cancode]).then(results => {
       const conversions = [];
       conversions.push(service.API.convertJPEG2000toJPEG(results.data.picture.image));
 
@@ -74,17 +74,46 @@ export class LuxService {
         conversions.push(service.API.convertJPEG2000toJPEG(results.data.signature_image.image));
       }
 
-      return Promise.all(conversions).then(converted => {
-        let data;
-        if (converted.length === 2) {
-          data = service.prepareSummaryData(results.data.biometric, converted[0].data.base64Pic, converted[1].data.base64Pic);
-        } else {
-          data = service.prepareSummaryData(results.data.biometric, converted[0].data.base64Pic, null);
+      conversions[0].subscribe(pic1 => {
+        if (conversions[1]) {
+          conversions[1].subscribe(pic2 => {
+            let data = service.prepareSummaryData(results.data.biometric, pic1.base64Pic, pic2.base64Pic);
+            console.log('generatesummtosign2', data);
+            return service.http.post('api/cards/lux/summarytosign', data).toPromise();
+          })
         }
-        return service.http.post('api/cards/lux/summarytosign', data).toPromise();
-      }, error => {
-        // TODO handle conversion failure
-      });
+        else {
+          let data = service.prepareSummaryData(results.data.biometric, pic1.base64Pic, null);
+          console.log('generatesummtosign1', data)
+          return service.http.post('api/cards/lux/summarytosign', data).toPromise();
+        }
+      })
+
+      // Promise.all(conversions).then(converted => {
+      //   let data;
+      //   if (converted.length === 2) {
+      //     converted[0].subscribe(pic1 => {
+      //       converted[1].subscribe(pic2 => {
+      //         data = service.prepareSummaryData(results.data.biometric, pic1.base64Pic, pic2.base64Pic);
+      //         console.log('generatesummtosign', data);
+      //         return service.http.post('api/cards/lux/summarytosign', data).toPromise();
+      //       });
+      //     });
+      //   } else {
+      //     converted[0].subscribe(pic => {
+      //       data = service.prepareSummaryData(results.data.biometric, pic.base64Pic, null);
+      //       console.log('generatesummtosign', data)
+      //       return service.http.post('api/cards/lux/summarytosign', data).toPromise();
+      //     });
+      //   }
+      //
+      // }, error => {
+      //   // TODO handle conversion failure
+      //   console.error(error);
+      // });
+
+    }, error => {
+      console.log(error)
     });
   }
 

@@ -10,6 +10,7 @@ import {PinChangeModalComponent} from './lux/pin-change-modal/pin-change-modal.c
 import {PinUnblockModalComponent} from './lux/pin-unblock-modal/pin-unblock-modal.component';
 import {PinResetModalComponent} from './lux/pin-reset-modal/pin-reset-modal.component';
 import {PinCheckWithCanModalComponent} from './pin-check-with-can-modal/pin-check-with-can-modal.component';
+import {DownloadSummaryPaceModalComponent} from './download-summary-pace-modal/download-summary-pace-modal.component';
 
 @Injectable()
 export class ModalService {
@@ -96,6 +97,30 @@ export class ModalService {
         initialState
       };
       svc.modalService.show(DownloadSummaryModalComponent, config);
+    }, error => {
+      console.error(error)
+    });
+  }
+
+  openSummaryPaceModalForReader(readerId, needPinToGenerate, util, cancode) {
+    const svc = this;
+    svc.Connector.core('reader', [readerId]).then(res => {
+      const initialState = {
+        readerId,
+        needPinToGenerate,
+        pinpad: res.data.pinpad,
+        util,
+        cancode
+      };
+      const config = {
+        backdrop: true,
+        class: 'modal-lg',
+        ignoreBackdropClick: true,
+        initialState
+      };
+      svc.modalService.show(DownloadSummaryPaceModalComponent, config);
+    }, error => {
+      console.error(error)
     });
   }
 

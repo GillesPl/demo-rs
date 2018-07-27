@@ -89,7 +89,7 @@ export class LuxVizComponent implements OnInit {
   }
 
   downloadSummary() {
-    this.modalService.openSummaryModalForReader(this.readerId, true, this.lux);
+    this.modalService.openSummaryPaceModalForReader(this.readerId, true, this.lux, this.canCode);
   }
 
   toggleCerts() {
@@ -137,8 +137,16 @@ export class LuxVizComponent implements OnInit {
       }
 
       Promise.all(conversions).then(converted => {
-        comp.pic = converted[0].data.base64Pic;
-        if (!_.isEmpty(converted[1])) { comp.signature = converted[1].data.base64Pic; }
+        converted[0].subscribe(data => {
+          comp.pic = data.base64Pic
+        });
+        if (!_.isEmpty(converted[1])) {
+          converted[1].subscribe(data => {
+            comp.signature = data.base64Pic
+          });
+        }
+      }, err => {
+        console.error(err)
       });
 
       comp.authCert = res.data.authentication_certificate.base64;
@@ -165,7 +173,7 @@ export class LuxVizComponent implements OnInit {
         comp.Connector.ocv('validateCertificateChain', [validationReq2]) ];
     }, err => {
       this.setError(err.description)
-    });
+    }).then(value => console.log(value));
   }
 
 
