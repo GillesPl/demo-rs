@@ -17,7 +17,8 @@
 
     <div>
       <!-- switcher -->
-      <app-toggle (toggled)="usePin"></app-toggle>
+      Use CAN mode
+      <app-toggle (toggled)="checkUseCan($event)"></app-toggle>
     </div>
 
     <div class="pinpad" *ngIf="!pinpad">

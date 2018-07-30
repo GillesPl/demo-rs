@@ -17,7 +17,7 @@ export class PinUnblockModalComponent implements OnInit {
   result: string;
   error: boolean;
   title:string;
-  cancode:string;
+  code:string;
   pinType:string;
 
   constructor(public bsModalRef: BsModalRef, private Connector: Connector, private eventService: EventService) {
@@ -33,7 +33,7 @@ export class PinUnblockModalComponent implements OnInit {
 
   unblockPin(pukcode) {
     let body = new LuxPinUnblockData(false,true,pukcode);
-    this.Connector.plugin('luxeid', 'pinUnblock', [this.readerId, this.cancode, this.pinType],[body]).then(res => {
+    this.Connector.plugin('luxeid', 'pinUnblock', [this.readerId, this.code, this.pinType],[body]).then(res => {
       // success notification
       this.bsModalRef.hide();
     }, err => {

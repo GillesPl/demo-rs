@@ -22,7 +22,7 @@ export class LuxVizComponent implements OnInit {
   pinpad: boolean;
   needPin: boolean = true;
   readingData: boolean = false;
-  pinCode: string;
+  code: string;
   pincode;
   pinStatus;
   validationArray;
@@ -66,7 +66,7 @@ export class LuxVizComponent implements OnInit {
   }
 
   checkPin() {
-    this.modalService.openPinWithCanModalForReader(this.readerId,this.pinCode);
+    this.modalService.openPinWithCanModalForReader(this.readerId,this.code, this.pinType);
   }
 
   handlePinCheckResult(pinCheck) {
@@ -74,28 +74,28 @@ export class LuxVizComponent implements OnInit {
   }
 
   resetPin() {
-    this.modalService.openResetPinModalForReader(this.readerId, 'Reset pin', this.pinCode, this.pinType);
+    this.modalService.openResetPinModalForReader(this.readerId, 'Reset pin', this.code, this.pinType);
   }
 
   unblockPin() {
-    this.modalService.openUnblockPinModalForReader(this.readerId, 'Unblock pin' , this.pinCode, this.pinType);
+    this.modalService.openUnblockPinModalForReader(this.readerId, 'Unblock pin' , this.code, this.pinType);
   }
 
   changePin() {
-    this.modalService.openChangePinModalForReader(this.readerId, 'Change pin',this.pinCode, this.pinType);
+    this.modalService.openChangePinModalForReader(this.readerId, 'Change pin',this.code, this.pinType);
   }
 
   submitPin(pinCode) {
     this.readingData = true;
     this.needPin = false;
-    this.pinCode = pinCode;
+    this.code = pinCode;
 
     this.getAllData();
   }
 
   downloadSummary() {
     if (this.pic || this.signature) {
-      this.modalService.openSummaryPaceModalForReader(this.readerId, true, this.lux, this.pinCode, this.pic, this.signature);
+      this.modalService.openSummaryPaceModalForReader(this.readerId, true, this.lux, this.code, this.pic, this.signature);
     }
   }
 
@@ -110,14 +110,13 @@ export class LuxVizComponent implements OnInit {
   }
 
   getPinTryCounter() {
-    this.checkUsePin();
-    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.pinCode, this.pinType],[{"pin_reference" : 'user'}]).then(res => {
+    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.code, this.pinType],[{"pin_reference" : 'user'}]).then(res => {
       this.error = null;
       this.pinCounterUser = res.data;
     }, error => {
       this.setError(error.description)
     })
-    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.pinCode, this.pinType],[{"pin_reference" : 'admin'}]).then(res => {
+    this.Connector.plugin('luxeid', 'pinTryCounter',[this.readerId, this.code, this.pinType],[{"pin_reference" : 'admin'}]).then(res => {
       this.error = null;
       this.pinCounterAdmin = res.data;
     }, error => {
@@ -127,8 +126,7 @@ export class LuxVizComponent implements OnInit {
 
   getAllData() {
     const comp = this;
-    this.checkUsePin();
-    comp.Connector.plugin('luxeid', 'allData', [comp.readerId, comp.pinCode, this.pinType]).then(res => {
+    comp.Connector.plugin('luxeid', 'allData', [comp.readerId, comp.code, this.pinType]).then(res => {
       this.readingData = false;
       this.error = null;
       this.getPinTryCounter();
@@ -192,14 +190,13 @@ export class LuxVizComponent implements OnInit {
     this.needPin = true;
   }
 
-  private checkUsePin() {
-    console.log(this.usePin);
-    if (this.usePin) {
-      this.pinType = 'Pin';
-    }
-    else {
+  private checkUseCan(usecan) {
+    if (usecan) {
       this.pinType = 'Can';
     }
-    console.log(this.pinType);
+    else {
+      this.pinType = 'Pin';
+
+    }
   }
 }
