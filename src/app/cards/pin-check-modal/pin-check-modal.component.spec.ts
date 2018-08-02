@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PinCheckModalComponent } from './pin-check-modal.component';
 
-describe('PinCheckModalComponent', () => {
+describe('PinCheckWithCanModalComponent', () => {
   let component: PinCheckModalComponent;
   let fixture: ComponentFixture<PinCheckModalComponent>;
 

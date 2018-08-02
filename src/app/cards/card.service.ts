@@ -30,6 +30,8 @@ export class CardService {
             this.angulartics2.eventTrack.next({ action: 'pin-blocked',
               properties: { category: cardType, label: 'Card blocked; too many incorrect attempts'} });
             return 'blocked';
+          case 106:
+            return 'error';
           case 109:
             // cancelled on reader
             return 'cancelled';

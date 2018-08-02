@@ -2357,7 +2357,7 @@ chokidar@^2.0.0, chokidar@^2.0.2, chokidar@^2.0.3:
 
 chownr@^1.0.1:
   version "1.0.1"
-  resolved "https://repo.t1t.be/repository/npm-group/chownr/-/chownr-1.0.1.tgz#e2a75042a9551908bebd25b8523d5f9769d79181"
+  resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.0.1.tgz#e2a75042a9551908bebd25b8523d5f9769d79181"
 
 chrome-trace-event@^0.1.1:
   version "0.1.3"
@@ -2655,9 +2655,17 @@ content-type@~1.0.4:
   version "1.0.4"
   resolved "https://repo.t1t.be/repository/npm-group/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
 
+convert-hex@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/convert-hex/-/convert-hex-0.1.0.tgz#08c04568922c27776b8a2e81a95d393362ea0b65"
+
 convert-source-map@^1.1.1, convert-source-map@^1.5.0:
   version "1.5.1"
   resolved "https://repo.t1t.be/repository/npm-group/convert-source-map/-/convert-source-map-1.5.1.tgz#b8278097b9bc229365de5c62cf5fcaed8b5599e5"
+
+convert-string@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/convert-string/-/convert-string-0.1.0.tgz#79ce41a9bb0d03bcf72cdc6a8f3c56fbbc64410a"
 
 cookie-signature@1.0.6:
   version "1.0.6"
@@ -4958,7 +4966,7 @@ iconv-lite@0.4.19:
 
 iconv-lite@0.4.23:
   version "0.4.23"
-  resolved "https://repo.t1t.be/repository/npm-group/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
@@ -5912,7 +5920,7 @@ lodash.chunk@^4.2.0:
 
 lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0:
   version "4.5.0"
-  resolved "https://repo.t1t.be/repository/npm-group/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
 
 lodash.escape@^3.0.0:
   version "3.2.0"
@@ -6131,7 +6139,7 @@ lru-cache@^4.0.1, lru-cache@^4.1.2:
 
 lru-cache@^4.1.1:
   version "4.1.3"
-  resolved "https://repo.t1t.be/repository/npm-group/lru-cache/-/lru-cache-4.1.3.tgz#a1175cf3496dfc8436c156c334b4955992bce69c"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.3.tgz#a1175cf3496dfc8436c156c334b4955992bce69c"
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
@@ -6642,7 +6650,7 @@ node-forge@0.7.5, node-forge@^0.7.1, node-forge@^0.7.4:
 
 node-gyp@^3.3.1:
   version "3.7.0"
-  resolved "https://repo.t1t.be/repository/npm-group/node-gyp/-/node-gyp-3.7.0.tgz#789478e8f6c45e277aa014f3e28f958f286f9203"
+  resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-3.7.0.tgz#789478e8f6c45e277aa014f3e28f958f286f9203"
   dependencies:
     fstream "^1.0.0"
     glob "^7.0.3"
@@ -6914,7 +6922,7 @@ object-assign@^3.0.0:
   version "3.0.0"
   resolved "https://repo.t1t.be/repository/npm-group/object-assign/-/object-assign-3.0.0.tgz#9bedd5ca0897949bca47e7ff408062d549f587f2"
 
-object-assign@^4, object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0:
+object-assign@^4, object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://repo.t1t.be/repository/npm-group/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -8204,7 +8212,7 @@ request@2.83.0:
 
 request@^2.0.0:
   version "2.87.0"
-  resolved "https://repo.t1t.be/repository/npm-group/request/-/request-2.87.0.tgz#32f00235cd08d482b4d0d68db93a829c0ed5756e"
+  resolved "https://registry.yarnpkg.com/request/-/request-2.87.0.tgz#32f00235cd08d482b4d0d68db93a829c0ed5756e"
   dependencies:
     aws-sign2 "~0.7.0"
     aws4 "^1.6.0"
@@ -8628,6 +8636,13 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
+sha256@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/sha256/-/sha256-0.2.0.tgz#73a0b418daab7035bff86e8491e363412fc2ab05"
+  dependencies:
+    convert-hex "~0.1.0"
+    convert-string "~0.1.0"
+
 shallow-clone@^1.0.0:
   version "1.0.0"
   resolved "https://repo.t1t.be/repository/npm-group/shallow-clone/-/shallow-clone-1.0.0.tgz#4480cd06e882ef68b2ad88a3ea54832e2c48b571"
@@ -8796,7 +8811,7 @@ sockjs@0.3.19:
 
 socks-proxy-agent@^3.0.0:
   version "3.0.1"
-  resolved "https://repo.t1t.be/repository/npm-group/socks-proxy-agent/-/socks-proxy-agent-3.0.1.tgz#2eae7cf8e2a82d34565761539a7f9718c5617659"
+  resolved "https://registry.yarnpkg.com/socks-proxy-agent/-/socks-proxy-agent-3.0.1.tgz#2eae7cf8e2a82d34565761539a7f9718c5617659"
   dependencies:
     agent-base "^4.1.0"
     socks "^1.1.10"
@@ -9506,9 +9521,9 @@ trim-right@^1.0.1:
   dependencies:
     glob "^6.0.4"
 
-trust1connector@2.1.6:
-  version "2.1.6"
-  resolved "https://repo.t1t.be/repository/npm-group/trust1connector/-/trust1connector-2.1.6.tgz#2282dadcb57a83319abd1bc3df6db67b940cd3c6"
+trust1connector@2.1.8:
+  version "2.1.8"
+  resolved "https://registry.npmjs.org/trust1connector/-/trust1connector-2.1.8.tgz#6660389ad380da5b75b372d595b334119800d965"
   dependencies:
     Base64 "1.0.1"
     axios "0.15.3"
@@ -9523,11 +9538,14 @@ trust1connector@2.1.6:
     lodash "4.17.4"
     mocha "2.5.3"
     moment "^2.20.1"
+    object-assign "^4.1.1"
     path "0.12.7"
     pkijs "2.0.56"
     platform "1.3.1"
     semver "^5.4.1"
+    sha256 "^0.2.0"
     store2 "^2.7.0"
+    uuid4 "^1.0.0"
 
 try-require@^1.2.1:
   version "1.2.1"
@@ -9882,6 +9900,10 @@ utila@~0.4:
 utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://repo.t1t.be/repository/npm-group/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
+
+uuid4@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/uuid4/-/uuid4-1.0.0.tgz#813aaeaf11ea2f68909c5ad57d894f83202d6720"
 
 uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
   version "3.2.1"
@@ -10258,7 +10280,7 @@ wordwrap@~0.0.2:
 
 worker-farm@^1.5.2:
   version "1.6.0"
-  resolved "https://repo.t1t.be/repository/npm-group/worker-farm/-/worker-farm-1.6.0.tgz#aecc405976fab5a95526180846f0dba288f3a4a0"
+  resolved "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.6.0.tgz#aecc405976fab5a95526180846f0dba288f3a4a0"
   dependencies:
     errno "~0.1.7"
 

@@ -102,9 +102,10 @@ export class AppComponent implements OnInit {
       }, err => {
         if (err.code === '903') {
           this.onDownloadError();
-        } else {
+        }
+        else {
           // assume gcl unavailable
-          console.log('No GCL installation found');
+          console.log(err.description);
           this.gclChecked = true;
           this.gclAvailable = false;
           this.promptDownload();
@@ -145,7 +146,7 @@ export class AppComponent implements OnInit {
       // get agent filtering params
       const params = comp.Citrix.userSelectionParams();
       // get filtered agent list
-      comp.Connector.plugin('agent', 'get', [], [params]).then(res => {
+      comp.Connector.plugin('agent', 'get', [], [params['username']]).then(res => {
         // check if matching agents was found - we check to have 1 agent, we assume no multiple agents can be used for one single user.
         if (res.data && typeof res.data === 'object' && res.data && _.isArray(res.data) && res.data.length === 1) {
           // Save the agent and reinitialize the connector with agent port!

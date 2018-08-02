@@ -1111,7 +1111,7 @@
       </trans-unit>
       <trans-unit id="accessToLuxRestricted" datatype="html">
         <source>
-      Access to the Luxembourg eID card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb"/>Please provide your PIN to continue.
+      Access to the Luxembourg eID card is secured with a CAN code.<x id="LINE_BREAK" ctype="lb"/>Please provide your CAN to continue.
     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context>

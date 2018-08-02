@@ -61,6 +61,13 @@ import { SlotIconComponent } from './pkcs11/slot-icon/slot-icon.component';
 import { SlotVizComponent } from './pkcs11/slot-viz/slot-viz.component';
 import { Pkcs11VizComponent } from './pkcs11/pkcs11-viz/pkcs11-viz.component';
 import { CertBlockComponent } from './pkcs11/cert-block/cert-block.component';
+import { PinChangeModalComponent } from './lux/pin-change-modal/pin-change-modal.component';
+import {PinResetModalComponent} from './lux/pin-reset-modal/pin-reset-modal.component';
+import {PinUnblockModalComponent} from './lux/pin-unblock-modal/pin-unblock-modal.component';
+import {PinCheckWithCanModalComponent} from './pin-check-with-can-modal/pin-check-with-can-modal.component';
+import {DownloadSummaryPaceModalComponent} from './download-summary-pace-modal/download-summary-pace-modal.component';
+import {ToggleComponent} from '../toggle/toggle.component';
+import {SwitchComponent} from '../switch/switch.component';
 
 
 @NgModule({
@@ -76,6 +83,8 @@ import { CertBlockComponent } from './pkcs11/cert-block/cert-block.component';
     TooltipModule.forRoot(),
   ],
   declarations: [
+    SwitchComponent,
+    ToggleComponent,
     BeidCardComponent,
     BeidVizComponent,
     CertificateStatusComponent,
@@ -112,12 +121,17 @@ import { CertBlockComponent } from './pkcs11/cert-block/cert-block.component';
     PinCheckModalComponent,
     PteidAddressPinModalComponent,
     DownloadSummaryModalComponent,
+    DownloadSummaryPaceModalComponent,
     DownloadXmlModalComponent,
     ChallengeModalComponent,
     SlotIconComponent,
     SlotVizComponent,
     Pkcs11VizComponent,
-    CertBlockComponent
+    CertBlockComponent,
+    PinChangeModalComponent,
+    PinResetModalComponent,
+    PinUnblockModalComponent,
+    PinCheckWithCanModalComponent
   ],
   providers: [
     BeidService,
@@ -145,7 +159,6 @@ import { CertBlockComponent } from './pkcs11/cert-block/cert-block.component';
     Pkcs11VizComponent,
     PteidVizComponent,
   ],
-  entryComponents: [ ChallengeModalComponent, PinCheckModalComponent,
-    DownloadSummaryModalComponent, DownloadXmlModalComponent ]
+  entryComponents: [ ChallengeModalComponent, PinCheckModalComponent, DownloadSummaryModalComponent, DownloadSummaryPaceModalComponent, DownloadXmlModalComponent, PinChangeModalComponent, PinResetModalComponent, PinUnblockModalComponent, PinCheckWithCanModalComponent ]
 })
 export class CardsModule { }
