@@ -11,10 +11,12 @@ import { EventService } from '../../event.service';
 export class PinCheckWithCanModalComponent implements OnInit {
   pinpad: boolean;
   pincode;
-  canCode;
+  code;
   readerId;
   result: string;
   error: boolean;
+
+  pinType: string;
 
   constructor(public bsModalRef: BsModalRef, private Connector: Connector, private eventService: EventService) {
     this.eventService.startOver$.subscribe(() => this.cancel());
@@ -50,7 +52,7 @@ export class PinCheckWithCanModalComponent implements OnInit {
 
   submitPin(pincode) {
     const comp = this;
-    this.Connector.plugin('luxeid', 'verifyPin',[this.readerId, this.canCode],[{"pin" : pincode}]).then(res => {
+    this.Connector.plugin('luxeid', 'verifyPin',[this.readerId, this.code, this.pinType],[{"pin" : pincode}]).then(res => {
       PinCheckWithCanModalComponent.handleVerificationSuccess(comp);
     }, err => {
       PinCheckWithCanModalComponent.handleVerificationError(err, comp);

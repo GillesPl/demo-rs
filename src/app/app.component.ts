@@ -102,9 +102,10 @@ export class AppComponent implements OnInit {
       }, err => {
         if (err.code === '903') {
           this.onDownloadError();
-        } else {
+        }
+        else {
           // assume gcl unavailable
-          console.log('No GCL installation found');
+          console.log(err.description);
           this.gclChecked = true;
           this.gclAvailable = false;
           this.promptDownload();

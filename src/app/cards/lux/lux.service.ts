@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { CheckDigitService } from '../check-digit.service';
 import { ApiService } from '../../api.service';
 import { environment } from '../../../environments/environment';
+import {Observable} from 'rxjs/Rx';
+import {reject} from 'q';
 
 @Injectable()
 export class LuxService {
@@ -64,27 +66,20 @@ export class LuxService {
     return this.http.post('api/cards/lux/xmltosign', undefined).toPromise();
   }
 
-  generateSummaryToSign(readerId, pin) {
-    const service = this;
-    return this.Connector.plugin('luxeid', 'allData', [readerId, pin]).then(results => {
-      const conversions = [];
-      conversions.push(service.API.convertJPEG2000toJPEG(results.data.picture.image));
-
-      if (!_.isEmpty(results.data.signature_image) && !_.isEmpty(results.data.signature_image.image)) {
-        conversions.push(service.API.convertJPEG2000toJPEG(results.data.signature_image.image));
+  generateSummaryToSign(readerId, pin, pic, signature) : Promise<any> {
+    let self = this;
+    const filter = ["biometric","authentication-certificate", "non_repudiation_certificate", "root_certificates"];
+    return this.Connector.plugin('luxeid', 'allData', [readerId, pin, "Pin", filter]).then(res => {
+      let data;
+      if (signature) {
+        data = self.prepareSummaryData(res.data.biometric, pic, signature);
       }
-
-      return Promise.all(conversions).then(converted => {
-        let data;
-        if (converted.length === 2) {
-          data = service.prepareSummaryData(results.data.biometric, converted[0].data.base64Pic, converted[1].data.base64Pic);
-        } else {
-          data = service.prepareSummaryData(results.data.biometric, converted[0].data.base64Pic, null);
-        }
-        return service.http.post('api/cards/lux/summarytosign', data).toPromise();
-      }, error => {
-        // TODO handle conversion failure
-      });
+      else{
+        data = self.prepareSummaryData(res.data.biometric, pic, null);
+      }
+      return self.http.post('api/cards/lux/summarytosign', data).toPromise();
+    }, err => {
+      console.log(err)
     });
   }
 

@@ -13,12 +13,14 @@ export class PinChangeModalComponent implements OnInit {
   pincode;
   newPincode;
 
+  pinType: string;
+
   pinpad: boolean;
   readerId;
   result: string;
   error: boolean;
   title:string;
-  cancode:string;
+  code:string;
 
   constructor(public bsModalRef: BsModalRef, private Connector: Connector, private eventService: EventService) {
     this.eventService.startOver$.subscribe(() => this.cancel());
@@ -33,7 +35,7 @@ export class PinChangeModalComponent implements OnInit {
 
   verifyPin() {
     let body = new LuxPinChangeData(false,this.pincode,this.newPincode);
-    this.Connector.plugin('luxeid', 'pinChange', [this.readerId, this.cancode],[body]).then(res => {
+    this.Connector.plugin('luxeid', 'pinChange', [this.readerId, this.code, this.pinType],[body]).then(res => {
       // success notification
       this.bsModalRef.hide();
     }, err => {

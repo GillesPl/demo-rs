@@ -10,6 +10,7 @@ import {PinChangeModalComponent} from './lux/pin-change-modal/pin-change-modal.c
 import {PinUnblockModalComponent} from './lux/pin-unblock-modal/pin-unblock-modal.component';
 import {PinResetModalComponent} from './lux/pin-reset-modal/pin-reset-modal.component';
 import {PinCheckWithCanModalComponent} from './pin-check-with-can-modal/pin-check-with-can-modal.component';
+import {DownloadSummaryPaceModalComponent} from './download-summary-pace-modal/download-summary-pace-modal.component';
 
 @Injectable()
 export class ModalService {
@@ -58,7 +59,7 @@ export class ModalService {
     });
   }
 
-  openPinWithCanModalForReader(readerId,canCode) {
+  openPinWithCanModalForReader(readerId,code, pinType) {
     const svc = this;
     svc.angulartics2.eventTrack.next({
       action: 'click',
@@ -69,7 +70,8 @@ export class ModalService {
       const initialState = {
         readerId,
         pinpad: res.data.pinpad,
-        canCode
+        code,
+        pinType
       };
       const config = {
         backdrop: true,
@@ -96,6 +98,32 @@ export class ModalService {
         initialState
       };
       svc.modalService.show(DownloadSummaryModalComponent, config);
+    }, error => {
+      console.error(error)
+    });
+  }
+
+  openSummaryPaceModalForReader(readerId, needPinToGenerate, util, code, pic, signature) {
+    const svc = this;
+    svc.Connector.core('reader', [readerId]).then(res => {
+      const initialState = {
+        readerId,
+        needPinToGenerate,
+        pinpad: res.data.pinpad,
+        util,
+        code,
+        pic,
+        signature
+      };
+      const config = {
+        backdrop: true,
+        class: 'modal-lg',
+        ignoreBackdropClick: true,
+        initialState
+      };
+      svc.modalService.show(DownloadSummaryPaceModalComponent, config);
+    }, error => {
+      console.error(error)
     });
   }
 
@@ -118,7 +146,7 @@ export class ModalService {
     });
   }
 
-  openChangePinModalForReader(readerId, title, cancode) {
+  openChangePinModalForReader(readerId, title, code, pinType) {
     const svc = this;
     svc.angulartics2.eventTrack.next({
       action: 'click',
@@ -130,7 +158,8 @@ export class ModalService {
         readerId,
         pinpad: res.data.pinpad,
         title,
-        cancode
+        code,
+        pinType
       };
       const config = {
         backdrop: true,
@@ -141,7 +170,7 @@ export class ModalService {
     });
   }
 
-  openResetPinModalForReader(readerId, title, cancode) {
+  openResetPinModalForReader(readerId, title, code, pinType) {
     const svc = this;
     svc.angulartics2.eventTrack.next({
       action: 'click',
@@ -153,7 +182,8 @@ export class ModalService {
         readerId,
         pinpad: res.data.pinpad,
         title,
-        cancode
+        code,
+        pinType
       };
       const config = {
         backdrop: true,
@@ -164,7 +194,7 @@ export class ModalService {
     });
   }
 
-  openUnblockPinModalForReader(readerId, title, cancode) {
+  openUnblockPinModalForReader(readerId, title, code, pinType) {
     const svc = this;
     svc.angulartics2.eventTrack.next({
       action: 'click',
@@ -176,7 +206,8 @@ export class ModalService {
         readerId,
         pinpad: res.data.pinpad,
         title,
-        cancode
+        code,
+        pinType
       };
       const config = {
         backdrop: true,
