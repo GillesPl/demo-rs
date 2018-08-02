@@ -31,7 +31,7 @@ export class UserIdentificationSharedEnvComponent implements OnInit {
   }
 
   ok() {
-    console.log('I want to access do your magic: ' + this.code);
+    //console.log('I want to access do your magic: ' + this.code);
     this.Connector.plugin('admin', 'resolveAgent', [], [this.code]).then(res => {
       console.log('Agent found: ' + res);
       const paramObject = {};
