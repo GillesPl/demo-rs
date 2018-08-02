@@ -30,7 +30,7 @@
 
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="createType(entity, type, abspath)">Create Type</a></button>
+      <span class="btn btn-info" (click)="createType(entity, type, abspath)">Create Type</span>
     </div>
   </div>
 
@@ -87,7 +87,7 @@
       </div>
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="createDirs(entityCDI, typeCDI, relpathCDI)">Create Directory</a></button>
+      <span class="btn btn-info" (click)="createDirs(entityCDI, typeCDI, relpathCDI)">Create Directory</span>
     </div>
   </div>
   <div *ngIf="dirRecursiveCreated">
@@ -136,7 +136,7 @@
       </div>
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="createTypeDirs(entityDirInput, typeDirInput, relpathDirInput)">Create Type</a></button>
+      <span class="btn btn-info" (click)="createTypeDirs(entityDirInput, typeDirInput, relpathDirInput)">Create Type</span>
     </div>
   </div>
   <div *ngIf="dirCreatedType">
@@ -183,7 +183,7 @@
 
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="existsType(existsEntityInput, existsTypeInput)">Exists?</a></button>
+      <span class="btn btn-info" (click)="existsType(existsEntityInput, existsTypeInput)">Exists?</span>
     </div>
   </div>
   <div *ngIf="existingEntity && existingType">

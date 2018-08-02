@@ -16,7 +16,7 @@
 
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="existsFile(existsEntityInput, existsTypeInput, existsFilePathInput)">Exists?</a></button>
+      <span class="btn btn-line-primary btn-w140" (click)="existsFile(existsEntityInput, existsTypeInput, existsFilePathInput)">Exists?</span>
     </div>
   </div>
   <div *ngIf="existingEntity && existingType && existingFilePath">
@@ -45,7 +45,7 @@
 
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="existsFile(existsEntityInput, existsTypeInput, existsFilePathInput)">Exists?</a></button>
+      <span class="btn btn-line-primary btn-w140" (click)="getAccessMode(amEntityInput, amTypeInput, amFilePathInput)">Exists?</span>
     </div>
   </div>
   <div *ngIf="amEntity && amType && amFilePath">
@@ -86,7 +86,7 @@
 
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="moveFile(moveFromEntity, moveFromType, moveFromRelPath, moveFilename, moveToType, moveToRelPath)">Move file</a></button>
+      <span class="btn btn-line-primary btn-w140" (click)="moveFile(moveFromEntity, moveFromType, moveFromRelPath, moveFilename, moveToType, moveToRelPath)">Move file</span>
     </div>
   </div>
   <div *ngIf="mvFromEntity && mvFromType && mvFilename && mvToType">
@@ -172,7 +172,7 @@
 
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="copyFile(copyFromEntity, copyFromType, copyFromRelPath, copyFileName, copyToType, copyToRelPath, copyNewFile)">Copy file</a></button>
+      <span type="button" class="btn btn-line-primary btn-w140" (click)="copyFile(copyFromEntity, copyFromType, copyFromRelPath, copyFileName, copyToType, copyToRelPath, copyNewFile)">Copy file</span>
     </div>
   </div>
   <div *ngIf="cpFromEntity && cpFromType && cpFilename && cpToType">
@@ -250,7 +250,7 @@
 
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="renameFile(renEntity, renType, renRelPath, renFileName, renNewFile)">Copy file</a></button>
+      <span class="btn btn-line-primary btn-w140" (click)="renameFile(renEntity, renType, renRelPath, renFileName, renNewFile)">Rename file</span>
     </div>
   </div>
   <div *ngIf="renEntity && renType && renFileName && renNewFile">

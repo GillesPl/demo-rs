@@ -19,10 +19,8 @@
 
     </form>
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a
-        (click)="showInfo(infoTitleInput, infoTextInput, infoTimeoutInput)">Show Info modal</a></button>
-      <button type="button" class="btn btn-info" md-ink-ripple><a
-        (click)="showChoice(infoTitleInput, infoTextInput, infoTimeoutInput)">Show Choice modal</a></button>
+      <span class="btn btn-info" (click)="showInfo(infoTitleInput, infoTextInput, infoTimeoutInput)">Show Info modal</span>
+      <span class="btn btn-info" (click)="showChoice(infoTitleInput, infoTextInput, infoTimeoutInput)">Show Choice modal</span>
     </div>
   </div>
 
@@ -31,7 +29,7 @@
   <h4>Get enabled containers</h4>
   <div class="panel-body">
     <div class="buttons">
-      <button type="button" class="btn btn-info" md-ink-ripple><a (click)="getContainers()">Get enabled containers</a></button>
+      <span class="btn btn-info" (click)="getContainers()">Get enabled containers</span>
     </div>
   </div>
   <div *ngIf="enabledContainers">
