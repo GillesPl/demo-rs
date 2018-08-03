@@ -44,6 +44,7 @@ export class BeidVizComponent implements OnInit {
           { order: 2, certificate: res.data.root_certificate.base64 },
         ]
       };
+      console.log('validation req: ', validationReq);
       comp.validationArray = [ comp.Connector.ocv('validateCertificateChain', [validationReq])];
     });
   }
@@ -56,7 +57,7 @@ export class BeidVizComponent implements OnInit {
     this.pinStatus = this.cardService.determinePinModalResult(pinCheck, 'beid');
   }
 
-  toggleCerts() {
+/*  toggleCerts() {
     const comp = this;
     comp.angulartics2.eventTrack.next({
       action: 'click',
@@ -75,7 +76,7 @@ export class BeidVizComponent implements OnInit {
         });
       }
     }
-  }
+  }*/
 
   downloadSummary() {
     this.modalService.openSummaryModalForReader(this.readerId, false, this.beid);
