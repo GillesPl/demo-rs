@@ -33,6 +33,7 @@ export class BeidVizComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('start oninit be viz: ');
     const comp = this;
     this.pinStatus = 'idle';
     const filter = ['authentication-certificate', 'citizen-certificate', 'root-certificate'];
