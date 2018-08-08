@@ -19,7 +19,7 @@
     <div class="col-sm-12" [hidden]="!addressInfo">
       <h4 class="text-info text-light" i18n="@@ptAddressData">Address Data</h4>
 
-      <div class="col-sm-6">
+      <div class="col-sm-6" *ngIf="addressInfo">
         <p><strong i18n="@@ptAbbrBuildingType">Abbr. Building Type:</strong>&nbsp;&nbsp;{{addressInfo.abbr_building_type}}</p>
         <p><strong i18n="@@ptAbbrStreetType">Abbr. Street Type:</strong>&nbsp;&nbsp;{{addressInfo.abbr_street_type}}</p>
         <p><strong i18n="@@ptBuildingType">Building Type:</strong>&nbsp;&nbsp;{{addressInfo.building_type}}</p>

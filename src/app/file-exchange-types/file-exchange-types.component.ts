@@ -42,7 +42,7 @@ export class FileExchangeTypesComponent implements OnInit {
     });
   }
 
-  getFilesForType(entity, optionalPath, pgStart, pgSize, pgSort) {
+  getFilesForType(entity, optionalPath?, pgStart?, pgSize?, pgSort?) {
     let typePath: string [];
     let paging;
     if (optionalPath) {
