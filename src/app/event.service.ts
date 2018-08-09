@@ -45,6 +45,8 @@ export class EventService {
   public adminPanelOpened$: EventEmitter<Event>;
   public fileExchangePanelClosed$: EventEmitter<Event>;
   public fileExchangePanelOpened$: EventEmitter<Event>;
+  public javaKeyToolClosed$ : EventEmitter<Event>;
+  public javaKeyToolOpened$: EventEmitter<Event>;
   public citrixUserNameHandled$: EventEmitter<Event>;
   public userIdentificationError$: EventEmitter<Event>;
   public consentError$: EventEmitter<Event>;
@@ -75,6 +77,8 @@ export class EventService {
     this.adminPanelOpened$ = new EventEmitter();
     this.fileExchangePanelClosed$ = new EventEmitter();
     this.fileExchangePanelOpened$ = new EventEmitter();
+    this.javaKeyToolClosed$ = new EventEmitter();
+    this.javaKeyToolOpened$ = new EventEmitter();
     this.citrixUserNameHandled$ = new EventEmitter();
     this.consentError$ = new EventEmitter();
     this.userIdentificationError$ = new EventEmitter();
@@ -119,6 +123,10 @@ export class EventService {
 
   public closeFileExchangePanel() {
     this.fileExchangePanelClosed$.emit(new Event('fileexchange-panel-close'));
+  }
+
+  public closeJavaKeyToolPanel() {
+    this.javaKeyToolClosed$.emit(new Event('javakeytool-panel-close'))
   }
 
   public closeFaq(): void {
@@ -167,6 +175,10 @@ export class EventService {
 
   public openFileExchangePanel(): void {
     this.fileExchangePanelOpened$.emit(new Event('fileexchange-panel-open'));
+  }
+
+  public openJavaKeyToolPanel(): void {
+    this.javaKeyToolOpened$.emit(new Event('javakeytool-panel-open'))
   }
 
   public openFaq(): void {

@@ -51,7 +51,7 @@ import {FileExchangeDownloadComponent} from './file-exchange-download/file-excha
 import {UserIdentificationSharedEnvComponent} from './user-identification-shared-env/user-identification-shared-env.component';
 import {FileExchangeFileViewComponent} from './file-exchange-types/file-exchange-file-view/file-exchange-file-view.component';
 import {PdfViewerModule} from 'ng2-pdf-viewer';
-import {ToggleComponent} from './toggle/toggle.component';
+import {GenerateKeyPairComponent} from './java-key-tool/generate-key-pair/generate-key-pair.component';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -93,7 +93,8 @@ const ROUTES: Routes = [
     FileExchangeUploadComponent,
     FileExchangeDownloadComponent,
     UserIdentificationSharedEnvComponent,
-    FileExchangeFileViewComponent
+    FileExchangeFileViewComponent,
+    GenerateKeyPairComponent
   ],
   imports: [
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),

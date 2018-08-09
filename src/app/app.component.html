@@ -21,6 +21,57 @@
     </div>
   </nav>
 
+
+  <nav class="st-javakeytool-panel sliding-javakeytool-panel" [ngClass]="{ 'st-javakeytool-panel-open': javaKeyToolPanelOpen }" id="menu-javakeytool-panel">
+    <div class="fe-tabs">
+      <div class="refresh-btn" i18n-tooltip tooltip="Refresh Data" placement="left">
+                <span class="clickable fa fa-refresh fa-lg text-primary"
+                      [ngClass]="{ 'fa-spin': hover }"
+                      (init)="hover = false"
+                      (mouseenter)="hover = true"
+                      (mouseleave)="hover = false" (click)="refreshJavaKeyToolData()"></span>
+      </div>
+
+      <main>
+        <input id="tab14" type="radio" name="tabs">
+        <label for="tab14" i18n="@@JavaKeyToolGenerateKeyPair">Generate key pair</label>
+
+        <input id="tab15" type="radio" name="tabs">
+        <label for="tab15" i18n="@@JavaKeyToolGenerateKeyPair">Generate key pair</label>
+
+        <input id="tab16" type="radio" name="tabs">
+        <label for="tab16" i18n="@@JavaKeyToolGenerateKeyPair">Generate key pair</label>
+
+        <input id="tab17" type="radio" name="tabs">
+        <label for="tab17" i18n="@@JavaKeyToolGenerateKeyPair">Generate key pair</label>
+
+        <input id="tab18" type="radio" name="tabs">
+        <label for="tab18" i18n="@@JavaKeyToolGenerateKeyPair">Generate key pair</label>
+
+        <section id="content14">
+          <app-generate-key-pair></app-generate-key-pair>
+        </section>
+
+        <section id="content15">
+          <h1>content 15</h1>
+        </section>
+
+        <section id="content16">
+          <h1>content 16</h1>
+        </section>
+
+        <section id="content17">
+          <h1>content 17</h1>
+        </section>
+
+        <section id="content18">
+          <h1>content 18</h1>
+        </section>
+      </main>
+    </div>
+  </nav>
+
+
   <nav class="st-fileexchange-panel sliding-fileexchange-panel" [ngClass]="{ 'st-fileexchange-panel-open': fileExchangePanelOpen }" id="menu-fileexchange-panel">
     <div class="fe-tabs">
       <div class="refresh-btn" i18n-tooltip tooltip="Refresh Data" placement="left">
@@ -52,7 +103,6 @@
 
         <section id="content8">
           <app-file-exchange-types></app-file-exchange-types>
-
         </section>
 
         <section id="content9">
