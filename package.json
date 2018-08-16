@@ -31,8 +31,6 @@
     "@angular/platform-server": "^6.0.5",
     "@angular/router": "^6.0.5",
     "@ngx-translate/i18n-polyfill": "^0.1.2",
-    "@trust1team/t1t-config": "^0.0.1",
-    "@trust1team/t1t-log": "^0.0.1",
     "angular2-fontawesome": "^5.2.1",
     "angulartics2": "4.6.3",
     "blocked": "^1.2.1",

@@ -631,20 +631,6 @@
     semver "^5.3.0"
     semver-intersect "^1.1.2"
 
-"@trust1team/t1t-config@^0.0.1":
-  version "0.0.1"
-  resolved "https://repo.t1t.be/repository/npm-group/@trust1team/t1t-config/-/t1t-config-0.0.1.tgz#fdc462f86d94abf53e3a5b8f29a622fd23c257ca"
-  dependencies:
-    node-yaml-config "0.0.3"
-
-"@trust1team/t1t-log@^0.0.1":
-  version "0.0.1"
-  resolved "https://repo.t1t.be/repository/npm-group/@trust1team/t1t-log/-/t1t-log-0.0.1.tgz#093ff3d74be601a8628e94e97dc6f6d83ae1b964"
-  dependencies:
-    on-finished "^2.3.0"
-    winston "^2.2.0"
-    winston-daily-rotate-file "^1.0.1"
-
 "@types/jasmine@*":
   version "2.8.6"
   resolved "https://repo.t1t.be/repository/npm-group/@types/jasmine/-/jasmine-2.8.6.tgz#14445b6a1613cf4e05dd61c3c3256d0e95c0421e"
@@ -1146,13 +1132,6 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
-"argparse@~ 0.1.3":
-  version "0.1.16"
-  resolved "https://repo.t1t.be/repository/npm-group/argparse/-/argparse-0.1.16.tgz#cfd01e0fbba3d6caed049fbd758d40f65196f57c"
-  dependencies:
-    underscore "~1.7.0"
-    underscore.string "~2.4.0"
-
 arguejs@^0.2.3:
   version "0.2.3"
   resolved "https://repo.t1t.be/repository/npm-group/arguejs/-/arguejs-0.2.3.tgz#b6f939f5fe0e3cd1f3f93e2aa9262424bf312af7"
@@ -1307,10 +1286,6 @@ async@^2.0.0-rc.3, async@^2.0.1, async@^2.1.2, async@^2.1.4, async@^2.1.5, async
   resolved "https://repo.t1t.be/repository/npm-group/async/-/async-2.6.0.tgz#61a29abb6fcc026fea77e56d1c6ec53a795951f4"
   dependencies:
     lodash "^4.14.0"
-
-async@~1.0.0:
-  version "1.0.0"
-  resolved "https://repo.t1t.be/repository/npm-group/async/-/async-1.0.0.tgz#f8fc04ca3a13784ade9e1641af98578cfbd647a9"
 
 async@~2.6.0:
   version "2.6.1"
@@ -2458,10 +2433,6 @@ color-name@^1.1.1:
   version "1.1.3"
   resolved "https://repo.t1t.be/repository/npm-group/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
 
-colors@1.0.x:
-  version "1.0.3"
-  resolved "https://repo.t1t.be/repository/npm-group/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
-
 colors@1.1.2:
   version "1.1.2"
   resolved "https://repo.t1t.be/repository/npm-group/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
@@ -2844,10 +2815,6 @@ currently-unhandled@^0.4.1:
 custom-event@~1.0.0:
   version "1.0.1"
   resolved "https://repo.t1t.be/repository/npm-group/custom-event/-/custom-event-1.0.1.tgz#5d02a46850adf1b4a317946a3928fccb5bfd0425"
-
-cycle@1.0.x:
-  version "1.0.3"
-  resolved "https://repo.t1t.be/repository/npm-group/cycle/-/cycle-1.0.3.tgz#21e80b2be8580f98b468f379430662b046c34ad2"
 
 cyclist@~0.2.2:
   version "0.2.2"
@@ -3628,10 +3595,6 @@ extsprintf@1.3.0:
 extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://repo.t1t.be/repository/npm-group/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
-
-eyes@0.1.x:
-  version "0.1.8"
-  resolved "https://repo.t1t.be/repository/npm-group/eyes/-/eyes-0.1.8.tgz#62cf120234c683785d902348a800ef3e0cc20bc0"
 
 fast-deep-equal@^1.0.0:
   version "1.1.0"
@@ -5184,7 +5147,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
   resolved "https://repo.t1t.be/repository/npm-group/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
 
-isstream@0.1.x, isstream@~0.1.2:
+isstream@~0.1.2:
   version "0.1.2"
   resolved "https://repo.t1t.be/repository/npm-group/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
@@ -5313,12 +5276,6 @@ js-base64@^2.1.8:
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://repo.t1t.be/repository/npm-group/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
-
-js-yaml@1.0.2:
-  version "1.0.2"
-  resolved "https://repo.t1t.be/repository/npm-group/js-yaml/-/js-yaml-1.0.2.tgz#ee3f5cebdf1b62d721e573480879d12e919c80d0"
-  dependencies:
-    argparse "~ 0.1.3"
 
 js-yaml@3.x, js-yaml@^3.4.3:
   version "3.12.0"
@@ -6168,7 +6125,7 @@ mixin-object@^2.0.1:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
 
-mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
+mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   version "0.5.1"
   resolved "https://repo.t1t.be/repository/npm-group/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
@@ -6429,19 +6386,6 @@ node-uuid@~1.4.7:
   version "1.4.8"
   resolved "https://repo.t1t.be/repository/npm-group/node-uuid/-/node-uuid-1.4.8.tgz#b040eb0923968afabf8d32fb1f17f1167fdab907"
 
-node-yaml-config@0.0.3:
-  version "0.0.3"
-  resolved "https://repo.t1t.be/repository/npm-group/node-yaml-config/-/node-yaml-config-0.0.3.tgz#a794481e3772802e62a5f158c7c7bfffcc63d8f6"
-  dependencies:
-    js-yaml "1.0.2"
-    node.extend "~1.1.3"
-
-node.extend@~1.1.3:
-  version "1.1.6"
-  resolved "https://repo.t1t.be/repository/npm-group/node.extend/-/node.extend-1.1.6.tgz#a7b882c82d6c93a4863a5504bd5de8ec86258b96"
-  dependencies:
-    is "^3.1.0"
-
 nodemailer-direct-transport@3.3.2:
   version "3.3.2"
   resolved "https://repo.t1t.be/repository/npm-group/nodemailer-direct-transport/-/nodemailer-direct-transport-3.3.2.tgz#e96fafb90358560947e569017d97e60738a50a86"
@@ -6650,7 +6594,7 @@ obuf@^1.0.0, obuf@^1.1.1:
   version "1.1.2"
   resolved "https://repo.t1t.be/repository/npm-group/obuf/-/obuf-1.1.2.tgz#09bea3343d41859ebd446292d11c9d4db619084e"
 
-on-finished@^2.3.0, on-finished@~2.3.0:
+on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://repo.t1t.be/repository/npm-group/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
   dependencies:
@@ -8633,10 +8577,6 @@ ssri@^5.2.4:
   dependencies:
     safe-buffer "^5.1.1"
 
-stack-trace@0.0.x:
-  version "0.0.10"
-  resolved "https://repo.t1t.be/repository/npm-group/stack-trace/-/stack-trace-0.0.10.tgz#547c70b347e8d32b4e108ea1a2a159e5fdde19c0"
-
 stackframe@^1.0.3:
   version "1.0.4"
   resolved "https://repo.t1t.be/repository/npm-group/stackframe/-/stackframe-1.0.4.tgz#357b24a992f9427cba6b545d96a14ed2cbca187b"
@@ -9328,10 +9268,6 @@ ultron@~1.1.0:
   version "1.1.1"
   resolved "https://repo.t1t.be/repository/npm-group/ultron/-/ultron-1.1.1.tgz#9fe1536a10a664a65266a1e3ccf85fd36302bc9c"
 
-underscore.string@~2.4.0:
-  version "2.4.0"
-  resolved "https://repo.t1t.be/repository/npm-group/underscore.string/-/underscore.string-2.4.0.tgz#8cdd8fbac4e2d2ea1e7e2e8097c42f442280f85b"
-
 underscore@~1.7.0:
   version "1.7.0"
   resolved "https://repo.t1t.be/repository/npm-group/underscore/-/underscore-1.7.0.tgz#6bbaf0877500d36be34ecaa584e0db9fef035209"
@@ -9784,23 +9720,6 @@ window-size@0.1.0:
 window-size@^0.1.4:
   version "0.1.4"
   resolved "https://repo.t1t.be/repository/npm-group/window-size/-/window-size-0.1.4.tgz#f8e1aa1ee5a53ec5bf151ffa09742a6ad7697876"
-
-winston-daily-rotate-file@^1.0.1:
-  version "1.7.2"
-  resolved "https://repo.t1t.be/repository/npm-group/winston-daily-rotate-file/-/winston-daily-rotate-file-1.7.2.tgz#6502bfa297824fd982da5e5647c7538578d2f9a0"
-  dependencies:
-    mkdirp "0.5.1"
-
-winston@^2.2.0:
-  version "2.4.1"
-  resolved "https://repo.t1t.be/repository/npm-group/winston/-/winston-2.4.1.tgz#a3a9265105564263c6785b4583b8c8aca26fded6"
-  dependencies:
-    async "~1.0.0"
-    colors "1.0.x"
-    cycle "1.0.x"
-    eyes "0.1.x"
-    isstream "0.1.x"
-    stack-trace "0.0.x"
 
 with-callback@^1.0.2:
   version "1.0.2"

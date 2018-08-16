@@ -14,7 +14,7 @@ import {Connector} from '../../connector.service';
   styleUrls: ['./generate-key-pair.component.less']
 })
 export class GenerateKeyPairComponent implements OnInit {
-  
+
   keyPairData: GenerateKeyPairData = new GenerateKeyPairData('','','');
 
   constructor(private conn: Connector, private eventService: EventService) {
@@ -30,10 +30,10 @@ export class GenerateKeyPairComponent implements OnInit {
 
   createKeyPair() {
     if (this.keyPairData.entity != '' && this.keyPairData.type != '' && this.keyPairData.keystore != '') {
-
-      this.conn.plugin('JavaKeyTool', 'generateKeyPair', [], [this.keyPairData]).then(res => {
+      // keystore parameter must have .jks as an extension
+      this.conn.get().javakeytool().generateKeyPair(this.keyPairData).then(res => {
         console.log(res)
-      })
+      });
     }
 
   }
