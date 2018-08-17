@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   name: 'ReadMyCards',
   version: '2.2.2',
   gwOrProxyUrl: 'https://accapim.t1t.be:443',
