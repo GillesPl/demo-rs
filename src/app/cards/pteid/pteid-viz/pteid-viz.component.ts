@@ -21,9 +21,9 @@ export class PteidVizComponent implements OnInit {
   addressPinStatus;
   signPinStatus;
   photo;
-  certData = {};
+  certData
   loadingCerts;
-  addressInfo = {};
+  addressInfo
   isCollapsed;
 
   constructor(private angulartics2: Angulartics2,
