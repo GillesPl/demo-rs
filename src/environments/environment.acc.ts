@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   name: 'ReadMyCards',
-  version: '2.2.2',
+  version: '2.2.2-1',
   gwOrProxyUrl: 'https://accapim.t1t.be:443',
   gclUrl: 'https://localhost:10443/v2',
   dsContextPath: '/trust1team/gclds/v2',
