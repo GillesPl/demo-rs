@@ -5,6 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "yarn && ng serve --proxy-config proxy.config.json",
+    "build-prod": "yarn && ng build --configuration=production",
+    "build-acc": "yarn && ng build --configuration=acceptance",
     "build": "yarn && ng build",
     "test": "ng test",
     "lint": "ng lint",

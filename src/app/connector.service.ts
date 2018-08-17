@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {EventService} from './event.service';
-import {environment} from '../environments/environment.prod';
+import {environment} from '../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {GCLClient, GCLConfig, GCLConfigOptions} from 'trust1connector';
 
