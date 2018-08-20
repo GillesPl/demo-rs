@@ -11,6 +11,7 @@ export class ChangeAliasComponent {
 
   changeAliasData: ChangeAliasData = new ChangeAliasData('','','', '', '' );
   changeAliasResponse: ChangeAliasResponse;
+  error: string;
 
   constructor(private conn: Connector, private eventService: EventService) {
   }
@@ -20,6 +21,8 @@ export class ChangeAliasComponent {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().ChangeAlias(this.changeAliasData).then(res => {
         this.changeAliasResponse = res;
+      }, err => {
+        this.error = err.description;
       });
     }
   }

@@ -11,6 +11,7 @@ export class ImportCertificateComponent {
 
   importCertData: CSRData = new CSRData('','','' , '');
   importCertResponse: CSRResponse;
+  error: string;
 
   constructor(private conn: Connector, private eventService: EventService) {
   }
@@ -20,6 +21,8 @@ export class ImportCertificateComponent {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().ImportCertificate(this.importCertData).then(res => {
         this.importCertResponse = res;
+      }, err => {
+        this.error = err.description;
       });
     }
   }

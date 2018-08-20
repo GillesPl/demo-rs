@@ -1,3 +1,7 @@
+<div *ngIf="error" class="alert alert-danger">
+  {{error}}
+</div>
+
 <div>
   <h1>Data to change a key password</h1>
   <span class="input-group">
@@ -51,8 +55,8 @@
   </span>
 
   <div class="buttons">
-    <button class="btn btn-info" (click)="changeAlias()">
-      Change alias
+    <button class="btn btn-info" (click)="deleteEntry()">
+      Delete entry
     </button>
   </div>
 </div>

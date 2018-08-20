@@ -17,6 +17,7 @@ export class GenerateKeyPairComponent implements OnInit {
 
   keyPairData: GenerateKeyPairData = new GenerateKeyPairData('','','');
   keyPairResponse: GenerateKeyPairResponse;
+  error: string;
 
   constructor(private conn: Connector, private eventService: EventService) {
   }
@@ -30,7 +31,9 @@ export class GenerateKeyPairComponent implements OnInit {
       console.log(this.keyPairData)
       this.conn.get().javakeytool().generateKeyPair(this.keyPairData).then(res => {
         this.keyPairResponse = res;
-      });
+      }, err => {
+                 this.error = err.description;
+               });
     }
 
   }

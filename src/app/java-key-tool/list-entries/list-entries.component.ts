@@ -11,6 +11,7 @@ export class ListEntriesComponent {
 
   listEntriesData: ListEntriesData = new ListEntriesData('','','' );
   listEntriesResponse: ListEntriesResponse;
+  error: string;
 
   constructor(private conn: Connector, private eventService: EventService) {
   }
@@ -19,8 +20,10 @@ export class ListEntriesComponent {
     if (this.listEntriesData.entity != '' && this.listEntriesData.type != '' && this.listEntriesData.keystore != '' ) {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().ListEntries(this.listEntriesData).then(res => {
-        console.log(res)
+        console.log(res);
         this.listEntriesResponse = res;
+      }, err => {
+        this.error = err.description;
       });
     }
   }

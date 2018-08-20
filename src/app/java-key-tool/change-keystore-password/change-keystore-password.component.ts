@@ -11,6 +11,7 @@ export class ChangeKeystorePasswordComponent {
 
   changeKeyStorePassData: ChangeKeystorePasswordData = new ChangeKeystorePasswordData('','','');
   changeKeyStorePassResponse: ChangeKeystorePasswordResponse;
+  error: string;
 
   constructor(private conn: Connector, private eventService: EventService) {
   }
@@ -20,6 +21,8 @@ export class ChangeKeystorePasswordComponent {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().ChangeKeystorePassword(this.changeKeyStorePassData).then(res => {
         this.changeKeyStorePassResponse = res;
+      }, err => {
+        this.error = err.description;
       });
     }
   }

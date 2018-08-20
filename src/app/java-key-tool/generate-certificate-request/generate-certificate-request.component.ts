@@ -17,6 +17,7 @@ export class GenerateCertificateRequestComponent implements OnInit {
 
   csrdata: CSRData = new CSRData('','','');
   csrResponse;
+  error: string;
 
   constructor(private conn: Connector, private eventService: EventService) {
     this.eventService.javaKeyToolOpened$.subscribe(() => this.getData());
@@ -34,6 +35,8 @@ export class GenerateCertificateRequestComponent implements OnInit {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().GenerateCertificateRequest(this.csrdata).then(res => {
         this.csrResponse = res.data
+      }, err => {
+        this.error = err.description;
       });
     }
 

@@ -11,15 +11,18 @@ export class DeleteEntryComponent {
 
   changeAliasData: DeleteEntryData = new DeleteEntryData('','','' );
   changeAliasResponse: DeleteEntryResponse;
+  error: string;
 
   constructor(private conn: Connector, private eventService: EventService) {
   }
 
-  changeAlias() {
+  deleteEntry() {
     if (this.changeAliasData.entity != '' && this.changeAliasData.type != '' && this.changeAliasData.keystore != '' ) {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().DeleteEntry(this.changeAliasData).then(res => {
         this.changeAliasResponse = res;
+      }, err => {
+        this.error = err.description;
       });
     }
   }

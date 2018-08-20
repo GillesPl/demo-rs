@@ -11,6 +11,7 @@ export class ExportCertificateComponent {
 
   exportCertData: ExportCertData = new ExportCertData('','','', '' );
   exportCertResponse: ExportCertResponse;
+  error: string;
 
   constructor(private conn: Connector, private eventService: EventService) {
   }
@@ -20,6 +21,8 @@ export class ExportCertificateComponent {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().ExportCertificate(this.exportCertData).then(res => {
         this.exportCertResponse = res;
+      }, err => {
+        this.error = err.description;
       });
     }
   }
