@@ -9,13 +9,14 @@ import {Connector} from '../../connector.service';
  */
 
 @Component({
-  selector: 'app-generate-key-pair',
-  templateUrl: './generate-key-pair.component.html',
-  styleUrls: ['./generate-key-pair.component.less']
+  selector: 'app-generate-certificate-request',
+  templateUrl: './generate-certificate-request.component.html',
+  styleUrls: ['./generate-certificate-request.component.less']
 })
-export class GenerateKeyPairComponent implements OnInit {
+export class GenerateCertificateRequestComponent implements OnInit {
 
-  keyPairData: GenerateKeyPairData = new GenerateKeyPairData('','','');
+  csrdata: CSRData = new CSRData('','','');
+  csrResponse;
 
   constructor(private conn: Connector, private eventService: EventService) {
     this.eventService.javaKeyToolOpened$.subscribe(() => this.getData());
@@ -28,11 +29,11 @@ export class GenerateKeyPairComponent implements OnInit {
     console.log('getdata')
   }
 
-  createKeyPair() {
-    if (this.keyPairData.entity != '' && this.keyPairData.type != '' && this.keyPairData.keystore != '') {
+  createCertificateRequest() {
+    if (this.csrdata.entity != '' && this.csrdata.type != '' && this.csrdata.keystore != '') {
       // keystore parameter must have .jks as an extension
-      this.conn.get().javakeytool().generateKeyPair(this.keyPairData).then(res => {
-        console.log(res)
+      this.conn.get().javakeytool().GenerateCertificateRequest(this.csrdata).then(res => {
+        this.csrResponse = res.data
       });
     }
 
@@ -40,20 +41,16 @@ export class GenerateKeyPairComponent implements OnInit {
 
 }
 
-export class GenerateKeyPairData {
+export class CSRData {
   constructor(
     public entity: string,
     public type: string,
     public keystore: string,
     public alias?: string,
-    public keyalg?: string,
     public sigalg?: string,
-    public destalias?: string,
-    public dname?: string,
-    public startdate?: string,
-    public ext?: string,
-    public validity?: number,
+    public file?: string,
     public keypass?: string,
+    public dname?: string,
     public storepass?: string,
     public storetype?: string,
     public providername?: string,

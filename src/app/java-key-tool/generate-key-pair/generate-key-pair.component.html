@@ -95,6 +95,9 @@
       Generate key pair
     </button>
   </div>
+</div>
 
-
+<div *ngIf="keyPairResponse" >
+  <h1>Output</h1>
+  <p>Key pair generated in: {{keyPairResponse.data}}</p>
 </div>
