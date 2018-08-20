@@ -66,6 +66,5 @@
   <h1>Output</h1>
   <p *ngIf="!exportCertResponse.success">{{exportCertResponse.data}}</p>
   <p>certificate {{exportCertData.alias}}: {{exportCertResponse.data.base64}}</p>
-  <p *ngIf="exportCertResponse.data.base64">base 64 data: {{exportCertResponse.data.base64}}</p>
   <p *ngIf="exportCertResponse.data.path">path: {{exportCertResponse.data.path}}</p>
 </div>

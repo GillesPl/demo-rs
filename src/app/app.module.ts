@@ -56,6 +56,7 @@ import {GenerateCertificateRequestComponent} from './java-key-tool/generate-cert
 import {ImportCertificateComponent} from './java-key-tool/import-certificate/import-certificate.component';
 import {ExportCertificateComponent} from './java-key-tool/export-certificate/export-certificate.component';
 import {ChangeKeystorePasswordComponent} from './java-key-tool/change-keystore-password/change-keystore-password.component';
+import {ChangeKeyPasswordComponent} from './java-key-tool/change-key-password/change-key-password.component';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -102,7 +103,8 @@ const ROUTES: Routes = [
     GenerateCertificateRequestComponent,
     ImportCertificateComponent,
     ExportCertificateComponent,
-    ChangeKeystorePasswordComponent
+    ChangeKeystorePasswordComponent,
+    ChangeKeyPasswordComponent
   ],
   imports: [
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),

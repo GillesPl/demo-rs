@@ -9,17 +9,17 @@ import {EventService} from '../../event.service';
 })
 export class ChangeKeystorePasswordComponent {
 
-  changeKeyPassData: ChangeKeystorePasswordData = new ChangeKeystorePasswordData('','','', '' );
-  changeKeyPassResponse: ChangeKeystorePasswordResponse;
+  changeKeyStorePassData: ChangeKeystorePasswordData = new ChangeKeystorePasswordData('','','');
+  changeKeyStorePassResponse: ChangeKeystorePasswordResponse;
 
   constructor(private conn: Connector, private eventService: EventService) {
   }
 
   changePassword() {
-    if (this.changeKeyPassData.entity != '' && this.changeKeyPassData.type != '' && this.changeKeyPassData.keystore != '') {
+    if (this.changeKeyStorePassData.entity != '' && this.changeKeyStorePassData.type != '' && this.changeKeyStorePassData.keystore != '') {
       // keystore parameter must have .jks as an extension
-      this.conn.get().javakeytool().ChangeKeystorePassword(this.changeKeyPassData).then(res => {
-        this.changeKeyPassResponse = res;
+      this.conn.get().javakeytool().ChangeKeystorePassword(this.changeKeyStorePassData).then(res => {
+        this.changeKeyStorePassResponse = res;
       });
     }
   }
