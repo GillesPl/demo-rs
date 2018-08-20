@@ -1,0 +1,63 @@
+<div>
+  <h1>Data to change a key password</h1>
+  <span class="input-group">
+    Entity*
+    <input [(ngModel)]="listEntriesData.entity" type="text">
+  </span>
+
+  <span class="input-group">
+    Type*
+    <input [(ngModel)]="listEntriesData.type" type="text">
+  </span>
+
+  <span class="input-group">
+    Keystore*
+    <input [(ngModel)]="listEntriesData.keystore" type="text">
+  </span>
+
+  <span class="input-group">
+    Alias
+    <input [(ngModel)]="listEntriesData.alias" type="text">
+  </span>
+
+  <span class="input-group">
+    Storepass
+    <input [(ngModel)]="listEntriesData.storepass" type="text">
+  </span>
+
+  <span class="input-group">
+    Store type
+    <input [(ngModel)]="listEntriesData.storetype" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider name
+    <input [(ngModel)]="listEntriesData.providername" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider class
+    <input [(ngModel)]="listEntriesData.providerclass" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider argument
+    <input [(ngModel)]="listEntriesData.providerarg" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider path
+    <input [(ngModel)]="listEntriesData.providerpath" type="text">
+  </span>
+
+  <div class="buttons">
+    <button class="btn btn-info" (click)="listEntries()">
+      Change alias
+    </button>
+  </div>
+</div>
+
+<div class="response" *ngIf="listEntriesResponse" >
+  <h1>Output</h1>
+  <p>entries: {{listEntriesResponse.data}}</p>
+</div>

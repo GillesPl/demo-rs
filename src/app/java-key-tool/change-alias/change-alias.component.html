@@ -1,0 +1,73 @@
+<div>
+  <h1>Data to change a key password</h1>
+  <span class="input-group">
+    Entity*
+    <input [(ngModel)]="changeAliasData.entity" type="text">
+  </span>
+
+  <span class="input-group">
+    Type*
+    <input [(ngModel)]="changeAliasData.type" type="text">
+  </span>
+
+  <span class="input-group">
+    Keystore*
+    <input [(ngModel)]="changeAliasData.keystore" type="text">
+  </span>
+
+  <span class="input-group">
+    Alias*
+    <input [(ngModel)]="changeAliasData.alias" type="text">
+  </span>
+
+  <span class="input-group">
+    Destination Alias*
+    <input [(ngModel)]="changeAliasData.destalias" type="text">
+  </span>
+
+  <span class="input-group">
+    Keypass
+    <input [(ngModel)]="changeAliasData.keypass" type="text">
+  </span>
+
+  <span class="input-group">
+    Storepass
+    <input [(ngModel)]="changeAliasData.storepass" type="text">
+  </span>
+
+  <span class="input-group">
+    Store type
+    <input [(ngModel)]="changeAliasData.storetype" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider name
+    <input [(ngModel)]="changeAliasData.providername" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider class
+    <input [(ngModel)]="changeAliasData.providerclass" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider argument
+    <input [(ngModel)]="changeAliasData.providerarg" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider path
+    <input [(ngModel)]="changeAliasData.providerpath" type="text">
+  </span>
+
+  <div class="buttons">
+    <button class="btn btn-info" (click)="changeAlias()">
+      Change alias
+    </button>
+  </div>
+</div>
+
+<div class="response" *ngIf="changeAliasResponse" >
+  <h1>Output</h1>
+  <p>Status: {{changeAliasResponse.data}}</p>
+</div>
