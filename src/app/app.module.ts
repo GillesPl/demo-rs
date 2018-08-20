@@ -54,6 +54,7 @@ import {PdfViewerModule} from 'ng2-pdf-viewer';
 import {GenerateKeyPairComponent} from './java-key-tool/generate-key-pair/generate-key-pair.component';
 import {GenerateCertificateRequestComponent} from './java-key-tool/generate-certificate-request/generate-certificate-request.component';
 import {ImportCertificateComponent} from './java-key-tool/import-certificate/import-certificate.component';
+import {ExportCertificateComponent} from './java-key-tool/export-certificate/export-certificate.component';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -98,7 +99,8 @@ const ROUTES: Routes = [
     FileExchangeFileViewComponent,
     GenerateKeyPairComponent,
     GenerateCertificateRequestComponent,
-    ImportCertificateComponent
+    ImportCertificateComponent,
+    ExportCertificateComponent
   ],
   imports: [
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),

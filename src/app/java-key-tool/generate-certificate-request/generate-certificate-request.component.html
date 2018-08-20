@@ -79,6 +79,7 @@
 
   <div class="response" *ngIf="csrResponse">
     <h1>Output</h1>
+    <p *ngIf="!csrResponse.success">{{csrResponse.data}}</p>
     certificate response: {{csrResponse.base64}}
   </div>
 

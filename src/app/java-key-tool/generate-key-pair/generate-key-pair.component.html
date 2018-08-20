@@ -99,5 +99,6 @@
 
 <div class="response" *ngIf="keyPairResponse" >
   <h1>Output</h1>
+  <p *ngIf="!keyPairResponse.success">{{keyPairResponse.data}}</p>
   <p>Key pair generated in: {{keyPairResponse.data}}</p>
 </div>
