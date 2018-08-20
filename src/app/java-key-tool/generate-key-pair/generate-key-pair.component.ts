@@ -19,14 +19,9 @@ export class GenerateKeyPairComponent implements OnInit {
   keyPairResponse: GenerateKeyPairResponse;
 
   constructor(private conn: Connector, private eventService: EventService) {
-    this.eventService.javaKeyToolOpened$.subscribe(() => this.getData());
   }
 
   ngOnInit(): void {
-  }
-
-  getData() {
-    console.log('getdata')
   }
 
   createKeyPair() {

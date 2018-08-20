@@ -1,4 +1,4 @@
-<div class="keyData">
+<div>
   <h1>Data to generate a certficate request</h1>
   <span class="input-group">
     Entity*
@@ -77,8 +77,9 @@
   </div>
 
 
-  <div *ngIf="csrResponse">
-    {{csrResponse.base64}}
+  <div class="response" *ngIf="csrResponse">
+    <h1>Output</h1>
+    certificate response: {{csrResponse.base64}}
   </div>
 
 
