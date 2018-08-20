@@ -198,7 +198,7 @@ export class CardService {
     return this.Connector.get().oberthur(readerId)
       .allCerts({ filter: ['root-certificate', 'authentication-certificate', 'signing-certificate'] }).then(certs => {
         return {
-          digestAlgoWrapper: 'SHA512',
+          digestAlgoWrapper: 'SHA256',
           certificates:    [ certs.data.signing_certificate.base64,
             certs.data.authentication_certificate.base64,
             certs.data.root_certificate.base64 ],
