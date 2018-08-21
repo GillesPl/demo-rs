@@ -38,6 +38,7 @@ export class GenerateCertificateRequestComponent implements OnInit {
       }, err => {
         this.error = err.description;
       });
+      this.csrdata = new CSRData('','','');
     }
 
   }

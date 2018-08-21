@@ -24,6 +24,7 @@ export class ImportCertificateComponent {
       }, err => {
         this.error = err.description;
       });
+      this.importCertData = new CSRData('','','' , '');
     }
   }
 

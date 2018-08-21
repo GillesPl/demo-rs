@@ -24,6 +24,7 @@ export class ChangeKeystorePasswordComponent {
       }, err => {
         this.error = err.description;
       });
+      this.changeKeyStorePassData = new ChangeKeystorePasswordData('','','');
     }
   }
 

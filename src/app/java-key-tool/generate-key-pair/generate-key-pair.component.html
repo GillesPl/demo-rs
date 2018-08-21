@@ -15,7 +15,7 @@
   </span>
 
   <span class="input-group">
-    Keystore*
+    Keystore* (must include extension)
     <input [(ngModel)]="keyPairData.keystore" type="text">
   </span>
 
@@ -50,7 +50,7 @@
   </span>
 
   <span class="input-group">
-    Extension
+    Extension (X.509 extension)
     <input [(ngModel)]="keyPairData.ext" type="text">
   </span>
 
@@ -61,12 +61,12 @@
 
   <span class="input-group">
     Keypass
-    <input [(ngModel)]="keyPairData.keypass" type="text">
+    <input [(ngModel)]="keyPairData.keypass" type="password">
   </span>
 
   <span class="input-group">
     Storepass
-    <input [(ngModel)]="keyPairData.storepass" type="text">
+    <input [(ngModel)]="keyPairData.storepass" type="password">
   </span>
 
   <span class="input-group">

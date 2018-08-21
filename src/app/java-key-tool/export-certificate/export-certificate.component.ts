@@ -24,6 +24,7 @@ export class ExportCertificateComponent {
       }, err => {
         this.error = err.description;
       });
+      this.exportCertData = new ExportCertData('','','', '' );
     }
   }
 

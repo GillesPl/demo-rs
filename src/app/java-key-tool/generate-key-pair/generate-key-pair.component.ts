@@ -34,6 +34,7 @@ export class GenerateKeyPairComponent implements OnInit {
       }, err => {
                  this.error = err.description;
                });
+               this.keyPairData = new GenerateKeyPairData('','','');
     }
 
   }

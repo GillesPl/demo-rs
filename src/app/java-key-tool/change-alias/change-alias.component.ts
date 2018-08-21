@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Connector} from '../../connector.service';
 import {EventService} from '../../event.service';
+import {ListEntriesData} from '../list-entries/list-entries.component';
 
 @Component({
   selector: 'app-change-alias',
@@ -25,6 +26,7 @@ export class ChangeAliasComponent {
         this.error = err.description;
       });
     }
+    this.changeAliasData= new ChangeAliasData('','','', '', '' );
   }
 
 }

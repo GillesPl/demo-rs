@@ -24,6 +24,7 @@ export class DeleteEntryComponent {
       }, err => {
         this.error = err.description;
       });
+      this.changeAliasData = new DeleteEntryData('','','' );
     }
   }
 

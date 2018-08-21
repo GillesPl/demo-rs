@@ -15,7 +15,7 @@
   </span>
 
   <span class="input-group">
-    Keystore*
+    Keystore* (must include extension)
     <input [(ngModel)]="importCertData.keystore" type="text">
   </span>
 
@@ -25,7 +25,7 @@
   </span>
 
   <span class="input-group">
-    File, path to the certificate to import
+    File, path to the certificate to import (must include extension)
     <input [(ngModel)]="importCertData.file" type="text">
   </span>
 
@@ -46,12 +46,12 @@
 
   <span class="input-group">
     Keypass
-    <input [(ngModel)]="importCertData.keypass" type="text">
+    <input [(ngModel)]="importCertData.keypass" type="password">
   </span>
 
   <span class="input-group">
     Storepass
-    <input [(ngModel)]="importCertData.storepass" type="text">
+    <input [(ngModel)]="importCertData.storepass" type="password">
   </span>
 
   <span class="input-group">

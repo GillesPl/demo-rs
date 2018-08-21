@@ -15,7 +15,7 @@
   </span>
 
   <span class="input-group">
-    Keystore*
+    Keystore* (must include extension)
     <input [(ngModel)]="exportCertData.keystore" type="text">
   </span>
 
@@ -25,13 +25,13 @@
   </span>
 
   <span class="input-group">
-    File, path for the certificate to export to
+    File, path for the certificate to export to (must include extension)
     <input [(ngModel)]="exportCertData.file" type="text">
   </span>
 
   <span class="input-group">
     Storepass
-    <input [(ngModel)]="exportCertData.storepass" type="text">
+    <input [(ngModel)]="exportCertData.storepass" type="password">
   </span>
 
   <span class="input-group">

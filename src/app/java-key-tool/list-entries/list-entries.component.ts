@@ -26,6 +26,7 @@ export class ListEntriesComponent {
         this.error = err.description;
       });
     }
+    this.listEntriesData = new ListEntriesData('','','' );
   }
 
 }
