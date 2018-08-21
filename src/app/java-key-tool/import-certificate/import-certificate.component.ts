@@ -17,6 +17,7 @@ export class ImportCertificateComponent {
   }
 
   importCert() {
+    this.reset();
     if (this.importCertData.entity != '' && this.importCertData.type != '' && this.importCertData.keystore != '' && this.importCertData.alias != '') {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().ImportCertificate(this.importCertData).then(res => {
@@ -26,6 +27,10 @@ export class ImportCertificateComponent {
       });
       this.importCertData = new CSRData('','','' , '');
     }
+  }
+  reset() {
+    this.error = null;
+    this.importCertResponse = null;
   }
 
 }
@@ -39,6 +44,7 @@ export class CSRData {
     public alias: string,
     public sigalg?: string,
     public file?: string,
+    public data?: string,
     public keypass?: string,
     public dname?: string,
     public storepass?: string,

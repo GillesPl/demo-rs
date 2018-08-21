@@ -3,7 +3,7 @@
 </div>
 
 <div>
-  <h1>Data to import a certificate</h1>
+  <h1>Data to export a certificate to the file exchange</h1>
   <span class="input-group">
     Entity*
     <input [(ngModel)]="exportCertData.entity" type="text">
@@ -15,7 +15,7 @@
   </span>
 
   <span class="input-group">
-    Keystore* (must include extension)
+    Keystore*
     <input [(ngModel)]="exportCertData.keystore" type="text">
   </span>
 
@@ -25,7 +25,7 @@
   </span>
 
   <span class="input-group">
-    File, path for the certificate to export to (must include extension)
+    File, path for the certificate to export to
     <input [(ngModel)]="exportCertData.file" type="text">
   </span>
 

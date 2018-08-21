@@ -18,6 +18,7 @@ export class ChangeAliasComponent {
   }
 
   changeAlias() {
+    this.reset();
     if (this.changeAliasData.entity != '' && this.changeAliasData.type != '' && this.changeAliasData.keystore != '' && this.changeAliasData.alias != '' && this.changeAliasData.destalias != '') {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().ChangeAlias(this.changeAliasData).then(res => {
@@ -27,6 +28,11 @@ export class ChangeAliasComponent {
       });
     }
     this.changeAliasData= new ChangeAliasData('','','', '', '' );
+  }
+
+  reset() {
+    this.error = null;
+    this.changeAliasResponse = null;
   }
 
 }

@@ -20,17 +20,13 @@ export class GenerateCertificateRequestComponent implements OnInit {
   error: string;
 
   constructor(private conn: Connector, private eventService: EventService) {
-    this.eventService.javaKeyToolOpened$.subscribe(() => this.getData());
   }
 
   ngOnInit(): void {
   }
 
-  getData() {
-    console.log('getdata')
-  }
-
   createCertificateRequest() {
+    this.reset();
     if (this.csrdata.entity != '' && this.csrdata.type != '' && this.csrdata.keystore != '') {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().GenerateCertificateRequest(this.csrdata).then(res => {
@@ -41,6 +37,10 @@ export class GenerateCertificateRequestComponent implements OnInit {
       this.csrdata = new CSRData('','','');
     }
 
+  }
+  reset() {
+    this.error = null;
+    this.csrResponse = null;
   }
 
 }

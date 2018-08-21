@@ -9,23 +9,29 @@ import {EventService} from '../../event.service';
 })
 export class DeleteEntryComponent {
 
-  changeAliasData: DeleteEntryData = new DeleteEntryData('','','' );
-  changeAliasResponse: DeleteEntryResponse;
+  changeDeleteEntryData: DeleteEntryData = new DeleteEntryData('','','' );
+  changeDeleteEntryResponse: DeleteEntryResponse;
   error: string;
 
   constructor(private conn: Connector, private eventService: EventService) {
   }
 
   deleteEntry() {
-    if (this.changeAliasData.entity != '' && this.changeAliasData.type != '' && this.changeAliasData.keystore != '' ) {
+    this.reset();
+    if (this.changeDeleteEntryData.entity != '' && this.changeDeleteEntryData.type != '' && this.changeDeleteEntryData.keystore != '' ) {
       // keystore parameter must have .jks as an extension
-      this.conn.get().javakeytool().DeleteEntry(this.changeAliasData).then(res => {
-        this.changeAliasResponse = res;
+      this.conn.get().javakeytool().DeleteEntry(this.changeDeleteEntryData).then(res => {
+        this.changeDeleteEntryResponse = res;
       }, err => {
         this.error = err.description;
       });
-      this.changeAliasData = new DeleteEntryData('','','' );
+      this.changeDeleteEntryData = new DeleteEntryData('','','' );
     }
+  }
+
+  reset() {
+    this.error = null;
+    this.changeDeleteEntryResponse = null;
   }
 
 }

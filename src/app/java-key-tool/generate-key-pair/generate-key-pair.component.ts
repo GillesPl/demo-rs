@@ -15,7 +15,7 @@ import {Connector} from '../../connector.service';
 })
 export class GenerateKeyPairComponent implements OnInit {
 
-  keyPairData: GenerateKeyPairData = new GenerateKeyPairData('','','');
+  keyPairData: GenerateKeyPairData = new GenerateKeyPairData('', '', '');
   keyPairResponse: GenerateKeyPairResponse;
   error: string;
 
@@ -26,17 +26,22 @@ export class GenerateKeyPairComponent implements OnInit {
   }
 
   createKeyPair() {
+    this.reset();
     if (this.keyPairData.entity != '' && this.keyPairData.type != '' && this.keyPairData.keystore != '') {
       // keystore parameter must have .jks as an extension
-      console.log(this.keyPairData)
+      console.log(this.keyPairData);
       this.conn.get().javakeytool().generateKeyPair(this.keyPairData).then(res => {
         this.keyPairResponse = res;
       }, err => {
-                 this.error = err.description;
-               });
-               this.keyPairData = new GenerateKeyPairData('','','');
+        this.error = err.description;
+      });
+      this.keyPairData = new GenerateKeyPairData('', '', '');
     }
+  }
 
+  reset() {
+    this.error = null;
+    this.keyPairResponse = null;
   }
 
 }
@@ -61,9 +66,11 @@ export class GenerateKeyPairData {
     public providerclass?: string,
     public providerarg?: string,
     public providerpath?: string
-  ) {}
+  ) {
+  }
 }
 
 export class GenerateKeyPairResponse {
-    constructor(public data: string, public success: boolean) {}
+  constructor(public data: string, public success: boolean) {
+  }
 }

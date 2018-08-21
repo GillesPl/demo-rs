@@ -17,10 +17,10 @@ export class ListEntriesComponent {
   }
 
   listEntries() {
+    this.reset();
     if (this.listEntriesData.entity != '' && this.listEntriesData.type != '' && this.listEntriesData.keystore != '' ) {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().ListEntries(this.listEntriesData).then(res => {
-        console.log(res);
         this.listEntriesResponse = res;
       }, err => {
         this.error = err.description;
@@ -29,6 +29,10 @@ export class ListEntriesComponent {
     this.listEntriesData = new ListEntriesData('','','' );
   }
 
+  reset() {
+    this.error = null;
+    this.listEntriesResponse = null;
+  }
 }
 
 

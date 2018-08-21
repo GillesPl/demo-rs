@@ -24,14 +24,6 @@
 
   <nav class="st-javakeytool-panel sliding-javakeytool-panel" [ngClass]="{ 'st-javakeytool-panel-open': javaKeyToolPanelOpen }" id="menu-javakeytool-panel">
     <div class="fe-tabs">
-      <div class="refresh-btn" i18n-tooltip tooltip="Refresh Data" placement="left">
-                <span class="clickable fa fa-refresh fa-lg text-primary"
-                      [ngClass]="{ 'fa-spin': hover }"
-                      (init)="hover = false"
-                      (mouseenter)="hover = true"
-                      (mouseleave)="hover = false" (click)="refreshJavaKeyToolData()"></span>
-      </div>
-
       <main>
         <input id="tab14" type="radio" name="tabs">
         <label for="tab14" i18n="@@JavaKeyToolGenerateKeyPair">Generate key pair</label>

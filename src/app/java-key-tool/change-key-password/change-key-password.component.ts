@@ -17,6 +17,7 @@ export class ChangeKeyPasswordComponent {
   }
 
   changeKeyPass() {
+    this.reset();
     if (this.changeKeyPassData.entity != '' && this.changeKeyPassData.type != '' && this.changeKeyPassData.keystore != '' && this.changeKeyPassData.alias != '') {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().ChangeKeyPassword(this.changeKeyPassData).then(res => {
@@ -28,6 +29,10 @@ export class ChangeKeyPasswordComponent {
     }
   }
 
+  reset() {
+    this.error = null;
+    this.changeKeyPassResponse = null;
+  }
 }
 
 export class ChangeKeyPasswordData {
@@ -36,7 +41,7 @@ export class ChangeKeyPasswordData {
     public type: string,
     public keystore: string,
     public alias: string,
-    public new_password?: string,
+    public newpass?: string,
     public keypass?: string,
     public storepass?: string,
     public storetype?: string,

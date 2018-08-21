@@ -17,6 +17,7 @@ export class ExportCertificateComponent {
   }
 
   exportCert() {
+    this.reset()
     if (this.exportCertData.entity != '' && this.exportCertData.type != '' && this.exportCertData.keystore != '' && this.exportCertData.alias != '') {
       // keystore parameter must have .jks as an extension
       this.conn.get().javakeytool().ExportCertificate(this.exportCertData).then(res => {
@@ -26,6 +27,10 @@ export class ExportCertificateComponent {
       });
       this.exportCertData = new ExportCertData('','','', '' );
     }
+  }
+  reset() {
+    this.error = null;
+    this.exportCertResponse = null;
   }
 
 }

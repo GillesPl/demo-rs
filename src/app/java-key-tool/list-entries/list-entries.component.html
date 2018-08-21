@@ -3,7 +3,7 @@
 </div>
 
 <div>
-  <h1>Data to list all the entries in a key store</h1>
+  <h1>Data to list entry/entries in a key store</h1>
   <span class="input-group">
     Entity*
     <input [(ngModel)]="listEntriesData.entity" type="text">
@@ -15,12 +15,12 @@
   </span>
 
   <span class="input-group">
-    Keystore* (must include extension)
+    Keystore*
     <input [(ngModel)]="listEntriesData.keystore" type="text">
   </span>
 
   <span class="input-group">
-    Alias
+    Alias, if you want to list a certain entry
     <input [(ngModel)]="listEntriesData.alias" type="text">
   </span>
 

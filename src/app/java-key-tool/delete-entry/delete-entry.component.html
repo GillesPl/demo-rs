@@ -3,55 +3,55 @@
 </div>
 
 <div>
-  <h1>Data to change a key password</h1>
+  <h1>Data to delete an entry in the key store</h1>
   <span class="input-group">
     Entity*
-    <input [(ngModel)]="changeAliasData.entity" type="text">
+    <input [(ngModel)]="changeDeleteEntryData.entity" type="text">
   </span>
 
   <span class="input-group">
     Type*
-    <input [(ngModel)]="changeAliasData.type" type="text">
+    <input [(ngModel)]="changeDeleteEntryData.type" type="text">
   </span>
 
   <span class="input-group">
-    Keystore* (must include extension)
-    <input [(ngModel)]="changeAliasData.keystore" type="text">
+    Keystore*
+    <input [(ngModel)]="changeDeleteEntryData.keystore" type="text">
   </span>
 
   <span class="input-group">
     Alias
-    <input [(ngModel)]="changeAliasData.alias" type="text">
+    <input [(ngModel)]="changeDeleteEntryData.alias" type="text">
   </span>
 
   <span class="input-group">
     Storepass
-    <input [(ngModel)]="changeAliasData.storepass" type="password">
+    <input [(ngModel)]="changeDeleteEntryData.storepass" type="password">
   </span>
 
   <span class="input-group">
     Store type
-    <input [(ngModel)]="changeAliasData.storetype" type="text">
+    <input [(ngModel)]="changeDeleteEntryData.storetype" type="text">
   </span>
 
   <span class="input-group">
     Provider name
-    <input [(ngModel)]="changeAliasData.providername" type="text">
+    <input [(ngModel)]="changeDeleteEntryData.providername" type="text">
   </span>
 
   <span class="input-group">
     Provider class
-    <input [(ngModel)]="changeAliasData.providerclass" type="text">
+    <input [(ngModel)]="changeDeleteEntryData.providerclass" type="text">
   </span>
 
   <span class="input-group">
     Provider argument
-    <input [(ngModel)]="changeAliasData.providerarg" type="text">
+    <input [(ngModel)]="changeDeleteEntryData.providerarg" type="text">
   </span>
 
   <span class="input-group">
     Provider path
-    <input [(ngModel)]="changeAliasData.providerpath" type="text">
+    <input [(ngModel)]="changeDeleteEntryData.providerpath" type="text">
   </span>
 
   <div class="buttons">
@@ -61,7 +61,7 @@
   </div>
 </div>
 
-<div class="response" *ngIf="changeAliasResponse" >
+<div class="response" *ngIf="changeDeleteEntryResponse" >
   <h1>Output</h1>
-  <p>Status: {{changeAliasResponse.data}}</p>
+  <p>Status: {{changeDeleteEntryResponse.data}}</p>
 </div>
