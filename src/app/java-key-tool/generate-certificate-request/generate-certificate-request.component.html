@@ -1,0 +1,91 @@
+<div *ngIf="error" class="alert alert-danger">
+  {{error}}
+</div>
+
+<div>
+  <h1>Data to generate a certficate request</h1>
+  <span class="input-group">
+    Entity*
+    <input [(ngModel)]="csrdata.entity" type="text">
+  </span>
+
+  <span class="input-group">
+    Type*
+    <input [(ngModel)]="csrdata.type" type="text">
+  </span>
+
+  <span class="input-group">
+    Keystore*
+    <input [(ngModel)]="csrdata.keystore" type="text">
+  </span>
+
+  <span class="input-group">
+    alias
+    <input [(ngModel)]="csrdata.alias" type="text">
+  </span>
+
+  <span class="input-group">
+    Singature algorithm name
+    <input [(ngModel)]="csrdata.sigalg" type="text">
+  </span>
+
+  <span class="input-group">
+    File output name
+    <input [(ngModel)]="csrdata.file" type="text">
+  </span>
+
+  <span class="input-group">
+    Distinguished name
+    <input [(ngModel)]="csrdata.dname" type="text">
+  </span>
+
+  <span class="input-group">
+    Keypass
+    <input [(ngModel)]="csrdata.keypass" type="password">
+  </span>
+
+  <span class="input-group">
+    Storepass
+    <input [(ngModel)]="csrdata.storepass" type="password">
+  </span>
+
+  <span class="input-group">
+    Store type
+    <input [(ngModel)]="csrdata.storetype" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider name
+    <input [(ngModel)]="csrdata.providername" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider class
+    <input [(ngModel)]="csrdata.providerclass" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider argument
+    <input [(ngModel)]="csrdata.providerarg" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider path
+    <input [(ngModel)]="csrdata.providerpath" type="text">
+  </span>
+
+  <div class="buttons">
+    <button class="btn btn-info" (click)="createCertificateRequest()">
+      Generate certificate request
+    </button>
+  </div>
+
+
+  <div class="response" *ngIf="csrResponse">
+    <h1>Output</h1>
+    <p *ngIf="!csrResponse.success">{{csrResponse.data}}</p>
+    certificate response: {{csrResponse.base64}}
+  </div>
+
+
+</div>

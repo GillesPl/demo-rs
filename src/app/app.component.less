@@ -685,6 +685,54 @@ html {
 }
 
 
+.st-javakeytool-panel {
+  position: absolute;
+  bottom: 60px;
+  height: 100%;
+  padding-top: 60px;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #ccc;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+
+
+  h2 {
+    margin: 0;
+    padding: 1em 1em .25em .5em;
+    color: #333;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    font-weight: 300;
+    font-size: 2em;
+  }
+
+  dl {
+    margin: 0;
+    padding: 1em 1em 1em 1em;
+
+    dt {
+      margin-top: 10px;
+      color: rgba(255,255,255,1);
+    }
+
+    dd {
+      margin-bottom: 5px;
+      color: rgba(255,255,255,0.9);
+    }
+  }
+
+  a {
+    color: rgba(255,255,255,0.95);
+    text-decoration: underline;
+
+    &:hover, &:active {
+      color: @t1t-grey;
+    }
+  }
+}
+
+
 /* Slide in on top fileexchange*/
 .sliding-admin-panel {
   &.st-admin-panel {
@@ -713,6 +761,24 @@ html {
     transform: translate3d(100%, 0, 0);
 
     &.st-fileexchange-panel-open {
+      visibility: visible;
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+/* Slide in on top javakeytool panel */
+.sliding-javakeytool-panel {
+  &.st-javakeytool-panel {
+    visibility: hidden;
+    overflow-y: auto;
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+
+    &.st-javakeytool-panel-open {
       visibility: visible;
       opacity: 1;
       -webkit-transform: translate3d(0, 0, 0);
@@ -776,6 +842,11 @@ html {
   label[for*='11']:before { content: '\f093'; }
   label[for*='12']:before { content: '\f019'; }
   label[for*='13']:before { content: '\f013'; }
+  label[for*='14']:before { content: '\f014'; }
+  label[for*='15']:before { content: '\f015'; }
+  label[for*='16']:before { content: '\f016'; }
+  label[for*='17']:before { content: '\f017'; }
+  label[for*='18']:before { content: '\f018'; }
 
   label:hover {
     color: #888;
@@ -801,7 +872,16 @@ html {
   #tab10:checked ~ #content10,
   #tab11:checked ~ #content11,
   #tab12:checked ~ #content12,
-  #tab13:checked ~ #content13{
+  #tab13:checked ~ #content13,
+  #tab14:checked ~ #content14,
+  #tab15:checked ~ #content15,
+  #tab16:checked ~ #content16,
+  #tab17:checked ~ #content17,
+  #tab18:checked ~ #content18,
+  #tab19:checked ~ #content19,
+  #tab20:checked ~ #content20,
+  #tab21:checked ~ #content21,
+  #tab22:checked ~ #content22{
     display: block;
   }
 }

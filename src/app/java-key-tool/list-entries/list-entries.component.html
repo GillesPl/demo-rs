@@ -1,0 +1,69 @@
+<div *ngIf="error" class="alert alert-danger">
+  {{error}}
+</div>
+
+<div>
+  <h1>Data to list entry/entries in a key store</h1>
+  <span class="input-group">
+    Entity*
+    <input [(ngModel)]="listEntriesData.entity" type="text">
+  </span>
+
+  <span class="input-group">
+    Type*
+    <input [(ngModel)]="listEntriesData.type" type="text">
+  </span>
+
+  <span class="input-group">
+    Keystore*
+    <input [(ngModel)]="listEntriesData.keystore" type="text">
+  </span>
+
+  <span class="input-group">
+    Alias, if you want to list a certain entry
+    <input [(ngModel)]="listEntriesData.alias" type="text">
+  </span>
+
+  <span class="input-group">
+    Storepass
+    <input [(ngModel)]="listEntriesData.storepass" type="password">
+  </span>
+
+  <span class="input-group">
+    Store type
+    <input [(ngModel)]="listEntriesData.storetype" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider name
+    <input [(ngModel)]="listEntriesData.providername" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider class
+    <input [(ngModel)]="listEntriesData.providerclass" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider argument
+    <input [(ngModel)]="listEntriesData.providerarg" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider path
+    <input [(ngModel)]="listEntriesData.providerpath" type="text">
+  </span>
+
+  <div class="buttons">
+    <button class="btn btn-info" (click)="listEntries()">
+      List entries
+    </button>
+  </div>
+</div>
+
+<div class="response" *ngIf="listEntriesResponse" >
+  <h1>Output</h1>
+  <ul *ngFor="let item of listEntriesResponse.data">
+    <li>{{item.alias}} : {{item.base64}}</li>
+  </ul>
+</div>

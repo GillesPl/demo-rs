@@ -2,6 +2,10 @@
   <span [hidden]="menuOpen" i18n="@@supportedCards">Is my card supported?</span>
   <fa [name]="'times'" [hidden]="!menuOpen"></fa>
 </div>
+<div class="javakeytool-panel-toggle clickable text-bold" (click)="toggleJavaKeyToolPanel()">
+  <span [hidden]="javakeytoolOpen" i18n="@@javakeytoolPanel">Java key tool Panel</span>
+  <fa [name]="'times'" [hidden]="!javakeytoolOpen"></fa>
+</div>
 <div class="fileexchange-panel-toggle clickable text-bold" (click)="toggleFileExchangePanel()">
   <span [hidden]="fileExchangeOpen" i18n="@@fileexchangePanel">File Exchange Panel</span>
   <fa [name]="'times'" [hidden]="!fileExchangeOpen"></fa>

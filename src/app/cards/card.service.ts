@@ -198,7 +198,7 @@ export class CardService {
     return this.Connector.get().oberthur(readerId)
       .allCerts({ filter: ['root-certificate', 'authentication-certificate', 'signing-certificate'] }).then(certs => {
         return {
-          digestAlgoWrapper: 'SHA512',
+          digestAlgoWrapper: 'SHA256',
           certificates:    [ certs.data.signing_certificate.base64,
             certs.data.authentication_certificate.base64,
             certs.data.root_certificate.base64 ],
@@ -322,16 +322,30 @@ export class CardService {
     return new Promise((resolve, reject) => {
       service.determineType(readerId, pin).then((res) => service.getDataForType(res)).then((signData) => {
         signData.docId = documentId;
-        return Promise.resolve(signData)
-          .then((res) => service.dataToSign(res))
-          .then( (dataToSign) => {
+        return Promise.resolve(signData).then((res) => service.dataToSign(res)).then( (dataToSign) => {
             return Promise.resolve({ readerId: readerId, pin, dataToSign: dataToSign });
-          })
-          .then((res) => service.signWithConnector(res))
-          .then((signedData) => {
+          }).then((res) => service.signWithConnector(res)).then((signedData) => {
             signData.signedData = signedData;
             return Promise.resolve(signData);
           })
+          .then((res) => service.workflowSign(res))
+          .then(() => { resolve(); });
+      }).catch(err => { reject(err); });
+
+    });
+  }
+
+  signDocumentWithCertificateId(documentId, readerId, pin, certificateId) {
+    const service = this;
+    return new Promise((resolve, reject) => {
+      service.determineType(readerId, pin).then((res) => service.getDataForType(res)).then((signData) => {
+        signData.docId = documentId;
+        return Promise.resolve(signData).then((res) => service.dataToSign(res)).then( (dataToSign) => {
+          return Promise.resolve({ readerId: readerId, pin, dataToSign: dataToSign, id: certificateId });
+        }).then((res) => service.signWithConnector(res)).then((signedData) => {
+          signData.signedData = signedData;
+          return Promise.resolve(signData);
+        })
           .then((res) => service.workflowSign(res))
           .then(() => { resolve(); });
       }).catch(err => { reject(err); });
@@ -347,7 +361,8 @@ export class CardService {
   signWithConnector (inputObj) {
     return this.Connector.get().sign(inputObj.readerId, { pin: inputObj.pin,
       data: inputObj.dataToSign.bytes,
-      algorithm_reference: inputObj.dataToSign.digestAlgorithm })
+      algorithm_reference: inputObj.dataToSign.digestAlgorithm,
+      id: inputObj.id})
       .then(res => res.data);
   }
 

@@ -66,8 +66,36 @@
   right: 0;
   top: 0;
   padding: 5px 10px;
-  margin-right: 150px;
+  margin-right: 120px;
   border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: @brand-primary;
+  color: #fff;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  z-index: 1001;
+  //font-size: 18px;
+  //min-height: 40px;
+
+  &:hover {
+    background-color: @brand-info;
+  }
+
+  &.menu-open {
+    left: 300px;
+  }
+}
+
+
+.javakeytool-panel-toggle {
+  position: absolute;
+  display: inline-block;
+  right: 0;
+  top: 0;
+  padding: 5px 10px;
+  margin-right: 290px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   background-color: @brand-primary;
   color: #fff;
   -webkit-transition: all 0.5s;

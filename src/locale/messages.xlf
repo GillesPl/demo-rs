@@ -1036,106 +1036,169 @@
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="JavaKeyToolGenerateKeyPair" datatype="html">
+        <source>Generate key pair</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="JavaKeyToolGenerateCertificateRequest" datatype="html">
+        <source>Generate certificate request</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="JavaKeyToolImportCertificate" datatype="html">
+        <source>Import certificate</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="JavaKeyToolExportCertificate" datatype="html">
+        <source>Export certificate</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="JavaKeyToolChangeKeystorePassword" datatype="html">
+        <source>Change keystore password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="JavaKeyToolChangeKeyPassword" datatype="html">
+        <source>Change key password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="JavaKeyToolChangeAlias" datatype="html">
+        <source>Change alias</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="JavaKeyToolListEntries" datatype="html">
+        <source>List entries</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="JavaKeyToolDeleteEntry" datatype="html">
+        <source>Delete entry</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="c32700dc008d1054d1e7db5ade4dd8a5916ec58d" datatype="html">
         <source>Refresh Data</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">97</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="linenumber">153</context>
         </context-group>
       </trans-unit>
       <trans-unit id="filexEntityTypes" datatype="html">
         <source>Entities and types</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">107</context>
         </context-group>
       </trans-unit>
       <trans-unit id="filexTypeOps" datatype="html">
         <source>Type Ops</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">110</context>
         </context-group>
       </trans-unit>
       <trans-unit id="filexFileUpload" datatype="html">
         <source>File Upload</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="filexFileDownload" datatype="html">
         <source>File Download</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="filexFileOps" datatype="html">
         <source>File Ops</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="filexMisc" datatype="html">
         <source>Miscellaneous</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">122</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminEnvironment" datatype="html">
         <source>Environment</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminCardReader" datatype="html">
         <source>Card Readers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">96</context>
+          <context context-type="linenumber">166</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminContainer" datatype="html">
         <source>Containers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">99</context>
+          <context context-type="linenumber">169</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminDevice" datatype="html">
         <source>Device</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">102</context>
+          <context context-type="linenumber">172</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminDependencies" datatype="html">
         <source>Dependencies</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">175</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminPkcs11" datatype="html">
         <source>PKCS11 Config</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">178</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminLogs" datatype="html">
         <source>Logs</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">111</context>
+          <context context-type="linenumber">181</context>
         </context-group>
       </trans-unit>
       <trans-unit id="supportedCards" datatype="html">
@@ -1145,18 +1208,25 @@
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="javakeytoolPanel" datatype="html">
+        <source>Java key tool Panel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="fileexchangePanel" datatype="html">
         <source>File Exchange Panel</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminPanel" datatype="html">
         <source>Admin Panel</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="faqTitle" datatype="html">

@@ -21,6 +21,77 @@
     </div>
   </nav>
 
+
+  <nav class="st-javakeytool-panel sliding-javakeytool-panel" [ngClass]="{ 'st-javakeytool-panel-open': javaKeyToolPanelOpen }" id="menu-javakeytool-panel">
+    <div class="fe-tabs">
+      <main>
+        <input id="tab14" type="radio" name="tabs">
+        <label for="tab14" i18n="@@JavaKeyToolGenerateKeyPair">Generate key pair</label>
+
+        <input id="tab15" type="radio" name="tabs">
+        <label for="tab15" i18n="@@JavaKeyToolGenerateCertificateRequest">Generate certificate request</label>
+
+        <input id="tab16" type="radio" name="tabs">
+        <label for="tab16" i18n="@@JavaKeyToolImportCertificate">Import certificate</label>
+
+        <input id="tab17" type="radio" name="tabs">
+        <label for="tab17" i18n="@@JavaKeyToolExportCertificate">Export certificate</label>
+
+        <input id="tab18" type="radio" name="tabs">
+        <label for="tab18" i18n="@@JavaKeyToolChangeKeystorePassword">Change keystore password</label>
+
+        <input id="tab19" type="radio" name="tabs">
+        <label for="tab19" i18n="@@JavaKeyToolChangeKeyPassword">Change key password</label>
+
+        <input id="tab20" type="radio" name="tabs">
+        <label for="tab20" i18n="@@JavaKeyToolChangeAlias">Change alias</label>
+
+        <input id="tab21" type="radio" name="tabs">
+        <label for="tab21" i18n="@@JavaKeyToolListEntries">List entries</label>
+
+        <input id="tab22" type="radio" name="tabs">
+        <label for="tab22" i18n="@@JavaKeyToolDeleteEntry">Delete entry</label>
+
+        <section id="content14">
+          <app-generate-key-pair></app-generate-key-pair>
+        </section>
+
+        <section id="content15">
+          <app-generate-certificate-request></app-generate-certificate-request>
+        </section>
+
+        <section id="content16">
+          <app-import-certificate></app-import-certificate>
+        </section>
+
+        <section id="content17">
+          <app-export-certificate></app-export-certificate>
+        </section>
+
+        <section id="content18">
+          <app-change-keystore-password></app-change-keystore-password>
+        </section>
+
+        <section id="content19">
+          <app-change-key-password></app-change-key-password>
+        </section>
+
+        <section id="content20">
+          <app-change-alias></app-change-alias>
+        </section>
+
+        <section id="content21">
+          <app-list-entries></app-list-entries>
+        </section>
+
+        <section id="content22">
+          <app-delete-entry></app-delete-entry>
+        </section>
+      </main>
+    </div>
+  </nav>
+
+
   <nav class="st-fileexchange-panel sliding-fileexchange-panel" [ngClass]="{ 'st-fileexchange-panel-open': fileExchangePanelOpen }" id="menu-fileexchange-panel">
     <div class="fe-tabs">
       <div class="refresh-btn" i18n-tooltip tooltip="Refresh Data" placement="left">
@@ -52,7 +123,6 @@
 
         <section id="content8">
           <app-file-exchange-types></app-file-exchange-types>
-
         </section>
 
         <section id="content9">

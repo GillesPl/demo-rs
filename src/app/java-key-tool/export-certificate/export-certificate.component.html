@@ -1,0 +1,74 @@
+<div *ngIf="error" class="alert alert-danger">
+  {{error}}
+</div>
+
+<div>
+  <h1>Data to export a certificate to the file exchange</h1>
+  <span class="input-group">
+    Entity*
+    <input [(ngModel)]="exportCertData.entity" type="text">
+  </span>
+
+  <span class="input-group">
+    Type*
+    <input [(ngModel)]="exportCertData.type" type="text">
+  </span>
+
+  <span class="input-group">
+    Keystore*
+    <input [(ngModel)]="exportCertData.keystore" type="text">
+  </span>
+
+  <span class="input-group">
+    alias of the certificate to export*
+    <input [(ngModel)]="exportCertData.alias" type="text">
+  </span>
+
+  <span class="input-group">
+    File, path for the certificate to export to
+    <input [(ngModel)]="exportCertData.file" type="text">
+  </span>
+
+  <span class="input-group">
+    Storepass
+    <input [(ngModel)]="exportCertData.storepass" type="password">
+  </span>
+
+  <span class="input-group">
+    Store type
+    <input [(ngModel)]="exportCertData.storetype" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider name
+    <input [(ngModel)]="exportCertData.providername" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider class
+    <input [(ngModel)]="exportCertData.providerclass" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider argument
+    <input [(ngModel)]="exportCertData.providerarg" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider path
+    <input [(ngModel)]="exportCertData.providerpath" type="text">
+  </span>
+
+  <div class="buttons">
+    <button class="btn btn-info" (click)="exportCert()">
+      Export certificate
+    </button>
+  </div>
+</div>
+
+<div class="response" *ngIf="exportCertResponse" >
+  <h1>Output</h1>
+  <p *ngIf="!exportCertResponse.success">{{exportCertResponse.data}}</p>
+  <p>certificate {{exportCertData.alias}}: {{exportCertResponse.data.base64}}</p>
+  <p *ngIf="exportCertResponse.data.path">path: {{exportCertResponse.data.path}}</p>
+</div>

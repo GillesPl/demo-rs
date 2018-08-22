@@ -51,7 +51,15 @@ import {FileExchangeDownloadComponent} from './file-exchange-download/file-excha
 import {UserIdentificationSharedEnvComponent} from './user-identification-shared-env/user-identification-shared-env.component';
 import {FileExchangeFileViewComponent} from './file-exchange-types/file-exchange-file-view/file-exchange-file-view.component';
 import {PdfViewerModule} from 'ng2-pdf-viewer';
-import {ToggleComponent} from './toggle/toggle.component';
+import {GenerateKeyPairComponent} from './java-key-tool/generate-key-pair/generate-key-pair.component';
+import {GenerateCertificateRequestComponent} from './java-key-tool/generate-certificate-request/generate-certificate-request.component';
+import {ImportCertificateComponent} from './java-key-tool/import-certificate/import-certificate.component';
+import {ExportCertificateComponent} from './java-key-tool/export-certificate/export-certificate.component';
+import {ChangeKeystorePasswordComponent} from './java-key-tool/change-keystore-password/change-keystore-password.component';
+import {ChangeKeyPasswordComponent} from './java-key-tool/change-key-password/change-key-password.component';
+import {ChangeAliasComponent} from './java-key-tool/change-alias/change-alias.component';
+import {ListEntriesComponent} from './java-key-tool/list-entries/list-entries.component';
+import {DeleteEntryComponent} from './java-key-tool/delete-entry/delete-entry.component';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -93,7 +101,16 @@ const ROUTES: Routes = [
     FileExchangeUploadComponent,
     FileExchangeDownloadComponent,
     UserIdentificationSharedEnvComponent,
-    FileExchangeFileViewComponent
+    FileExchangeFileViewComponent,
+    GenerateKeyPairComponent,
+    GenerateCertificateRequestComponent,
+    ImportCertificateComponent,
+    ExportCertificateComponent,
+    ChangeKeystorePasswordComponent,
+    ChangeKeyPasswordComponent,
+    ChangeAliasComponent,
+    ListEntriesComponent,
+    DeleteEntryComponent
   ],
   imports: [
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),

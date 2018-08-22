@@ -68,6 +68,7 @@ import {PinCheckWithCanModalComponent} from './pin-check-with-can-modal/pin-chec
 import {DownloadSummaryPaceModalComponent} from './download-summary-pace-modal/download-summary-pace-modal.component';
 import {ToggleComponent} from '../toggle/toggle.component';
 import {SwitchComponent} from '../switch/switch.component';
+import {DownloadXmlCertificateidModalComponent} from './download-xml-certificateid-modal/download-xml-certificateid-modal.component';
 
 
 @NgModule({
@@ -123,6 +124,7 @@ import {SwitchComponent} from '../switch/switch.component';
     DownloadSummaryModalComponent,
     DownloadSummaryPaceModalComponent,
     DownloadXmlModalComponent,
+    DownloadXmlCertificateidModalComponent,
     ChallengeModalComponent,
     SlotIconComponent,
     SlotVizComponent,
@@ -159,6 +161,6 @@ import {SwitchComponent} from '../switch/switch.component';
     Pkcs11VizComponent,
     PteidVizComponent,
   ],
-  entryComponents: [ ChallengeModalComponent, PinCheckModalComponent, DownloadSummaryModalComponent, DownloadSummaryPaceModalComponent, DownloadXmlModalComponent, PinChangeModalComponent, PinResetModalComponent, PinUnblockModalComponent, PinCheckWithCanModalComponent ]
+  entryComponents: [ ChallengeModalComponent, PinCheckModalComponent, DownloadSummaryModalComponent, DownloadSummaryPaceModalComponent, DownloadXmlModalComponent, PinChangeModalComponent, PinResetModalComponent, PinUnblockModalComponent, PinCheckWithCanModalComponent, DownloadXmlCertificateidModalComponent ]
 })
 export class CardsModule { }

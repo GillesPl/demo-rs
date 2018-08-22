@@ -1,0 +1,93 @@
+<div *ngIf="error" class="alert alert-danger">
+  {{error}}
+</div>
+
+<div>
+  <h1>Data to import a certificate</h1>
+  <span class="input-group">
+    Entity*
+    <input [(ngModel)]="importCertData.entity" type="text">
+  </span>
+
+  <span class="input-group">
+    Type*
+    <input [(ngModel)]="importCertData.type" type="text">
+  </span>
+
+  <span class="input-group">
+    Keystore*
+    <input [(ngModel)]="importCertData.keystore" type="text">
+  </span>
+
+  <span class="input-group">
+    alias for the certificate*
+    <input [(ngModel)]="importCertData.alias" type="text">
+  </span>
+
+  <span class="input-group">
+    File, absolute system path to the certificate to import
+    <input [(ngModel)]="importCertData.file" type="text">
+  </span>
+
+  <span class="input-group">
+    Data, only if file is not specified
+    <input [(ngModel)]="importCertData.data" type="text">
+  </span>
+
+  <span class="input-group">
+    Singature algorithm name
+    <input [(ngModel)]="importCertData.sigalg" type="text">
+  </span>
+
+  <span class="input-group">
+    Distinguished name
+    <input [(ngModel)]="importCertData.dname" type="text">
+  </span>
+
+  <span class="input-group">
+    Keypass
+    <input [(ngModel)]="importCertData.keypass" type="password">
+  </span>
+
+  <span class="input-group">
+    Storepass
+    <input [(ngModel)]="importCertData.storepass" type="password">
+  </span>
+
+  <span class="input-group">
+    Store type
+    <input [(ngModel)]="importCertData.storetype" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider name
+    <input [(ngModel)]="importCertData.providername" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider class
+    <input [(ngModel)]="importCertData.providerclass" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider argument
+    <input [(ngModel)]="importCertData.providerarg" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider path
+    <input [(ngModel)]="importCertData.providerpath" type="text">
+  </span>
+
+  <div class="buttons">
+    <button class="btn btn-info" (click)="importCert()">
+      Import certificate
+    </button>
+  </div>
+</div>
+
+<div class="response" *ngIf="importCertResponse" >
+  <h1>Output</h1>
+  <p *ngIf="!importCertResponse.success">{{importCertResponse.data}}</p>
+  <p>certificate imported as {{importCertData.alias}}: {{importCertResponse.data}}</p>
+</div>

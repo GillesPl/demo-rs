@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
   pollingCard: boolean;
   adminPanelOpen: boolean;
   fileExchangePanelOpen: boolean;
+  javaKeyToolPanelOpen: boolean;
   cardTypesOpen: boolean;
   faqOpen: boolean;
   error: boolean;
@@ -48,6 +49,7 @@ export class AppComponent implements OnInit {
               private RMC: RMC) {
     this.eventService.adminPanelOpened$.subscribe(() => this.onAdminPanelOpened());
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.onFileExchangePanelOpened());
+    this.eventService.javaKeyToolOpened$.subscribe(() => this.OnJavaKeyToolOpened());
     this.eventService.userIdentificationRequired$.subscribe(() => this.onUserIdentificationRequired());
     this.eventService.userIdentificationError$.subscribe(() => this.onUserIdentificationError());
     this.eventService.consentRequired$.subscribe((isFileConsent) => this.onConsentRequired(isFileConsent));
@@ -179,6 +181,7 @@ export class AppComponent implements OnInit {
   dismissPanels() {
     this.eventService.closeSidebar();
     this.eventService.closeAdminPanel();
+    this.eventService.closeJavaKeyToolPanel()
     this.cardTypesOpen = false;
     this.faqOpen = false;
   }
@@ -265,8 +268,10 @@ export class AppComponent implements OnInit {
       this.faqOpen = false;
       this.eventService.closeAdminPanel();
       this.eventService.closeFileExchangePanel();
+      this.eventService.closeJavaKeyToolPanel();
       this.adminPanelOpen = false;
       this.fileExchangePanelOpen = false;
+      this.javaKeyToolPanelOpen = false;
     }
     this.cardTypesOpen = !this.cardTypesOpen;
   }
@@ -276,8 +281,10 @@ export class AppComponent implements OnInit {
       this.faqOpen = false;
       this.eventService.closeSidebar();
       this.eventService.closeFileExchangePanel();
+      this.eventService.closeJavaKeyToolPanel();
       this.cardTypesOpen = false;
       this.fileExchangePanelOpen = false;
+      this.javaKeyToolPanelOpen = false;
     }
     this.adminPanelOpen = !this.adminPanelOpen;
   }
@@ -287,10 +294,25 @@ export class AppComponent implements OnInit {
       this.faqOpen = false;
       this.eventService.closeSidebar();
       this.eventService.closeAdminPanel();
+      this.eventService.closeJavaKeyToolPanel();
       this.cardTypesOpen = false;
       this.adminPanelOpen = false;
+      this.javaKeyToolPanelOpen = false;
     }
     this.fileExchangePanelOpen = !this.fileExchangePanelOpen;
+  }
+
+  OnJavaKeyToolOpened() {
+    if (!this.javaKeyToolPanelOpen) {
+      this.faqOpen = false;
+      this.eventService.closeSidebar();
+      this.eventService.closeAdminPanel();
+      this.eventService.closeFileExchangePanel();
+      this.cardTypesOpen = false;
+      this.adminPanelOpen = false;
+      this.fileExchangePanelOpen = false;
+    }
+    this.javaKeyToolPanelOpen = !this.javaKeyToolPanelOpen;
   }
 
   onFaqOpened() {
@@ -299,8 +321,10 @@ export class AppComponent implements OnInit {
       this.eventService.closeSidebar();
       this.eventService.closeAdminPanel();
       this.eventService.closeFileExchangePanel();
+      this.eventService.closeJavaKeyToolPanel();
       this.cardTypesOpen = false;
       this.adminPanelOpen = false;
+      this.javaKeyToolPanelOpen = false;
 
     }
     this.faqOpen = !this.faqOpen;

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DownloadXmlModalComponent } from './download-xml-modal.component';
 
-describe('DownloadXmlModalComponent', () => {
+describe('DownloadXmlCertificateidModalComponent', () => {
   let component: DownloadXmlModalComponent;
   let fixture: ComponentFixture<DownloadXmlModalComponent>;
 

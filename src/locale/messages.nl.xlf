@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="supportedTypes" datatype="html">
@@ -67,17 +66,17 @@
       <trans-unit id="cardNotSupported" datatype="html">
         <source>
       Don't find your card in the list?
-      <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Send us an email with the card you want supported!
+      <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Send us an email with the card you want supported!
     </source>
       <target>Kaart niet in de lijst?
-              <x id="LINE_BREAK" ctype="lb"/>Stuur ons een email met de kaart die u wilt ondersteund zien!</target>
+              Stuur ons een email met de kaart die u wilt ondersteund zien!</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">18</context></context-group></trans-unit>
       <trans-unit id="c32700dc008d1054d1e7db5ade4dd8a5916ec58d" datatype="html">
         <source>Refresh Data</source>
         <target>Vernieuwen</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">26</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">83</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">97</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">153</context></context-group></trans-unit>
       <trans-unit id="supportedCards" datatype="html">
         <source>Is my card supported?</source>
         <target>Wordt mijn kaart ondersteund?</target>
@@ -90,7 +89,7 @@
         <source>Admin Panel</source>
         <target>Admin Paneel</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context><context context-type="linenumber">10</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context><context context-type="linenumber">14</context></context-group></trans-unit>
       <trans-unit id="faqTitle" datatype="html">
         <source>FAQ</source>
         <target>FAQ</target>
@@ -148,8 +147,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="insertCardPrompt" datatype="html">
-        <source>Insert the <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong>"/>smartcard<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong>"/> you want to read into the smartcard reader.</source>
-        <target>Steek de <x id="START_TAG_STRONG" ctype="x-strong"/>smartcard<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> die u wilt uitlezen in uw lezer.</target>
+        <source>Insert the <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>smartcard<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> you want to read into the smartcard reader.</source>
+        <target>Steek de smartcard die u wilt uitlezen in uw lezer.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
           <context context-type="linenumber">3</context>
@@ -172,8 +171,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="checkCardSupported" datatype="html">
-        <source>Check if it is supported <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>here<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</source>
-        <target>Controleer <x id="START_LINK" ctype="x-a"/>hier<x id="CLOSE_LINK" ctype="x-a"/> of ze ondersteund wordt.</target>
+        <source>Check if it is supported <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>here<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+        <target>Controleer hier of ze ondersteund wordt.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-polling/card-polling.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -217,12 +216,12 @@
       </trans-unit>
       <trans-unit id="connectReaderDesc" datatype="html">
         <source>
-    Please connect your <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong>"/>smartcard reader<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong>"/> to your computer.
-    <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+    Please connect your <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>smartcard reader<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> to your computer.
+    <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
     Once it is connected, this page will automatically detect it.
   </source>
-        <target>Gelieve uw <x id="START_TAG_STRONG" ctype="x-strong"/>smartcard reader<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> met de computer te verbinden.
-                               <x id="LINE_BREAK" ctype="lb"/>
+        <target>Gelieve uw smartcard reader met de computer te verbinden.
+                               
                                Hij wordt automatisch gedetecteerd eens ingeplugd.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/reader-polling/reader-polling.component.ts</context>
@@ -250,13 +249,13 @@
       <trans-unit id="promoText" datatype="html">
         <source>
     Read the content of your smartcard, using any type of reader,
-    <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong>"/>completely free<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong>"/>.
-    <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>This service is available for personal use, and we
-    <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong>"/>never<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong>"/> save any data from your card.
+    <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>completely free<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>.
+    <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>This service is available for personal use, and we
+    <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>never<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> save any data from your card.
   </source>        <target>    Lees de inhoud van uw smartcard, met om het even welke lezer,
-    <x id="START_TAG_STRONG" ctype="x-strong"/>volledig gratis<x id="CLOSE_TAG_STRONG" ctype="x-strong"/>.<x id="LINE_BREAK" ctype="lb"/>
+    volledig gratis.
     Deze dienst is bedoeld voor persoonlijk gebruik, en slaat
-    <x id="START_TAG_STRONG" ctype="x-strong"/>nooit<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> data van uw kaart op.
+    nooit data van uw kaart op.
   </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/download-gcl/download-gcl.component.ts</context>
@@ -440,8 +439,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="supportedCardTypes" datatype="html">
-        <source>You can find the list of currently supported card types <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>here<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</source>
-        <target>U vindt de volledige lijst met ondersteunde kaarttypes <x id="START_LINK" ctype="x-a"/>hier<x id="CLOSE_LINK" ctype="x-a"/>.</target>
+        <source>You can find the list of currently supported card types <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>here<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+        <target>U vindt de volledige lijst met ondersteunde kaarttypes hier.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/card-visualizer/card-visualizer.component.ts</context>
           <context context-type="linenumber">19</context>
@@ -585,13 +584,13 @@
       <target>Teken XML voorbeeld</target></trans-unit>
       <trans-unit id="signXmlSubtitle" datatype="html">
         <source>
-      This will digitally sign an example XML file with the certificates on your card. At the end of the process, you will be able to download the signed XML file.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      This will digitally sign an example XML file with the certificates on your card. At the end of the process, you will be able to download the signed XML file.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/download-xml-modal/download-xml-modal.component.ts</context>
           <context context-type="linenumber">6</context>
         </context-group>
-      <target>Een voorbeeld XML bestand wordt digitaal ondertekend met de certificaten op uw kaart. Op het einde van het tekenproces kan u het getekende XML bestand downloaden.<x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/></target></trans-unit>
+      <target>Een voorbeeld XML bestand wordt digitaal ondertekend met de certificaten op uw kaart. Op het einde van het tekenproces kan u het getekende XML bestand downloaden.</target></trans-unit>
       <trans-unit id="startSigning" datatype="html">
         <source>Start Signing
         </source>
@@ -816,7 +815,7 @@
           <context context-type="sourcefile">app/cards/pteid/pteid-pin-check-status/pteid-pin-check-status.component.ts</context>
           <context context-type="linenumber">15</context>
         </context-group>
-      <target>Verkeerde PIN; <x id="ICU"/> resterend.</target></trans-unit>
+      <target>Verkeerde PIN;  resterend.</target></trans-unit>
       <trans-unit id="f8872b91ab938c2142ed93b817133a2aea772be4" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {1 try} other {<x id="INTERPOLATION" equiv-text="{{remainingTries}}"/> tries} }</source>
         <context-group purpose="location">
@@ -835,7 +834,7 @@
           <context context-type="sourcefile">app/cards/pteid/pteid-pin-check-status/pteid-pin-check-status.component.ts</context>
           <context context-type="linenumber">15</context>
         </context-group>
-      <target>{VAR_PLURAL, plural, =1 {1 poging} other {<x id="INTERPOLATION"/> pogingen} } </target></trans-unit>
+      <target>{VAR_PLURAL, plural, =1 {1 poging} other { pogingen} } </target></trans-unit>
       <trans-unit id="pinCheckOk" datatype="html">
         <source>Address PIN ok.</source>
         <context-group purpose="location">
@@ -873,7 +872,7 @@
           <context context-type="sourcefile">app/cards/pteid/pteid-pin-check-status/pteid-pin-check-status.component.ts</context>
           <context context-type="linenumber">23</context>
         </context-group>
-      <target><x id="INTERPOLATION"/> foute PIN codes ingevoerd. PIN geblokkeerd.</target></trans-unit>
+      <target> foute PIN codes ingevoerd. PIN geblokkeerd.</target></trans-unit>
       <trans-unit id="card" datatype="html">
         <source>Card</source>
         <context-group purpose="location">
@@ -897,10 +896,10 @@
       <target>Vervalt</target></trans-unit>
       <trans-unit id="accessToLuxRestricted" datatype="html">
         <source>
-      Access to the Luxembourg eID card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Please provide your PIN to continue.
+      Access to the Luxembourg eID card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Please provide your PIN to continue.
     </source>
         
-      <target>Toegang tot de Luxemburgse eID kaart is beveiligd met een CAN code.<x id="LINE_BREAK" ctype="lb"/>Gelieve uw CAN in te geven om verder te gaan.</target><context-group purpose="location"><context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context><context context-type="linenumber">8</context></context-group></trans-unit>
+      <target>Toegang tot de Luxemburgse eID kaart is beveiligd met een CAN code.Gelieve uw CAN in te geven om verder te gaan.</target><context-group purpose="location"><context context-type="sourcefile">app/cards/lux/lux-viz/lux-viz.component.ts</context><context context-type="linenumber">8</context></context-group></trans-unit>
       <trans-unit id="waitingForReaderResponse" datatype="html">
         <source>Waiting for response from reader...</source>
         
@@ -940,13 +939,13 @@
       <target>Klik om te kopiëren</target></trans-unit>
       <trans-unit id="pivAccessRestricted" datatype="html">
         <source>
-      Access to the PIV card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Please provide your PIN to continue.
+      Access to the PIV card is secured with a PIN code.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Please provide your PIN to continue.
     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/piv/piv-viz/piv-viz.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
-      <target>Toegang tot de PIV kaart is beveiligd met een PIN code.<x id="LINE_BREAK" ctype="lb"/>Gelieve uw PIN in te geven om verder te gaan.</target></trans-unit>
+      <target>Toegang tot de PIV kaart is beveiligd met een PIN code.Gelieve uw PIN in te geven om verder te gaan.</target></trans-unit>
       <trans-unit id="readingData" datatype="html">
         <source>Reading data...</source>
         <context-group purpose="location">
@@ -1116,40 +1115,40 @@
         </context-group>
       <target>ZIP4:</target></trans-unit>
       <trans-unit id="mobibActive" datatype="html">
-        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong>"/>Active<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong>"/></source>
+        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Active<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-active-status/mobib-active-status.component.ts</context>
           <context context-type="linenumber">5</context>
         </context-group>
-      <target><x id="START_TAG_STRONG" ctype="x-strong"/>Actief<x id="CLOSE_TAG_STRONG" ctype="x-strong"/></target></trans-unit>
+      <target>Actief</target></trans-unit>
       <trans-unit id="mobibNotActive" datatype="html">
-        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong>"/>Not active<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong>"/></source>
+        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Not active<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-active-status/mobib-active-status.component.ts</context>
           <context context-type="linenumber">11</context>
         </context-group>
-      <target><x id="START_TAG_STRONG" ctype="x-strong"/>Niet Actief<x id="CLOSE_TAG_STRONG" ctype="x-strong"/></target></trans-unit>
+      <target>Niet Actief</target></trans-unit>
       <trans-unit id="mobibValidityStartsOn" datatype="html">
         <source>Validity starts on <x id="INTERPOLATION" equiv-text="{{validityDate}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-validity-status/mobib-validity-status.component.ts</context>
           <context context-type="linenumber">5</context>
         </context-group>
-      <target>Geldig vanaf <x id="INTERPOLATION"/></target></trans-unit>
+      <target>Geldig vanaf </target></trans-unit>
       <trans-unit id="mobibExpired" datatype="html">
-        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong>"/>Expired<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong>"/> on <x id="INTERPOLATION" equiv-text="{{validityDate}}"/></source>
+        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Expired<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> on <x id="INTERPOLATION" equiv-text="{{validityDate}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-validity-status/mobib-validity-status.component.ts</context>
           <context context-type="linenumber">11</context>
         </context-group>
-      <target><x id="START_TAG_STRONG" ctype="x-strong"/>Verlopen<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> op <x id="INTERPOLATION"/></target></trans-unit>
+      <target>Verlopen op </target></trans-unit>
       <trans-unit id="mobibValidUntil" datatype="html">
-        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong>"/>Valid<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong>"/> until <x id="INTERPOLATION" equiv-text="{{validityDate}}"/></source>
+        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Valid<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> until <x id="INTERPOLATION" equiv-text="{{validityDate}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cards/mobib/mobib-validity-status/mobib-validity-status.component.ts</context>
           <context context-type="linenumber">17</context>
         </context-group>
-      <target><x id="START_TAG_STRONG" ctype="x-strong"/>Geldig<x id="CLOSE_TAG_STRONG" ctype="x-strong"/> tot <x id="INTERPOLATION"/></target></trans-unit>
+      <target>Geldig tot </target></trans-unit>
             <trans-unit id="luxtrust" datatype="html">
               <source>LuxTrust</source>
               <target>LuxTrust</target>
@@ -1204,7 +1203,7 @@
       </trans-unit>
                   <trans-unit id="ba4e26b3f592f7842152eb57332422dfed2fe188" datatype="html">
                     <source>Slot <x id="INTERPOLATION" equiv-text="{{slot.slot_id}}"/> in <x id="INTERPOLATION_1" equiv-text="{{slot.description}}"/></source>
-                    <target>Slot <x id="INTERPOLATION"/> in <x id="INTERPOLATION_1"/></target>
+                    <target>Slot  in </target>
                     <context-group purpose="location">
                       <context context-type="sourcefile">app/cards/pkcs11/slot-icon/slot-icon.component.ts</context>
                       <context context-type="linenumber">3</context>
@@ -1220,9 +1219,9 @@
                   </trans-unit>
       <trans-unit id="consentRequired" datatype="html">
         <source>
-      To use this website, you need to consent to your reader being used.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Without consent, we are unable to access the card reader.
+      To use this website, you need to consent to your reader being used.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Without consent, we are unable to access the card reader.
     </source>        <target>
-      Om deze website te gebruiken, moet u toestaan dat we uw lezer gebruiken.<x id="LINE_BREAK" ctype="lb"/>Zonder toestemming hebben we geen toegang tot de kaartlezer.
+      Om deze website te gebruiken, moet u toestaan dat we uw lezer gebruiken.Zonder toestemming hebben we geen toegang tot de kaartlezer.
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-consent/rmc-consent.component.ts</context>
@@ -1239,9 +1238,9 @@
       </trans-unit>
       <trans-unit id="pluginDownloadFailed" datatype="html">
         <source>
-      An error occurred while downloading the Trust1Connector plugins that are required for this website.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Reload the page to try again. If this error keeps occurring, please contact support.
+      An error occurred while downloading the Trust1Connector plugins that are required for this website.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Reload the page to try again. If this error keeps occurring, please contact support.
     </source>        <target>
-      Er trad een fout op tijdens het downloaden van de Trust1Connector containers die noodzakelijk zijn voor deze website.<x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/>Herlaad te pagina om opnieuw te proberen. Als dit probleem zich blijft voordoen, contacteer support.
+      Er trad een fout op tijdens het downloaden van de Trust1Connector containers die noodzakelijk zijn voor deze website.Herlaad te pagina om opnieuw te proberen. Als dit probleem zich blijft voordoen, contacteer support.
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/rmc-download-failed/rmc-download-failed.component.ts</context>
@@ -1265,94 +1264,112 @@
         </context-group>
       </trans-unit>
     <trans-unit id="filexEntityTypes" datatype="html">
-        <source>Entities and types</source><target state="new">Entities and types</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">36</context>
-        </context-group>
-      </trans-unit><trans-unit id="filexTypeOps" datatype="html">
-        <source>Type Ops</source><target state="new">Type Ops</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">39</context>
-        </context-group>
-      </trans-unit><trans-unit id="filexFileUpload" datatype="html">
-        <source>File Upload</source><target state="new">File Upload</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-      </trans-unit><trans-unit id="filexFileDownload" datatype="html">
-        <source>File Download</source><target state="new">File Download</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">45</context>
-        </context-group>
-      </trans-unit><trans-unit id="filexFileOps" datatype="html">
-        <source>File Ops</source><target state="new">File Ops</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">48</context>
-        </context-group>
-      </trans-unit><trans-unit id="filexMisc" datatype="html">
-        <source>Miscellaneous</source><target state="new">Miscellaneous</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">51</context>
-        </context-group>
-      </trans-unit><trans-unit id="adminEnvironment" datatype="html">
-        <source>Environment</source><target state="new">Environment</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">93</context>
-        </context-group>
-      </trans-unit><trans-unit id="adminCardReader" datatype="html">
-        <source>Card Readers</source><target state="new">Card Readers</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">96</context>
-        </context-group>
-      </trans-unit><trans-unit id="adminContainer" datatype="html">
-        <source>Containers</source><target state="new">Containers</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">99</context>
-        </context-group>
-      </trans-unit><trans-unit id="adminDevice" datatype="html">
-        <source>Device</source><target state="new">Device</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">102</context>
-        </context-group>
-      </trans-unit><trans-unit id="adminDependencies" datatype="html">
-        <source>Dependencies</source><target state="new">Dependencies</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">105</context>
-        </context-group>
-      </trans-unit><trans-unit id="adminPkcs11" datatype="html">
-        <source>PKCS11 Config</source><target state="new">PKCS11 Config</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">108</context>
-        </context-group>
-      </trans-unit><trans-unit id="adminLogs" datatype="html">
-        <source>Logs</source><target state="new">Logs</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">111</context>
-        </context-group>
-      </trans-unit><trans-unit id="fileexchangePanel" datatype="html">
-        <source>File Exchange Panel</source><target state="new">File Exchange Panel</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit><trans-unit id="d6dedd7a71c2437bb86f11ca77b704c0792decac" datatype="html">
-        <source>Remove section</source><target state="new">Remove section</target>
+        <source>Entities and types</source><target>Entiteiten en types</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">107</context></context-group></trans-unit><trans-unit id="filexTypeOps" datatype="html">
+        <source>Type Ops</source><target>Type Ops</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">110</context></context-group></trans-unit><trans-unit id="filexFileUpload" datatype="html">
+        <source>File Upload</source><target>Bestand opladen</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">113</context></context-group></trans-unit><trans-unit id="filexFileDownload" datatype="html">
+        <source>File Download</source><target>Bestand afhalen</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">116</context></context-group></trans-unit><trans-unit id="filexFileOps" datatype="html">
+        <source>File Ops</source><target>File Ops</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">119</context></context-group></trans-unit><trans-unit id="filexMisc" datatype="html">
+        <source>Miscellaneous</source><target>Andere</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">122</context></context-group></trans-unit><trans-unit id="adminEnvironment" datatype="html">
+        <source>Environment</source><target>Omgeving</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">163</context></context-group></trans-unit><trans-unit id="adminCardReader" datatype="html">
+        <source>Card Readers</source><target>Kaart lezers</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">166</context></context-group></trans-unit><trans-unit id="adminContainer" datatype="html">
+        <source>Containers</source><target>Containers</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">169</context></context-group></trans-unit><trans-unit id="adminDevice" datatype="html">
+        <source>Device</source><target>Toestel</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">172</context></context-group></trans-unit><trans-unit id="adminDependencies" datatype="html">
+        <source>Dependencies</source><target>Afhankelijkheden</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">175</context></context-group></trans-unit><trans-unit id="adminPkcs11" datatype="html">
+        <source>PKCS11 Config</source><target>PKCS11 Configuratie</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">178</context></context-group></trans-unit><trans-unit id="adminLogs" datatype="html">
+        <source>Logs</source><target>Logs</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/app.component.ts</context><context context-type="linenumber">181</context></context-group></trans-unit><trans-unit id="fileexchangePanel" datatype="html">
+        <source>File Exchange Panel</source><target>File Exchange Panel</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context><context context-type="linenumber">10</context></context-group></trans-unit><trans-unit id="d6dedd7a71c2437bb86f11ca77b704c0792decac" datatype="html">
+        <source>Remove section</source><target>Verwijder sectie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/file-exchange-types/file-exchange-types.component.ts</context>
           <context context-type="linenumber">163</context>
+        </context-group>
+      </trans-unit><trans-unit id="JavaKeyToolGenerateKeyPair" datatype="html">
+        <source>Generate key pair</source><target>Genereer sleutelpaar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit><trans-unit id="JavaKeyToolGenerateCertificateRequest" datatype="html">
+        <source>Generate certificate request</source><target>Genereer certificaat aanvraag</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit><trans-unit id="JavaKeyToolImportCertificate" datatype="html">
+        <source>Import certificate</source><target>Importeer certificaat</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit><trans-unit id="JavaKeyToolExportCertificate" datatype="html">
+        <source>Export certificate</source><target>Exporteer certificaat</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit><trans-unit id="JavaKeyToolChangeKeystorePassword" datatype="html">
+        <source>Change keystore password</source><target>Verander keystore password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit><trans-unit id="JavaKeyToolChangeKeyPassword" datatype="html">
+        <source>Change key password</source><target>Verander key password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit><trans-unit id="JavaKeyToolChangeAlias" datatype="html">
+        <source>Change alias</source><target>Verander alias</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit><trans-unit id="JavaKeyToolListEntries" datatype="html">
+        <source>List entries</source><target>Lijst items op</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit><trans-unit id="JavaKeyToolDeleteEntry" datatype="html">
+        <source>Delete entry</source><target>Verwijder item</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit><trans-unit id="javakeytoolPanel" datatype="html">
+        <source>Java key tool Panel</source><target>Java key tool Panel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/rmc-header/rmc-header.component.ts</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit></body>
   </file>

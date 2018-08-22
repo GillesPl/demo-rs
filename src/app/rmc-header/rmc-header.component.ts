@@ -9,6 +9,7 @@ import {EventService} from '../event.service';
 export class RmcHeaderComponent implements OnInit {
   adminOpen = false;
   fileExchangeOpen = false;
+  javakeytoolOpen = false;
   menuOpen = false;
 
   constructor(private eventService: EventService) {
@@ -16,6 +17,8 @@ export class RmcHeaderComponent implements OnInit {
     this.eventService.adminPanelOpened$.subscribe(() => this.onAdminPanelOpen());
     this.eventService.fileExchangePanelClosed$.subscribe(() => this.onFileExchangePanelClose());
     this.eventService.fileExchangePanelOpened$.subscribe(() => this.onFileExchangePanelOpen());
+    this.eventService.javaKeyToolClosed$.subscribe(() => this.onJavaKeyToolPanelClose());
+    this.eventService.javaKeyToolOpened$.subscribe(() => this.onJavaKeyToolPanelOpen());
     this.eventService.sidebarClosed$.subscribe(() => this.onSidebarClose());
     this.eventService.sidebarOpened$.subscribe(() => this.onSidebarOpen());
   }
@@ -32,6 +35,10 @@ export class RmcHeaderComponent implements OnInit {
 
   toggleFileExchangePanel() {
     this.eventService.openFileExchangePanel();
+  }
+
+  toggleJavaKeyToolPanel() {
+    this.eventService.openJavaKeyToolPanel()
   }
 
   toggleCardTypes() {
@@ -53,6 +60,14 @@ export class RmcHeaderComponent implements OnInit {
 
   onFileExchangePanelOpen() {
     this.fileExchangeOpen = !this.fileExchangeOpen;
+  }
+
+  onJavaKeyToolPanelOpen() {
+    this.javakeytoolOpen = !this.javakeytoolOpen;
+  }
+
+  onJavaKeyToolPanelClose() {
+    this.javakeytoolOpen = false;
   }
 
   onSidebarClose() {

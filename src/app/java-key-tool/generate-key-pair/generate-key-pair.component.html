@@ -1,0 +1,108 @@
+<div *ngIf="error" class="alert alert-danger">
+  {{error}}
+</div>
+
+<div class="keyData">
+  <h1>Data to generate a key pair</h1>
+  <span class="input-group">
+    Entity*
+    <input [(ngModel)]="keyPairData.entity" type="text">
+  </span>
+
+  <span class="input-group">
+    Type*
+    <input [(ngModel)]="keyPairData.type" type="text">
+  </span>
+
+  <span class="input-group">
+    Keystore*
+    <input [(ngModel)]="keyPairData.keystore" type="text">
+  </span>
+
+  <span class="input-group">
+    alias
+    <input [(ngModel)]="keyPairData.alias" type="text">
+  </span>
+
+  <span class="input-group">
+    Key algorithm
+    <input [(ngModel)]="keyPairData.keyalg" type="text">
+  </span>
+
+  <span class="input-group">
+    Singature algorithm name
+    <input [(ngModel)]="keyPairData.sigalg" type="text">
+  </span>
+
+  <span class="input-group">
+    Destination alias
+    <input [(ngModel)]="keyPairData.destalias" type="text">
+  </span>
+
+  <span class="input-group">
+    Distinguished name
+    <input [(ngModel)]="keyPairData.dname" type="text">
+  </span>
+
+  <span class="input-group">
+    Start date
+    <input [(ngModel)]="keyPairData.startdate" type="text">
+  </span>
+
+  <span class="input-group">
+    Extension (X.509 extension)
+    <input [(ngModel)]="keyPairData.ext" type="text">
+  </span>
+
+  <span class="input-group">
+    Validity
+    <input [(ngModel)]="keyPairData.validity" type="number">
+  </span>
+
+  <span class="input-group">
+    Keypass
+    <input [(ngModel)]="keyPairData.keypass" type="password">
+  </span>
+
+  <span class="input-group">
+    Storepass
+    <input [(ngModel)]="keyPairData.storepass" type="password">
+  </span>
+
+  <span class="input-group">
+    Store type
+    <input [(ngModel)]="keyPairData.storetype" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider name
+    <input [(ngModel)]="keyPairData.providername" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider class
+    <input [(ngModel)]="keyPairData.providerclass" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider argument
+    <input [(ngModel)]="keyPairData.providerarg" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider path
+    <input [(ngModel)]="keyPairData.providerpath" type="text">
+  </span>
+
+  <div class="buttons">
+    <button class="btn btn-info" (click)="createKeyPair()">
+      Generate key pair
+    </button>
+  </div>
+</div>
+
+<div class="response" *ngIf="keyPairResponse" >
+  <h1>Output</h1>
+  <p *ngIf="!keyPairResponse.success">{{keyPairResponse.data}}</p>
+  <p>Key pair generated in: {{keyPairResponse.data}}</p>
+</div>

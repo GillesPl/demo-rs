@@ -6,8 +6,8 @@
 export const environment = {
     production: true,
     name: 'ReadMyCards',
-    version: '2.2.2-1',
-    gwOrProxyUrl: 'https://apim.t1t.be:443',
+    version: '2.2.3',
+    gwOrProxyUrl: 'https://accapim.t1t.be:443',
     gclUrl: 'https://localhost:10443/v2',
     dsContextPath: '/trust1team/gclds/v2',
     ocvContextPath: '/trust1team/ocv-api/v2',

@@ -1,0 +1,67 @@
+<div *ngIf="error" class="alert alert-danger">
+  {{error}}
+</div>
+
+<div>
+  <h1>Data to delete an entry in the key store</h1>
+  <span class="input-group">
+    Entity*
+    <input [(ngModel)]="changeDeleteEntryData.entity" type="text">
+  </span>
+
+  <span class="input-group">
+    Type*
+    <input [(ngModel)]="changeDeleteEntryData.type" type="text">
+  </span>
+
+  <span class="input-group">
+    Keystore*
+    <input [(ngModel)]="changeDeleteEntryData.keystore" type="text">
+  </span>
+
+  <span class="input-group">
+    Alias
+    <input [(ngModel)]="changeDeleteEntryData.alias" type="text">
+  </span>
+
+  <span class="input-group">
+    Storepass
+    <input [(ngModel)]="changeDeleteEntryData.storepass" type="password">
+  </span>
+
+  <span class="input-group">
+    Store type
+    <input [(ngModel)]="changeDeleteEntryData.storetype" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider name
+    <input [(ngModel)]="changeDeleteEntryData.providername" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider class
+    <input [(ngModel)]="changeDeleteEntryData.providerclass" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider argument
+    <input [(ngModel)]="changeDeleteEntryData.providerarg" type="text">
+  </span>
+
+  <span class="input-group">
+    Provider path
+    <input [(ngModel)]="changeDeleteEntryData.providerpath" type="text">
+  </span>
+
+  <div class="buttons">
+    <button class="btn btn-info" (click)="deleteEntry()">
+      Delete entry
+    </button>
+  </div>
+</div>
+
+<div class="response" *ngIf="changeDeleteEntryResponse" >
+  <h1>Output</h1>
+  <p>Status: {{changeDeleteEntryResponse.data}}</p>
+</div>
