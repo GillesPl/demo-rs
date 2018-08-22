@@ -10192,9 +10192,9 @@ trim-right@^1.0.1:
   dependencies:
     glob "^6.0.4"
 
-trust1connector@2.2.5-1:
-  version "2.2.5-1"
-  resolved "https://registry.npmjs.org/trust1connector/-/trust1connector-2.2.5-1.tgz#f374dedfdb4ee157245b1f7f4110b87e01ae1f60"
+trust1connector@^2.2.7:
+  version "2.2.7"
+  resolved "https://registry.npmjs.org/trust1connector/-/trust1connector-2.2.7.tgz#83f16f2a91373129bc6548c6f88dbe56f31add93"
   dependencies:
     Base64 "^1.0.1"
     axios "^0.18.0"
