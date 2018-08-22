@@ -359,7 +359,6 @@ export class CardService {
   }
 
   signWithConnector (inputObj) {
-    console.log(inputObj);
     return this.Connector.get().sign(inputObj.readerId, { pin: inputObj.pin,
       data: inputObj.dataToSign.bytes,
       algorithm_reference: inputObj.dataToSign.digestAlgorithm,
