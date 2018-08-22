@@ -163,6 +163,7 @@ export class Connector {
         environment.gwOrProxyUrl,
         undefined,
         res.token,
+        undefined,
         environment.ocvContextPath,
         environment.dsContextPath,
         undefined,
