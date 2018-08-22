@@ -1,0 +1,76 @@
+<div class="modal-body summary-modal">
+
+  <div class="header">
+    <p class="title text-center" i18n="@@signXml">Sign Example XML</p>
+
+    <p class="info-text text-justify" i18n="@@signXmlSubtitle">
+      This will digitally sign an example XML file with the certificates on your card. At the end of the process, you will be able to download the signed XML file.<br><br>
+    </p>
+  </div>
+
+
+  <div class="text-center" style="min-height: 45px;">
+        <span *ngIf="currentStep === 0"
+              class="btn btn-lg btn-line-primary btn-w200"
+              (click)="startProcess()"
+              i18n="@@startSigning">Start Signing
+        </span>
+  </div>
+
+  <ul class="step-list">
+    <li class="step" [ngClass]="{ 'active': currentStep === 1, 'completed': currentStep > 1 }">
+      <div class="step-number-wrapper">
+        <div class="step-number">
+          <span *ngIf="currentStep === 1"><fa [name]="'spinner'" [spin]="true"></fa></span>
+          <span *ngIf="currentStep > 1"><fa [name]="'check'"></fa></span>
+          <span *ngIf="currentStep < 1">1</span>
+        </div>
+      </div>
+      <div *ngIf="generateText === 'initial'" class="step-desc" i18n="@@generatePdf">Generate Document</div>
+      <div *ngIf="generateText === 'ongoing'" class="step-desc" i18n="@@generating">Generating...</div>
+      <div *ngIf="generateText === 'done'" class="step-desc" i18n="@@generated">Generated</div>
+    </li>
+    <li class="step" [ngClass]="{ 'active': currentStep === 2, 'completed': currentStep > 2 }">
+      <div class="step-number-wrapper">
+        <div class="step-number">
+          <span *ngIf="currentStep === 2"><fa [name]="'spinner'" [spin]="true"></fa></span>
+          <span *ngIf="currentStep > 2"><fa [name]="'check'"></fa></span>
+          <span *ngIf="currentStep < 2">2</span>
+        </div>
+      </div>
+      <div *ngIf="pinText === 'initial'" class="step-desc" i18n="@@sign">Sign</div>
+      <div *ngIf="pinText === 'ongoing'" class="step-desc" i18n="@@signing">Signing...</div>
+      <div *ngIf="pinText === 'ongoing-reader'" class="step-desc" i18n="@@enterPinOnReader">Enter PIN on reader...</div>
+      <div *ngIf="pinText === 'done'" class="step-desc" i18n="@@signed">Signed</div>
+    </li>
+    <li *ngIf="!pinpad && enterPin">
+      <div class="pinpad">
+        <app-rmc-keypad (onSubmit)="submitPin($event)" title="Enter PIN code" (onCancel)="cancel()"></app-rmc-keypad>
+      </div>
+    </li>
+    <li class="step" [ngClass]="{ 'active': currentStep === 3, 'completed': currentStep > 3 }">
+      <div class="step-number-wrapper">
+        <div class="step-number">
+          <span>3</span>
+        </div>
+      </div>
+      <div *ngIf="downloadText === 'initial'" class="step-desc"><span i18n="@@download">Download</span></div>
+      <div *ngIf="downloadText === 'ongoing'" class="step-desc"><span i18n="@@downloadReady">Download Ready!</span></div>
+    </li>
+  </ul>
+
+
+  <!--<div class="dummy-summary-wrapper">-->
+  <!--<div class="specimen">Specimen</div>-->
+  <!--<img class="dummy-summary" src="images/summary-demo.jpg">-->
+  <!--</div>-->
+
+
+  <div class="text-center">
+    <!--<span ng-if="currentStep === 0" class="btn btn-lg btn-line-primary btn-w200" ng-click="startProcess()">Start Signing</span>-->
+    <span *ngIf="currentStep === 3"
+          class="btn btn-lg btn-line-primary btn-w200"
+          (click)="doDownload()" i18n="@@download">Download</span>
+  </div>
+
+</div>

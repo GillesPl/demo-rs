@@ -11,6 +11,7 @@ import {PinUnblockModalComponent} from './lux/pin-unblock-modal/pin-unblock-moda
 import {PinResetModalComponent} from './lux/pin-reset-modal/pin-reset-modal.component';
 import {PinCheckWithCanModalComponent} from './pin-check-with-can-modal/pin-check-with-can-modal.component';
 import {DownloadSummaryPaceModalComponent} from './download-summary-pace-modal/download-summary-pace-modal.component';
+import {DownloadXmlCertificateidModalComponent} from './download-xml-certificateid-modal/download-xml-certificateid-modal.component';
 
 @Injectable()
 export class ModalService {
@@ -143,6 +144,26 @@ export class ModalService {
         initialState
       };
       svc.modalService.show(DownloadXmlModalComponent, config);
+    });
+  }
+
+  openXmlModalWithCertificateIdForReader(readerId, needPinToGenerate, util, certid) {
+    const svc = this;
+    svc.Connector.core('reader', [readerId]).then(res => {
+      const initialState = {
+        readerId,
+        needPinToGenerate,
+        pinpad: res.data.pinpad,
+        certid,
+        util
+      };
+      const config = {
+        backdrop: true,
+        class: 'modal-lg',
+        ignoreBackdropClick: true,
+        initialState
+      };
+      svc.modalService.show(DownloadXmlCertificateidModalComponent, config);
     });
   }
 

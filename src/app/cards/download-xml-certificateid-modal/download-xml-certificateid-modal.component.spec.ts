@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DownloadXmlModalComponent } from './download-xml-modal.component';
+import { DownloadXmlCertificateidModalComponent } from './download-xml-certificateid-modal.component';
 
 describe('DownloadXmlCertificateidModalComponent', () => {
-  let component: DownloadXmlModalComponent;
-  let fixture: ComponentFixture<DownloadXmlModalComponent>;
+  let component: DownloadXmlCertificateidModalComponent;
+  let fixture: ComponentFixture<DownloadXmlCertificateidModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DownloadXmlModalComponent ]
+      declarations: [ DownloadXmlCertificateidModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DownloadXmlModalComponent);
+    fixture = TestBed.createComponent(DownloadXmlCertificateidModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

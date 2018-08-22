@@ -63,7 +63,7 @@ export class OberthurVizComponent implements OnInit {
   }
 
   sign() {
-    this.modalService.openXmlModalForReader(this.readerId, false, this.oberthur);
+    this.modalService.openXmlModalWithCertificateIdForReader(this.readerId, false, this.oberthur,this.cardData.signing_certificate.id);
   }
 
   trackCertificatesClick() {
