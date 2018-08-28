@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EventService } from '../../event.service';
 import { BsModalRef } from 'ngx-bootstrap';
 import { CardService } from '../card.service';
-import { saveAs } from 'file-saver';
+import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
   selector: 'app-download-xml-certificateid-modal',
@@ -56,9 +56,11 @@ export class DownloadXmlCertificateidModalComponent implements OnInit {
 
   doDownload() {
     const comp = this;
-    this.cardService.downloadRaw(comp.generatedFile.viewLink).toPromise().then(function (xml: any) {
-      DownloadXmlCertificateidModalComponent.handleDownload(xml, comp.generatedFile.origFilename);
+    this.cardService.downloadRaw(comp.generatedFile.viewLink).toPromise().then( res => {
+      DownloadXmlCertificateidModalComponent.handleDownload(res, comp.generatedFile.origFilename);
       comp.ok();
+    }, err => {
+      console.log(err)
     });
   }
 

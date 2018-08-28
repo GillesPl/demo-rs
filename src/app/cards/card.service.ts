@@ -376,7 +376,7 @@ export class CardService {
   }
 
   downloadRaw(viewLink) {
-    return this.http.post('api/cards/lux/download', { url: viewLink });
+    return this.http.post('api/cards/lux/download', { url: viewLink}, { responseType: 'blob' });
   }
 }
 

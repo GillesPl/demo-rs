@@ -646,6 +646,10 @@
     winston "^2.2.0"
     winston-daily-rotate-file "^1.0.1"
 
+"@types/events@*":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
+
 "@types/jasmine@*":
   version "2.8.6"
   resolved "https://repo.t1t.be/repository/npm-group/@types/jasmine/-/jasmine-2.8.6.tgz#14445b6a1613cf4e05dd61c3c3256d0e95c0421e"
@@ -663,6 +667,10 @@
 "@types/long@^3.0.32":
   version "3.0.32"
   resolved "https://repo.t1t.be/repository/npm-group/@types/long/-/long-3.0.32.tgz#f4e5af31e9e9b196d8e5fca8a5e2e20aa3d60b69"
+
+"@types/node@*":
+  version "10.9.2"
+  resolved "https://registry.npmjs.org/@types/node/-/node-10.9.2.tgz#f0ab8dced5cd6c56b26765e1c0d9e4fdcc9f2a00"
 
 "@types/node@^10.3.3":
   version "10.3.3"
@@ -687,6 +695,13 @@
 "@types/selenium-webdriver@^2.53.35", "@types/selenium-webdriver@~2.53.39":
   version "2.53.43"
   resolved "https://repo.t1t.be/repository/npm-group/@types/selenium-webdriver/-/selenium-webdriver-2.53.43.tgz#2de3d718819bc20165754c4a59afb7e9833f6707"
+
+"@types/xml2js@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.npmjs.org/@types/xml2js/-/xml2js-0.4.3.tgz#2f41bfc74d5a4022511721f872ed395a210ad3b7"
+  dependencies:
+    "@types/events" "*"
+    "@types/node" "*"
 
 "@webassemblyjs/ast@1.4.3":
   version "1.4.3"
@@ -2171,6 +2186,13 @@ buffer@^4.3.0:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
+buffer@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/buffer/-/buffer-5.2.0.tgz#53cf98241100099e9eeae20ee6d51d21b16e541e"
+  dependencies:
+    base64-js "^1.0.2"
+    ieee754 "^1.1.4"
+
 buildmail@4.0.1:
   version "4.0.1"
   resolved "https://repo.t1t.be/repository/npm-group/buildmail/-/buildmail-4.0.1.tgz#877f7738b78729871c9a105e3b837d2be11a7a72"
@@ -3417,6 +3439,10 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+emitter-component@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/emitter-component/-/emitter-component-1.1.1.tgz#065e2dbed6959bf470679edabeaf7981d1003ab6"
+
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://repo.t1t.be/repository/npm-group/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
@@ -3686,6 +3712,10 @@ events-intercept@^2.0.0:
 events@^1.0.0, events@^1.0.2:
   version "1.1.1"
   resolved "https://repo.t1t.be/repository/npm-group/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
+
+events@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/events/-/events-3.0.0.tgz#9a0a0dfaf62893d92b875b8f2698ca4114973e88"
 
 eventsource@0.1.6:
   version "0.1.6"
@@ -9788,6 +9818,12 @@ stream-to-string@^1.0.1:
   dependencies:
     promise-polyfill "^1.1.6"
 
+stream@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/stream/-/stream-0.0.2.tgz#7f5363f057f6592c5595f00bc80a27f5cec1f0ef"
+  dependencies:
+    emitter-component "^1.1.1"
+
 streaming-json-stringify@^3.1.0:
   version "3.1.0"
   resolved "https://repo.t1t.be/repository/npm-group/streaming-json-stringify/-/streaming-json-stringify-3.1.0.tgz#80200437a993cc39c4fe00263b7b3b903ac87af5"
@@ -10074,6 +10110,10 @@ timers-browserify@^2.0.4:
   resolved "https://repo.t1t.be/repository/npm-group/timers-browserify/-/timers-browserify-2.0.10.tgz#1d28e3d2aadf1d5a5996c4e9f95601cd053480ae"
   dependencies:
     setimmediate "^1.0.4"
+
+timers@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/timers/-/timers-0.1.1.tgz#86ac5c78c1ee419694f35a58de4fd4183cfb9c1e"
 
 timespan@2.3.x:
   version "2.3.0"

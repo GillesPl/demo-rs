@@ -75,7 +75,7 @@ function uploadXML(jwt) {
     let xmlUpload = q.defer();
 
     miss.toPromise(fs.createReadStream('example.xml')).then(buffer => {
-        uploadAndAssign(buffer, 'example.xml', 'text/xml', jwt).then(result => {
+      uploadAndAssign(buffer, 'example.xml', 'text/xml', jwt).then(result => {
             return xmlUpload.resolve(result);
         }, err => {
             return xmlUpload.reject(err);
@@ -93,7 +93,6 @@ function uploadAndAssign(fileBuffer, fileName, fileType, jwt, skipConversion) {
         return signboxApi.assignDocumentToWorkflow(parsedBody[0].uuid, jwt)
     });
 }
-
 
 module.exports = {
     generateSummaryToSign: generateSummaryToSign,
