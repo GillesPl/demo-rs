@@ -2,7 +2,6 @@ language: node_js
 node_js:
 - "8"
 before_install:
-- echo "registry=https://registry.npmjs.org\n_auth=\${NPM_TOKEN}\nemail=michallis@trust1team.com\nalways-auth=true" > .npmrc
 - curl -o- -L https://yarnpkg.com/install.sh | bash
 - export PATH="$HOME/.yarn/bin:$PATH"
 cache:
