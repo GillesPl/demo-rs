@@ -646,10 +646,6 @@
     winston "^2.2.0"
     winston-daily-rotate-file "^1.0.1"
 
-"@types/events@*":
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
-
 "@types/jasmine@*":
   version "2.8.6"
   resolved "https://repo.t1t.be/repository/npm-group/@types/jasmine/-/jasmine-2.8.6.tgz#14445b6a1613cf4e05dd61c3c3256d0e95c0421e"
@@ -667,10 +663,6 @@
 "@types/long@^3.0.32":
   version "3.0.32"
   resolved "https://repo.t1t.be/repository/npm-group/@types/long/-/long-3.0.32.tgz#f4e5af31e9e9b196d8e5fca8a5e2e20aa3d60b69"
-
-"@types/node@*":
-  version "10.9.2"
-  resolved "https://registry.npmjs.org/@types/node/-/node-10.9.2.tgz#f0ab8dced5cd6c56b26765e1c0d9e4fdcc9f2a00"
 
 "@types/node@^10.3.3":
   version "10.3.3"
@@ -695,13 +687,6 @@
 "@types/selenium-webdriver@^2.53.35", "@types/selenium-webdriver@~2.53.39":
   version "2.53.43"
   resolved "https://repo.t1t.be/repository/npm-group/@types/selenium-webdriver/-/selenium-webdriver-2.53.43.tgz#2de3d718819bc20165754c4a59afb7e9833f6707"
-
-"@types/xml2js@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.npmjs.org/@types/xml2js/-/xml2js-0.4.3.tgz#2f41bfc74d5a4022511721f872ed395a210ad3b7"
-  dependencies:
-    "@types/events" "*"
-    "@types/node" "*"
 
 "@webassemblyjs/ast@1.4.3":
   version "1.4.3"
