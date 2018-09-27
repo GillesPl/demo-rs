@@ -32,7 +32,7 @@ export class ConsentModalComponent implements OnInit {
     this.code = ConsentModalComponent.generateCode();
 
     let title = 'Grant access to ' + location.origin + '?';
-    let type = 'reader';
+    let type = 'all';
     if (this.file) {
       title = 'Grant file access to ' + location.origin + '?';
       type = 'file_exchange';
