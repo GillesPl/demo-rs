@@ -38,7 +38,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   prereg
   showdossierdata
   id;
-
+  phonenmr;
 
   formattedCardNumber;
   formattedRRNR;
@@ -184,8 +184,14 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     setTimeout(() => {
       this.validategsmComplete = true;
       setTimeout(() => {
-        this.validateGsm = false;
-        this.validateotp = true
+        console.log(this.phonenmr)
+        this.http.post("/api/sms", {
+          gsmNr: this.phonenmr,
+          message: Math.floor(1000 + Math.random() * 9000)
+        }).subscribe(phonres => {
+          this.validateGsm = false;
+          this.validateotp = true
+        })
       }, 2000)
     }, 500)
   }

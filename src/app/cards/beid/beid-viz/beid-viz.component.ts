@@ -55,10 +55,9 @@ export class BeidVizComponent implements OnInit {
     };
     this.http.post("/api/validate-phone", data).subscribe(res => {
       // generate otp and persist in db
-      const otp = "1234";
       this.http.post("/api/sms", {
         gsmNr: this.phonenr,
-        message: otp
+        message: Math.floor(1000 + Math.random() * 9000)
       }).subscribe(smsres => {
         console.log(res)
         this.demoService.announceOtp(res.id)

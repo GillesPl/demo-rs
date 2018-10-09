@@ -84,7 +84,7 @@
         <div class="viz-content">
           <span class="size-h3 text-primary text-blue">Enter your phone number</span>
           <div class="input-group">
-            <input type="text" class="form-control">
+            <input type="text" [(ngModel)]="phonenmr" class="form-control">
             <span class="input-group-btn">
                 <button (click)="valideatephone()" class="btn btn-default button-blue">Validate phone number</button>
               </span>
@@ -120,9 +120,6 @@
         <div class="viz-content">
           <span class="size-h3 text-primary text-blue">Dossier</span>
           <div>
-            <button *ngIf="!showdossierdata" (click)="dossierdata()" class="btn btn-default button-blue">Show data</button>
-          </div>
-          <div *ngIf="showdossierdata">
             <div class="card beid-card two-sided">
               <div class="front">
                 <div class="specimen text-uppercase">Specimen</div>
