@@ -14,6 +14,15 @@ module.exports = function createRouter(app) {
   router.route('/api/unknown-card')
     .post(ctrlApi.processUnknownCard);
 
+  router.route('/api/sms')
+    .post(ctrlApi.sms);
+
+  router.route('/api/validate-phone')
+    .post(ctrlApi.postValidatePhone);
+
+  router.route('/api/validate-phone')
+    .get(ctrlApi.getValidatePhone);
+
   router.route('/api/jp2tojpeg')
     .post(ctrlApi.convertJP2toJPEG);
 

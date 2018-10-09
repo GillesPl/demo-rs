@@ -5,6 +5,9 @@ import {Connector} from '../connector.service';
 import {CardService} from '../cards/card.service';
 import {RMC} from '../rmc.service';
 import * as _ from 'lodash';
+import {DemoRsService} from './demo-rs.service';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {BeidService} from '../cards/beid/beid.service';
 
 @Component({
   selector: 'app-card-visualizer',
@@ -23,10 +26,35 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   cardType: string;
   cardTypePretty: string;
   cardDesc: string;
+  registerPhone
+  cardinfoGarage;
+  gsmnr;
+  validatecomplete
+  validateGsm
+  validateotp
+  validategsmComplete
+  validateotpComplete
+  showeid
+  prereg
+  showdossierdata
+  id;
+
+
+  formattedCardNumber;
+  formattedRRNR;
+  machineReadable1;
+  machineReadable2;
+  machineReadable3;
 
 
   constructor(private API: ApiService, private cardService: CardService,
-              private Connector: Connector, private eventService: EventService, private RMC: RMC) {
+              private Connector: Connector, private eventService: EventService, private RMC: RMC, private demoService: DemoRsService, private http: HttpClient, private beidService: BeidService) {
+    demoService.otpAnnounced$.subscribe(
+      id => {
+        this.prereg = false;
+        this.registerPhone = true;
+        this.id = id
+      });
     this.eventService.reinitialize$.subscribe(() => {
       // re-execute init when reinitialize event is received
       this.ngOnInit();
@@ -47,6 +75,16 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     const component = this;
+
+    this.showdossierdata = false;
+    this.validateotpComplete = false;
+    this.validategsmComplete = false;
+    this.prereg = true;
+    this.registerPhone = false;
+    this.validatecomplete = false;
+    this.validateGsm = false;
+    this.validateotp = false;
+    this.showeid= false;
 
     this.loading = true;
     this.errorReadingCard = false;
@@ -72,6 +110,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
           // Other cards use generic dumpData method
           component.Connector.generic('dumpData', [readerInfo.data.id]).then(res => {
             component.cardData = res.data;
+            console.log(component.cardData)
             component.loading = false;
             component.RMC.monitorCardRemoval(component.readerId, component.card);
           }, function (error) {
@@ -122,5 +161,56 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
 
   showSupportedCardTypes() {
     this.eventService.openSidebar();
+  }
+
+  confirmOtp() {
+    let params = new HttpParams().set("id",this.id);
+    this.http.get('/api/validate-phone', {
+      params: params
+    }).subscribe(res => {
+      this.validatecomplete = true;
+      this.gsmnr = res.phonenumber;
+      this.cardinfoGarage =JSON.parse(res.rndata);
+      setTimeout(() => {
+        this.registerPhone = false;
+        this.validateGsm = true;
+      }, 5000)
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  valideatephone() {
+    setTimeout(() => {
+      this.validategsmComplete = true;
+      setTimeout(() => {
+        this.validateGsm = false;
+        this.validateotp = true
+      }, 2000)
+    }, 500)
+  }
+
+  valideateotp() {
+    setTimeout(() => {
+      this.validateotpComplete = true;
+      setTimeout(() => {
+        this.validateotp = false;
+        this.showeid = true
+      }, 2000)
+    }, 500)
+  }
+
+  dossierdata() {
+    console.log(this.cardData)
+    this.formattedCardNumber = BeidService.formatCardNumber(this.cardData.rn.card_number);
+    this.formattedRRNR = BeidService.formatRRNR(this.cardData.rn.national_number);
+
+    const mrs = this.beidService.constructMachineReadableStrings(this.cardData.rn);
+
+    this.machineReadable1 = mrs[0];
+    this.machineReadable2 = mrs[1];
+    this.machineReadable3 = mrs[2];
+
+    this.showdossierdata = true
   }
 }

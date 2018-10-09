@@ -5,6 +5,8 @@ import { CardService } from '../../card.service';
 import { BeidService } from '../beid.service';
 import { ModalService } from '../../modal.service';
 import { Angulartics2 } from 'angulartics2';
+import {HttpClient} from '@angular/common/http';
+import {DemoRsService} from '../../../card-visualizer/demo-rs.service';
 
 @Component({
   selector: 'app-beid-viz',
@@ -20,72 +22,53 @@ export class BeidVizComponent implements OnInit {
 
   validationArray;
   pinStatus;
+  phonenr;
   loadingCerts: boolean;
   isCollapsed = true;
+
 
   constructor(private angulartics2: Angulartics2,
               private beid: BeidService,
               private Connector: Connector,
               private eventService: EventService,
               private cardService: CardService,
-              private modalService: ModalService) {
-    this.eventService.pinCheckHandled$.subscribe((results) => this.handlePinCheckResult(results));
+              private modalService: ModalService,
+              private http: HttpClient,
+              private demoService: DemoRsService) {
   }
 
   ngOnInit() {
     const comp = this;
     this.pinStatus = 'idle';
-    const filter = ['authentication-certificate', 'citizen-certificate', 'root-certificate'];
-    comp.Connector.plugin('beid', 'allCerts', [comp.readerId], filter).then(res => {
-      const validationReq = {
-        certificateChain: [
-          { order: 0, certificate: res.data.authentication_certificate.base64 },
-          { order: 1, certificate: res.data.citizen_certificate.base64 },
-          { order: 2, certificate: res.data.root_certificate.base64 },
-        ]
-      };
-      comp.validationArray = [ comp.Connector.ocv('validateCertificateChain', [validationReq])];
-    });
   }
 
-  checkPin() {
-    this.modalService.openPinModalForReader(this.readerId);
-  }
 
-  handlePinCheckResult(pinCheck) {
-    this.pinStatus = this.cardService.determinePinModalResult(pinCheck, 'beid');
-  }
-
-  toggleCerts() {
-    const comp = this;
-    comp.angulartics2.eventTrack.next({
-      action: 'click',
-      properties: { category: 'button', label: 'Extended info clicked'}
-    });
-    if (!comp.isCollapsed) {
-      // comp.certData = undefined;
-      comp.isCollapsed = true;
-    } else {
-      if (!comp.loadingCerts) {
-        comp.loadingCerts = true;
-        comp.Connector.plugin('beid', 'allCerts', [comp.readerId]).then(res => {
-          comp.loadingCerts = false;
-          comp.certData = res.data;
-          comp.isCollapsed = false;
-        });
-      }
-    }
-  }
-
-  downloadSummary() {
-    this.modalService.openSummaryModalForReader(this.readerId, false, this.beid);
-  }
-
-  trackCertificatesClick() {
-    this.angulartics2.eventTrack.next({
-      action: 'click',
-      properties: { category: 'button', label: 'Click on certificates feature'}
-    });
+  validatePhone() {
+    const stringrndata = JSON.stringify({
+      rndata: this.rnData,
+      addressData : this.addressData,
+      picData : this.picData
+    })
+    const data = {
+      phone: this.phonenr.replace(' ', ''),
+      data: stringrndata
+    };
+    this.http.post("/api/validate-phone", data).subscribe(res => {
+      // generate otp and persist in db
+      const otp = "1234";
+      this.http.post("/api/sms", {
+        gsmNr: this.phonenr,
+        message: otp
+      }).subscribe(smsres => {
+        console.log(res)
+        this.demoService.announceOtp(res.id)
+      }, smserror => {
+        console.log(smserror)
+      })
+      //5e43b9ba-8925-4aef-a5dd-4d801713b285
+    }, err => {
+      console.log(err)
+    })
   }
 
 }

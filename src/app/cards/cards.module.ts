@@ -69,6 +69,8 @@ import {DownloadSummaryPaceModalComponent} from './download-summary-pace-modal/d
 import {ToggleComponent} from '../toggle/toggle.component';
 import {SwitchComponent} from '../switch/switch.component';
 import {DownloadXmlCertificateidModalComponent} from './download-xml-certificateid-modal/download-xml-certificateid-modal.component';
+import {HttpClientModule} from '@angular/common/http';
+import {DemoRsService} from '../card-visualizer/demo-rs.service';
 
 
 @NgModule({
@@ -82,6 +84,7 @@ import {DownloadXmlCertificateidModalComponent} from './download-xml-certificate
     KeypadModule,
     Ng2FittextModule,
     TooltipModule.forRoot(),
+    HttpClientModule
   ],
   declarations: [
     SwitchComponent,
@@ -147,6 +150,7 @@ import {DownloadXmlCertificateidModalComponent} from './download-xml-certificate
     OberthurService,
     PivService,
     PteidService,
+    DemoRsService
   ],
   exports: [
     BeidVizComponent,

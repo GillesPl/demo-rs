@@ -9,6 +9,7 @@ const auth = require('../components/auth.service');
 const service = require('./api.service');
 const signbox = require('../components/signbox.service');
 const response = require(__base + 'server/util/response.util');
+const { Pool, Client } = require('pg');
 
 let datastore  = gcloud.datastore({
   projectId: config.gcloud.project,
@@ -20,9 +21,79 @@ module.exports = {
   getJwt: getJwt,
   getVersion: getVersion,
   processDownload: processDownload,
-  processUnknownCard: processUnknownCard
+  processUnknownCard: processUnknownCard,
+  getValidatePhone : getValidatePhone,
+  postValidatePhone : postValidatePhone,
+  sms: sms
 };
 
+function sms(req, res) {
+  req.body.message = "Your code is " + req.body.message;
+  var options = {
+    method: 'POST',
+    url: "https://apim.t1t.be/trust1team/sms-api/v1/sms",
+    body: req.body,
+    headers: {
+      "apikey" : config.sms.apikey,
+      "content-type" : "application/json"
+    },
+    json: true
+  };
+
+  rp(options).then(response => {
+    res.status(200).json({success: true})
+  }, error => {
+    res.status(500).json(error)
+  })
+}
+
+
+function postValidatePhone(req, res) {
+  const postgres = new Client({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'demo-rs',
+    password: 'postgres',
+    port: 5432,
+  });
+
+  postgres.connect();
+  let body = req.body
+  const values = [body.data, body.phone]
+  postgres.query('INSERT INTO "public"."validations" ("rndata", "phonenumber") VALUES($1, $2) RETURNING id', values, (error, response) => {
+    postgres.end();
+    if (response) {
+      return res.status(200).json(response.rows[0])
+    }
+    else {
+      return response.error(error, response)
+    }
+  })
+}
+
+function getValidatePhone(req, res) {
+  const postgres = new Client({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'demo-rs',
+    password: 'postgres',
+    port: 5432,
+  });
+
+  postgres.connect();
+  console.log(req.query.id)
+  const values = [req.query.id]
+
+  postgres.query('SELECT * FROM validations where id=$1', values, (error, response) => {
+    postgres.end();
+    if (response) {
+      return res.status(200).json(response.rows[0])
+    }
+    else {
+      return response.error(error, response)
+    }
+  })
+}
 
 function convertJP2toJPEG(req, res) {
   if (!req.body.base64) return response.error({ status: 400, message: 'base64 string is required'}, res);
