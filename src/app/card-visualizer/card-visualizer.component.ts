@@ -169,7 +169,9 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       params: params
     }).subscribe(res => {
       this.validatecomplete = true;
+      // @ts-ignore
       this.gsmnr = res.phonenumber;
+      // @ts-ignore
       this.cardinfoGarage =JSON.parse(res.rndata);
       setTimeout(() => {
         this.registerPhone = false;
