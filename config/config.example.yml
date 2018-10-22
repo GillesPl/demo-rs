@@ -33,6 +33,13 @@ default:
     gcl_url: "https://localhost:10443/v2"
     gw_url: "https://accapim.t1t.be:443"
     implicit_download: false
+  postgres:
+    host: "localhost"
+    database: "demo-rs"
+    user: "postgres"
+    password: "postgres"
+    port: 5432
+
 
 test:
   appName: "readmycards"

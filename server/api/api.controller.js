@@ -9,9 +9,9 @@ const auth = require('../components/auth.service');
 const service = require('./api.service');
 const signbox = require('../components/signbox.service');
 const response = require(__base + 'server/util/response.util');
-const { Pool, Client } = require('pg');
+const {Pool, Client} = require('pg');
 
-let datastore  = gcloud.datastore({
+let datastore = gcloud.datastore({
   projectId: config.gcloud.project,
   keyFilename: __base + config.gcloud.keyfile
 });
@@ -22,10 +22,35 @@ module.exports = {
   getVersion: getVersion,
   processDownload: processDownload,
   processUnknownCard: processUnknownCard,
-  getValidatePhone : getValidatePhone,
-  postValidatePhone : postValidatePhone,
+  getValidatePhone: getValidatePhone,
+  postValidatePhone: postValidatePhone,
+  putValidatePhone: putValidatePhone,
+  getValidateGetPhone: getValidateGetPhone,
   sms: sms
 };
+
+function getValidateGetPhone(req, res) {
+  const postgres = new Client({
+    user: config.postgres.user,
+    host: config.postgres.host,
+    database: config.postgres.database,
+    password: config.postgres.password,
+    port: config.postgres.port,
+  });
+
+  postgres.connect();
+  const values = [req.query.gsm]
+  console.log(req.query)
+  postgres.query('SELECT * FROM validations where phonenumber=$1', values, (error, response) => {
+    postgres.end();
+    if (response) {
+      return res.status(200).json(response.rows[0])
+    }
+    else {
+      return response.error(error, response)
+    }
+  })
+}
 
 function sms(req, res) {
   req.body.message = "Your code is " + req.body.message;
@@ -34,8 +59,8 @@ function sms(req, res) {
     url: "https://apim.t1t.be/trust1team/sms-api/v1/sms",
     body: req.body,
     headers: {
-      "apikey" : config.sms.apikey,
-      "content-type" : "application/json"
+      "apikey": config.sms.apikey,
+      "content-type": "application/json"
     },
     json: true
   };
@@ -47,20 +72,41 @@ function sms(req, res) {
   })
 }
 
+function putValidatePhone(req, res) {
+  const postgres = new Client({
+    user: config.postgres.user,
+    host: config.postgres.host,
+    database: config.postgres.database,
+    password: config.postgres.password,
+    port: config.postgres.port,
+  });
+  postgres.connect();
+  let body = req.body
+  const values = [body.id, body.otp]
+  postgres.query('UPDATE "public"."validations" SET "otp" = ($2) WHERE "id" = ($1);', values, (error, response) => {
+    postgres.end();
+    if (response) {
+      return res.status(200).json(response.rows[0])
+    }
+    else {
+      return response.error(error, response)
+    }
+  })
+}
 
 function postValidatePhone(req, res) {
   const postgres = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'demo-rs',
-    password: 'postgres',
-    port: 5432,
+    user: config.postgres.user,
+    host: config.postgres.host,
+    database: config.postgres.database,
+    password: config.postgres.password,
+    port: config.postgres.port,
   });
 
   postgres.connect();
   let body = req.body
-  const values = [body.data, body.phone]
-  postgres.query('INSERT INTO "public"."validations" ("rndata", "phonenumber") VALUES($1, $2) RETURNING id', values, (error, response) => {
+  const values = [body.data, body.phone, body.otp]
+  postgres.query('INSERT INTO "public"."validations" ("rndata", "phonenumber", "otp") VALUES($1, $2, $3) RETURNING id', values, (error, response) => {
     postgres.end();
     if (response) {
       return res.status(200).json(response.rows[0])
@@ -73,11 +119,11 @@ function postValidatePhone(req, res) {
 
 function getValidatePhone(req, res) {
   const postgres = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'demo-rs',
-    password: 'postgres',
-    port: 5432,
+    user: config.postgres.user,
+    host: config.postgres.host,
+    database: config.postgres.database,
+    password: config.postgres.password,
+    port: config.postgres.port,
   });
 
   postgres.connect();
@@ -96,10 +142,10 @@ function getValidatePhone(req, res) {
 }
 
 function convertJP2toJPEG(req, res) {
-  if (!req.body.base64) return response.error({ status: 400, message: 'base64 string is required'}, res);
+  if (!req.body.base64) return response.error({status: 400, message: 'base64 string is required'}, res);
 
   service.jp2000ToJpeg(req.body.base64).then(result => {
-    return res.status(200).json({ base64Pic: result });
+    return res.status(200).json({base64Pic: result});
   }, err => {
     return response.error(err, res);
   })
@@ -128,7 +174,7 @@ function processDownload(req, res) {
   let email = _.find(req.body, function (o, key) {
     return key === 'email';
   });
-  if (!email) return res.status(400).json({ success: false, data: 'Missing email parameter' });
+  if (!email) return res.status(400).json({success: false, data: 'Missing email parameter'});
 
   let emailOptIn = !!_.find(req.body, function (o, key) {
     return key === 'emailOptIn';
@@ -137,22 +183,22 @@ function processDownload(req, res) {
   let dlUrl = _.find(req.body, function (o, key) {
     return key === 'dlUrl';
   });
-  if (!dlUrl) return res.status(400).json({ success: false, data: 'Missing download link parameter' });
+  if (!dlUrl) return res.status(400).json({success: false, data: 'Missing download link parameter'});
 
   let platformName = _.find(req.body, function (o, key) {
     return key === 'platformName';
   });
-  if (!platformName) return res.status(400).json({ success: false, data: 'Missing platform name parameter'});
+  if (!platformName) return res.status(400).json({success: false, data: 'Missing platform name parameter'});
 
   let type = _.find(req.body, function (o, key) {
     return key === 'type';
   });
-  if (!type) return res.status(400).json({ success: false, data: 'Missing type identifier' });
+  if (!type) return res.status(400).json({success: false, data: 'Missing type identifier'});
 
   let payload = _.find(req.body, function (o, key) {
     return key === 'payload';
   });
-  if (!payload) return res.status(400).json({ success: false, data: 'Missing payload data' });
+  if (!payload) return res.status(400).json({success: false, data: 'Missing payload data'});
 
 
   // Send mail via mailgun
@@ -164,22 +210,25 @@ function processDownload(req, res) {
   };
   // fire request
   let url = config.mailgun.scheme + '://' + config.mailgun.user + ':' + config.mailgun.apikey + '@' + config.mailgun.url;
-  request.post({ url: url, formData: mailData }, function cb(err, httpResponse, body) {
+  request.post({url: url, formData: mailData}, function cb(err, httpResponse, body) {
     if (err) {
-      return res.status(500).json({ success: false, data: err.message });
+      return res.status(500).json({success: false, data: err.message});
     }
 
     let typeKey = datastore.key(type);
 
-    let dataArray = _.concat([{ name: 'created', value: new Date() }, { name: 'email', value: email }, { name: 'emailOptIn', value: emailOptIn }], payload);
+    let dataArray = _.concat([{name: 'created', value: new Date()}, {name: 'email', value: email}, {
+      name: 'emailOptIn',
+      value: emailOptIn
+    }], payload);
 
     // Store object in GC datastore
     saveToDatastore(typeKey, dataArray, function (err) {
       if (err) {
-        return res.status(500).json({ success: false, data: err.message });
+        return res.status(500).json({success: false, data: err.message});
       }
       let id = typeKey.path.pop();
-      return res.json({ success: true, data: id });
+      return res.json({success: true, data: id});
     });
   });
 }
@@ -189,29 +238,29 @@ function processUnknownCard(req, res) {
   let atr = _.find(req.body, function (o, key) {
     return key === 'atr';
   });
-  if (!atr) return res.status(400).json({ success: false, data: 'Missing atr parameter' });
+  if (!atr) return res.status(400).json({success: false, data: 'Missing atr parameter'});
 
   let type = _.find(req.body, function (o, key) {
     return key === 'type';
   });
-  if (!type) return res.status(400).json({ success: false, data: 'Missing type identifier' });
+  if (!type) return res.status(400).json({success: false, data: 'Missing type identifier'});
 
   let payload = _.find(req.body, function (o, key) {
     return key === 'payload';
   });
-  if (!payload) return res.status(400).json({ success: false, data: 'Missing payload' });
+  if (!payload) return res.status(400).json({success: false, data: 'Missing payload'});
 
 
   let typeKey = datastore.key(type);
-  let dataArray = _.concat([{ name: 'created', value: new Date() }, { name: 'atr', value: atr }], payload);
+  let dataArray = _.concat([{name: 'created', value: new Date()}, {name: 'atr', value: atr}], payload);
 
   // Store object in GC datastore
   saveToDatastore(typeKey, dataArray, function (err) {
     if (err) {
-      return res.status(500).json({ success: false, data: err.message });
+      return res.status(500).json({success: false, data: err.message});
     }
     let id = typeKey.path.pop();
-    return res.json({ success: true, data: id });
+    return res.json({success: true, data: id});
   });
 }
 

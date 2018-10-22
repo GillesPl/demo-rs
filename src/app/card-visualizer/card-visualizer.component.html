@@ -63,16 +63,21 @@
         <div class="viz-content">
           <span class="size-h3 text-primary">Enter your OTP</span>
           <div class="input-group">
-            <input type="text" class="form-control">
+            <input [(ngModel)]="register_registrationOtp"  type="text" class="form-control">
             <span class="input-group-btn">
-                <button class="btn btn-default" (click)="confirmOtp()">Confirm OTP</button>
+                <button class="btn btn-default" (click)="register_resendOtp()">Resend OTP</button>
+                <button class="btn btn-default" (click)="register_confirmOtp()">Confirm OTP</button>
               </span>
           </div>
         </div>
-        <div class="alert alert-success" *ngIf="validatecomplete">Registration complete for
+        <div class="alert alert-success" *ngIf="register_validatecomplete">Registration complete for
           {{cardinfoGarage.rndata.first_names}} with phone number {{gsmnr}}
         </div>
+        <div class="alert alert-danger" *ngIf="register_registrationOtpControl">Please Enter the correct OTP</div>
       </div>
+    </div>
+    <div class="continue-btn" *ngIf="register_completeRegistrationCheck">
+      <button class="btn btn-default" (click)="register_completeRegistration()">Continue to garage</button>
     </div>
   </div>
 
@@ -84,13 +89,14 @@
         <div class="viz-content">
           <span class="size-h3 text-primary text-blue">Enter your phone number</span>
           <div class="input-group">
-            <input type="text" [(ngModel)]="phonenmr" class="form-control">
+            <input type="text" [(ngModel)]="gsmnr" class="form-control">
             <span class="input-group-btn">
                 <button (click)="valideatephone()" class="btn btn-default button-blue">Validate phone number</button>
               </span>
           </div>
         </div>
-        <div class="alert alert-success" *ngIf="validategsmComplete">Dossier found for number {{gsmnr}}!</div>
+        <div class="alert alert-success" *ngIf="validategsmComplete">Dossier found!</div>
+        <div class="alert alert-danger" *ngIf="validate_error">No Dossier found!</div>
       </div>
     </div>
   </div>
@@ -102,13 +108,19 @@
         <div class="viz-content">
           <span class="size-h3 text-primary text-blue">Validate your OTP</span>
           <div class="input-group">
-            <input type="text" class="form-control">
+            <input [(ngModel)]="validateotp_otp" type="text" class="form-control">
             <span class="input-group-btn">
-            <button (click)="valideateotp()" class="btn btn-default button-blue">Validate OTP</button>
+              <button class="btn btn-default button-blue" (click)="register_resendOtp()">Resend OTP</button>
+              <button (click)="valideateotp()" class="btn btn-default button-blue">Validate OTP</button>
               </span>
           </div>
         </div>
-        <div class="alert alert-success" *ngIf="validateotpComplete">The OTP is correct!</div>
+        <div *ngIf="validateotp_error">
+          <div class="alert alert-danger" >The OTP is incorrect!</div>
+        </div>
+        <div *ngIf="validateotpComplete">
+          <div class="alert alert-success" >The OTP is correct!</div>
+        </div>
       </div>
     </div>
   </div>
@@ -301,7 +313,11 @@
         </div>
       </div>
     </div>
-
+    <div class="continue-btn">
+      <button class="btn btn-default" (click)="exit()">
+        Exit
+      </button>
+    </div>
   </div>
 
 </div>

@@ -23,6 +23,12 @@ module.exports = function createRouter(app) {
   router.route('/api/validate-phone')
     .get(ctrlApi.getValidatePhone);
 
+  router.route('/api/validate-getphone')
+    .get(ctrlApi.getValidateGetPhone);
+
+  router.route('/api/validate-phone')
+    .put(ctrlApi.putValidatePhone);
+
   router.route('/api/jp2tojpeg')
     .post(ctrlApi.convertJP2toJPEG);
 

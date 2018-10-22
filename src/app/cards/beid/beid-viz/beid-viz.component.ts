@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Connector } from '../../../connector.service';
-import { EventService } from '../../../event.service';
-import { CardService } from '../../card.service';
-import { BeidService } from '../beid.service';
-import { ModalService } from '../../modal.service';
-import { Angulartics2 } from 'angulartics2';
-import {HttpClient} from '@angular/common/http';
+import {Component, Input, OnInit} from '@angular/core';
+import {Connector} from '../../../connector.service';
+import {EventService} from '../../../event.service';
+import {CardService} from '../../card.service';
+import {BeidService} from '../beid.service';
+import {ModalService} from '../../modal.service';
+import {Angulartics2} from 'angulartics2';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {DemoRsService} from '../../../card-visualizer/demo-rs.service';
 
 @Component({
@@ -42,33 +42,69 @@ export class BeidVizComponent implements OnInit {
     this.pinStatus = 'idle';
   }
 
+  guid() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  }
 
   validatePhone() {
+    const otp = Math.floor(1000 + Math.random() * 9000);
+    const dossiernr = 1;
     const stringrndata = JSON.stringify({
       rndata: this.rnData,
-      addressData : this.addressData,
-      picData : this.picData
-    })
-    const data = {
-      phone: this.phonenr.replace(' ', ''),
-      data: stringrndata
-    };
-    this.http.post("/api/validate-phone", data).subscribe(res => {
-      // generate otp and persist in db
-      this.http.post("/api/sms", {
-        gsmNr: this.phonenr,
-        message: Math.floor(1000 + Math.random() * 9000)
-      }).subscribe(smsres => {
-        console.log(res)
+      addressData: this.addressData,
+      picData: this.picData
+    });
+    let params = new HttpParams().set('gsm', this.phonenr.replace(' ', ''));
+    this.http.get('/api/validate-getphone', {
+      params: params
+    }).subscribe(res => {
+      if (res == null) {
+        const data = {
+          phone: this.phonenr.replace(' ', ''),
+          data: stringrndata,
+          otp: otp,
+          dossiernr: dossiernr
+        };
+        this.http.post('/api/validate-phone', data).subscribe(res => {
+          // generate otp and persist in db
+          this.http.post('/api/sms', {
+            gsmNr: this.phonenr,
+            message: otp
+          }).subscribe(smsres => {
+            // @ts-ignore
+            this.demoService.announceOtp(res.id);
+          }, smserror => {
+            console.log(smserror);
+          });
+        }, err => {
+          console.log(err);
+        });
+      }
+      else {
         // @ts-ignore
-        this.demoService.announceOtp(res.id)
-      }, smserror => {
-        console.log(smserror)
-      })
-      //5e43b9ba-8925-4aef-a5dd-4d801713b285
+        this.http.put('/api/validate-phone', {otp: otp, id: res.id}).subscribe(response => {
+          this.http.post('/api/sms', {
+            gsmNr: this.phonenr,
+            message: otp
+          }).subscribe(smsres => {
+            // @ts-ignore
+            this.demoService.announceOtp(res.id);
+          }, smserror => {
+            console.log(smserror);
+          });
+        });
+      }
     }, err => {
-      console.log(err)
-    })
+      console.log(err);
+    });
+
+
   }
 
 }
