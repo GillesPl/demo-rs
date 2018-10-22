@@ -26,19 +26,35 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   cardType: string;
   cardTypePretty: string;
   cardDesc: string;
-  registerPhone
+  registerPhone;
   cardinfoGarage;
   gsmnr;
-  validatecomplete
-  validateGsm
-  validateotp
-  validategsmComplete
-  validateotpComplete
-  showeid
-  prereg
-  showdossierdata
+
+  validateotp_error = false;
+
+  validateGsm;
+  validategsmComplete;
+
+  validateotp;
+  validate_error = false;
+  validate_dossier_data;
+  currentdossier;
+  currentdossier_selected = false;
+  validateotpComplete;
+
+
+  showeid;
+  prereg;
+  showdossierdata;
   id;
-  phonenmr;
+
+
+  register_validatecomplete;
+  register_registrationOtp: string;
+  register_registrationOtpControl;
+  register_completeRegistrationCheck = false;
+
+  validateotp_otp;
 
   formattedCardNumber;
   formattedRRNR;
@@ -53,7 +69,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       id => {
         this.prereg = false;
         this.registerPhone = true;
-        this.id = id
+        this.id = id;
       });
     this.eventService.reinitialize$.subscribe(() => {
       // re-execute init when reinitialize event is received
@@ -81,10 +97,10 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     this.validategsmComplete = false;
     this.prereg = true;
     this.registerPhone = false;
-    this.validatecomplete = false;
+    this.register_validatecomplete = false;
     this.validateGsm = false;
     this.validateotp = false;
-    this.showeid= false;
+    this.showeid = false;
 
     this.loading = true;
     this.errorReadingCard = false;
@@ -110,7 +126,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
           // Other cards use generic dumpData method
           component.Connector.generic('dumpData', [readerInfo.data.id]).then(res => {
             component.cardData = res.data;
-            console.log(component.cardData)
+            console.log(component.cardData);
             component.loading = false;
             component.RMC.monitorCardRemoval(component.readerId, component.card);
           }, function (error) {
@@ -163,53 +179,116 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     this.eventService.openSidebar();
   }
 
-  confirmOtp() {
-    let params = new HttpParams().set("id",this.id);
+  register_resendOtp() {
+    let params = new HttpParams().set('id', this.id);
     this.http.get('/api/validate-phone', {
       params: params
     }).subscribe(res => {
-      this.validatecomplete = true;
+      const otp = Math.floor(1000 + Math.random() * 9000);
       // @ts-ignore
       this.gsmnr = res.phonenumber;
-      // @ts-ignore
-      this.cardinfoGarage =JSON.parse(res.rndata);
-      setTimeout(() => {
-        this.registerPhone = false;
-        this.validateGsm = true;
-      }, 5000)
-    }, err => {
-      console.log(err);
+      this.http.post('/api/sms', {
+        gsmNr: this.gsmnr,
+        message: otp
+      }).subscribe(phonres => {
+        // update database
+        this.http.put('/api/validate-phone', {
+          otp: otp,
+          id: this.id
+        }).subscribe(res => {
+        });
+      });
     });
   }
 
+  register_confirmOtp() {
+    if (this.register_registrationOtp) {
+      let params = new HttpParams().set('id', this.id);
+      this.http.get('/api/validate-phone', {
+        params: params
+      }).subscribe(res => {
+        // @ts-ignore
+        this.gsmnr = res.phonenumber;
+        // @ts-ignore
+        if (res.otp === this.register_registrationOtp) {
+          this.register_registrationOtpControl = false;
+          this.register_validatecomplete = true;
+          // @ts-ignore
+          this.cardinfoGarage = JSON.parse(res.rndata);
+          setTimeout(() => {
+            this.register_completeRegistrationCheck = true;
+          }, 1000);
+        }
+        else {
+          this.register_registrationOtpControl = true;
+        }
+
+      }, err => {
+        console.log(err);
+      });
+    }
+  }
+
+  register_completeRegistration() {
+    this.registerPhone = false;
+    this.validateGsm = true;
+    this.gsmnr = null;
+  }
+
   valideatephone() {
-    setTimeout(() => {
-      this.validategsmComplete = true;
-      setTimeout(() => {
-        console.log(this.phonenmr)
-        this.http.post("/api/sms", {
-          gsmNr: this.phonenmr,
-          message: Math.floor(1000 + Math.random() * 9000)
-        }).subscribe(phonres => {
-          this.validateGsm = false;
-          this.validateotp = true
-        })
-      }, 2000)
-    }, 500)
+    if (this.gsmnr) {
+      let params = new HttpParams().set('id', this.id);
+      this.http.get('/api/validate-phone', {
+        params: params
+      }).subscribe(res => {
+        // @ts-ignore
+        if (res.phonenumber === this.gsmnr) {
+          this.validate_error = false;
+          this.validategsmComplete= true
+          this.currentdossier_selected = true;
+        }
+        else {
+          this.validate_error = true;
+        }
+      });
+    }
+  }
+
+  complete_validateGsm() {
+    this.validateGsm = false;
+    this.validateotp = true;
+    this.register_resendOtp();
   }
 
   valideateotp() {
-    setTimeout(() => {
-      this.validateotpComplete = true;
-      setTimeout(() => {
-        this.validateotp = false;
-        this.showeid = true
-      }, 2000)
-    }, 500)
+    if (this.validateotp_otp) {
+      this.validateotp_error = false
+      let params = new HttpParams().set('id', this.id);
+      this.http.get('/api/validate-phone', {
+        params: params
+      }).subscribe(res => {
+        // @ts-ignore
+        if (res.otp === this.validateotp_otp) {
+          this.validateotp_error = false
+          this.validateotpComplete = true;
+        }
+        else {
+          this.validateotp_error = true
+        }
+      });
+    }
+    else {
+      this.validateotp_error = true
+    }
+  }
+
+  validateotp_continue() {
+    this.validateotp = false;
+    this.dossierdata()
+    this.showeid = true;
   }
 
   dossierdata() {
-    console.log(this.cardData)
     this.formattedCardNumber = BeidService.formatCardNumber(this.cardData.rn.card_number);
     this.formattedRRNR = BeidService.formatRRNR(this.cardData.rn.national_number);
 
@@ -219,6 +298,27 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     this.machineReadable2 = mrs[1];
     this.machineReadable3 = mrs[2];
 
-    this.showdossierdata = true
+    this.showdossierdata = true;
+  }
+
+  exit() {
+    this.showdossierdata = false;
+    this.validateotpComplete = false;
+    this.validategsmComplete = false;
+    this.prereg = true;
+    this.registerPhone = false;
+    this.register_validatecomplete = false;
+    this.validateGsm = false;
+    this.validateotp = false;
+    this.showeid = false;
+
+
+    this.cardinfoGarage = null;
+    this.gsmnr = null;
+    this.id = null;
+    this.register_registrationOtp = null;
+    this.validateotp_otp = null;
+    this.validate_dossier_data = null;
+    this.validateotp_otp = false
   }
 }
