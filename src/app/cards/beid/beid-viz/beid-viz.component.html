@@ -1,20 +1,44 @@
+<style>
+  .validate-phone {
+    margin: 10px 0;
+  }
+
+  .status-wrapper {
+    border-bottom: 2px solid #F15A29;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+  }
+
+  .validate-phone .input-group-btn {
+    padding-left: 20px;
+  }
+
+  .validate-phone button {
+    color: white;
+    background-color: #F15A29;
+    border-color: #FF5F2C;
+  }
+
+  .validate-phone button:hover {
+    color: black !important;
+  }
+</style>
+
 <div id="beid-viz" class="clearfix top-info">
-
   <div class="status-wrapper">
-    <app-certificate-status [validationPromises]="validationArray" [cardType]="'beid'" (click)="trackCertificatesClick()"></app-certificate-status>
-    <app-pin-check-status [status]="pinStatus" [maxTries]="3" (onPinCheck)="checkPin()"></app-pin-check-status>
+    <span class="size-h3 text-primary">Validate your phone number</span>
+    <div class="col-sm-12">
+      <div class="input-group validate-phone">
+        <input class="form-control" [(ngModel)]="phonenr" type="text" placeholder="e.g. 0477 66 55 11">
+        <span class="input-group-btn">
+        <button class="btn btn-default" (click)="validatePhone()">Validate phone number</button>
+      </span>
+      </div>
+    </div>
   </div>
-
   <app-beid-card [rnData]="rnData" [picData]="picData"></app-beid-card>
-
-  <div class="print-button">
-    <app-print-summary (onPrint)="downloadSummary()"></app-print-summary>
-  </div>
-
   <div class="personal-info col-sm-12">
     <span class="size-h3 text-primary" i18n="@@additionalInformation">Additional Information</span>
-
-
     <div class="col-sm-12">
       <div class="col-sm-4">
         <div id="address" [hidden]="!addressData">
@@ -25,154 +49,14 @@
             {{addressData.municipality}}</p>
         </div>
       </div>
-
-
       <div class="col-sm-8">
         <div [hidden]="!rnData">
           <h4 class="text-info text-light" i18n="@@generalInformation">General Information</h4>
           <strong><span i18n="@@chipNumber">Chip number</span>:&nbsp;</strong>{{rnData.chip_number}}<br/>
         </div>
       </div>
-
-
-    </div>
-
-  </div>
-
-  <div class="certificates-toggle col-sm-12">
-    <span (click)="toggleCerts()" [hidden]="loadingCerts || !isCollapsed" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@showCert">Show extended info</span>
-    <span (click)="toggleCerts()" [hidden]="loadingCerts || isCollapsed" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@hideCert">Hide extended info</span>
-    <span [hidden]="!loadingCerts" [ngClass]="{ 'clickable': !loadingCerts }" i18n="@@loadingCerts">Loading...</span>
-  </div>
-  <div>
-    <div [collapse]="isCollapsed">
-      <div class="certificates col-sm-12">
-        <span class="size-h3 text-primary" i18n="@@certificates">Certificates</span>
-        <div class="col-sm-12" *ngIf="certData.root_certificate">
-          <h4 class="text-info text-light">Root</h4>
-
-          <div class="input-group">
-            <input type="text" class="form-control" [ngModel]="certData.root_certificate.base64">
-            <span class="input-group-btn">
-                            <button class="btn btn-default"
-                                    ga-track-event="['button', 'click', 'Copy button clicked: root_certificate']"
-                                    i18n-tooltip
-                                    tooltip="Copy"
-                                    type="button"
-                                    ngxClipboard
-                                    [cbContent]="certData.root_certificate.base64"><fa [name]="'copy'"></fa></button>
-                        </span>
-          </div>
-        </div>
-
-        <div class="col-sm-12" *ngIf="certData.citizen_certificate">
-          <h4 class="text-info text-light">Citizen</h4>
-
-          <div class="input-group">
-            <input type="text" class="form-control" [ngModel]="certData.citizen_certificate.base64">
-            <span class="input-group-btn">
-                            <button class="btn btn-default"
-                                    ga-track-event="['button', 'click', 'Copy button clicked: citizen_certificate']"
-                                    i18n-tooltip
-                                    tooltip="Copy"
-                                    type="button"
-                                    ngxClipboard
-                                    [cbContent]="certData.citizen_certificate.base64"><fa [name]="'copy'"></fa></button>
-                        </span>
-          </div>
-        </div>
-
-        <div class="col-sm-12" *ngIf="certData.authentication_certificate">
-          <h4 class="text-info text-light">Authentication</h4>
-
-          <div class="input-group">
-            <input type="text" class="form-control" [ngModel]="certData.authentication_certificate.base64">
-            <span class="input-group-btn">
-                            <button class="btn btn-default"
-                                    ga-track-event="['button', 'click', 'Copy button clicked: authentication_certificate']"
-                                    i18n-tooltip
-                                    tooltip="Copy"
-                                    type="button"
-                                    ngxClipboard
-                                    [cbContent]="certData.authentication_certificate.base64"><fa [name]="'copy'"></fa></button>
-                        </span>
-          </div>
-        </div>
-
-        <div class="col-sm-12" *ngIf="certData.non_repudiation_certificate">
-          <h4 class="text-info text-light">Non Repudiation</h4>
-
-          <div class="input-group">
-            <input type="text" class="form-control" [ngModel]="certData.non_repudiation_certificate.base64">
-            <span class="input-group-btn">
-                            <button class="btn btn-default"
-                                    ga-track-event="['button', 'click', 'Copy button clicked: non_repudiation_certificate']"
-                                    i18n-tooltip
-                                    tooltip="Copy"
-                                    type="button"
-                                    ngxClipboard
-                                    [cbContent]="certData.non_repudiation_certificate.base64"><fa [name]="'copy'"></fa></button>
-                        </span>
-          </div>
-        </div>
-
-        <div class="col-sm-12" *ngIf="certData.rrn_certificate">
-          <h4 class="text-info text-light">RRN</h4>
-
-          <div class="input-group">
-            <input type="text" class="form-control" [ngModel]="certData.rrn_certificate.base64">
-            <span class="input-group-btn">
-                            <button class="btn btn-default"
-                                    ga-track-event="['button', 'click', 'Copy button clicked: rrn_certificate']"
-                                    i18n-tooltip
-                                    tooltip="Copy"
-                                    type="button"
-                                    ngxClipboard
-                                    [cbContent]="certData.rrn_certificate.base64"><fa [name]="'copy'"></fa></button>
-                        </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="certificates col-sm-12">
-        <span class="size-h3 text-primary" i18n="@@nationalRegister">National Register</span>
-        <div class="col-sm-12" *ngIf="rnData.raw_data">
-          <h4 class="text-info text-light">Raw Data</h4>
-
-          <div class="input-group">
-            <input type="text" class="form-control" [ngModel]="rnData.raw_data">
-            <span class="input-group-btn">
-                            <button class="btn btn-default"
-                                    ga-track-event="['button', 'click', 'Copy button clicked: raw_data']"
-                                    i18n-tooltip
-                                    tooltip="Copy"
-                                    type="button"
-                                    ngxClipboard
-                                    [cbContent]="rnData.raw_data"><fa [name]="'copy'"></fa></button>
-                        </span>
-          </div>
-        </div>
-
-        <div class="col-sm-12" *ngIf="rnData.signature">
-          <h4 class="text-info text-light">Signature</h4>
-
-          <div class="input-group">
-            <input type="text" class="form-control" [ngModel]="rnData.signature">
-            <span class="input-group-btn">
-                            <button class="btn btn-default"
-                                    ga-track-event="['button', 'click', 'Copy button clicked: signature']"
-                                    i18n-tooltip
-                                    tooltip="Copy"
-                                    type="button"
-                                    ngxClipboard
-                                    [cbContent]="rnData.signature"><fa [name]="'copy'"></fa></button>
-                        </span>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
-
 
 </div>
+

@@ -14,7 +14,8 @@
 
   <div class="error-block" *ngIf="!loading && unknownCard">
     <span class="spinner fa fa-question-circle"></span>
-    <p class="error-text text-thin" i18n="@@errorNotSupported">We're sorry, this type of card is currently not supported.</p>
+    <p class="error-text text-thin" i18n="@@errorNotSupported">We're sorry, this type of card is currently not
+      supported.</p>
     <p class="info-text text-thin">
       <span i18n="@@supportedCardTypes" class="clickable" (click)="showSupportedCardTypes()">You can find the list of currently supported card types <a>here</a>.</span>
     </p>
@@ -22,7 +23,8 @@
 
     <div class="feedback">
       <div class="unknown-card-form" [hidden]="submitted">
-        <p class="text-thin text-left" i18n="@@futureSupport">If you would like us to support this type of card in the future, let us know what kind of card this is.</p>
+        <p class="text-thin text-left" i18n="@@futureSupport">If you would like us to support this type of card in the
+          future, let us know what kind of card this is.</p>
         <form (submit)="registerUnknownType(cardDesc)" class="form-inline">
           <input type="text"
                  i18n-placeholder
@@ -30,57 +32,292 @@
                  class="form-control"
                  [(ngModel)]="cardDesc"
                  autofocus>
-          <span type="submit" id="submit" class="btn btn-default" (click)="registerUnknownType(cardDesc)" i18n="@@submitFeedback">Submit</span>
+          <span type="submit" id="submit" class="btn btn-default" (click)="registerUnknownType(cardDesc)"
+                i18n="@@submitFeedback">Submit</span>
         </form>
       </div>
       <p class="info-text text-thin" [hidden]="!submitted" i18n="@@thankYouForFeedback">Thank you for your feedback!</p>
     </div>
   </div>
 
-  <div class="card-viz" *ngIf="!loading && !errorReadingCard && !unknownCard">
-    <div class="card-type"><span class="text-light" i18n="@@cardType">Card Type:</span>
-      <span class="text-bold" i18n="@@belgianEid" *ngIf="cardType === 'beid'">Belgian eID</span>
-      <span class="text-bold" i18n="@@spanishDnie" *ngIf="cardType === 'dnie'">Spanish DNIe</span>
-      <span class="text-bold" i18n="@@emv" *ngIf="cardType === 'emv'">EMV</span>
-      <span class="text-bold" i18n="@@luxEid" *ngIf="cardType === 'luxeid'">Luxembourgish eID</span>
-      <span class="text-bold" i18n="@@luxtrust" *ngIf="cardType === 'luxtrust'">LuxTrust</span>
-      <span class="text-bold" i18n="@@ocra" *ngIf="cardType === 'ocra'">OCRA/OTP</span>
-      <span class="text-bold" i18n="@@mobib" *ngIf="cardType === 'mobib' && cardTypePretty === 'MoBIB'">MoBIB</span>
-      <span class="text-bold" i18n="@@mobibBasic" *ngIf="cardType === 'mobib' && cardTypePretty === 'MoBIB Basic'">MoBIB Basic</span>
-      <span class="text-bold" i18n="@@oberthur" *ngIf="cardType === 'oberthur'">Oberthur</span>
-      <span class="text-bold" i18n="@@piv" *ngIf="cardType === 'piv'">PIV</span>
-      <span class="text-bold" i18n="@@pkcs11Compatible" *ngIf="cardType === 'pkcs11'">PKCS11 Compatible</span>
-      <span class="text-bold" i18n="@@pteid" *ngIf="cardType === 'pteid'">Portuguese eID</span>
-    </div>
 
-    <div class="viz-container">
-      <app-beid-viz [rnData]="cardData.rn"
-                    [addressData]="cardData.address"
-                    [picData]="cardData.picture"
-                    [certData]="cardData"
-                    [readerId]="readerId"
-                    *ngIf="cardType === 'beid'"></app-beid-viz>
+  <div *ngIf="prereg">
+    <span class="size-h2 text-primary" *ngIf="!loading && !errorReadingCard && !unknownCard">Registration</span>
+    <div class="card-viz" *ngIf="!loading && !errorReadingCard && !unknownCard">
+      <div class="viz-container">
+        <app-beid-viz [rnData]="cardData.rn"
+                      [addressData]="cardData.address"
+                      [picData]="cardData.picture"
+                      [certData]="cardData"
+                      [readerId]="readerId"
+                      *ngIf="cardType === 'beid'"></app-beid-viz>
 
-      <app-dnie-viz *ngIf="cardType === 'dnie'" [readerId]="readerId" [cardData]="cardData"></app-dnie-viz>
-
-      <app-emv-viz [data]="cardData" [readerId]="readerId" *ngIf="cardType === 'emv'"></app-emv-viz>
-
-      <app-lux-viz [readerId]="readerId" *ngIf="cardType === 'luxeid'"></app-lux-viz>
-
-      <app-lux-trust-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'luxtrust'"></app-lux-trust-viz>
-
-      <app-ocra-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'ocra'"></app-ocra-viz>
-
-      <app-mobib-viz [cardData]="cardData" [readerId]="readerId" [isBasic]="cardTypePretty === 'MOBIB Basic'"
-      *ngIf="cardType === 'mobib'"></app-mobib-viz>
-
-      <app-oberthur-viz [cardData]="cardData" [readerId]="readerId" *ngIf="cardType === 'oberthur'"></app-oberthur-viz>
-
-      <app-piv-viz *ngIf="cardType === 'piv'" [readerId]="readerId" [cardData]="cardData"></app-piv-viz>
-
-      <app-pkcs11-viz *ngIf="cardType === 'pkcs11'" [readerId]="readerId" [cardData]="cardData"></app-pkcs11-viz>
-
-      <app-pteid-viz *ngIf="cardType === 'pteid'" [readerId]="readerId" [cardData]="cardData"></app-pteid-viz>
+      </div>
     </div>
   </div>
+
+  <div *ngIf="registerPhone">
+    <span class="size-h2 text-primary">Registration</span>
+    <div class="card-viz">
+      <div class="viz-container">
+        <div class="viz-content">
+          <span class="size-h3 text-primary">Enter your OTP</span>
+          <div class="input-group">
+            <input [(ngModel)]="register_registrationOtp"  type="text" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" (click)="register_resendOtp()">Resend OTP</button>
+                <button class="btn btn-default" (click)="register_confirmOtp()">Confirm OTP</button>
+              </span>
+          </div>
+        </div>
+        <div class="alert alert-success" *ngIf="register_validatecomplete">Registration complete for
+          {{cardinfoGarage.rndata.first_names}} with phone number {{gsmnr}}
+        </div>
+        <div class="alert alert-danger" *ngIf="register_registrationOtpControl">Please Enter the correct OTP</div>
+      </div>
+    </div>
+    <div class="continue-btn" *ngIf="register_completeRegistrationCheck">
+      <button class="btn btn-default" (click)="register_completeRegistration()">Continue to garage</button>
+    </div>
+  </div>
+
+
+  <div *ngIf="validateGsm">
+    <span class="size-h2 text-primary text-blue">Garage Trust1Team</span>
+    <div class="card-viz blueborder">
+      <div class="viz-container">
+        <div class="viz-content">
+          <span class="size-h3 text-primary text-blue">Enter your phone number</span>
+          <div class="input-group">
+            <input type="text" [(ngModel)]="gsmnr" class="form-control">
+            <span class="input-group-btn">
+                <button (click)="valideatephone()" class="btn btn-default button-blue">Validate phone number</button>
+              </span>
+          </div>
+        </div>
+        <div class="alert alert-success" *ngIf="validategsmComplete">Dossier found!</div>
+        <div class="alert alert-danger" *ngIf="validate_error">No Dossier found!</div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="validateotp">
+    <span class="size-h2 text-primary text-blue">Garage Trust1Team</span>
+    <div class="card-viz blueborder">
+      <div class="viz-container">
+        <div class="viz-content">
+          <span class="size-h3 text-primary text-blue">Validate your OTP</span>
+          <div class="input-group">
+            <input [(ngModel)]="validateotp_otp" type="text" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default button-blue" (click)="register_resendOtp()">Resend OTP</button>
+              <button (click)="valideateotp()" class="btn btn-default button-blue">Validate OTP</button>
+              </span>
+          </div>
+        </div>
+        <div *ngIf="validateotp_error">
+          <div class="alert alert-danger" >The OTP is incorrect!</div>
+        </div>
+        <div *ngIf="validateotpComplete">
+          <div class="alert alert-success" >The OTP is correct!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showeid">
+    <span class="size-h2 text-primary text-blue">Garage Trust1Team</span>
+    <div class="card-viz eid blueborder">
+      <div class="viz-container">
+        <div class="viz-content">
+          <span class="size-h3 text-primary text-blue">Dossier</span>
+          <div>
+            <div class="card beid-card two-sided">
+              <div class="front">
+                <div class="specimen text-uppercase">Specimen</div>
+                <div class="header">
+                  <div class="lang nl">
+                    <span class="text-uppercase belgium">belgië</span>
+                    <span class="text-uppercase id-card">identiteitskaart</span>
+                  </div>
+                  <div class="lang fr">
+                    <span class="text-uppercase belgium">belgique</span>
+                    <span class="text-uppercase id-card">carte d'identité</span>
+                  </div>
+                  <div class="lang de">
+                    <span class="text-uppercase belgium">belgien</span>
+                    <span class="text-uppercase id-card">personalausweis</span>
+                  </div>
+                  <div class="lang en">
+                    <span class="text-uppercase belgium">belgium</span>
+                    <span class="text-uppercase id-card">identity card</span>
+                  </div>
+                </div>
+
+                <div class="content">
+                  <div class="names-title section">
+                    <div class="labels inline">
+                      <div class="name">Naam/<i>Name</i></div>
+                      <div class="given-names">Voornamen/<i>Given names</i></div>
+                    </div>
+                  </div>
+                  <div class="birth-sex section">
+                    <div class="chip inline"></div>
+                    <div class="birth-sex-block inline">
+                      <div class="names">
+                        <div class="values inline">
+                          <div class="name">{{cardData.rn.name}}</div>
+                          <div class="given-names">{{cardData.rn.first_names}} {{cardData.rn.third_name}}</div>
+                        </div>
+                      </div>
+                      <div class="birth-sex-wrapper">
+                        <div class="birth-date inline">
+                          <div class="labels">
+                            <div>Geboorteplaats en -datum/<i>Place and date of birth</i></div>
+                          </div>
+                          <div class="values">
+                            <div>{{cardData.rn.birth_location}}&nbsp;&nbsp;{{cardData.rn.birth_date}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="sex">
+                        <div class="labels">
+                          <div>Geslacht/<i>Sex</i></div>
+                        </div>
+                        <div class="values">
+                          <div class="sex-value">{{cardData.rn.sex}}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="other">
+                    <div class="nat-validity-sig inline">
+                      <div>
+                        <div class="chip inline"></div>
+                        <div class="nationality inline section">
+                          <div class="labels inline">
+                            <div>Nationaliteit</div>
+                            <div><i>Nationality</i></div>
+                          </div>
+                          <div class="values inline">
+                            <div>&nbsp;</div>
+                            <div class="text-uppercase">{{cardData.rn.nationality}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="chip inline"></div>
+                        <div class="card-no inline section">
+                          <div class="labels">
+                            <div>Kaartnr./<i>Card No</i></div>
+                          </div>
+                          <div class="values">
+                            <div>{{formattedCardNumber}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="validity inline section">
+                        <div class="labels">
+                          <div>Geldig van - tot/<i>Valid from - until</i></div>
+                        </div>
+                        <div class="values">
+                          <div>{{cardData.rn.card_validity_date_begin}} - {{cardData.rn.card_validity_date_end}}</div>
+                        </div>
+                      </div>
+                      <div class="signature"></div>
+                    </div>
+                    <div class="pic inline">
+                      <img class="pic-img" [attr.src]="'data:image/jpeg;base64,' + cardData.picture"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="back">
+                <div class="specimen text-uppercase">Specimen</div>
+                <div class="back-wrapper">
+                  <div class="rrnr-barcode section">
+                    <div class="rrnr inline">
+                      <div class="labels">
+                        <div>Identificatienummer van het Rijksregister</div>
+                        <div><i>Identification number of the National Register</i></div>
+                      </div>
+                      <div class="values">
+                        <div>{{formattedRRNR}}</div>
+                      </div>
+                    </div>
+                    <div class="barcode inline">
+                      <div class="barcode-wrapper">{{cardData.rn.national_number}}{{cardData.rn.card_number.substr(3)}}</div>
+                    </div>
+                  </div>
+
+                  <div class="issuer section">
+                    <div class="issuer-place labels">
+                      <div>Plaats van afgifte/<i>Place of issue</i></div>
+                    </div>
+                    <div class="values">{{cardData.rn.card_delivery_municipality}}</div>
+                  </div>
+
+                  <div class="machine-readable-zone">
+                    <div>{{machineReadable1}}</div>
+                    <div>{{machineReadable2}}</div>
+                    <div>{{machineReadable3}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="personal-info col-sm-12">
+              <span class="size-h3 text-primary text-blue">Additional Information</span>
+              <div class="col-sm-12">
+                <div class="col-sm-4">
+                  <div id="address" [hidden]="!cardData.address">
+                    <h4 class="text-info text-light text-blue" i18n="@@address">Address</h4>
+
+                    <p><strong><span i18n="@@street">Street</span>:&nbsp;</strong>{{cardData.address.street_and_number}}<br/>
+                      <strong><span i18n="@@city">City</span>:&nbsp;</strong>{{cardData.address.zipcode}}
+                      {{cardData.address.municipality}}</p>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div [hidden]="!rnData">
+                    <h4 class="text-info text-light text-blue" i18n="@@generalInformation">General Information</h4>
+                    <strong><span i18n="@@chipNumber">Chip number</span>:&nbsp;</strong>{{cardData.rn.chip_number}}<br/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <span class="size-h3 text-primary text-blue">Car info</span>
+            <div class="carinfo">
+              <img src="https://hips.hearstapps.com/hmg-prod/images/compositor-1531337606.png?crop=1xw:1xh;center,center&resize=900:*" alt="tesla">
+
+              <div class="carinfoblock">
+                <div class="uppercarinfo">Company</div>
+                <div class="lowercarinfo">Trust1team BVBA</div>
+              </div>
+
+
+              <div class="carinfoblock">
+                <div class="uppercarinfo">Driver</div>
+                <div class="lowercarinfo">{{cardData.rn.first_names}} {{cardData.rn.name}}</div>
+              </div>
+
+              <div class="carinfoblock">
+                <div class="uppercarinfo">Lease period</div>
+                <div class="lowercarinfo">10/10/2018 - 09/10-2023</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="continue-btn">
+      <button class="btn btn-default" (click)="exit()">
+        Exit
+      </button>
+    </div>
+  </div>
+
 </div>
