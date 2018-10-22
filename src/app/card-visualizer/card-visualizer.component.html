@@ -77,7 +77,7 @@
       </div>
     </div>
     <div class="continue-btn" *ngIf="register_completeRegistrationCheck">
-      <button class="btn btn-default" (click)="register_completeRegistration()">Continue</button>
+      <button class="btn btn-default" (click)="register_completeRegistration()">Continue to garage</button>
     </div>
   </div>
 
@@ -98,11 +98,6 @@
         <div class="alert alert-success" *ngIf="validategsmComplete">Dossier found!</div>
         <div class="alert alert-danger" *ngIf="validate_error">No Dossier found!</div>
       </div>
-    </div>
-    <div class="continue-btn" *ngIf="validategsmComplete">
-      <button (click)="complete_validateGsm()"  class="btn btn-default">
-        Continue
-      </button>
     </div>
   </div>
 
@@ -127,11 +122,6 @@
           <div class="alert alert-success" >The OTP is correct!</div>
         </div>
       </div>
-    </div>
-    <div class="continue-btn" *ngIf="validateotpComplete">
-      <button (click)="validateotp_continue()" class="btn btn-default">
-        Continue
-      </button>
     </div>
   </div>
 

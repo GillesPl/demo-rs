@@ -246,18 +246,15 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
           this.validate_error = false;
           this.validategsmComplete= true
           this.currentdossier_selected = true;
+          this.validateGsm = false;
+          this.validateotp = true;
+          this.register_resendOtp();
         }
         else {
           this.validate_error = true;
         }
       });
     }
-  }
-
-  complete_validateGsm() {
-    this.validateGsm = false;
-    this.validateotp = true;
-    this.register_resendOtp();
   }
 
   valideateotp() {
@@ -271,6 +268,9 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
         if (res.otp === this.validateotp_otp) {
           this.validateotp_error = false
           this.validateotpComplete = true;
+          this.validateotp = false;
+          this.dossierdata()
+          this.showeid = true;
         }
         else {
           this.validateotp_error = true
@@ -282,11 +282,6 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     }
   }
 
-  validateotp_continue() {
-    this.validateotp = false;
-    this.dossierdata()
-    this.showeid = true;
-  }
 
   dossierdata() {
     this.formattedCardNumber = BeidService.formatCardNumber(this.cardData.rn.card_number);
@@ -311,6 +306,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     this.validateGsm = false;
     this.validateotp = false;
     this.showeid = false;
+    this.register_completeRegistrationCheck = false;
 
 
     this.cardinfoGarage = null;
@@ -319,6 +315,5 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     this.register_registrationOtp = null;
     this.validateotp_otp = null;
     this.validate_dossier_data = null;
-    this.validateotp_otp = false
   }
 }
