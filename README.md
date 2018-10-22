@@ -8,50 +8,6 @@ ReadMyCards is a simple webapp that reads the contents of your smartcards using 
 
 [Website Trust1Team][Trust1Team-url]
 
-## External Dependencies
-
-ReadMyCards makes use of the following external APIs:
-
-##### CloudConvert
-* to convert JPEG2000 images to JPEG
-* to generate PDFs from HTML templates
-##### ipinfo.io
-* to retrieve geolocation and browser info of users
-
-##### Marko.js
-* Marko.js (v3.14.2) is used to generate and populate templates
-
-
-###### This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
-
-## Requirements
-
-* Node.js v6.9.2 LTS or higher
-* Yarn v1.3.2 or higher
-
-
-## Development server
-
-Run yarn:
-```ssh
-$ yarn
-```
-Start the node.js process:
-```ssh
-$ node app.js
-```
-If you have nodemon installed you can also run
-```ssh
-$ nodemon app.js
-```
-a nodemon.json configuration is present that will only trigger a nodemon restart when server files are changed.
-
-Now that the server is running, start the frontend:
-```
-$ npm start
-```
-Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
 ## Deployment
 Clone the repository in your desired directory and switch to the correct release tag.
 
@@ -74,47 +30,21 @@ This the build task will generate a minfied/uglified/concatted distribution pack
 
 Create a configuration YAML file called *config.yml* in the */config* directory. An example is provided. Make sure you change the environment to something other than *local*.
 
-A full deployment guide can be found on [Confluence][rmc-confluence-deployment-guide]
+###
+create a postgres with the following schema
+```ssh
+-- Sequence
+CREATE SEQUENCE IF NOT EXISTS "public"."validations_id_seq";
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## PDF viewer used in file exchange
-During deployment you need to add a zlib folder in node_modules with a packag.json file:
-{
-  "name": "zlib",
-  "version": "1.0.0"
-}
-
-And an empty index.js file. 
-This is due to pdf-vier issue:
-https://github.com/VadimDez/ng2-pdf-viewer/issues/322
-
-## Extract translation files
-
-Run Angular's i18n extractor:
-```bash
-$ ng xi18n
+-- Table Definition
+CREATE TABLE "public"."validations" (
+    "id" int4 NOT NULL DEFAULT nextval('validations_id_seq'::regclass),
+    "phonenumber" varchar,
+    "rndata" text,
+    "otp" varchar,
+    PRIMARY KEY ("id")
+);
 ```
-This will extract all translatable string from templates. This file can then be used for further translations
 
 ## License
 
