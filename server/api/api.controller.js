@@ -31,11 +31,11 @@ module.exports = {
 
 function getValidateGetPhone(req, res) {
   const postgres = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'demo-rs',
-    password: 'postgres',
-    port: 5432,
+    user: config.postgres.user,
+    host: config.postgres.host,
+    database: config.postgres.database,
+    password: config.postgres.password,
+    port: config.postgres.port,
   });
 
   postgres.connect();
@@ -74,11 +74,11 @@ function sms(req, res) {
 
 function putValidatePhone(req, res) {
   const postgres = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'demo-rs',
-    password: 'postgres',
-    port: 5432,
+    user: config.postgres.user,
+    host: config.postgres.host,
+    database: config.postgres.database,
+    password: config.postgres.password,
+    port: config.postgres.port,
   });
   postgres.connect();
   let body = req.body
@@ -96,11 +96,11 @@ function putValidatePhone(req, res) {
 
 function postValidatePhone(req, res) {
   const postgres = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'demo-rs',
-    password: 'postgres',
-    port: 5432,
+    user: config.postgres.user,
+    host: config.postgres.host,
+    database: config.postgres.database,
+    password: config.postgres.password,
+    port: config.postgres.port,
   });
 
   postgres.connect();
@@ -119,11 +119,11 @@ function postValidatePhone(req, res) {
 
 function getValidatePhone(req, res) {
   const postgres = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'demo-rs',
-    password: 'postgres',
-    port: 5432,
+    user: config.postgres.user,
+    host: config.postgres.host,
+    database: config.postgres.database,
+    password: config.postgres.password,
+    port: config.postgres.port,
   });
 
   postgres.connect();
