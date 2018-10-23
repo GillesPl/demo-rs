@@ -61,19 +61,19 @@
     <div class="card-viz">
       <div class="viz-container">
         <div class="viz-content">
-          <span class="size-h3 text-primary">Enter your OTP</span>
+          <span class="size-h3 text-primary">Enter your password received by sms</span>
           <div class="input-group">
-            <input [(ngModel)]="register_registrationOtp"  type="text" class="form-control">
+            <input [(ngModel)]="register_registrationOtp"  type="text" class="form-control register-phone-input">
             <span class="input-group-btn">
-                <button class="btn btn-default" (click)="register_resendOtp()">Resend OTP</button>
-                <button class="btn btn-default" (click)="register_confirmOtp()">Confirm OTP</button>
+                <button class="btn btn-default" (click)="register_resendOtp()">Resend password</button>
+                <button class="btn btn-default" (click)="register_confirmOtp()">Confirm password</button>
               </span>
           </div>
         </div>
         <div class="alert alert-success" *ngIf="register_validatecomplete">Registration complete for
           {{cardinfoGarage.rndata.first_names}} with phone number {{gsmnr}}
         </div>
-        <div class="alert alert-danger" *ngIf="register_registrationOtpControl">Please Enter the correct OTP</div>
+        <div class="alert alert-danger" *ngIf="register_registrationOtpControl">Please Enter the correct password</div>
       </div>
     </div>
     <div class="continue-btn" *ngIf="register_completeRegistrationCheck">
@@ -89,7 +89,7 @@
         <div class="viz-content">
           <span class="size-h3 text-primary text-blue">Enter your phone number</span>
           <div class="input-group">
-            <input type="text" [(ngModel)]="gsmnr" class="form-control">
+            <input type="text" [(ngModel)]="gsmnr" class="form-control validate-gsm-input">
             <span class="input-group-btn">
                 <button (click)="valideatephone()" class="btn btn-default button-blue">Validate phone number</button>
               </span>
@@ -106,20 +106,20 @@
     <div class="card-viz blueborder">
       <div class="viz-container">
         <div class="viz-content">
-          <span class="size-h3 text-primary text-blue">Validate your OTP</span>
+          <span class="size-h3 text-primary text-blue">Validate your password received by sms</span>
           <div class="input-group">
-            <input [(ngModel)]="validateotp_otp" type="text" class="form-control">
+            <input [(ngModel)]="validateotp_otp" type="text" class="form-control validate-otp-garage-input">
             <span class="input-group-btn">
-              <button class="btn btn-default button-blue" (click)="register_resendOtp()">Resend OTP</button>
-              <button (click)="valideateotp()" class="btn btn-default button-blue">Validate OTP</button>
+              <button class="btn btn-default button-blue" (click)="register_resendOtp()">Resend password</button>
+              <button (click)="valideateotp()" class="btn btn-default button-blue">Validate password</button>
               </span>
           </div>
         </div>
         <div *ngIf="validateotp_error">
-          <div class="alert alert-danger" >The OTP is incorrect!</div>
+          <div class="alert alert-danger" >The password is incorrect!</div>
         </div>
         <div *ngIf="validateotpComplete">
-          <div class="alert alert-success" >The OTP is correct!</div>
+          <div class="alert alert-success" >The password is correct!</div>
         </div>
       </div>
     </div>
@@ -306,7 +306,7 @@
 
               <div class="carinfoblock">
                 <div class="uppercarinfo">Lease period</div>
-                <div class="lowercarinfo">10/10/2018 - 09/10-2023</div>
+                <div class="lowercarinfo">10/10/2018 - 09/10/2023</div>
               </div>
             </div>
           </div>

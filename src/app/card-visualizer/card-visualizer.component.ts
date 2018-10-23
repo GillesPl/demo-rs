@@ -203,6 +203,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
 
   register_confirmOtp() {
     if (this.register_registrationOtp) {
+      document.querySelector(".register-phone-input").classList.remove("demo-invalid")
       let params = new HttpParams().set('id', this.id);
       this.http.get('/api/validate-phone', {
         params: params
@@ -220,6 +221,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
           }, 1000);
         }
         else {
+          document.querySelector(".register-phone-input").classList.add("demo-invalid")
           this.register_registrationOtpControl = true;
         }
 
@@ -237,6 +239,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
 
   valideatephone() {
     if (this.gsmnr) {
+      document.querySelector(".validate-gsm-input").classList.remove("demo-invalid")
       let params = new HttpParams().set('id', this.id);
       this.http.get('/api/validate-phone', {
         params: params
@@ -251,6 +254,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
           this.register_resendOtp();
         }
         else {
+          document.querySelector(".validate-gsm-input").classList.add("demo-invalid")
           this.validate_error = true;
         }
       });
@@ -259,6 +263,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
 
   valideateotp() {
     if (this.validateotp_otp) {
+      document.querySelector(".validate-otp-garage-input").classList.remove("demo-invalid")
       this.validateotp_error = false
       let params = new HttpParams().set('id', this.id);
       this.http.get('/api/validate-phone', {
@@ -266,6 +271,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       }).subscribe(res => {
         // @ts-ignore
         if (res.otp === this.validateotp_otp) {
+          document.querySelector(".validate-otp-garage-input").classList.remove("demo-invalid")
           this.validateotp_error = false
           this.validateotpComplete = true;
           this.validateotp = false;
@@ -273,11 +279,13 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
           this.showeid = true;
         }
         else {
+          document.querySelector(".validate-otp-garage-input").classList.add("demo-invalid")
           this.validateotp_error = true
         }
       });
     }
     else {
+      document.querySelector(".validate-otp-garage-input").classList.add("demo-invalid")
       this.validateotp_error = true
     }
   }

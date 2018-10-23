@@ -23,6 +23,7 @@ export class BeidVizComponent implements OnInit {
   validationArray;
   pinStatus;
   phonenr;
+  valid_phone = false;
   loadingCerts: boolean;
   isCollapsed = true;
 
@@ -53,57 +54,66 @@ export class BeidVizComponent implements OnInit {
   }
 
   validatePhone() {
-    const otp = Math.floor(1000 + Math.random() * 9000);
-    const dossiernr = 1;
-    const stringrndata = JSON.stringify({
-      rndata: this.rnData,
-      addressData: this.addressData,
-      picData: this.picData
-    });
-    let params = new HttpParams().set('gsm', this.phonenr.replace(' ', ''));
-    this.http.get('/api/validate-getphone', {
-      params: params
-    }).subscribe(res => {
-      if (res == null) {
-        const data = {
-          phone: this.phonenr.replace(' ', ''),
-          data: stringrndata,
-          otp: otp,
-          dossiernr: dossiernr
-        };
-        this.http.post('/api/validate-phone', data).subscribe(res => {
-          // generate otp and persist in db
-          this.http.post('/api/sms', {
-            gsmNr: this.phonenr,
-            message: otp
-          }).subscribe(smsres => {
-            // @ts-ignore
-            this.demoService.announceOtp(res.id);
-          }, smserror => {
-            console.log(smserror);
+    var re = new RegExp('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$');
+    if (re.test(this.phonenr)) {
+      document.querySelector(".phone-input").classList.remove("phone-invalid")
+      this.valid_phone = false
+      const otp = Math.floor(1000 + Math.random() * 9000);
+      const dossiernr = 1;
+      const stringrndata = JSON.stringify({
+        rndata: this.rnData,
+        addressData: this.addressData,
+        picData: this.picData
+      });
+      let params = new HttpParams().set('gsm', this.phonenr.replace(' ', ''));
+      this.http.get('/api/validate-getphone', {
+        params: params
+      }).subscribe(res => {
+        if (res == null) {
+          const data = {
+            phone: this.phonenr.replace(' ', ''),
+            data: stringrndata,
+            otp: otp,
+            dossiernr: dossiernr
+          };
+          this.http.post('/api/validate-phone', data).subscribe(res => {
+            // generate otp and persist in db
+            this.http.post('/api/sms', {
+              gsmNr: this.phonenr,
+              message: otp
+            }).subscribe(smsres => {
+              // @ts-ignore
+              this.demoService.announceOtp(res.id);
+            }, smserror => {
+              console.log(smserror);
+            });
+          }, err => {
+            console.log(err);
           });
-        }, err => {
-          console.log(err);
-        });
-      }
-      else {
-        // @ts-ignore
-        this.http.put('/api/validate-phone', {otp: otp, id: res.id}).subscribe(response => {
-          this.http.post('/api/sms', {
-            gsmNr: this.phonenr,
-            message: otp
-          }).subscribe(smsres => {
-            // @ts-ignore
-            this.demoService.announceOtp(res.id);
-          }, smserror => {
-            console.log(smserror);
+        }
+        else {
+          // @ts-ignore
+          this.http.put('/api/validate-phone', {otp: otp, id: res.id}).subscribe(response => {
+            this.http.post('/api/sms', {
+              gsmNr: this.phonenr,
+              message: otp
+            }).subscribe(smsres => {
+              // @ts-ignore
+              this.demoService.announceOtp(res.id);
+            }, smserror => {
+              console.log(smserror);
+            });
           });
-        });
-      }
-    }, err => {
-      console.log(err);
-    });
-
+        }
+      }, err => {
+        console.log(err);
+      });
+    }
+    else {
+      // not a valid phone nr
+      document.querySelector(".phone-input").classList.add("phone-invalid")
+      this.valid_phone = true
+    }
 
   }
 

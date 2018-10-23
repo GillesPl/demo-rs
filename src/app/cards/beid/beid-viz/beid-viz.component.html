@@ -29,11 +29,16 @@
     <span class="size-h3 text-primary">Validate your phone number</span>
     <div class="col-sm-12">
       <div class="input-group validate-phone">
-        <input class="form-control" [(ngModel)]="phonenr" type="text" placeholder="e.g. 0477 66 55 11">
+        <input class="form-control phone-input" [(ngModel)]="phonenr" type="text" placeholder="e.g. 0477 66 55 11">
         <span class="input-group-btn">
         <button class="btn btn-default" (click)="validatePhone()">Validate phone number</button>
       </span>
       </div>
+    </div>
+    <div class="phone_valid_error" *ngIf="valid_phone">
+      <span class="alert alert-danger">
+        Phone number does not have a valid format
+      </span>
     </div>
   </div>
   <app-beid-card [rnData]="rnData" [picData]="picData"></app-beid-card>
