@@ -6,7 +6,7 @@ import {CardService} from '../cards/card.service';
 import {RMC} from '../rmc.service';
 import * as _ from 'lodash';
 import {DemoRsService} from './demo-rs.service';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {BeidService} from '../cards/beid/beid.service';
 
 @Component({
@@ -182,8 +182,14 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   }
 
   register_resendOtp() {
+    let headers = new HttpHeaders({
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': 'Sat, 01 Jan 2999 00:00:00 GMT'
+    })
     let params = new HttpParams().set('id', this.id);
     this.http.get('/api/validate-phone', {
+      headers: headers,
       params: params
     }).subscribe(res => {
       const otp = Math.floor(1000 + Math.random() * 9000);
@@ -207,7 +213,13 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     if (this.register_registrationOtp) {
       document.querySelector(".register-phone-input").classList.remove("demo-invalid")
       let params = new HttpParams().set('id', this.id);
+      let headers = new HttpHeaders({
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Expires': 'Sat, 01 Jan 2999 00:00:00 GMT'
+      })
       this.http.get('/api/validate-phone', {
+        headers: headers,
         params: params
       }).subscribe(res => {
         // @ts-ignore
@@ -243,7 +255,13 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     if (this.gsmnr) {
       document.querySelector(".validate-gsm-input").classList.remove("demo-invalid")
       let params = new HttpParams().set('id', this.id);
+      let headers = new HttpHeaders({
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Expires': 'Sat, 01 Jan 2999 00:00:00 GMT'
+      })
       this.http.get('/api/validate-phone', {
+        headers: headers,
         params: params
       }).subscribe(res => {
         // @ts-ignore
@@ -268,7 +286,13 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       document.querySelector(".validate-otp-garage-input").classList.remove("demo-invalid")
       this.validateotp_error = false
       let params = new HttpParams().set('id', this.id);
+      let headers = new HttpHeaders({
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Expires': 'Sat, 01 Jan 2999 00:00:00 GMT'
+      })
       this.http.get('/api/validate-phone', {
+        headers: headers,
         params: params
       }).subscribe(res => {
         // @ts-ignore
