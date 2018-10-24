@@ -1,6 +1,6 @@
 {
   "name": "readmycards-webapp-ng",
-  "version": "2.2.3",
+  "version": "0.5.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
