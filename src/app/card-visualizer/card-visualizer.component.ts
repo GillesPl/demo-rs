@@ -196,12 +196,12 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       this.http.post('/api/sms', {
         gsmNr: this.gsmnr,
         message: otp
-      }).subscribe(phonres => {
+      }, {headers: headers}).subscribe(phonres => {
         // update database
         this.http.put('/api/validate-phone', {
           otp: otp,
           id: this.id
-        }).subscribe(res => {
+        }, {headers: headers}).subscribe(res => {
         });
       });
     });
