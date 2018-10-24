@@ -339,5 +339,6 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     this.register_registrationOtp = null;
     this.validateotp_otp = null;
     this.validate_dossier_data = null;
+    this.validationArray = null;
   }
 }
