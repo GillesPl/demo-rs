@@ -30,6 +30,8 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   cardinfoGarage;
   gsmnr;
 
+  validationArray
+
   validateotp_error = false;
 
   validateGsm;
@@ -277,6 +279,20 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
           this.validateotp = false;
           this.dossierdata()
           this.showeid = true;
+
+          // start validation of certs
+          const filter = ['authentication-certificate', 'citizen-certificate', 'root-certificate'];
+          this.Connector.plugin('beid', 'allCerts', [this.readerId], filter).then(res => {
+            const validationReq = {
+              certificateChain: [
+                { order: 0, certificate: res.data.authentication_certificate.base64 },
+                { order: 1, certificate: res.data.citizen_certificate.base64 },
+                { order: 2, certificate: res.data.root_certificate.base64 },
+              ]
+            };
+            this.validationArray = [ this.Connector.ocv('validateCertificateChain', [validationReq])];
+          });
+
         }
         else {
           document.querySelector(".validate-otp-garage-input").classList.add("demo-invalid")

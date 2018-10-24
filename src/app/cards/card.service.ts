@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {Connector} from '../connector.service';
 import * as _ from 'lodash';
 import {HttpClient} from '@angular/common/http';
-import { BsModalService } from 'ngx-bootstrap';
 import { Angulartics2 } from 'angulartics2';
 
 @Injectable()

@@ -130,6 +130,9 @@
     <div class="card-viz eid blueborder">
       <div class="viz-container">
         <div class="viz-content">
+          <div class="cert-validation-wrapper">
+            <app-certificate-status [validationPromises]="validationArray" [cardType]="'beid'"></app-certificate-status>
+          </div>
           <span class="size-h3 text-primary text-blue">Dossier</span>
           <div>
             <div class="card beid-card two-sided">

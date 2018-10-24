@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { Connector } from './connector.service';
-import { DownloadSummaryModalComponent } from './cards/download-summary-modal/download-summary-modal.component';
 import { CitrixUserSelectModalComponent } from './citrix-user-select-modal/citrix-user-select-modal.component';
 import { BsModalService } from 'ngx-bootstrap';
 import { EventService } from './event.service';

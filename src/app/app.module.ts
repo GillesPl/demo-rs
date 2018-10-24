@@ -31,9 +31,8 @@ import {RMC} from './rmc.service';
 import {CardService} from './cards/card.service';
 import {ClipboardModule} from 'ngx-clipboard/dist';
 import {CardsModule} from './cards/cards.module';
-import {CollapseModule} from 'ngx-bootstrap';
+import {AlertModule, CollapseModule} from 'ngx-bootstrap';
 import {KeypadModule} from './rmc-keypad/keypad.module';
-import {Angulartics2RouterlessModule} from 'angulartics2/routerlessmodule';
 import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 import {Angulartics2Module} from 'angulartics2';
 import {RouterModule, Routes} from '@angular/router';
@@ -60,6 +59,7 @@ import {ChangeKeyPasswordComponent} from './java-key-tool/change-key-password/ch
 import {ChangeAliasComponent} from './java-key-tool/change-alias/change-alias.component';
 import {ListEntriesComponent} from './java-key-tool/list-entries/list-entries.component';
 import {DeleteEntryComponent} from './java-key-tool/delete-entry/delete-entry.component';
+import {CertificateStatusComponent} from './cards/certificate-status/certificate-status.component';
 
 const locale = localStorage.getItem('rmc-locale');
 
@@ -110,9 +110,11 @@ const ROUTES: Routes = [
     ChangeKeyPasswordComponent,
     ChangeAliasComponent,
     ListEntriesComponent,
-    DeleteEntryComponent
+    DeleteEntryComponent,
+    CertificateStatusComponent
   ],
   imports: [
+    AlertModule.forRoot(),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     Angular2FontawesomeModule,
     BrowserModule,
