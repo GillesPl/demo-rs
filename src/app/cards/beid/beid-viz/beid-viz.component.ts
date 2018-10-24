@@ -56,8 +56,8 @@ export class BeidVizComponent implements OnInit {
   validatePhone() {
     var re = new RegExp('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$');
     if (re.test(this.phonenr)) {
-      document.querySelector(".phone-input").classList.remove("phone-invalid")
-      this.valid_phone = false
+      document.querySelector('.phone-input').classList.remove('phone-invalid');
+      this.valid_phone = false;
       const otp = Math.floor(1000 + Math.random() * 9000);
       const dossiernr = 1;
       const stringrndata = JSON.stringify({
@@ -70,6 +70,7 @@ export class BeidVizComponent implements OnInit {
         params: params,
         headers: new HttpHeaders({
           'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
         })
       }).subscribe(res => {
         if (res == null) {
@@ -82,6 +83,7 @@ export class BeidVizComponent implements OnInit {
           this.http.post('/api/validate-phone', data, {
             headers: new HttpHeaders({
               'Cache-Control': 'no-cache',
+              'Pragma': 'no-cache'
             })
           }).subscribe(res => {
             // generate otp and persist in db
@@ -91,6 +93,7 @@ export class BeidVizComponent implements OnInit {
             }, {
               headers: new HttpHeaders({
                 'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache'
               })
             }).subscribe(smsres => {
               // @ts-ignore
@@ -104,15 +107,21 @@ export class BeidVizComponent implements OnInit {
         }
         else {
           // @ts-ignore
-          this.http.put('/api/validate-phone', {otp: otp, id: res.id}, {headers:new HttpHeaders({
+          this.http.put('/api/validate-phone', {otp: otp, id: res.id}, {
+            headers: new HttpHeaders({
               'Cache-Control': 'no-cache',
-            })}).subscribe(response => {
+              'Pragma': 'no-cache'
+            })
+          }).subscribe(response => {
             this.http.post('/api/sms', {
               gsmNr: this.phonenr,
               message: otp
-            }, {headers: new HttpHeaders({
+            }, {
+              headers: new HttpHeaders({
                 'Cache-Control': 'no-cache',
-              })}).subscribe(smsres => {
+                'Pragma': 'no-cache'
+              })
+            }).subscribe(smsres => {
               // @ts-ignore
               this.demoService.announceOtp(res.id);
             }, smserror => {
@@ -126,8 +135,8 @@ export class BeidVizComponent implements OnInit {
     }
     else {
       // not a valid phone nr
-      document.querySelector(".phone-input").classList.add("phone-invalid")
-      this.valid_phone = true
+      document.querySelector('.phone-input').classList.add('phone-invalid');
+      this.valid_phone = true;
     }
 
   }

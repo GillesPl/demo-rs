@@ -30,7 +30,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   cardinfoGarage;
   gsmnr;
 
-  validationArray
+  validationArray;
 
   validateotp_error = false;
 
@@ -186,6 +186,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     this.http.get('/api/validate-phone', {
       headers: new HttpHeaders({
         'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
       }),
       params: params
     }).subscribe(res => {
@@ -195,16 +196,22 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       this.http.post('/api/sms', {
         gsmNr: this.gsmnr,
         message: otp
-      }, {headers: new HttpHeaders({
+      }, {
+        headers: new HttpHeaders({
           'Cache-Control': 'no-cache',
-        })}).subscribe(phonres => {
+          'Pragma': 'no-cache'
+        })
+      }).subscribe(phonres => {
         // update database
         this.http.put('/api/validate-phone', {
           otp: otp,
           id: this.id
-        }, {headers: new HttpHeaders({
+        }, {
+          headers: new HttpHeaders({
             'Cache-Control': 'no-cache',
-          })}).subscribe(res => {
+            'Pragma': 'no-cache'
+          })
+        }).subscribe(res => {
         });
       });
     });
@@ -212,11 +219,12 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
 
   register_confirmOtp() {
     if (this.register_registrationOtp) {
-      document.querySelector(".register-phone-input").classList.remove("demo-invalid")
+      document.querySelector('.register-phone-input').classList.remove('demo-invalid');
       let params = new HttpParams().set('id', this.id);
       this.http.get('/api/validate-phone', {
         headers: new HttpHeaders({
           'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
         }),
         params: params
       }).subscribe(res => {
@@ -233,7 +241,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
           }, 1000);
         }
         else {
-          document.querySelector(".register-phone-input").classList.add("demo-invalid")
+          document.querySelector('.register-phone-input').classList.add('demo-invalid');
           this.register_registrationOtpControl = true;
         }
 
@@ -251,25 +259,26 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
 
   valideatephone() {
     if (this.gsmnr) {
-      document.querySelector(".validate-gsm-input").classList.remove("demo-invalid")
+      document.querySelector('.validate-gsm-input').classList.remove('demo-invalid');
       let params = new HttpParams().set('id', this.id);
       this.http.get('/api/validate-phone', {
         headers: new HttpHeaders({
           'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
         }),
         params: params
       }).subscribe(res => {
         // @ts-ignore
         if (res.phonenumber === this.gsmnr) {
           this.validate_error = false;
-          this.validategsmComplete= true
+          this.validategsmComplete = true;
           this.currentdossier_selected = true;
           this.validateGsm = false;
           this.validateotp = true;
           this.register_resendOtp();
         }
         else {
-          document.querySelector(".validate-gsm-input").classList.add("demo-invalid")
+          document.querySelector('.validate-gsm-input').classList.add('demo-invalid');
           this.validate_error = true;
         }
       });
@@ -278,22 +287,23 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
 
   valideateotp() {
     if (this.validateotp_otp) {
-      document.querySelector(".validate-otp-garage-input").classList.remove("demo-invalid")
-      this.validateotp_error = false
+      document.querySelector('.validate-otp-garage-input').classList.remove('demo-invalid');
+      this.validateotp_error = false;
       let params = new HttpParams().set('id', this.id);
       this.http.get('/api/validate-phone', {
         headers: new HttpHeaders({
           'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
         }),
         params: params
       }).subscribe(res => {
         // @ts-ignore
         if (res.otp === this.validateotp_otp) {
-          document.querySelector(".validate-otp-garage-input").classList.remove("demo-invalid")
-          this.validateotp_error = false
+          document.querySelector('.validate-otp-garage-input').classList.remove('demo-invalid');
+          this.validateotp_error = false;
           this.validateotpComplete = true;
           this.validateotp = false;
-          this.dossierdata()
+          this.dossierdata();
           this.showeid = true;
 
           // start validation of certs
@@ -301,24 +311,24 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
           this.Connector.plugin('beid', 'allCerts', [this.readerId], filter).then(res => {
             const validationReq = {
               certificateChain: [
-                { order: 0, certificate: res.data.authentication_certificate.base64 },
-                { order: 1, certificate: res.data.citizen_certificate.base64 },
-                { order: 2, certificate: res.data.root_certificate.base64 },
+                {order: 0, certificate: res.data.authentication_certificate.base64},
+                {order: 1, certificate: res.data.citizen_certificate.base64},
+                {order: 2, certificate: res.data.root_certificate.base64},
               ]
             };
-            this.validationArray = [ this.Connector.ocv('validateCertificateChain', [validationReq])];
+            this.validationArray = [this.Connector.ocv('validateCertificateChain', [validationReq])];
           });
 
         }
         else {
-          document.querySelector(".validate-otp-garage-input").classList.add("demo-invalid")
-          this.validateotp_error = true
+          document.querySelector('.validate-otp-garage-input').classList.add('demo-invalid');
+          this.validateotp_error = true;
         }
       });
     }
     else {
-      document.querySelector(".validate-otp-garage-input").classList.add("demo-invalid")
-      this.validateotp_error = true
+      document.querySelector('.validate-otp-garage-input').classList.add('demo-invalid');
+      this.validateotp_error = true;
     }
   }
 
