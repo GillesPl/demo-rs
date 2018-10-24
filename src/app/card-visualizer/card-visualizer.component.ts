@@ -182,12 +182,11 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   }
 
   register_resendOtp() {
-    let headers = new HttpHeaders({
-      'Cache-Control': 'no-cache',
-    })
     let params = new HttpParams().set('id', this.id);
     this.http.get('/api/validate-phone', {
-      headers: headers,
+      headers: new HttpHeaders({
+        'Cache-Control': 'no-cache',
+      }),
       params: params
     }).subscribe(res => {
       const otp = Math.floor(1000 + Math.random() * 9000);
@@ -196,12 +195,16 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       this.http.post('/api/sms', {
         gsmNr: this.gsmnr,
         message: otp
-      }, {headers: headers}).subscribe(phonres => {
+      }, {headers: new HttpHeaders({
+          'Cache-Control': 'no-cache',
+        })}).subscribe(phonres => {
         // update database
         this.http.put('/api/validate-phone', {
           otp: otp,
           id: this.id
-        }, {headers: headers}).subscribe(res => {
+        }, {headers: new HttpHeaders({
+            'Cache-Control': 'no-cache',
+          })}).subscribe(res => {
         });
       });
     });
@@ -211,11 +214,10 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     if (this.register_registrationOtp) {
       document.querySelector(".register-phone-input").classList.remove("demo-invalid")
       let params = new HttpParams().set('id', this.id);
-      let headers = new HttpHeaders({
-        'Cache-Control': 'no-cache',
-      })
       this.http.get('/api/validate-phone', {
-        headers: headers,
+        headers: new HttpHeaders({
+          'Cache-Control': 'no-cache',
+        }),
         params: params
       }).subscribe(res => {
         // @ts-ignore
@@ -251,11 +253,10 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
     if (this.gsmnr) {
       document.querySelector(".validate-gsm-input").classList.remove("demo-invalid")
       let params = new HttpParams().set('id', this.id);
-      let headers = new HttpHeaders({
-        'Cache-Control': 'no-cache',
-      })
       this.http.get('/api/validate-phone', {
-        headers: headers,
+        headers: new HttpHeaders({
+          'Cache-Control': 'no-cache',
+        }),
         params: params
       }).subscribe(res => {
         // @ts-ignore
@@ -280,11 +281,10 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       document.querySelector(".validate-otp-garage-input").classList.remove("demo-invalid")
       this.validateotp_error = false
       let params = new HttpParams().set('id', this.id);
-      let headers = new HttpHeaders({
-        'Cache-Control': 'no-cache',
-      })
       this.http.get('/api/validate-phone', {
-        headers: headers,
+        headers: new HttpHeaders({
+          'Cache-Control': 'no-cache',
+        }),
         params: params
       }).subscribe(res => {
         // @ts-ignore

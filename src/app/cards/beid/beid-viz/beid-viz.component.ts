@@ -54,9 +54,6 @@ export class BeidVizComponent implements OnInit {
   }
 
   validatePhone() {
-    let headers = new HttpHeaders({
-      'Cache-Control': 'no-cache',
-    })
     var re = new RegExp('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$');
     if (re.test(this.phonenr)) {
       document.querySelector(".phone-input").classList.remove("phone-invalid")
@@ -71,7 +68,9 @@ export class BeidVizComponent implements OnInit {
       let params = new HttpParams().set('gsm', this.phonenr.replace(' ', ''));
       this.http.get('/api/validate-getphone', {
         params: params,
-        headers:headers
+        headers: new HttpHeaders({
+          'Cache-Control': 'no-cache',
+        })
       }).subscribe(res => {
         if (res == null) {
           const data = {
@@ -81,14 +80,18 @@ export class BeidVizComponent implements OnInit {
             dossiernr: dossiernr
           };
           this.http.post('/api/validate-phone', data, {
-            headers: headers
+            headers: new HttpHeaders({
+              'Cache-Control': 'no-cache',
+            })
           }).subscribe(res => {
             // generate otp and persist in db
             this.http.post('/api/sms', {
               gsmNr: this.phonenr,
               message: otp
             }, {
-              headers: headers
+              headers: new HttpHeaders({
+                'Cache-Control': 'no-cache',
+              })
             }).subscribe(smsres => {
               // @ts-ignore
               this.demoService.announceOtp(res.id);
@@ -101,11 +104,15 @@ export class BeidVizComponent implements OnInit {
         }
         else {
           // @ts-ignore
-          this.http.put('/api/validate-phone', {otp: otp, id: res.id}, {headers:headers}).subscribe(response => {
+          this.http.put('/api/validate-phone', {otp: otp, id: res.id}, {headers:new HttpHeaders({
+              'Cache-Control': 'no-cache',
+            })}).subscribe(response => {
             this.http.post('/api/sms', {
               gsmNr: this.phonenr,
               message: otp
-            }, {headers: headers}).subscribe(smsres => {
+            }, {headers: new HttpHeaders({
+                'Cache-Control': 'no-cache',
+              })}).subscribe(smsres => {
               // @ts-ignore
               this.demoService.announceOtp(res.id);
             }, smserror => {
