@@ -184,8 +184,6 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
   register_resendOtp() {
     let headers = new HttpHeaders({
       'Cache-Control': 'no-cache',
-      'Pragma': 'no-cache',
-      'Expires': 'Sat, 01 Jan 2999 00:00:00 GMT'
     })
     let params = new HttpParams().set('id', this.id);
     this.http.get('/api/validate-phone', {
@@ -215,8 +213,6 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       let params = new HttpParams().set('id', this.id);
       let headers = new HttpHeaders({
         'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Expires': 'Sat, 01 Jan 2999 00:00:00 GMT'
       })
       this.http.get('/api/validate-phone', {
         headers: headers,
@@ -257,8 +253,6 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       let params = new HttpParams().set('id', this.id);
       let headers = new HttpHeaders({
         'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Expires': 'Sat, 01 Jan 2999 00:00:00 GMT'
       })
       this.http.get('/api/validate-phone', {
         headers: headers,
@@ -288,8 +282,6 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
       let params = new HttpParams().set('id', this.id);
       let headers = new HttpHeaders({
         'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Expires': 'Sat, 01 Jan 2999 00:00:00 GMT'
       })
       this.http.get('/api/validate-phone', {
         headers: headers,
