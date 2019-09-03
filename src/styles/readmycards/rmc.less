@@ -1,7 +1,6 @@
 /// Styles for RMC
-
-@t1t-green: #f15a29;
-@t1t-green-dark: #d9400e;
+@t1t-green: #003B76;
+@t1t-green-dark: #003B76;
 @t1t-grey: #bcbec0;
 
 html {
@@ -135,11 +134,11 @@ html {
           font-size: 22px;
           margin-top: 20px;
           color: #fff;
-          background: @brand-info;
+          background: @brand-info !important;
           width: 300px;
 
           &:hover, &:active {
-            background: darken(@brand-info, 7.5%);
+            background: darken(@brand-info, 7.5%) !important;
           }
         }
 
@@ -375,7 +374,7 @@ html {
   left: 0;
   padding: 1rem;
   text-align: center;
-  background: @t1t-green-dark;
+  background: @t1t-green-dark !important;
   color: white;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -906,7 +905,7 @@ html {
         }
 
         input:checked + .slider {
-          background-color: @brand-primary;
+          background-color: @brand-primary !important;
         }
 
         input:focus + .slider {
