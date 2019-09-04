@@ -10,6 +10,15 @@ const service = require('./api.service');
 const signbox = require('../components/signbox.service');
 const response = require(__base + 'server/util/response.util');
 const {Pool, Client} = require('pg');
+const axios = require('axios');
+const https = require('https');
+const setCookie = require('set-cookie-parser');
+const fs = require('fs');
+const md5 = require('md5');
+
+let cookie;
+let taskguuid;
+let vieweruuid;
 
 let datastore = gcloud.datastore({
   projectId: config.gcloud.project,
@@ -28,6 +37,143 @@ module.exports = {
   getValidateGetPhone: getValidateGetPhone,
   sms: sms
 };
+
+function initClient(){
+  let acessKey = config.smp.accessKey;
+  let secretKey = config.snp.secretKey;
+  let apiUrl = config.snp.url;
+  let scheme = config.snp.scheme;
+  let data = {
+    accessKey: acessKey,
+    secretKey : secretKey
+  }
+
+  axios.post(scheme+'://'+apiUrl+'/api/auth',data).then((res)=>{
+    status = res.status;
+    if(status===200){
+      let cookies = setCookie.parse(res, {
+        decodeValues: true,  // default: true
+        map: true           //default: false
+      });
+      cookie = cookies['webda'];
+    }else{
+      cookie = null;
+    }
+  });
+}
+
+function getTemplateStartQrCode(uuid){
+    let apiUrl = config.snp.url;
+    let scheme = config.snp.scheme;
+    let data ={
+      action:register
+    }
+    
+    axios.request({
+      url: scheme+'://'+apiUrl+'/templates/'+uuid+'/qrcode',
+      method: 'put',
+      data: data,
+      headers:{
+        'Content-Type': 'application/octet-stream',
+        'Set-Cookie': cookie
+      }
+    }).then((res)=>{
+      status = res.status;
+      if(status===200){
+        var task = null;
+        var src = null;
+        console.log(res.stream)
+        
+      }
+    })
+}
+
+function sendTask(templateuuid, email){
+  let apiUrl = config.snp.url;
+  let scheme = config.snp.scheme;
+  let ident = {
+    ident: email.toLowerCase().trim(),
+    type: email
+  }
+  axios.request({
+    url: scheme+"://"+apiUrl+"/templates/"+templateuuid+"/push",
+    method: 'post',
+    data: ident,
+    headers:{
+      'Content-Type': 'application/json',
+      'Set-Cookie': cookie
+    }
+  }).then((res)=>{
+    if(res.status===200){
+      var task = res.data;
+      taskguuid = task.uuid; //task.guuid?
+      task.subtasks.foreach((subtask)=>{
+        if(subtask.type==='viewer'){
+          vieweruuid = subtask.uuid;
+        }
+      })
+    }else{
+
+    }
+  })
+}
+
+function generateStep1PDF(){
+
+}
+
+function addAttachmentPDF(pdf/* taskuuid, stepuuid, pdf*/){
+  let date = new Date();
+  let pdfSize = fs.statSync('./viewpdf')['size'];
+  let att = {
+    originalname: "attachment_"+taskguuid+"_"+date.getTime()+".pdf",
+    mimetype:"application/pdf",
+    size: pdfSize,
+    hash: md5(pdf),
+    challenge: 1,
+    metadatas:{
+      creationDate: date.toLocaleDateString(),
+      uuid: vieweruuid,
+      order: 0
+    }
+  }
+  axios.request({
+    url: scheme+"://"+apiUrl+"/binary/upload/tasks/"+taskguuid+"/attachments/add",
+    method: "put",
+    data: att,
+    headers:{
+      'Content-Type': 'application/json',
+      'Set-Cookie': cookie
+    }
+  }).then((res)=>{
+    if(res.status===200){
+      var src = res.data,
+      if(!src.done){
+        var url = src.url;
+        var md5code = src.md5;
+        axios.request({
+          url: url,
+          headers:{
+            'Content-Type' : 'application/octet-stream',
+            'Content-MD5': md5code
+          },
+          data: pdf// pdf being a fs buffer
+        }).then((res)=>{
+          if(res.status<=204){
+            return true;
+          }else{
+            return false;
+          }
+        })
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }
+  })
+
+}
 
 function getValidateGetPhone(req, res) {
   const postgres = new Client({

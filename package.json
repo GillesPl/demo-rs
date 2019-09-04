@@ -50,6 +50,7 @@
     "less": "^3.0.1",
     "lodash": "^4.17.5",
     "marko": "^3.14.2",
+    "md5": "^2.2.1",
     "mississippi2": "^1.0.5",
     "moment": "^2.22.0",
     "ng2-fittext": "^1.1.1",
@@ -62,6 +63,7 @@
     "roboto-fontface": "^0.9.0",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
+    "set-cookie-parser": "^2.4.0",
     "trust1connector": "^2.2.12",
     "yarn": "^1.6.0",
     "zone.js": "^0.8.26"
