@@ -1,5 +1,6 @@
 'use strict';
 const config = require('@trust1team/t1t-config');
+const logger = require('@trust1team/t1t-log');
 const gcloud = require('google-cloud');
 const request = require('request');
 const rp = require('request-promise-native');
@@ -35,13 +36,14 @@ module.exports = {
   postValidatePhone: postValidatePhone,
   putValidatePhone: putValidatePhone,
   getValidateGetPhone: getValidateGetPhone,
-  sms: sms
+  sms: sms,
+
 };
 
-function initClient(){
-  let acessKey = config.smp.accessKey;
+function initClient(req,res){
+  let acessKey = config.snp.accessKey;
   let secretKey = config.snp.secretKey;
-  let apiUrl = config.snp.url;
+  let apiUrl = config.snp.api_url;
   let scheme = config.snp.scheme;
   let data = {
     accessKey: acessKey,
@@ -49,17 +51,19 @@ function initClient(){
   }
 
   axios.post(scheme+'://'+apiUrl+'/api/auth',data).then((res)=>{
-    status = res.status;
+    let status = res.status;
     if(status===200){
       let cookies = setCookie.parse(res, {
         decodeValues: true,  // default: true
         map: true           //default: false
       });
       cookie = cookies['webda'];
+      logger.info(cookie)
     }else{
       cookie = null;
     }
   });
+  return res.status(200);
 }
 
 function getTemplateStartQrCode(uuid){
@@ -147,7 +151,7 @@ function addAttachmentPDF(pdf/* taskuuid, stepuuid, pdf*/){
     }
   }).then((res)=>{
     if(res.status===200){
-      var src = res.data,
+      var src = res.data;
       if(!src.done){
         var url = src.url;
         var md5code = src.md5;
