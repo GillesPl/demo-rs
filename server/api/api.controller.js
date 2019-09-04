@@ -67,7 +67,7 @@ function initClient(req,res){
 }
 
 function getTemplateStartQrCode(uuid){
-    let apiUrl = config.snp.url;
+    let apiUrl = config.snp.api_url;
     let scheme = config.snp.scheme;
     let data ={
       action:register
@@ -82,7 +82,7 @@ function getTemplateStartQrCode(uuid){
         'Set-Cookie': cookie
       }
     }).then((res)=>{
-      status = res.status;
+      let status = res.status;
       if(status===200){
         var task = null;
         var src = null;
@@ -93,7 +93,7 @@ function getTemplateStartQrCode(uuid){
 }
 
 function sendTask(templateuuid, email){
-  let apiUrl = config.snp.url;
+  let apiUrl = config.snp.api_url;
   let scheme = config.snp.scheme;
   let ident = {
     ident: email.toLowerCase().trim(),
@@ -127,6 +127,8 @@ function generateStep1PDF(){
 }
 
 function addAttachmentPDF(pdf/* taskuuid, stepuuid, pdf*/){
+  let apiUrl = config.snp.api_url;
+  let scheme = config.snp.scheme;
   let date = new Date();
   let pdfSize = fs.statSync('./viewpdf')['size'];
   let att = {
@@ -177,6 +179,27 @@ function addAttachmentPDF(pdf/* taskuuid, stepuuid, pdf*/){
     }
   })
 
+}
+
+function notifyTaskOwner(/* task uuid */){
+  let apiUrl = config.snp.api_url;
+  let scheme = config.snp.scheme;
+
+  axios.request({
+    url: scheme+"://"+apiUrl+"/tasks/"+taskguuid+"/notify",
+    method: "get",
+    headers:{
+      'Content-Type':'application/json',
+      'Set-Cookie':cookie
+    }
+  }).then((res)=>{
+    let status = res.status;
+    if(status<=204){
+      return true;
+    }else{
+      return false;
+    }
+  })
 }
 
 function getValidateGetPhone(req, res) {
