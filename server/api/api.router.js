@@ -8,6 +8,23 @@ const jwtMW = require(__base + 'server/middleware/jwt.js');
 module.exports = function createRouter(app) {
   const router = new express.Router();
 
+
+
+  router.route('/api/initcli')
+    .post(ctrlApi.initcli);
+  
+  router.route('/api/getQr')
+    .post(ctrlApi.getTemplateQR);
+
+  router.route('/api/sendTask')
+    .post(ctrlApi.sendTask);
+
+  router.route('/api/addPDF')
+    .post(ctrlApi.addPdf);
+
+  router.route('/api/notify')
+    .post(ctrlApi.notify);
+
   router.route('/api/dl')
     .post(ctrlApi.processDownload);
 

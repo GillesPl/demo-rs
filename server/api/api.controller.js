@@ -15,11 +15,13 @@ const axios = require('axios');
 const https = require('https');
 const setCookie = require('set-cookie-parser');
 const fs = require('fs');
+const path = require('path')
+const puppeteer = require('puppeteer');
+const handlebars = require("handlebars");
 const md5 = require('md5');
 
-let cookie;
-let taskguuid;
-let vieweruuid;
+//var cookie;
+
 
 let datastore = gcloud.datastore({
   projectId: config.gcloud.project,
@@ -37,10 +39,14 @@ module.exports = {
   putValidatePhone: putValidatePhone,
   getValidateGetPhone: getValidateGetPhone,
   sms: sms,
-
+  initcli: initClient,
+  getTemplateQR: getTemplateStartQrCode,
+  sendTask: sendTask,
+  addPdf: addAttachmentPDF,
+  notify: notifyTaskOwner,
 };
 
-function initClient(req,res){
+function initClient(req,response){
   let acessKey = config.snp.accessKey;
   let secretKey = config.snp.secretKey;
   let apiUrl = config.snp.api_url;
@@ -53,24 +59,29 @@ function initClient(req,res){
   axios.post(scheme+'://'+apiUrl+'/api/auth',data).then((res)=>{
     let status = res.status;
     if(status===200){
-      let cookies = setCookie.parse(res, {
+      const cookies = setCookie.parse(res, {
         decodeValues: true,  // default: true
         map: true           //default: false
       });
-      cookie = cookies['webda'];
-      logger.info(cookie)
+      //let cookie = cookies['webda'];
+      //logger.info('line 72: '+cookies['webda'].value)
+      return response.status(200).json({data:cookies['webda'].value});
     }else{
-      cookie = null;
+      return response.status(413);
     }
   });
-  return res.status(200);
+  
 }
 
-function getTemplateStartQrCode(uuid){
+function getTemplateStartQrCode(req,response){
+    //logger.info(cookie)
+    let cookie = req.body.cookie;
+   
+    let uuid = req.body.uuid;
     let apiUrl = config.snp.api_url;
     let scheme = config.snp.scheme;
     let data ={
-      action:register
+      action: 'register' 
     }
     
     axios.request({
@@ -79,25 +90,30 @@ function getTemplateStartQrCode(uuid){
       data: data,
       headers:{
         'Content-Type': 'application/octet-stream',
-        'Set-Cookie': cookie
+        'Set-Cookie': 'webda='+cookie
       }
     }).then((res)=>{
       let status = res.status;
       if(status===200){
         var task = null;
         var src = null;
-        console.log(res.stream)
-        
+        //logger.info(res)
+        return response.status(200).json({data:res.data});
+      }else{
+        return response.status(403);
       }
     })
 }
 
-function sendTask(templateuuid, email){
+function sendTask(req,response){
+  let templateuuid = req.body.uuid;
+  let email = req.body.email;
+  let cookie = req.body.cookie;
   let apiUrl = config.snp.api_url;
   let scheme = config.snp.scheme;
   let ident = {
     ident: email.toLowerCase().trim(),
-    type: email
+    type: 'email'
   }
   axios.request({
     url: scheme+"://"+apiUrl+"/templates/"+templateuuid+"/push",
@@ -105,83 +121,138 @@ function sendTask(templateuuid, email){
     data: ident,
     headers:{
       'Content-Type': 'application/json',
-      'Set-Cookie': cookie
+      'Set-Cookie':'webda='+ cookie
     }
   }).then((res)=>{
     if(res.status===200){
       var task = res.data;
-      taskguuid = task.uuid; //task.guuid?
+      var taskguuid = task.uuid; //task.guuid?
       task.subtasks.foreach((subtask)=>{
         if(subtask.type==='viewer'){
-          vieweruuid = subtask.uuid;
+          var vieweruuid = subtask.uuid;
+          var data ={
+            taskuuid: taskguuid,
+            vieweruuid: vieweruuid
+          }
+          return response.status(200).json({data:data});
         }
       })
     }else{
-
+        return response.status(404)
     }
   })
 }
 
-function generateStep1PDF(){
-
-}
-
-function addAttachmentPDF(pdf/* taskuuid, stepuuid, pdf*/){
-  let apiUrl = config.snp.api_url;
-  let scheme = config.snp.scheme;
-  let date = new Date();
-  let pdfSize = fs.statSync('./viewpdf')['size'];
-  let att = {
-    originalname: "attachment_"+taskguuid+"_"+date.getTime()+".pdf",
-    mimetype:"application/pdf",
-    size: pdfSize,
-    hash: md5(pdf),
-    challenge: 1,
-    metadatas:{
-      creationDate: date.toLocaleDateString(),
-      uuid: vieweruuid,
-      order: 0
-    }
+async function generateStep1PDF(rndata){
+  const data ={
+    title: "Rental solutions",
+    date: new Date().toLocaleDateString(),
+    name: rndata.rndata.first_name+" "+rndata.rndata.name,
+    photo: rndata.picData
   }
-  axios.request({
-    url: scheme+"://"+apiUrl+"/binary/upload/tasks/"+taskguuid+"/attachments/add",
-    method: "put",
-    data: att,
-    headers:{
-      'Content-Type': 'application/json',
-      'Set-Cookie': cookie
-    }
-  }).then((res)=>{
-    if(res.status===200){
-      var src = res.data;
-      if(!src.done){
-        var url = src.url;
-        var md5code = src.md5;
-        axios.request({
-          url: url,
-          headers:{
-            'Content-Type' : 'application/octet-stream',
-            'Content-MD5': md5code
-          },
-          data: pdf// pdf being a fs buffer
-        }).then((res)=>{
-          if(res.status<=204){
-            return true;
-          }else{
-            return false;
-          }
-        })
-      }else{
-        return false;
-      }
-    }else{
-      return false;
-    }
-  })
+  var htmlTemplate = fs.readFileSync('../templates/viewer_template.html','utf8');
+  var template = handlebars.compile(htmlTemplate);
+  var html = template(data);
 
+  var pdfPath = path.join('pdf', `first_step.pdf`);
+  var options = {
+		width: '1230px',
+		headerTemplate: "<p></p>",
+		footerTemplate: "<p></p>",
+		displayHeaderFooter: false,
+		margin: {
+			top: "10px",
+			bottom: "30px"
+		},
+		printBackground: true,
+		path: pdfPath
+  }
+  
+  puppeteer.launch({
+		args: ['--no-sandbox'],
+		headless: true
+	}).then((browser)=>{
+    browser.newPage().then((page)=>{
+      page.goto(`data:text/html;charset=UTF-8,${html}`, {
+        waitUntil: 'networkidle0'
+      }).then(()=>{
+        page.pdf(options).then(()=>{
+          browser.close().then(()=>{return})
+        })
+      });
+    })
+  });
+
+	
+  
 }
 
-function notifyTaskOwner(/* task uuid */){
+function addAttachmentPDF(req,response/* taskuuid, stepuuid, pdf*/){
+  let cookie = req.body.cookie;
+  let rndata = req.body.rndata;
+  let taskguuid = req.body.taskguuid;
+  let vieweruuid = req.body.vieweruuid;
+  generateStep1PDF(rndata).then(()=>{
+    fs.readFile('./pdf/first_step.pdf').then((pdf)=>{
+      let apiUrl = config.snp.api_url;
+      let scheme = config.snp.scheme;
+      let date = new Date();
+      let pdfSize = fs.statSync('./viewpdf')['size'];
+      let att = {
+        originalname: "attachment_"+taskguuid+"_"+date.getTime()+".pdf",
+        mimetype:"application/pdf",
+        size: pdfSize,
+        hash: md5(pdf),
+        challenge: 1,
+        metadatas:{
+          creationDate: date.toLocaleDateString(),
+          uuid: vieweruuid,
+          order: 0
+        }
+      }
+      axios.request({
+        url: scheme+"://"+apiUrl+"/binary/upload/tasks/"+taskguuid+"/attachments/add",
+        method: "put",
+        data: att,
+        headers:{
+          'Content-Type': 'application/json',
+          'Set-Cookie': 'webda='+cookie
+        }
+      }).then((res)=>{
+        if(res.status===200){
+          var src = res.data;
+          if(!src.done){
+            var url = src.url;
+            var md5code = src.md5;
+            axios.request({
+              url: url,
+              headers:{
+                'Content-Type' : 'application/octet-stream',
+                'Content-MD5': md5code
+              },
+              data: pdf// pdf being a fs buffer
+            }).then((res)=>{
+              if(res.status<=204){
+                return response.status(200);
+              }else{
+                return response.status(400);
+              }
+            })
+          }else{
+            return response.status(400);
+          }
+        }else{
+          return response.status(400);
+        }
+      })
+    
+      });
+  })
+}
+
+function notifyTaskOwner(req,response/* task uuid */){
+  let cookie = req.body.cookie;
+  let taskguuid = req.body.taskguuid;
   let apiUrl = config.snp.api_url;
   let scheme = config.snp.scheme;
 
@@ -190,17 +261,19 @@ function notifyTaskOwner(/* task uuid */){
     method: "get",
     headers:{
       'Content-Type':'application/json',
-      'Set-Cookie':cookie
+      'Set-Cookie':'webda='+cookie
     }
   }).then((res)=>{
     let status = res.status;
     if(status<=204){
-      return true;
+      return response.status(200);
     }else{
-      return false;
+      return response.status(404);
     }
   })
 }
+
+
 
 function getValidateGetPhone(req, res) {
   const postgres = new Client({
