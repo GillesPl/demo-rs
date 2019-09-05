@@ -9,6 +9,8 @@ module.exports = function createRouter(app) {
   const router = new express.Router();
 
 
+  router.route('/api/pdftest')
+    .post(ctrlApi.pdfTest);
 
   router.route('/api/initcli')
     .post(ctrlApi.initcli);
