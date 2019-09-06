@@ -45,7 +45,15 @@ module.exports = {
   addPdf: addAttachmentPDF,
   notify: notifyTaskOwner,
   pdfTest: pdftest,
+  task1callback: task1callback,
 };
+
+function task1callback(req,res){
+
+  var json = req;
+  logger.info(json);
+
+}
 
 function initClient(req,response){
   let acessKey = config.snp.accessKey;
@@ -66,7 +74,7 @@ function initClient(req,response){
       });
       //let cookie = cookies['webda'];
       //logger.info('line 72: '+cookies['webda'].value)
-      return response.status(200).json({data:cookies['webda'].value});
+      return response.status(200).json({data:cookies['webda']});
     }else{
       return response.status(413);
     }
@@ -108,7 +116,7 @@ function getTemplateStartQrCode(req,response){
 
 function sendTask(req,response){
   let templateuuid = req.body.uuid;
-  let email = req.body.email;
+  let email = req.body.email; // user´s email
   let cookie = req.body.cookie;
   let apiUrl = config.snp.api_url;
   let scheme = config.snp.scheme;
@@ -122,25 +130,22 @@ function sendTask(req,response){
     data: ident,
     headers:{
       'Content-Type': 'application/json',
-      'Set-Cookie':'webda='+ cookie
-    }
+      'Set-Cookie':'webda='+cookie.value    }
   }).then((res)=>{
     if(res.status===200){
       var task = res.data;
+      logger.info(res.data)
       var taskguuid = task.uuid; //task.guuid?
-      task.subtasks.foreach((subtask)=>{
-        if(subtask.type==='viewer'){
-          var vieweruuid = subtask.uuid;
+      
           var data ={
             taskuuid: taskguuid,
-            vieweruuid: vieweruuid
+            vieweruuid: task.subTasks[0].uuid
           }
-          return response.status(200).json({data:data});
-        }
-      })
-    }else{
-        return response.status(404)
-    }
+          return response.status(200).json({data:{success:true}});
+        
+      }
+    }).catch((err)=>{
+    return response.status(200).json({data:{success:false}})
   })
 }
 

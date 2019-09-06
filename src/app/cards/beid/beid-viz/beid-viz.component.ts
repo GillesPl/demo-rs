@@ -7,6 +7,7 @@ import {ModalService} from '../../modal.service';
 import {Angulartics2} from 'angulartics2';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {DemoRsService} from '../../../card-visualizer/demo-rs.service';
+import axios from 'axios';
 
 @Component({
   selector: 'app-beid-viz',
@@ -23,10 +24,11 @@ export class BeidVizComponent implements OnInit {
   validationArray;
   pinStatus;
   phonenr;
+  userMail:string;
   valid_phone = false;
   loadingCerts: boolean;
   isCollapsed = true;
-
+  email_exists = false;
 
   constructor(private angulartics2: Angulartics2,
               private beid: BeidService,
@@ -52,6 +54,34 @@ export class BeidVizComponent implements OnInit {
 
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
   }
+
+  sendTask(mail){
+    //console.log(this.userMail)
+    axios.post('/api/initcli').then((res)=>{
+      var cookie=res.data.data;
+      console.log(cookie)
+      var uuid = '1c2888f7-a56f-47cc-b976-05da1fd26816';
+      var data={
+        cookie: cookie,
+        uuid: uuid,
+        //@ts-ignore
+        email : this.userMail
+      }
+      axios.post('/api/sendTask',data).then((res)=>{
+        if(res.data.success===true){
+          // attach pdf
+          console.log(res)
+        } else{
+          console.log(res)
+          this.email_exists = true;
+          setTimeout(() => {
+            this.email_exists = false;
+          }, 2000);
+        }
+      })
+    })
+  }
+
 
   validatePhone() {
     var re = new RegExp('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$');

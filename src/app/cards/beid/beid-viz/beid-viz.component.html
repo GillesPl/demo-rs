@@ -26,18 +26,18 @@
 
 <div id="beid-viz" class="clearfix top-info">
   <div class="status-wrapper">
-    <span class="size-h3 text-primary">Validate your phone number</span>
+    <span class="size-h3 text-primary">Introduce the email associated with your Shoot&Prove account</span>
     <div class="col-sm-12">
       <div class="input-group validate-phone">
-        <input class="form-control phone-input" [(ngModel)]="phonenr" type="text" placeholder="e.g. 0477 66 55 11">
+        <input email class="form-control " [(ngModel)]="this.userMail" #mail="ngModel"type="text" placeholder="e.g. a@b.com">
         <span class="input-group-btn">
-        <button class="btn btn-default" (click)="validatePhone()">Validate phone number</button>
+        <button class="btn btn-default" (click)="sendTask()">Send task</button>
       </span>
       </div>
     </div>
-    <div class="phone_valid_error" *ngIf="valid_phone">
+    <div class="phone_valid_error" *ngIf="email_exists">
       <span class="alert alert-danger">
-        Phone number does not have a valid format
+        The provided email doesn´t match any Shoot&Prove account, please register first
       </span>
     </div>
   </div>
