@@ -39,7 +39,11 @@ default:
     user: "postgres"
     password: "postgres"
     port: 5432
-
+  snp:
+    api_url: "api.shootandprove.com"
+    scheme: "https"
+    accessKey: "<access_key>"
+    secretKey: "<secret_key>"
 
 test:
   appName: "readmycards"
