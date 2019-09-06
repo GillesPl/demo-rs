@@ -55,31 +55,61 @@ export class BeidVizComponent implements OnInit {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
   }
 
-  sendTask(mail){
+async sendTask(mail){
     //console.log(this.userMail)
-    axios.post('/api/initcli').then((res)=>{
-      var cookie=res.data.data;
-      console.log(cookie)
-      var uuid = '1c2888f7-a56f-47cc-b976-05da1fd26816';
-      var data={
-        cookie: cookie,
-        uuid: uuid,
-        //@ts-ignore
-        email : this.userMail
-      }
-      axios.post('/api/sendTask',data).then((res)=>{
-        if(res.data.success===true){
-          // attach pdf
-          console.log(res)
-        } else{
-          console.log(res)
-          this.email_exists = true;
-          setTimeout(() => {
-            this.email_exists = false;
-          }, 2000);
+  
+    var pdfdata={
+      rndata:this.rnData
+    }
+    
+      axios.post('/api/initcli').then((res)=>{
+        var cookie=res.data.data;
+        console.log(cookie)
+        var uuid = '1c2888f7-a56f-47cc-b976-05da1fd26816';
+        var data={
+          cookie: cookie,
+          uuid: uuid,
+          //@ts-ignore
+          email : this.userMail
         }
+        axios.post('/api/sendTask',data).then((res)=>{
+          if(res.data.data.success===true){
+            // attach pdf
+            var taskids = res.data.data.data;
+            var attachmentData={
+              cookie:cookie,
+              taskguuid: taskids.taskuuid,
+              vieweruuid: taskids.vieweruuid,
+              rndata: this.rnData,
+              pdfpath:'./pdf/first_step.pdf'
+            }
+            this.userMail='';
+            axios.post('/api/pdftest',pdfdata).then((res)=>{})
+            setTimeout(()=>{
+              axios.post('/api/addPDF',attachmentData).then((res)=>{
+              
+                console.log('here')
+                         
+              })
+              var notifydata = {
+                cookie:cookie,
+                taskguuid: taskids.taskuuid
+              }
+              axios.post('/api/notify',notifydata).then((res)=>{
+    
+              }) 
+            },4000); 
+          } else{
+            console.log(res)
+            this.email_exists = true;
+            setTimeout(() => {
+              this.email_exists = false;
+            }, 2000);
+          }
+        })
       })
-    })
+    
+    
   }
 
 
