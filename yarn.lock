@@ -3409,6 +3409,11 @@ eastasianwidth@^0.1.1:
   version "0.1.1"
   resolved "https://repo.t1t.be/repository/npm-group/eastasianwidth/-/eastasianwidth-0.1.1.tgz#44d656de9da415694467335365fb3147b8572b7c"
 
+easy-pdf-merge@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/easy-pdf-merge/-/easy-pdf-merge-0.2.2.tgz#2066e5f6e771b619012f7404af6ae0079f7bdcc6"
+  integrity sha512-Cbf4BhCNRnjKQzXY8dbXjNE8KmWsjz7Jj0zk3pkEv8u+wxaLQxWEgu6W/EkH8RuygZIcqPepXNp7HJJ/0A5QTw==
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://repo.t1t.be/repository/npm-group/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"

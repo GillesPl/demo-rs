@@ -2,6 +2,7 @@
   "ignore": [
     "src/**",
     "dist/**",
+    "pdf/**",
     "modules/**",
     "*.marko.js",
     "*.pdf"

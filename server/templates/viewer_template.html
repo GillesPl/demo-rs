@@ -66,14 +66,19 @@
 		<h3>{{title}}</h3>
 		<p>{{date}}</p>
 	</div>
+	<div class="report-photo">
+			<img style="height: 150px;width: 75px;" src="data:image/png;base64, {{photo}}">
+	</div>
 	<div class="report-body">
 		<div class="info">
-			<p>Client: {{name}}</p>
+			<p>Name: {{name}}</p>
+			<p>Surname: {{surname}}</p>
+			<p>Street: {{street}} </p>
+			<p>Zipcode: {{zipcode}}</p>
+			<p>Municipality: {{municipality}}</p>
 		</div>
 	</div>
-	<div class="report-photo">
-		<img src="data:image/png;base64, {{photo}}">
-	</div>
+	
 	<div class="report-footer">
 		Renta Solutions - All Rights reserved.
 	</div>

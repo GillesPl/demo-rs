@@ -239,48 +239,7 @@ export class CardVisualizerComponent implements OnChanges, OnInit {
           this.cardinfoGarage = JSON.parse(res.rndata);
           setTimeout(() => {
             this.register_completeRegistrationCheck = true;
-          }, 1000);
-          // add method here to handle the shootandprove calls to the api
-            var cookie;
-            axios.post('/api/initcli').then((res)=>{
-              cookie=res.data.data;
-              console.log(cookie)
-              var svg;
-              var uuid = 'daa9b3c8-d49b-41c5-88c0-e2ca848bf432';
-              var data={
-                cookie: cookie,
-                uuid: uuid,
-              }
-              axios.post('/api/getQr',data).then((res)=>{
-                svg=res.data.data;
-                var sendData = {
-                  cookie: cookie,
-                  uuid : uuid,
-                  email : 'david@crescent-integrations.com'
-                }
-                console.log(svg)
-                var taskids;
-                axios.post('/api/sendTask',sendData).then((res)=>{
-                  taskids = res.data.data;
-                  var addData = {
-                    cookie: cookie,
-                    rndata: this.cardinfoGarage,
-                    taskguuid: taskids.taskuuid,
-                    vieweruuid: taskids.vieweruuid
-                  }
-                  axios.post('/api/addPDF',addData).then((res)=>{
-                    var notifyData={
-                      cookie: cookie,
-                      taskguuid: taskids.taskuuid
-                    }
-                    axios.post('api/notify',notifyData).then((res)=>{
-                      console.log("we did it!")
-                    })
-                  })
-                }) 
-              })
-            })
-          
+          }, 1000);          
         }
         else {
           document.querySelector('.register-phone-input').classList.add('demo-invalid');

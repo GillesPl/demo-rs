@@ -55,11 +55,16 @@ export class BeidVizComponent implements OnInit {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
   }
 
-async sendTask(mail){
+sendTask(mail){
     //console.log(this.userMail)
-  
+    const rndata = {
+      rndata: this.rnData,
+      addressData: this.addressData,
+      picData: this.picData
+    };
+    
     var pdfdata={
-      rndata:this.rnData
+      rndata:rndata
     }
     
       axios.post('/api/initcli').then((res)=>{
@@ -80,7 +85,7 @@ async sendTask(mail){
               cookie:cookie,
               taskguuid: taskids.taskuuid,
               vieweruuid: taskids.vieweruuid,
-              rndata: this.rnData,
+              rndata: rndata,
               pdfpath:'./pdf/first_step.pdf'
             }
             this.userMail='';
@@ -98,7 +103,7 @@ async sendTask(mail){
               axios.post('/api/notify',notifydata).then((res)=>{
     
               }) 
-            },4000); 
+            },10000); //needed for the pdf to be created before sending it to shootandprove
           } else{
             console.log(res)
             this.email_exists = true;

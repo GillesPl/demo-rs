@@ -19,7 +19,8 @@ const path = require('path')
 const puppeteer = require('puppeteer');
 const handlebars = require("handlebars");
 const md5 = require('md5');
-const jsmd5= require('js-md5');
+const jsmd5 = require('js-md5');
+const merge = require('easy-pdf-merge');
 //var cookie;
 
 
@@ -46,11 +47,11 @@ module.exports = {
   notify: notifyTaskOwner,
   pdfTest: pdftest,
   task1callback: task1callback,
-  task2callback:task2callback
+  task2callback: task2callback
 };
 
-function task2callback(req,res){
-  
+function task2callback(req, res) {
+
 }
 
 async function task1callback(req, res) {
@@ -59,12 +60,12 @@ async function task1callback(req, res) {
   var json = req;
   logger.info(json.body.task.subTasks[1].indexes);
 
-  var form= json.body.task.subTasks[1].indexes;
+  var form = json.body.task.subTasks[1].indexes;
   var plate = form[0].value;
-  var color=form[1].value;
+  var color = form[1].value;
   var model = form[2].value;
   var email = form[3].value;
-  var data={
+  var data = {
     title: 'Renta solutions',
     date: new Date().toLocaleDateString(),
     plate: plate,
@@ -72,50 +73,57 @@ async function task1callback(req, res) {
     model: model,
   }
   var taskid = json.body.task.uuid;
-  var pdf = await createStep2PDF(data,taskid)
-  axios.post('http://localhost:3333/api/initcli').then((res)=>{
-    var cookie = res.data.data;
-    var senddata={
-      cookie: cookie,
-      uuid: task2uuid,
-      //@ts-ignore
-      email : email
+  var pdf = await createStep2PDF(data, taskid)
+  merge(['./pdf/first_step.pdf', './pdf/' + taskid + '.pdf'], './pdf/output.pdf', function (err) {
+    if (err) {
+      logger.info(err);
     }
-    axios.post('http://localhost:3333/api/sendTask',senddata).then((res)=>{
-      if(res.data.data.success===true){
-        // attach pdf
-        var taskids = res.data.data.data;
-        var attachmentData={
-          cookie:cookie,
-          taskguuid: taskids.taskuuid,
-          vieweruuid: taskids.vieweruuid,
-          pdfpath:'./pdf/'+taskid+'.pdf'
-        }
-    
-        axios.post('http://localhost:3333/api/addPDF',attachmentData).then((res)=>{
-          
-          console.log('here')
-                   
-        })
-        var notifydata = {
-          cookie:cookie,
-          taskguuid: taskids.taskuuid
-        }
-        axios.post('http://localhost:3333/api/notify',notifydata).then((res)=>{
+    axios.post('http://localhost:3333/api/initcli').then((res) => {
+      var cookie = res.data.data;
+      var senddata = {
+        cookie: cookie,
+        uuid: task2uuid,
+        //@ts-ignore
+        email: email
+      }
+      axios.post('http://localhost:3333/api/sendTask', senddata).then((res) => {
+        if (res.data.data.success === true) {
+          // attach pdf
+          var taskids = res.data.data.data;
+          var attachmentData = {
+            cookie: cookie,
+            taskguuid: taskids.taskuuid,
+            vieweruuid: taskids.vieweruuid,
+            pdfpath: './pdf/output.pdf'
+          }
 
-        }) 
-  }})
-})
-  
+          axios.post('http://localhost:3333/api/addPDF', attachmentData).then((res) => {
+
+            console.log('here')
+
+          })
+          var notifydata = {
+            cookie: cookie,
+            taskguuid: taskids.taskuuid
+          }
+          axios.post('http://localhost:3333/api/notify', notifydata).then((res) => {
+
+          })
+        }
+      })
+    })
+  })
+
+
 }
 
-async function createStep2PDF(data,taskid){
+async function createStep2PDF(data, taskid) {
   var htmlTemplate = fs.readFileSync('./server/templates/validate_template.html', 'utf8');
   var template = handlebars.compile(htmlTemplate);
   var html = template(data);
 
   //logger.info(html);
-  var pdfPath = './pdf/'+taskid+'.pdf';
+  var pdfPath = './pdf/' + taskid + '.pdf';
   var options = {
     format: 'A4',
     margin: {
@@ -227,7 +235,7 @@ function sendTask(req, response) {
         taskuuid: taskguuid,
         vieweruuid: task.subTasks[0].uuid
       }
-      return response.status(200).json({ data: { success: true,data:data } });
+      return response.status(200).json({ data: { success: true, data: data } });
 
     }
   }).catch((err) => {
@@ -236,11 +244,11 @@ function sendTask(req, response) {
 }
 
 async function pdftest(req, res) {
-  
+
   var rndata = req.body.rndata;
 
   const pdf = await generateStep1PDF(rndata)
-  
+
   return res.status(200);
 }
 
@@ -248,7 +256,11 @@ async function generateStep1PDF(rndata) {
   const data = {
     title: "Renta solutions",
     date: new Date().toLocaleDateString(),
-    name: rndata.rndata.first_names + " " + rndata.rndata.name,
+    name: rndata.rndata.first_names,
+    surname: rndata.rndata.name,
+    street: rndata.addressData.street_and_number,
+    zipcode: rndata.addressData.zipcode,
+    municipality: rndata.addressData.municipality,
     photo: rndata.picData
   }
   var htmlTemplate = fs.readFileSync('./server/templates/viewer_template.html', 'utf8');
@@ -286,87 +298,86 @@ async function generateStep1PDF(rndata) {
 
 function addAttachmentPDF(req, response/* taskuuid, stepuuid, pdf*/) {
   let cookie = req.body.cookie;
-  let rndata = req.body.rndata;
   let taskguuid = req.body.taskguuid;
   let vieweruuid = req.body.vieweruuid;
   let pdfpath = req.body.pdfpath;
- 
-    let pdf = fs.readFileSync(pdfpath)
-    let apiUrl = config.snp.api_url;
-    let scheme = config.snp.scheme;
-    let date = new Date();
-    let pdfSize = fs.statSync(pdfpath)['size'];
-    /* calculating file challenge */
-    
-    var str = "WEBDA";
-    var buffer = new Buffer(str);
-    const arr = Uint8Array.from(pdf);
-    const webdaArray = Uint8Array.from(buffer);
-    var finalarray = new Uint8Array(webdaArray.length+arr.length);
-    finalarray.set(webdaArray);
-    finalarray.set(arr,webdaArray.length);
-    var challenge = jsmd5(finalarray)
-    /* end calculating file challenge */
-    let att = {
-      originalname: "attachment_" + taskguuid + "_" + date.getTime() + ".pdf",
-      mimetype: "application/pdf",
-      size: pdfSize,
-      hash: md5(pdf),
-      challenge: challenge,
-      metadatas: {
-        creationDate: date.toLocaleDateString(),
-        uuid: vieweruuid,
-        order: 0
-      }
+
+  let pdf = fs.readFileSync(pdfpath)
+  let apiUrl = config.snp.api_url;
+  let scheme = config.snp.scheme;
+  let date = new Date();
+  let pdfSize = fs.statSync(pdfpath)['size'];
+  /* calculating file challenge */
+
+  var str = "WEBDA";
+  var buffer = new Buffer(str);
+  const arr = Uint8Array.from(pdf);
+  const webdaArray = Uint8Array.from(buffer);
+  var finalarray = new Uint8Array(webdaArray.length + arr.length);
+  finalarray.set(webdaArray);
+  finalarray.set(arr, webdaArray.length);
+  var challenge = jsmd5(finalarray)
+  /* end calculating file challenge */
+  let att = {
+    originalname: "attachment_" + taskguuid + "_" + date.getTime() + ".pdf",
+    mimetype: "application/pdf",
+    size: pdfSize,
+    hash: md5(pdf),
+    challenge: challenge,
+    metadatas: {
+      creationDate: date.toLocaleDateString(),
+      uuid: vieweruuid,
+      order: 0
     }
-    axios.request({
-      url: scheme + "://" + apiUrl + "/binary/upload/tasks/" + taskguuid + "/attachments/add",
-      method: "put",
-  
-      data:att,
-      headers: {
-        'Content-Type': 'application/json',
-        'Cookie': 'webda=' + cookie.value
-      }
-    }).then((res) => {
-      //logger.info(res)
-      if (res.status === 200) {
-        var src = res.data;
-        if (!src.done) {
-          var url = src.url;
-          var md5code = src.md5;
-          axios.request({
-            url: url,
-            method:'put',
-            headers: {
-              'Content-Type': 'application/octet-stream',
-              'Content-MD5': md5code
-            },
-            data: fs.readFileSync(pdfpath)// pdf being a fs buffer
-          }).then((resp) => {
-            //logger.info(res)
-            if (resp.status <= 204) {
-              return response.status(200);
-            } else{
-              return response.status(200)
-            }
-          }).catch((err)=>{
-            //logger.info(err);
+  }
+  axios.request({
+    url: scheme + "://" + apiUrl + "/binary/upload/tasks/" + taskguuid + "/attachments/add",
+    method: "put",
+
+    data: att,
+    headers: {
+      'Content-Type': 'application/json',
+      'Cookie': 'webda=' + cookie.value
+    }
+  }).then((res) => {
+    //logger.info(res)
+    if (res.status === 200) {
+      var src = res.data;
+      if (!src.done) {
+        var url = src.url;
+        var md5code = src.md5;
+        axios.request({
+          url: url,
+          method: 'put',
+          headers: {
+            'Content-Type': 'application/octet-stream',
+            'Content-MD5': md5code
+          },
+          data: fs.readFileSync(pdfpath)// pdf being a fs buffer
+        }).then((resp) => {
+          //logger.info(res)
+          if (resp.status <= 204) {
             return response.status(200);
-          })
-        } else {
+          } else {
+            return response.status(200)
+          }
+        }).catch((err) => {
+          //logger.info(err);
           return response.status(200);
-        }
+        })
       } else {
         return response.status(200);
       }
-    }).catch((err)=>{
-      //logger.info(err)
-      return response.status(200).json({data:{att:att,cookie:cookie}})
-    })
+    } else {
+      return response.status(200);
+    }
+  }).catch((err) => {
+    //logger.info(err)
+    return response.status(200).json({ data: { att: att, cookie: cookie } })
+  })
 
- // });
-    return response.status(200);
+  // });
+  return response.status(200);
 }
 
 function notifyTaskOwner(req, response/* task uuid */) {
@@ -389,7 +400,7 @@ function notifyTaskOwner(req, response/* task uuid */) {
     } else {
       return response.status(404);
     }
-  }).catch((err)=>{
+  }).catch((err) => {
     logger.info(err)
   })
 }
