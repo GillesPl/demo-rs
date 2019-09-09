@@ -78,7 +78,7 @@ async function task1callback(req, res) {
     if (err) {
       logger.info(err);
     }
-    axios.post('http://localhost:3333/api/initcli').then((res) => {
+    axios.post('http://localhost:3116/api/initcli').then((res) => {
       var cookie = res.data.data;
       var senddata = {
         cookie: cookie,
@@ -86,7 +86,7 @@ async function task1callback(req, res) {
         //@ts-ignore
         email: email
       }
-      axios.post('http://localhost:3333/api/sendTask', senddata).then((res) => {
+      axios.post('http://localhost:3116/api/sendTask', senddata).then((res) => {
         if (res.data.data.success === true) {
           // attach pdf
           var taskids = res.data.data.data;
@@ -97,7 +97,7 @@ async function task1callback(req, res) {
             pdfpath: './pdf/output.pdf'
           }
 
-          axios.post('http://localhost:3333/api/addPDF', attachmentData).then((res) => {
+          axios.post('http://localhost:3116/api/addPDF', attachmentData).then((res) => {
 
             console.log('here')
 
@@ -106,7 +106,7 @@ async function task1callback(req, res) {
             cookie: cookie,
             taskguuid: taskids.taskuuid
           }
-          axios.post('http://localhost:3333/api/notify', notifydata).then((res) => {
+          axios.post('http://localhost:3116/api/notify', notifydata).then((res) => {
 
           })
         }
