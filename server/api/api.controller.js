@@ -134,7 +134,7 @@ async function createStep2PDF(data, taskid) {
     },
     path: pdfPath
   }
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args:['--no-sandbox']});
   var page = await browser.newPage();
   await page.setContent(html, {
     waitUntil: ['domcontentloaded', 'networkidle0', 'load']
@@ -279,7 +279,7 @@ async function generateStep1PDF(rndata) {
     },
     path: pdfPath
   }
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args:['--no-sandbox']});
   var page = await browser.newPage();
   await page.setContent(html, {
     waitUntil: ['domcontentloaded', 'networkidle0', 'load']
