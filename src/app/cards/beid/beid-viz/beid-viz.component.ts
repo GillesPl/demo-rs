@@ -62,11 +62,11 @@ sendTask(mail){
       addressData: this.addressData,
       picData: this.picData
     };
-    
+
     var pdfdata={
       rndata:rndata
     }
-    
+
       axios.post('/api/initcli').then((res)=>{
         var cookie=res.data.data;
         console.log(cookie)
@@ -89,21 +89,17 @@ sendTask(mail){
               pdfpath:'./pdf/first_step.pdf'
             }
             this.userMail='';
-            axios.post('/api/pdftest',pdfdata).then((res)=>{})
-            setTimeout(()=>{
+            axios.post('/api/pdftest',pdfdata).then((res)=>{
               axios.post('/api/addPDF',attachmentData).then((res)=>{
-              
-                console.log('here')
-                         
+                var notifydata = {
+                  cookie:cookie,
+                  taskguuid: taskids.taskuuid
+                }
+                axios.post('/api/notify',notifydata).then((res)=>{
+
+                })
               })
-              var notifydata = {
-                cookie:cookie,
-                taskguuid: taskids.taskuuid
-              }
-              axios.post('/api/notify',notifydata).then((res)=>{
-    
-              }) 
-            },10000); //needed for the pdf to be created before sending it to shootandprove
+            })
           } else{
             console.log(res)
             this.email_exists = true;
@@ -113,8 +109,8 @@ sendTask(mail){
           }
         })
       })
-    
-    
+
+
   }
 
 
